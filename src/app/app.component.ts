@@ -5,11 +5,11 @@ import {
 } from 'angular-l10n';
 
 @Component({
-               selector: 'plugin-terra-basic-app',
+               selector: 'app-component',
                template: require('./app.component.html'),
                styles:   [require('./app.component.scss')],
            })
-export class PluginTerraBasicComponent extends Translation
+export class AppComponent extends Translation
 {
     private myVariable:string;
 
