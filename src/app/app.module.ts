@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PluginTerraBasicComponent } from './plugin-terra-basic.component';
+import { PluginTerraBasicComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra-components.module';
 import { HttpModule } from '@angular/http';
