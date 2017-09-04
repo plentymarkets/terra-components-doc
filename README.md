@@ -1,28 +1,28 @@
-# Master
+![plentymarkets Logo](http://www.plentymarkets.eu/layout/pm/images/logo/plentymarkets-logo.jpg)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
+Learn how to create your first plentymarkets plugin https://developers.plentymarkets.com
 
-## Development server
+# plugin-terra-basic
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation 
+1. **Dieses Repository clonen und den master Branch auschecken**
+2. **NodeJs Version 6.9.1 installieren (https://nodejs.org/en/).**
+3. **Öffne IntelliJ und führe folgenden Befehl aus:**
+    1. npm config get prefix
+    2. sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+    3. npm install
+    4. im IntelliJ den Ordner node_modules als excluded markieren (rechts klick auf den Ordner und "Mark Directory as")
+4. **Im IntelliJ folgende Pluings installieren (falls noch nicht installiert):**
+    1. NodeJs 
+    
+## Projekt debuggen
 
-## Code scaffolding
+1. **Projekt starten**
+    1. npm start
+2. **Backend im Browser öffnen**
+    1. http://localhost:3000/
+    
+## Kompilieren 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. **Projekt bauen**
+    1. npm run build
