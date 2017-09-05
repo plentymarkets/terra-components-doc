@@ -1,0 +1,39 @@
+body
+{
+    margin:0;
+}
+.sidebar
+{
+    float:left;
+    height:100%;
+    width:250px;
+    background-color: white;
+    border-right: 3px solid #F2F2F2;
+}
+.sidebar-nav
+{
+        ul{
+            list-style: none;
+            padding:0;
+            margin: 0;
+            background-color: #fafafa;
+            li {
+                padding: 10px 20px 10px 20px;
+                display: inline-block;
+                &:hover
+                {
+                    background-color: #f2f2f2;
+                    a
+                    {
+                       color: #555555;
+                    }
+                }
+                a
+                {
+                    text-decoration: none;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    
