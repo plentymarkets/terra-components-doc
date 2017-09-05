@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
               imports:      [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
                   AppComponent,
                   StartComponent,
                   TestComponent,
-                  SidebarComponent
+                  SidebarComponent,
+                  OverviewComponent
               ],
               providers:    [],
               bootstrap:    [
