@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { TestComponent } from './test/test.component';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
               imports:      [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
               declarations: [
                   AppComponent,
                   StartComponent,
-                  TestComponent
+                  TestComponent,
+                  OverviewComponent
               ],
               providers:    [],
               bootstrap:    [
