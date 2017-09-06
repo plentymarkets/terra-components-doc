@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OverviewComponent } from './overview/overview.component';
+import { MainviewComponent } from './mainview/mainview.component';
 
 @NgModule({
               imports:      [
@@ -20,7 +20,7 @@ import { OverviewComponent } from './overview/overview.component';
               declarations: [
                   AppComponent,
                   SidebarComponent,
-                  OverviewComponent,
+                  MainviewComponent,
               ],
               providers:    [],
               bootstrap:    [
