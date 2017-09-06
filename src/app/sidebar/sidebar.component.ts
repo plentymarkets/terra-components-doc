@@ -15,26 +15,9 @@ export class SidebarComponent implements OnInit {
     }
 
     compArray = [
-        {
-            buttons: [
-                {
-                    id: 0,
-                    name: 'Terra-Button'
-                },
-                {
-                    id: 1,
-                    name: 'Terra-Button'
-                },
-            ]
-        },
-        {
-            navigation: [
-                {
-                    id: 2,
-                    name: 'Terra-Navigator'
-                },
-            ]
-        }
+        {id: 1, name:'Terra-Button'},
+        {id: 2, name:'Terra-Navigator'},
     ];
 
 }
+

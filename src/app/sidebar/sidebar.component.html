@@ -5,10 +5,11 @@
     </ul>
 </nav>
 <div class="sidebar">
-    <ul *ngFor="let componentList of compArray">
-        <li>componentList</li>
-        <ng-container *ngFor="let component of componentList">
-            <li>component.id</li>
-        </ng-container>
-    </ul>
+    <div>
+        <ul *ngFor="let componentList of compArray">
+            <li>
+                <a>{{componentList.name}}</a>
+            </li>
+        </ul>
+    </div>
 </div>
