@@ -5,4 +5,12 @@
     </ul>
 </nav>
 <div class="sidebar">
+    <div>
+        <ul *ngFor="let componentList of compArray" class="sidebar-list">
+            <li>
+                <a href="#">{{componentList.name}}</a>
+            </li>
+        </ul>
+    </div>
+
 </div>

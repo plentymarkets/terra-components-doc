@@ -1,21 +1,26 @@
 .overview {
   display: grid;
   .navbar-overview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width:100%;
+      background-color: #FAFAFA;
       list-style: none;
       padding: 0px;
       margin: 0px;
+      
       li {
+        cursor: pointer;
         display: inline-block;
         padding: 10px 20px 10px 20px;
-        margin-right: 10px;
         width: 150px;
         text-align: center;
         &:hover {
+          background-color: #f2f2f2;
           a {
+            cursor: pointer;
             color: #555555;
           }
         }
@@ -29,5 +34,6 @@
   }
 }
 .content {
+  font-size:15px;
   margin: 0px 20px 0px 20px;
 }
