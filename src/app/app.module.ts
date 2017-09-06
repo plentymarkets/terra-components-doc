@@ -7,7 +7,6 @@ import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OverviewComponent } from './overview/overview.component';
-import { DataModelComponent } from './data.model';
 
 @NgModule({
               imports:      [
@@ -22,7 +21,6 @@ import { DataModelComponent } from './data.model';
                   AppComponent,
                   SidebarComponent,
                   OverviewComponent,
-                  DataModelComponent
               ],
               providers:    [],
               bootstrap:    [
