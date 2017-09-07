@@ -5,6 +5,6 @@ import { Component} from '@angular/core';
                templateUrl: './api.template.html'
 
            })
-export class OverviewComponent
+export class ApiComponent
 {
 }

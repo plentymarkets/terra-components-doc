@@ -44,6 +44,10 @@ body
     li {
         border-bottom: 1px solid #E0E0E0;
         padding: 10px 20px 9px 20px;
+        &:focus
+        {
+            outline:none;
+        }
         &:hover{
             cursor: pointer;
             background-color: #F2F2F2;
