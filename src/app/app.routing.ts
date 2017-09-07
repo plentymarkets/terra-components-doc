@@ -1,12 +1,16 @@
-import { NgModule } from '@angular/core';
+import {
+    NgModule
+} from '@angular/core';
 import {
     RouterModule,
-    Routes
+    Routes,
 } from '@angular/router';
+
+
 import { OverviewComponent } from './templates/overview/overview.template';
-import{ExampleComponent} from './templates/example/example.template';
-import {ApiComponent} from './templates/api/api.template';
-import {MainviewComponent} from './mainview/mainview.component';
+import { ExampleComponent } from './templates/example/example.template';
+import { ApiComponent } from './templates/api/api.template';
+import { MainviewComponent } from './mainview/mainview.component';
 
 const routes:Routes = [
 
@@ -26,9 +30,13 @@ const routes:Routes = [
 
 @NgModule
 ({
-     imports: [RouterModule.forRoot(routes)],
-     exports: [RouterModule]
- })
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+
+
 export class AppRoutingModule
 {
+
 }
+

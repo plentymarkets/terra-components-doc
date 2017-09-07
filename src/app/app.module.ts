@@ -5,7 +5,7 @@ import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra
 import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
-import{RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { AppRoutingModule } from './app.routing';
