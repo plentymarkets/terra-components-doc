@@ -15,7 +15,7 @@ import { MainviewComponent } from './mainview/mainview.component';
 const routes:Routes = [
 
     {
-        path:      'Terra-Button',
+        path:      'terra-button',
         component: MainviewComponent,
         children:
             [
@@ -24,17 +24,6 @@ const routes:Routes = [
                 { path:'example',component:ExampleComponent },
                 { path:'api',component:ApiComponent }
 
-            ]
-    },
-    {
-        path: 'Terra-Navigator',
-        component:MainviewComponent,
-        children:
-            [
-                { path: '', redirectTo: 'overview', pathMatch: 'full' },
-                {path:'overview',component:OverviewComponent},
-                {path:'example',component:ExampleComponent},
-                {path:'api',component:ApiComponent}
             ]
     }
 ];
