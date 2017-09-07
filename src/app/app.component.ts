@@ -4,7 +4,7 @@ import {
     Translation,
     TranslationService
 } from 'angular-l10n';
-import {RoutingService} from "./routingArray.component";
+import {RoutingService} from "./routing-service.component";
 import {ComponentService} from "./component-service.component";
 
 @Component({
