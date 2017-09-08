@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
+import {Router} from "@angular/router";
 
 import {MainviewComponent} from "./mainview/mainview.component";
 import {OverviewComponent} from "./templates/overview/overview.template";
 import {ExampleComponent} from "./templates/example/example.template";
 import {ApiComponent} from "./templates/api/api.template";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class RoutingService {
@@ -30,11 +30,9 @@ export class RoutingService {
                     { path:'example',component:ExampleComponent },
                     { path:'api',component:ApiComponent }
                 ]
-
             };
             routeArray.push(objData);
         }
-
         this.router.resetConfig(routeArray);
     }
 
