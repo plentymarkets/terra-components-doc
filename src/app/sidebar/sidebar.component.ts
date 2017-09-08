@@ -29,6 +29,5 @@ export class SidebarComponent implements OnInit {
         this.getCompArray();
     }
 
-
 }
 

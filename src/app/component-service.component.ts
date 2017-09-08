@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
+import {Http} from "@angular/http";
 
 import { ComponentInterface } from './componentInterface.component';
-import {Http} from "@angular/http";
 
 @Injectable()
 export class ComponentService {
+
     public data: any;
 
     constructor(private http:Http)
@@ -19,4 +20,5 @@ export class ComponentService {
             .map((res:any) => res.json())
             .toPromise();
     }
+
 }

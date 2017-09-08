@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
     public constructor(private routingService: RoutingService,
                        private componentService: ComponentService) {
-        
+
     }
 
     ngOnInit(): void {
