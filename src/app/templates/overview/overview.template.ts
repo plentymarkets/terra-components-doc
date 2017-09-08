@@ -7,13 +7,4 @@ import { Component } from '@angular/core';
 })
 export class OverviewComponent
 {
-    //constructor(public activatedRoute:ActivatedRoute)
-    //{
-    //
-    //    let componentName = activatedRoute.routeConfig.data;
-    //
-    //
-    //
-    //}
-
 }
