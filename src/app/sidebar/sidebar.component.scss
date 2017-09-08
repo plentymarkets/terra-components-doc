@@ -41,6 +41,7 @@ body
     list-style: none;
     padding:0;
     margin: 0;
+   
     li {
         border-bottom: 1px solid #E0E0E0;
         padding: 10px 20px 9px 20px;
@@ -63,5 +64,9 @@ body
             font-size: 20px;
         }
     }
+    li.is-active a
+    {
+        color: #008EBD !important;
+    }
 }
-    
+

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector:    'mainview',
   templateUrl: './mainview.component.html',
   styleUrls:   ['./mainview.component.scss']
 })
-export class MainviewComponent implements OnInit {
+export class MainviewComponent  {
 
-  constructor() { }
+  public componentName:any;
 
-  ngOnInit() {
-  }
+    constructor(public activatedRoute:ActivatedRoute,)
+    {
+        this.componentName = activatedRoute.routeConfig.data.componentName;
+    }
+
+
 
 }

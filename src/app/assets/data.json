@@ -4,5 +4,15 @@
     },
     {
         "id": 2, "name": "terra-navigator"
+    },
+    {
+        "id": 3, "name": "terra-overlay"
+    },
+    {
+        "id": 4, "name": "terra-navbar"
+    },
+    {
+        "id": 5, "name": "terra-toolbar"
     }
+
 ]

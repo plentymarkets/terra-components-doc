@@ -16,9 +16,13 @@ export class RoutingService {
         let routeArray = [];
 
         for(let data of compArray) {
-           let test =  {
+           let objData =  {
                 path:data.name,
                 component: MainviewComponent,
+
+                data:{
+                   componentName: data.name
+               },
                 children:
                 [
                     { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -26,8 +30,9 @@ export class RoutingService {
                     { path:'example',component:ExampleComponent },
                     { path:'api',component:ApiComponent }
                 ]
+
             };
-            routeArray.push(test);
+            routeArray.push(objData);
         }
 
         this.router.resetConfig(routeArray);

@@ -7,8 +7,8 @@
 <div class="sidebar">
     <div>
         <ul *ngFor="let componentList of compArray" class="sidebar-list">
-            <li routerLink="/{{componentList.name}}" >
-                <a routerLinkActive="active">{{componentList.name}}</a>
+            <li routerLink="/{{componentList.name}}" routerLinkActive="is-active">
+                <a>{{componentList.name}}</a>
             </li>
         </ul>
     </div>

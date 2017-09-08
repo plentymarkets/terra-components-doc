@@ -11,14 +11,13 @@ import {
            })
 export class OverviewComponent
 {
-    //constructor(public activatedRoute:ActivatedRoute,
-    //            public router:Router)
+    //constructor(public activatedRoute:ActivatedRoute)
     //{
-        //
-        //let test = activatedRoute;
-        //let test1 = router;
-        //
-        //console.log(activatedRoute.routeConfig.data);
+    //
+    //    let componentName = activatedRoute.routeConfig.data;
+    //
+    //
+    //
     //}
 
 }
