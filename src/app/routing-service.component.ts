@@ -25,10 +25,23 @@ export class RoutingService {
                },
                 children:
                 [
-                    { path: '', redirectTo: 'overview', pathMatch: 'full' },
-                    { path:'overview',component:OverviewComponent },
-                    { path:'example',component:ExampleComponent },
-                    { path:'api',component:ApiComponent }
+                    {
+                        path: '',
+                        redirectTo: 'overview',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path:'overview',
+                        component: OverviewComponent
+                    },
+                    {
+                        path:'example',
+                        component: ExampleComponent
+                    },
+                    {
+                        path:'api',
+                        component: ApiComponent
+                    }
                 ]
             };
             routeArray.push(objData);
