@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector:    'overview-template',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class OverviewComponent
 {
+    public componentName:any;
+
+    constructor(public activatedRoute:ActivatedRoute,)
+    {
+        this.componentName = activatedRoute.routeConfig.data.componentName;
+    }
 }

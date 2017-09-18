@@ -21,7 +21,9 @@ export class RoutingService {
                 component: MainviewComponent,
 
                 data:{
-                   componentName: data.name
+                    componentName: data.name,
+                    htmlPath: data.path
+
                },
                 children:
                 [
@@ -32,15 +34,27 @@ export class RoutingService {
                     },
                     {
                         path:'overview',
-                        component: OverviewComponent
+                        component: OverviewComponent,
+                        data:{
+                            componentName: data.name,
+                            htmlPath: data.path
+                        },
                     },
                     {
                         path:'example',
-                        component: ExampleComponent
+                        component: ExampleComponent,
+                        data:{
+                            componentName: data.name,
+                            htmlPath: data.path
+                        },
                     },
                     {
                         path:'api',
-                        component: ApiComponent
+                        component: ApiComponent,
+                        data:{
+                            componentName: data.name,
+                            htmlPath: data.path
+                        },
                     }
                 ]
             };
