@@ -8,26 +8,28 @@ import { ComponentService } from '../component-service.component';
 
 @Component(
     {
-        selector: 'sidebar',
+        selector:    'sidebar',
         templateUrl: './sidebar.component.html',
-        styleUrls: ['./sidebar.component.scss'],
-        providers: [ComponentService]
+        styleUrls:   ['./sidebar.component.scss'],
+        providers:   [ComponentService]
     })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit
+{
+    compArray:ComponentInterface[];
 
-    compArray: ComponentInterface[];
+    constructor(private componentService:ComponentService)
+    {
+    }
 
-    constructor(private componentService: ComponentService) { }
-
-    getCompArray(): void {
+    getCompArray():void
+    {
         this.componentService
             .getCompArray()
             .then(compArray => this.compArray = compArray);
     }
 
-    ngOnInit(): void {
+    ngOnInit():void
+    {
         this.getCompArray();
     }
-
 }
-

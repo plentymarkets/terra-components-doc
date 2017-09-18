@@ -1,8 +1,8 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'example-template',
+    selector:    'example-template',
     templateUrl: './example.template.html'
 })
 export class ExampleComponent

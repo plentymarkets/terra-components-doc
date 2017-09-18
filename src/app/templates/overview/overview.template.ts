@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector:    'overview-template',
     templateUrl: './overview.template.html',
-    styleUrls: ['./overview.template.scss']
+    styleUrls:   ['./overview.template.scss']
 })
 export class OverviewComponent
 {
