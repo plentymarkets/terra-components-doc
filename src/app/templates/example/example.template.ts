@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Http} from "@angular/http";
 
 @Component({
-    selector:    'example-template',
+    selector: 'example-template',
     templateUrl: './example.template.html'
 })
-export class ExampleComponent
-{
-    public componentName:any;
+export class ExampleComponent implements OnInit {
+    public componentName: string;
 
-    constructor(public activatedRoute:ActivatedRoute,)
-    {
+    private _html: string;
+
+    constructor(public activatedRoute: ActivatedRoute,
+                public http: Http) {
+        this._html = '';
         this.componentName = activatedRoute.routeConfig.data.componentName;
+    }
+
+    ngOnInit(): void {
+
+        this.http.get('assets/docu/examples/' + this.componentName + '/example.html')
+            .subscribe((res: any) => {
+                this._html = res.text();
+        });
+
     }
 }

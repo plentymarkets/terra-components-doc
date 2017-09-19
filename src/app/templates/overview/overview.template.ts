@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Http } from "@angular/http";
 
 @Component({
     selector:    'overview-template',
@@ -8,10 +9,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OverviewComponent
 {
-    public componentName:any;
+    public componentName:string;
 
-    constructor(public activatedRoute:ActivatedRoute,)
+    private _html:string;
+
+    constructor(public activatedRoute:ActivatedRoute,
+                public http:Http)
     {
         this.componentName = activatedRoute.routeConfig.data.componentName;
+
+        http.get('assets/docu/build/' + this.componentName + '.html').map((response:any) =>
+        {
+            return response;
+        }).subscribe((res:any) =>
+        {
+            this._html = res.text();
+        });
     }
 }
