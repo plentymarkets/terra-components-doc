@@ -17,10 +17,7 @@ export class ApiComponent
     {
         this.componentName = activatedRoute.routeConfig.data.componentName;
 
-        http.get('assets/docu/build/' + this.componentName + '.html').map((response:any) =>
-        {
-            return response;
-        }).subscribe((res:any) =>
+        http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
         {
             this._html = res.text();
         });

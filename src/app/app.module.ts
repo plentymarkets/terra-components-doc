@@ -13,6 +13,8 @@ import { ExampleComponent } from './templates/example/example.template';
 import { ApiComponent } from './templates/api/api.template';
 import { ComponentService } from "./component-service.component";
 import { RoutingService } from "./routing-service.component";
+import { DynamicHTMLModule } from "ng-dynamic";
+import { TerraButtonComponent } from "@plentymarkets/terra-components";
 
 @NgModule({
     entryComponents: [
@@ -31,6 +33,11 @@ import { RoutingService } from "./routing-service.component";
         [RouterModule.forRoot([])],
         TranslationModule.forRoot(),
         TerraComponentsModule.forRoot(),
+        DynamicHTMLModule.forRoot({
+            components: [
+                { component: TerraButtonComponent, selector: 'terra-button' },
+            ]
+        })
 
     ],
     declarations:    [
@@ -39,7 +46,7 @@ import { RoutingService } from "./routing-service.component";
         MainviewComponent,
         OverviewComponent,
         ExampleComponent,
-        ApiComponent
+        ApiComponent,
 
     ],
     providers:       [

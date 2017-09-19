@@ -1,19 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
 import {Http} from "@angular/http";
 
 @Component({
     selector: 'example-template',
     templateUrl: './example.template.html'
 })
+
 export class ExampleComponent implements OnInit {
     public componentName: string;
-
-    private _html: string;
+    private  _html: string;
 
     constructor(public activatedRoute: ActivatedRoute,
                 public http: Http) {
-        this._html = '';
         this.componentName = activatedRoute.routeConfig.data.componentName;
     }
 
@@ -25,4 +24,5 @@ export class ExampleComponent implements OnInit {
         });
 
     }
+
 }
