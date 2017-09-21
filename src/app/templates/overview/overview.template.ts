@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Http } from "@angular/http";
 
 @Component({
-    selector:    'overview-template',
-    templateUrl: './overview.template.html',
-    styleUrls:   ['./overview.template.scss']
+    selector: 'overview-template',
+    template: require('./overview.template.html'),
+    styles:   [require('./overview.template.scss')]
 })
 export class OverviewComponent
 {

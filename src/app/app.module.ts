@@ -13,15 +13,16 @@ import { ExampleComponent } from './templates/example/example.template';
 import { ApiComponent } from './templates/api/api.template';
 import { ComponentService } from "./component-service.component";
 import { RoutingService } from "./routing-service.component";
-import { DynamicHTMLModule } from "ng-dynamic";
-import { TerraButtonComponent } from "@plentymarkets/terra-components";
+import { DynamicPluginBuilder } from "./templates/example/dynamic-plugin.builder";
+import { DynamicPluginLoaderComponent } from "./templates/example/loader/dynamic-plugin-loader.component";
 
 @NgModule({
     entryComponents: [
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
-        ExampleComponent
+        ExampleComponent,
+        DynamicPluginLoaderComponent
     ],
     exports:         [
         RouterModule
@@ -30,15 +31,9 @@ import { TerraButtonComponent } from "@plentymarkets/terra-components";
         BrowserModule,
         HttpModule,
         FormsModule,
-        [RouterModule.forRoot([])],
+        RouterModule.forRoot([]),
         TranslationModule.forRoot(),
         TerraComponentsModule.forRoot(),
-        DynamicHTMLModule.forRoot({
-            components: [
-                { component: TerraButtonComponent, selector: 'terra-button' },
-            ]
-        })
-
     ],
     declarations:    [
         AppComponent,
@@ -47,11 +42,12 @@ import { TerraButtonComponent } from "@plentymarkets/terra-components";
         OverviewComponent,
         ExampleComponent,
         ApiComponent,
-
+        DynamicPluginLoaderComponent
     ],
     providers:       [
         RoutingService,
-        ComponentService
+        ComponentService,
+        DynamicPluginBuilder
     ],
     bootstrap:       [
         AppComponent
