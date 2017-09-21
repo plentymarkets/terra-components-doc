@@ -6,14 +6,16 @@ import { Router } from "@angular/router";
 import { MainviewComponent } from "./mainview/mainview.component";
 import { OverviewComponent } from "./templates/overview/overview.template";
 import { ApiComponent } from "./templates/api/api.template";
-import { DynamicPluginBuilder } from './templates/example/dynamic-plugin.builder';
-import { DynamicPluginLoaderComponent } from './templates/example/loader/dynamic-plugin-loader.component';
+import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class RoutingService
 {
     constructor(private router:Router,
-                private _dynamicPluginBuilder:DynamicPluginBuilder)
+                private _dynamicModuleBuilderService:DynamicModuleBuilderService,
+                public http:Http)
     {
     }
 
@@ -23,7 +25,12 @@ export class RoutingService
 
         for(let data of compArray)
         {
-            let module:ModuleWithProviders = this._dynamicPluginBuilder.createPluginModule(data.example, data.name);
+            let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(data.example, data.name);
+
+            this.http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
+            {
+                this._html = res.text();
+            });
 
             let objData = {
                 path:      data.name,

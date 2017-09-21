@@ -4,11 +4,11 @@ import {
     ModuleWithProviders,
     NgModule
 } from '@angular/core';
-import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 import { CommonModule } from '@angular/common';
+import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 
 @Injectable()
-export class DynamicPluginBuilder
+export class DynamicModuleBuilderService
 {
     constructor()
     {
@@ -24,11 +24,9 @@ export class DynamicPluginBuilder
 
     public createNewComponent(template?:string, selector?:string):any
     {
-        // let templateSrc = template + '?access_token=' + localStorage.getItem('accessToken');
-
         @Component({
             selector: 'terra-dynamic-component',
-            template: '<div>fisch</div> <terra-button></terra-button>',
+            template: template
         })
         class CustomDynamicComponent
         {
@@ -40,13 +38,13 @@ export class DynamicPluginBuilder
     protected createComponentModule(componentType:any):any
     {
         @NgModule({
-            imports:      [
+            imports:         [
                 CommonModule,
                 TerraComponentsModule.forRoot()
             ],
-            declarations: [
-                componentType
-            ]
+            declarations:    [componentType],
+            entryComponents: [componentType],
+            exports:         [componentType],
         })
         class RuntimeComponentModule
         {
@@ -57,7 +55,6 @@ export class DynamicPluginBuilder
                     providers: [],
                 };
             }
-
         }
 
         return RuntimeComponentModule;
