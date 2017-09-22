@@ -1,7 +1,5 @@
 import {
     Component,
-    ComponentFactoryResolver,
-    Injector,
     OnInit,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
@@ -16,11 +14,9 @@ export class ExampleComponent implements OnInit
     public componentName:string;
 
     private _html:string;
-    private _componentFactoryResolver:ComponentFactoryResolver;
 
     constructor(public activatedRoute:ActivatedRoute,
-                public http:Http,
-                private injector:Injector)
+                public http:Http)
     {
         this.componentName = activatedRoute.routeConfig.data.componentName;
     }

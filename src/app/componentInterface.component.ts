@@ -1,4 +1,5 @@
-export class ComponentInterface {
-    id: number;
-    name: string;
+export interface ComponentInterface
+{
+    name:string;
+    path:string;
 }

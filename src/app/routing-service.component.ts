@@ -27,10 +27,10 @@ export class RoutingService
         {
             let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(data.example, data.name);
 
-            this.http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
-            {
-                this._html = res.text();
-            });
+            //this.http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
+            //{
+            //    this._html = res.text();
+            //});
 
             let objData = {
                 path:      data.name,
