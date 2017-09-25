@@ -1,65 +1,77 @@
 body
 {
-    margin:0;
+    margin: 0;
 }
+
 .sidebar
 {
-    float:left;
-    width:250px;
+    float: left;
+    width: 250px;
     background-color: white;
-    border-right: 2px solid #e0e0e0;
+    border-right: 2px solid #E0E0E0;
 }
+
 .sidebar-nav
 {
-    border-bottom: 2px solid #e0e0e0;
-        ul{
-            list-style: none;
-            padding:0;
-            margin: 0;
-            background-color: #777777;
-            li {
-                cursor: pointer;
-                padding: 10px 16px 10px 20px;
-                display: inline-block;
-                &:hover {
-                    a {
-                        cursor: pointer;
-                        color:white;
-                    }
+    border-bottom: 2px solid #E0E0E0;
+    ul
+    {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: #777777;
+        li
+        {
+            cursor: pointer;
+            padding: 10px 16px 10px 20px;
+            display: inline-block;
+            &:hover
+            {
+                a
+                {
+                    cursor: pointer;
+                    color: white;
                 }
-                a {
-                    color: #e0e0e0;
-                    text-decoration: none;
-                    font-size: 20px;
-                }
+            }
+            a
+            {
+                color: #E0E0E0;
+                text-decoration: none;
+                font-size: 20px;
             }
         }
     }
+}
+
 .sidebar-list
 {
     list-style: none;
-    padding:0;
+    padding: 0;
     margin: 0;
-   
-    li {
+    text-transform: capitalize;
+    
+    li
+    {
         border-bottom: 1px solid #E0E0E0;
         padding: 10px 20px 9px 20px;
         &:focus
         {
-            outline:none;
+            outline: none;
         }
-        &:hover{
+        &:hover
+        {
             cursor: pointer;
             background-color: #F2F2F2;
-            a{
-                color: #008ebd;
+            a
+            {
+                color: #008EBD;
                 cursor: pointer;
             }
         }
         a
         {
             text-decoration: none;
-            color:#555555;
+            color: #555555;
             font-size: 20px;
         }
     }
