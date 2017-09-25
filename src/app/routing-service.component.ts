@@ -13,6 +13,8 @@ import { Http } from '@angular/http';
 @Injectable()
 export class RoutingService
 {
+    private _html:string;
+
     constructor(private router:Router,
                 private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                 public http:Http)
@@ -25,49 +27,59 @@ export class RoutingService
 
         for(let data of compArray)
         {
-            let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(data.example, data.name);
 
-            //this.http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
-            //{
-            //    this._html = res.text();
-            //});
+            this.http.get(data.pathExample).subscribe((res:any) => {
+                this._html = res.text();
+                let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
 
-            let objData = {
-                path:      data.name,
-                component: MainviewComponent,
-                data:      {
-                    componentName: data.name
-                },
-                children:  [
-                    {
-                        path:       '',
-                        redirectTo: 'overview',
-                        pathMatch:  'full'
+                let objData = {
+                    path:      data.name,
+                    component: MainviewComponent,
+                    data:      {
+                        apiPath: data.path,
+                        componentName: data.name
                     },
-                    {
-                        path:      'overview',
-                        component: OverviewComponent,
-                        data:      {
-                            componentName: data.name
+                    children:  [
+                        {
+                            path:       '',
+                            redirectTo: 'overview',
+                            pathMatch:  'full'
+                        },
+                        {
+                            path:      'overview',
+                            component: OverviewComponent,
+                            data:      {
+                                componentName: data.name
+                            }
+                        },
+                        {
+                            path:      'example',
+                            component: DynamicPluginLoaderComponent,
+                            data:      module
+                        },
+                        {
+                            path:      'api',
+                            component: ApiComponent,
+                            data:      {
+                                apiPath : data.path,
+                                componentName: data.name
+                            }
                         }
-                    },
-                    {
-                        path:      'example',
-                        component: DynamicPluginLoaderComponent,
-                        data:      module
-                    },
-                    {
-                        path:      'api',
-                        component: ApiComponent,
-                        data:      {
-                            componentName: data.name
-                        }
-                    }
-                ]
-            };
+                    ]
+                };
 
-            routeArray.push(objData);
+                routeArray.push(objData);
+
+
+            });
+
+
         }
-        this.router.resetConfig(routeArray);
+
+        setTimeout(() => {
+            this.router.resetConfig(routeArray);
+
+        });
+
     }
 }

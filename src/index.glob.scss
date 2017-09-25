@@ -1,2 +1,55 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
 @import '../node_modules/@plentymarkets/terra-components/index.glob.scss';
+
+.test
+{
+}
+
+.input-table
+{
+    
+    tr
+    {
+        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+        &:hover
+        {
+            background-color: #FAFAFA;
+        }
+    }
+    td
+    {
+        p
+        {
+            margin: 0px;
+            font-style: italic;
+        }
+        line-height: 45px;
+        font-size: 20px;
+        //border: 1px solid lightgray;
+        padding: 0px 10px 0px 10px;
+    }
+    th
+    {
+        //border: 1px solid lightgray;
+        line-height: 45px;
+    }
+}
+.docs-api-module-import
+{
+    display:inline-block;
+    color: #008EBD;
+    font-size:22px;
+    background-color: #FAFAFA;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding:0px 5px 0px 5px;
+    
+}
+.docs-api-input-marker
+{
+    color: gray;
+    
+}
+

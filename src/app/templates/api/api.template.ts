@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 export class ApiComponent
 {
     public componentName:string;
+    public apiPath:string;
 
     private _html:string;
 
@@ -16,8 +17,9 @@ export class ApiComponent
                 public http:Http)
     {
         this.componentName = activatedRoute.routeConfig.data.componentName;
+        this.apiPath = activatedRoute.routeConfig.data.apiPath;
 
-        http.get('assets/docu/build/' + this.componentName + '.html').subscribe((res:any) =>
+        http.get(this.apiPath).subscribe((res:any) =>
         {
             this._html = res.text();
         });

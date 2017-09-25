@@ -1,14 +1,8 @@
 [
+
 	{
-		"name": "terra-alert",
-		"path": "./src/docu/build/terra-alert.html",
-		"pathExample": "./src/docu/examples/terra-button.html",
-		"example": "<terra-alert-panel></terra-alert-panel>"
-	},
-	{
-		"name": "terra-button",
-		"path": "./src/docu/build/terra-button.html",
-		"pathExample": "./src/docu/examples/terra-button.html",
-		"example": "<terra-button inputCaption='max is doof'></terra-button>"
+		"name":"terra-button",
+		"pathExample":"assets/docu/examples/terra-button.html",
+		"path":"assets/docu/build/terra-button.html"
 	}
-]
+	]
