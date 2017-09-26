@@ -10,12 +10,12 @@
     
     tr
     {
-        border-top: 1px solid lightgray;
-        border-bottom: 1px solid lightgray;
+        
         &:hover
         {
-            background-color: #FAFAFA;
+            background-color: lightgray;
         }
+        background-color: #F2F2F2;
     }
     td
     {
@@ -26,13 +26,24 @@
         }
         line-height: 45px;
         font-size: 20px;
-        //border: 1px solid lightgray;
         padding: 0px 10px 0px 10px;
     }
     th
     {
-        //border: 1px solid lightgray;
+        background-color: #F2F2F2;
+        &:hover
+        {
+            background-color: #F2F2F2;
+        }
         line-height: 45px;
+    }
+    tr:nth-child(even)
+    {
+        background-color: white;
+        &:hover
+        {
+            background-color:  lightgray;
+        }
     }
 }
 .docs-api-module-import
@@ -49,7 +60,7 @@
 }
 .docs-api-input-marker
 {
-    color: gray;
+    color: black;
     
 }
 

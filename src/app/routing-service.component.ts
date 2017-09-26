@@ -2,10 +2,10 @@ import {
     Injectable,
     ModuleWithProviders
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { MainviewComponent } from './mainview/mainview.component';
-import { OverviewComponent } from './templates/overview/overview.template';
-import { ApiComponent } from './templates/api/api.template';
+import { Router } from "@angular/router";
+import { MainviewComponent } from "./mainview/mainview.component";
+import { OverviewComponent } from "./templates/overview/overview.template";
+import { ApiComponent } from "./templates/api/api.template";
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
@@ -14,6 +14,7 @@ import { Http } from '@angular/http';
 export class RoutingService
 {
     private _html:string;
+    private _noExampleHtml:string;
 
     constructor(private router:Router,
                 private _dynamicModuleBuilderService:DynamicModuleBuilderService,
@@ -23,62 +24,80 @@ export class RoutingService
 
     createRoutes(compArray:Array<any>):void
     {
-        let routeArray = [];
+        this.http.get('assets/docu/examples/noExampleTemplate.html').subscribe
+        (
+            (res:any) =>
+            {
+                this._noExampleHtml = res.text();
+                this.getData(compArray);
+            }
+        )
+    }
 
+    private getData(compArray:Array<any>):void
+    {
+
+        let routeArray = [];
         for(let data of compArray)
         {
+            let module:ModuleWithProviders;
 
-            this.http.get(data.pathExample).subscribe((res:any) =>
-            {
-                this._html = res.text();
-                let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
-
-                let objData = {
-                    path:      data.name,
-                    component: MainviewComponent,
-                    data:      {
-                        apiPath:       data.path,
-                        componentName: data.name
-                    },
-                    children:  [
-                        {
-                            path:       '',
-                            redirectTo: 'overview',
-                            pathMatch:  'full'
-                        },
-                        {
-                            path:      'overview',
-                            component: OverviewComponent,
-                            data:      {
-                                componentName: data.name
-                            }
-                        },
-                        {
-                            path:      'example',
-                            component: DynamicPluginLoaderComponent,
-                            data:      module
-                        },
-                        {
-                            path:      'api',
-                            component: ApiComponent,
+            this.http.get(data.pathExample)
+                .finally(
+                    () => {
+                        let objData = {
+                            path:      data.name,
+                            component: MainviewComponent,
                             data:      {
                                 apiPath:       data.path,
                                 componentName: data.name
-                            }
-                        }
-                    ]
-                };
+                            },
+                            children:  [
+                                {
+                                    path:       '',
+                                    redirectTo: 'overview',
+                                    pathMatch:  'full'
+                                },
+                                {
+                                    path:      'overview',
+                                    component: OverviewComponent,
+                                    data:      {
+                                        componentName: data.name
+                                    }
+                                },
+                                {
+                                    path:      'example',
+                                    component: DynamicPluginLoaderComponent,
+                                    data:      module
+                                },
+                                {
+                                    path:      'api',
+                                    component: ApiComponent,
+                                    data:      {
+                                        apiPath:       data.path,
+                                        componentName: data.name
+                                    }
+                                }
+                            ]
+                        };
 
-                routeArray.push(objData);
+                        routeArray.push(objData);
+                    })
+                .subscribe(
+                    (res:any) => {
+                        this._html = res.text();
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
 
-
-            });
+                    },
+                    err => {
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
+                    }
+                );
 
 
         }
 
-        setTimeout(() =>
-        {
+        setTimeout(() => {
             this.router.resetConfig(routeArray);
 
         });
