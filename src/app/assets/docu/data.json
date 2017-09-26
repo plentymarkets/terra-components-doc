@@ -1,16 +1,117 @@
 [
-  {
-    "name": "terra-button",
-    "pathExample": "assets/docu/examples/terra-button/terra-button.html",
-    "pathCSS": "assets/docu/examples/terra-button/terra-button.css",
-    "pathTs": "assets/docu/examples/terra-button/terra-button.ts",
-    "path": "assets/docu/build/terra-button.html"
-  },
-  {
-    "name": "terra-alert",
-    "pathExample": "assets/docu/examples/terra-alert/terra-alert.html",
-    "pathCSS": "assets/docu/examples/terra-button/terra-alert.css",
-    "pathTs": "assets/docu/examples/terra-button/terra-alert.ts",
-    "path": "assets/docu/build/terra-alert.html"
-  }
-]
+	{
+		"name":"terra-button",
+		"pathExample":"assets/docu/examples/terra-button.html",
+		"path":"assets/docu/build/terra-button.html"
+	},
+	{
+		"name":"terra-card",
+		"pathExample":"assets/docu/examples/terra-card.html",
+		"path":"assets/docu/build/terra-card.html"
+	},
+	{
+		"name":"terra-data",
+		"pathExample":"assets/docu/examples/terra-data.html",
+		"path":"assets/docu/build/terra-data.html"
+	},
+	{
+		"name":"terra-dynamic-module-loader",
+		"pathExample":"assets/docu/examples/terra-dynamic-module-loader.html",
+		"path":"assets/docu/build/terra-dynamic-module-loader.html"
+	},
+	{
+		"name":"terra-editor",
+		"pathExample":"assets/docu/examples/terra-editor.html",
+		"path":"assets/docu/build/terra-editor.html"
+	},
+	{
+		"name":"terra-filter",
+		"pathExample":"assets/docu/examples/terra-filter.html",
+		"path":"assets/docu/build/terra-filter.html"
+	},
+	{
+		"name":"terra-forms",
+		"pathExample":"assets/docu/examples/terra-forms.html",
+		"path":"assets/docu/build/terra-forms.html"
+	},
+	{
+		"name":"terra-indicator",
+		"pathExample":"assets/docu/examples/terra-indicator.html",
+		"path":"assets/docu/build/terra-indicator.html"
+	},
+	{
+		"name":"terra-info-box",
+		"pathExample":"assets/docu/examples/terra-info-box.html",
+		"path":"assets/docu/build/terra-info-box.html"
+	},
+	{
+		"name":"terra-loading-bar",
+		"pathExample":"assets/docu/examples/terra-loading-bar.html",
+		"path":"assets/docu/build/terra-loading-bar.html"
+	},
+	{
+		"name":"terra-loading-spinner",
+		"pathExample":"assets/docu/examples/terra-loading-spinner.html",
+		"path":"assets/docu/build/terra-loading-spinner.html"
+	},
+	{
+		"name":"terra-overlay",
+		"pathExample":"assets/docu/examples/terra-overlay.html",
+		"path":"assets/docu/build/terra-overlay.html"
+	},
+	{
+		"name":"terra-pager",
+		"pathExample":"assets/docu/examples/terra-pager.html",
+		"path":"assets/docu/build/terra-pager.html"
+	},
+	{
+		"name":"terra-portlet",
+		"pathExample":"assets/docu/examples/terra-portlet.html",
+		"path":"assets/docu/build/terra-portlet.html"
+	},
+	{
+		"name":"terra-regex",
+		"pathExample":"assets/docu/examples/terra-regex.html",
+		"path":"assets/docu/build/terra-regex.html"
+	},
+	{
+		"name":"terra-service",
+		"pathExample":"assets/docu/examples/terra-service.html",
+		"path":"assets/docu/build/terra-service.html"
+	},
+	{
+		"name":"terra-split-view",
+		"pathExample":"assets/docu/examples/terra-split-view.html",
+		"path":"assets/docu/build/terra-split-view.html"
+	},
+	{
+		"name":"terra-table",
+		"pathExample":"assets/docu/examples/terra-table.html",
+		"path":"assets/docu/build/terra-table.html"
+	},
+	{
+		"name":"terra-tag",
+		"pathExample":"assets/docu/examples/terra-tag.html",
+		"path":"assets/docu/build/terra-tag.html"
+	},
+	{
+		"name":"terra-taglist",
+		"pathExample":"assets/docu/examples/terra-taglist.html",
+		"path":"assets/docu/build/terra-taglist.html"
+	},
+	{
+		"name":"terra-tile",
+		"pathExample":"assets/docu/examples/terra-tile.html",
+		"path":"assets/docu/build/terra-tile.html"
+	},
+	{
+		"name":"terra-toolbar",
+		"pathExample":"assets/docu/examples/terra-toolbar.html",
+		"path":"assets/docu/build/terra-toolbar.html"
+	},
+	{
+		"name":"terra-tree",
+		"pathExample":"assets/docu/examples/terra-tree.html",
+		"path":"assets/docu/build/terra-tree.html"
+	}]
+
