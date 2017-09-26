@@ -14,6 +14,7 @@ import { Http } from '@angular/http';
 export class RoutingService
 {
     private _html:string;
+    private _noExampleHtml:string;
 
     constructor(private router:Router,
                 private _dynamicModuleBuilderService:DynamicModuleBuilderService,
@@ -23,55 +24,75 @@ export class RoutingService
 
     createRoutes(compArray:Array<any>):void
     {
-        let routeArray = [];
+        this.http.get('assets/docu/examples/noExampleTemplate.html').subscribe
+        (
+            (res:any) =>
+            {
+                this._noExampleHtml = res.text();
+                this.getData(compArray);
+            }
+        )
+    }
 
+    private getData(compArray:Array<any>):void
+    {
+
+        let routeArray = [];
         for(let data of compArray)
         {
+            let module:ModuleWithProviders;
 
-            this.http.get(data.pathExample).subscribe((res:any) => {
-                this._html = res.text();
-                let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
+            this.http.get(data.pathExample)
+                .finally(
+                    () => {
+                        let objData = {
+                            path:      data.name,
+                            component: MainviewComponent,
+                            data:      {
+                                apiPath:       data.path,
+                                componentName: data.name
+                            },
+                            children:  [
+                                {
+                                    path:       '',
+                                    redirectTo: 'overview',
+                                    pathMatch:  'full'
+                                },
+                                {
+                                    path:      'overview',
+                                    component: OverviewComponent,
+                                    data:      {
+                                        componentName: data.name
+                                    }
+                                },
+                                {
+                                    path:      'example',
+                                    component: DynamicPluginLoaderComponent,
+                                    data:      module
+                                },
+                                {
+                                    path:      'api',
+                                    component: ApiComponent,
+                                    data:      {
+                                        apiPath:       data.path,
+                                        componentName: data.name
+                                    }
+                                }
+                            ]
+                        };
 
-                let objData = {
-                    path:      data.name,
-                    component: MainviewComponent,
-                    data:      {
-                        apiPath: data.path,
-                        componentName: data.name
+                        routeArray.push(objData);
+                    })
+                .subscribe(
+                    (res:any) => {
+                        this._html = res.text();
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
+
                     },
-                    children:  [
-                        {
-                            path:       '',
-                            redirectTo: 'overview',
-                            pathMatch:  'full'
-                        },
-                        {
-                            path:      'overview',
-                            component: OverviewComponent,
-                            data:      {
-                                componentName: data.name
-                            }
-                        },
-                        {
-                            path:      'example',
-                            component: DynamicPluginLoaderComponent,
-                            data:      module
-                        },
-                        {
-                            path:      'api',
-                            component: ApiComponent,
-                            data:      {
-                                apiPath : data.path,
-                                componentName: data.name
-                            }
-                        }
-                    ]
-                };
-
-                routeArray.push(objData);
-
-
-            });
+                    err => {
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
+                    }
+                );
 
 
         }

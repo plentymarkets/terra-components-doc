@@ -23,7 +23,7 @@ export class ExampleComponent implements OnInit
 
     ngOnInit():void
     {
-        this.http.get('assets/docu/examples/' + this.componentName + '/example.html')
+        this.http.get('assets/docu/examples/' + this.componentName + '/noExampleTemplate.html')
             .subscribe((res:any) =>
             {
                 this._html = res.text();
