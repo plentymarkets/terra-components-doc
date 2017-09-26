@@ -34,27 +34,39 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _typescriptCode:string;
     private _temp:string;
 
+    private _htlmPath:string;
+    private _cssPath:string;
+    private _typescripPath:string;
+
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
                 public translation:TranslationService,
                 public http:Http)
     {
         this._temp = '';
+        this._htlmPath = '';
+        this._cssPath = '';
+        this._typescripPath = '';
 
     }
 
     ngOnInit()
     {
+        this._htlmPath = this._activatedRoute.routeConfig.data.htmlPath;
+        this._cssPath = this._activatedRoute.routeConfig.data.cssPath;
+        this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
 
-        this.http.get("assets/docu/examples/terra-button/terra-button.html").subscribe((res:any) =>
+        console.log(this._htlmPath);
+
+        this.http.get(this._htlmPath).subscribe((res:any) =>
         {
             this._htmlCode = res.text();
         });
-        this.http.get("assets/docu/examples/terra-button/terra-button.css").subscribe((res:any) =>
+        this.http.get(this._cssPath).subscribe((res:any) =>
         {
             this._cssCode = res.text();
         });
-        this.http.get("assets/docu/examples/terra-button/terra-button.ts").subscribe((res:any) =>
+        this.http.get(this._typescripPath).subscribe((res:any) =>
         {
             this._typescriptCode = res.text();
         });
@@ -85,11 +97,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     {
         data.subscribe((resolveData) =>
         {
-            if(resolveData !== {})
-            {
-                this._moduleWithProviders = resolveData as ModuleWithProviders;
-                this.updateComponent();
-            }
+            this._moduleWithProviders = resolveData.module as ModuleWithProviders;
+            this.updateComponent();
         });
     }
 

@@ -42,7 +42,7 @@ export class RoutingService
         {
             let module:ModuleWithProviders;
 
-            this.http.get(data.pathExample)
+            this.http.get(data.pathExampleHtml)
                 .finally(
                     () => {
                         let objData = {
@@ -68,7 +68,12 @@ export class RoutingService
                                 {
                                     path:      'example',
                                     component: DynamicPluginLoaderComponent,
-                                    data:      module
+                                    data:      {
+                                        module: module,
+                                        htmlPath: data.pathExampleHtml,
+                                        cssPath: data.pathExampleCss,
+                                        tsPath: data.pathExampleTs
+                                    }
                                 },
                                 {
                                     path:      'api',
