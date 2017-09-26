@@ -1,0 +1,35 @@
+div#content {
+
+  margin-top: 50px;
+
+  div#tabMenu {
+    button {
+      margin-left: 10px;
+      background-color: white;
+      border: 0;
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px 20px 10px 20px;
+      width: 150px;
+      text-align: center;
+    }
+
+  }
+
+  div#codeBlock {
+    div {
+      display: none;
+    }
+    pre#htmlCode {
+      padding: 0.2rem 0.4rem;
+      font-size: 90%;
+      color: #bd4147;
+      background-color: #f7f7f9;
+      border-radius: 0.25rem;
+      display: none;
+    }
+    .active {
+      display: block!important;
+    }
+  }
+}
