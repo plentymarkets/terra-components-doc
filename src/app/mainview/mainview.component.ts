@@ -1,15 +1,17 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'mainview',
+    selector:    'mainview',
     templateUrl: './mainview.component.html',
-    styleUrls: ['./mainview.component.scss']
+    styleUrls:   ['./mainview.component.scss']
 })
-export class MainviewComponent {
-    public componentName: any;
+export class MainviewComponent
+{
+    public componentName:any;
 
-    constructor(public activatedRoute: ActivatedRoute,) {
+    constructor(public activatedRoute:ActivatedRoute,)
+    {
         this.componentName = activatedRoute.routeConfig.data.componentName;
     }
 }

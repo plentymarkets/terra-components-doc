@@ -2,62 +2,67 @@ import {
     Injectable,
     ModuleWithProviders
 } from '@angular/core';
-import {Router} from "@angular/router";
-import {MainviewComponent} from "./mainview/mainview.component";
-import {OverviewComponent} from "./templates/overview/overview.template";
-import {ApiComponent} from "./templates/api/api.template";
-import {DynamicModuleBuilderService} from './core/dynamic-module-builder/dynamic-module-builder.service';
-import {DynamicPluginLoaderComponent} from './core/dynamic-module-loader/dynamic-module-loader.component';
-import {Http} from '@angular/http';
+import { Router } from "@angular/router";
+import { MainviewComponent } from "./mainview/mainview.component";
+import { OverviewComponent } from "./templates/overview/overview.template";
+import { ApiComponent } from "./templates/api/api.template";
+import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class RoutingService {
-    private _html: string;
+export class RoutingService
+{
+    private _html:string;
 
-    constructor(private router: Router,
-                private _dynamicModuleBuilderService: DynamicModuleBuilderService,
-                public http: Http) {
+    constructor(private router:Router,
+                private _dynamicModuleBuilderService:DynamicModuleBuilderService,
+                public http:Http)
+    {
     }
 
-    createRoutes(compArray: Array<any>): void {
+    createRoutes(compArray:Array<any>):void
+    {
         let routeArray = [];
 
-        for (let data of compArray) {
+        for(let data of compArray)
+        {
 
-            this.http.get(data.pathExample).subscribe((res: any) => {
+            this.http.get(data.pathExample).subscribe((res:any) =>
+            {
                 this._html = res.text();
-                let module: ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
+                let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
 
                 let objData = {
-                    path: data.name,
+                    path:      data.name,
                     component: MainviewComponent,
-                    data: {
-                        apiPath: data.path,
+                    data:      {
+                        apiPath:       data.path,
                         componentName: data.name
                     },
-                    children: [
+                    children:  [
                         {
-                            path: '',
+                            path:       '',
                             redirectTo: 'overview',
-                            pathMatch: 'full'
+                            pathMatch:  'full'
                         },
                         {
-                            path: 'overview',
+                            path:      'overview',
                             component: OverviewComponent,
-                            data: {
+                            data:      {
                                 componentName: data.name
                             }
                         },
                         {
-                            path: 'example',
+                            path:      'example',
                             component: DynamicPluginLoaderComponent,
-                            data: module
+                            data:      module
                         },
                         {
-                            path: 'api',
+                            path:      'api',
                             component: ApiComponent,
-                            data: {
-                                apiPath: data.path,
+                            data:      {
+                                apiPath:       data.path,
                                 componentName: data.name
                             }
                         }
@@ -72,7 +77,8 @@ export class RoutingService {
 
         }
 
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             this.router.resetConfig(routeArray);
 
         });

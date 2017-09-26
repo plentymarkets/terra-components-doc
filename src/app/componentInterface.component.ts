@@ -1,4 +1,5 @@
-export interface ComponentInterface {
-    name: string;
-    path: string;
+export interface ComponentInterface
+{
+    name:string;
+    path:string;
 }

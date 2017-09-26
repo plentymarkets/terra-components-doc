@@ -1,18 +1,21 @@
-import {Injectable} from '@angular/core';
-import {Http} from "@angular/http";
-import {ComponentInterface} from './componentInterface.component';
+import { Injectable } from '@angular/core';
+import { Http } from "@angular/http";
+import { ComponentInterface } from './componentInterface.component';
 
 @Injectable()
-export class ComponentService {
-    public data: any;
+export class ComponentService
+{
+    public data:any;
 
-    constructor(private http: Http) {
-        this.getCompArray().then((res: any) => this.data = res);
+    constructor(private http:Http)
+    {
+        this.getCompArray().then((res:any) => this.data = res);
     }
 
-    public getCompArray(): Promise<ComponentInterface[]> {
+    public getCompArray():Promise<ComponentInterface[]>
+    {
         return this.http.get('./assets/docu/data.json')
-            .map((res: any) => res.json())
-            .toPromise();
+                   .map((res:any) => res.json())
+                   .toPromise();
     }
 }

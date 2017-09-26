@@ -1,68 +1,83 @@
-body {
-  margin: 0;
+body
+{
+    margin: 0;
 }
 
-.sidebar {
-  float: left;
-  width: 250px;
-  background-color: white;
-  border-right: 2px solid #E0E0E0;
+.sidebar
+{
+    float: left;
+    width: 250px;
+    background-color: white;
+    border-right: 2px solid #E0E0E0;
 }
 
-.sidebar-nav {
-  border-bottom: 2px solid #E0E0E0;
-  ul {
+.sidebar-nav
+{
+    border-bottom: 2px solid #E0E0E0;
+    ul
+    {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: #777777;
+        li
+        {
+            cursor: pointer;
+            padding: 10px 16px 10px 20px;
+            display: inline-block;
+            &:hover
+            {
+                a
+                {
+                    cursor: pointer;
+                    color: white;
+                }
+            }
+            a
+            {
+                color: #E0E0E0;
+                text-decoration: none;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.sidebar-list
+{
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: #777777;
-    li {
-      cursor: pointer;
-      padding: 10px 16px 10px 20px;
-      display: inline-block;
-      &:hover {
-        a {
-          cursor: pointer;
-          color: white;
+    text-transform: capitalize;
+    
+    li
+    {
+        border-bottom: 1px solid #E0E0E0;
+        padding: 10px 20px 9px 20px;
+        &:focus
+        {
+            outline: none;
         }
-      }
-      a {
-        color: #E0E0E0;
-        text-decoration: none;
-        font-size: 20px;
-      }
+        &:hover
+        {
+            cursor: pointer;
+            background-color: #F2F2F2;
+            a
+            {
+                color: #008EBD;
+                cursor: pointer;
+            }
+        }
+        a
+        {
+            text-decoration: none;
+            color: #555555;
+            font-size: 20px;
+        }
     }
-  }
-}
-
-.sidebar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-transform: capitalize;
-
-  li {
-    border-bottom: 1px solid #E0E0E0;
-    padding: 10px 20px 9px 20px;
-    &:focus {
-      outline: none;
+    li.is-active a
+    {
+        color: #008EBD !important;
     }
-    &:hover {
-      cursor: pointer;
-      background-color: #F2F2F2;
-      a {
-        color: #008EBD;
-        cursor: pointer;
-      }
-    }
-    a {
-      text-decoration: none;
-      color: #555555;
-      font-size: 20px;
-    }
-  }
-  li.is-active a {
-    color: #008EBD !important;
-  }
 }
 
