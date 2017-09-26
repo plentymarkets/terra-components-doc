@@ -1,41 +1,63 @@
 div#content
 {
-    
     margin-top: 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
     
-    div#tabMenu
-    {
-        button
-        {
-            margin-left: 10px;
-            background-color: white;
-            border: 0;
-            cursor: pointer;
-            display: inline-block;
-            padding: 10px 20px 10px 20px;
-            width: 150px;
-            text-align: center;
-        }
+    div#banner{
+    
+        width: 800px;
+        background-color: #777777;
+        padding: 5px;
         
+        h1{
+            float: left;
+            margin: 0;
+        }
+        button{
+            float: right;
+        }
     }
     
-    div#codeBlock
+    div#codeContainer
     {
-        div, pre, code
+        display: none;
+        
+        div#tabMenu
         {
-            display: none;
+            button
+            {
+                margin-left: 10px;
+                background-color: white;
+                border: 0;
+                cursor: pointer;
+                display: inline-block;
+                padding: 10px 20px 10px 20px;
+                width: 150px;
+                text-align: center;
+            }
+            
         }
-        pre
+        
+        div#codeBlock
         {
-            padding: 0.2rem 0.4rem;
-            font-size: 90%;
-            color: #BD4147;
-            background-color: #F7F7F9;
-            border-radius: 0.25rem;
+            div, pre, code
+            {
+                display: none;
+            }
+            pre
+            {
+                padding: 0.2rem 0.4rem;
+                font-size: 90%;
+                color: #BD4147;
+                background-color: #F7F7F9;
+                border-radius: 0.25rem;
+            }
         }
-        .active
-        {
-            display: block !important;
-        }
+    }
+    .active
+    {
+        display: block !important;
     }
 }
