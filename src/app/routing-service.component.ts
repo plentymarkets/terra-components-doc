@@ -72,7 +72,8 @@ export class RoutingService
                                         module: module,
                                         htmlPath: data.pathExampleHtml,
                                         cssPath: data.pathExampleCss,
-                                        tsPath: data.pathExampleTs
+                                        tsPath: data.pathExampleTs,
+                                        componentName: data.name
                                     }
                                 },
                                 {

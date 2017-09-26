@@ -32,11 +32,14 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _htmlCode:string;
     private _cssCode:string;
     private _typescriptCode:string;
+
     private _temp:string;
+    private _isActive:boolean;
 
     private _htlmPath:string;
     private _cssPath:string;
     private _typescripPath:string;
+    private _componentName:string;
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -47,6 +50,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._htlmPath = '';
         this._cssPath = '';
         this._typescripPath = '';
+        this._isActive = false;
 
     }
 
@@ -55,6 +59,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._htlmPath = this._activatedRoute.routeConfig.data.htmlPath;
         this._cssPath = this._activatedRoute.routeConfig.data.cssPath;
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
+        this._componentName = this._activatedRoute.routeConfig.data.componentName;
 
         console.log(this._htlmPath);
 
@@ -115,6 +120,16 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
                     }
                 });
             });
+    }
+
+    public showCodeMenu():void
+    {
+        if(this._isActive === true)
+        {
+            this._isActive = false;
+            return;
+        }
+        this._isActive = true;
     }
 
     public showCode(codeType:string):void
