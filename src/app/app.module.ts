@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { OverviewComponent } from './templates/overview/overview.template';
-import { ExampleComponent } from './templates/example/example.template';
 import { ApiComponent } from './templates/api/api.template';
 import { ComponentService } from './component-service.component';
 import { RoutingService } from './routing-service.component';
@@ -21,7 +20,6 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
-        ExampleComponent,
         DynamicPluginLoaderComponent
     ],
     exports:         [
@@ -40,7 +38,6 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         SidebarComponent,
         MainviewComponent,
         OverviewComponent,
-        ExampleComponent,
         ApiComponent,
         DynamicPluginLoaderComponent
     ],
