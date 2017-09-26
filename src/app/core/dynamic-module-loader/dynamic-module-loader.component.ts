@@ -8,14 +8,14 @@ import {
     OnInit,
     ViewChild,
     ViewContainerRef
-} from "@angular/core";
+} from '@angular/core';
 import {
     ActivatedRoute,
     Data
-} from "@angular/router";
-import { JitCompiler } from "@angular/compiler";
-import { TranslationService } from "angular-l10n";
-import { Http } from "@angular/http";
+} from '@angular/router';
+import { JitCompiler } from '@angular/compiler';
+import { TranslationService } from 'angular-l10n';
+import { Http } from '@angular/http';
 
 @Component({
     selector:  'dynamic-module-loader',

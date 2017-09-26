@@ -3,9 +3,9 @@ import {
     Injectable,
     ModuleWithProviders,
     NgModule
-} from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { TerraComponentsModule } from "@plentymarkets/terra-components/app";
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 
 @Injectable()
 export class DynamicModuleBuilderService

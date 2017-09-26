@@ -11,8 +11,8 @@ import { MainviewComponent } from './mainview/mainview.component';
 import { OverviewComponent } from './templates/overview/overview.template';
 import { ExampleComponent } from './templates/example/example.template';
 import { ApiComponent } from './templates/api/api.template';
-import { ComponentService } from "./component-service.component";
-import { RoutingService } from "./routing-service.component";
+import { ComponentService } from './component-service.component';
+import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 

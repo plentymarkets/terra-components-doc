@@ -2,10 +2,10 @@ import {
     Injectable,
     ModuleWithProviders
 } from '@angular/core';
-import { Router } from "@angular/router";
-import { MainviewComponent } from "./mainview/mainview.component";
-import { OverviewComponent } from "./templates/overview/overview.template";
-import { ApiComponent } from "./templates/api/api.template";
+import { Router } from '@angular/router';
+import { MainviewComponent } from './mainview/mainview.component';
+import { OverviewComponent } from './templates/overview/overview.template';
+import { ApiComponent } from './templates/api/api.template';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
