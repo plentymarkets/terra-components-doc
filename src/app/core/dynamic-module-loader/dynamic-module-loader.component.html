@@ -1,1 +1,17 @@
-<div #viewChildTarget></div>
+<div id="content">
+    <!--<terra-button-->
+    <!--inputCaption="wechsel"-->
+    <!--&gt;-->
+    <!--</terra-button>-->
+    <div id="tabMenu">
+        <button (click)="showCode('Html')">HTML</button>
+        <button (click)="showCode('Css')">CSS</button>
+        <button (click)="showCode('Typescript')">TS</button>
+    </div>
+    <div id="codeBlock">
+        <pre id="htmlCode" [class.active]="_temp === _htmlCode">{{_htmlCode}}</pre>
+        <pre id="cssCode" [class.active]="_temp === _cssCode">{{_cssCode}}</pre>
+        <pre id="tsCode" [class.active]="_temp === _typescriptCode">{{_typescriptCode}}</pre>
+    </div>
+    <div #viewChildTarget></div>
+</div>

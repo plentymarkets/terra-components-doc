@@ -4,8 +4,8 @@ import {
     OnInit
 } from '@angular/core';
 
-import { RoutingService } from "./routing-service.component";
-import { ComponentService } from "./component-service.component";
+import { RoutingService } from './routing-service.component';
+import { ComponentService } from './component-service.component';
 
 @Component({
     selector: 'app-component',

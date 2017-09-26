@@ -11,7 +11,8 @@
 <div class="sidebar">
     <div>
         <ul class="sidebar-list">
-            <li *ngFor="let componentList of compArray" routerLink="/{{componentList.name}}" routerLinkActive="is-active">
+            <li *ngFor="let componentList of compArray" routerLink="/{{componentList.name}}"
+                routerLinkActive="is-active">
                 <a>{{componentList.name}}</a>
             </li>
         </ul>

@@ -2,10 +2,10 @@ import {
     Injectable,
     ModuleWithProviders
 } from '@angular/core';
-import { Router } from "@angular/router";
-import { MainviewComponent } from "./mainview/mainview.component";
-import { OverviewComponent } from "./templates/overview/overview.template";
-import { ApiComponent } from "./templates/api/api.template";
+import { Router } from '@angular/router';
+import { MainviewComponent } from './mainview/mainview.component';
+import { OverviewComponent } from './templates/overview/overview.template';
+import { ApiComponent } from './templates/api/api.template';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
@@ -28,7 +28,8 @@ export class RoutingService
         for(let data of compArray)
         {
 
-            this.http.get(data.pathExample).subscribe((res:any) => {
+            this.http.get(data.pathExample).subscribe((res:any) =>
+            {
                 this._html = res.text();
                 let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
 
@@ -36,7 +37,7 @@ export class RoutingService
                     path:      data.name,
                     component: MainviewComponent,
                     data:      {
-                        apiPath: data.path,
+                        apiPath:       data.path,
                         componentName: data.name
                     },
                     children:  [
@@ -61,7 +62,7 @@ export class RoutingService
                             path:      'api',
                             component: ApiComponent,
                             data:      {
-                                apiPath : data.path,
+                                apiPath:       data.path,
                                 componentName: data.name
                             }
                         }
@@ -76,7 +77,8 @@ export class RoutingService
 
         }
 
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             this.router.resetConfig(routeArray);
 
         });
