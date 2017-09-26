@@ -3,10 +3,10 @@
     <!--inputCaption="wechsel"-->
     <!--&gt;-->
     <!--</terra-button>-->
-    <div id="tabMenu" >
-            <button (click)="showCode('Html')">HTML</button>
-            <button (click)="showCode('Css')">CSS</button>
-            <button (click)="showCode('Typescript')">TS</button>
+    <div id="tabMenu">
+        <button (click)="showCode('Html')">HTML</button>
+        <button (click)="showCode('Css')">CSS</button>
+        <button (click)="showCode('Typescript')">TS</button>
     </div>
     <div id="codeBlock">
         <pre id="htmlCode" [class.active]="_temp === _htmlCode">{{_htmlCode}}</pre>

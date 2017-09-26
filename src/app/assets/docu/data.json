@@ -1,17 +1,16 @@
 [
-
-	{
-		"name":"terra-button",
-		"pathExample":"assets/docu/examples/terra-button/terra-button.html",
-		"pathCSS":"assets/docu/examples/terra-button/terra-button.css",
-		"pathTs":"assets/docu/examples/terra-button/terra-button.ts",
-		"path":"assets/docu/build/terra-button.html"
-	},
-	{
-		"name":"terra-alert",
-		"pathExample":"assets/docu/examples/terra-alert/terra-alert.html",
-		"pathCSS":"assets/docu/examples/terra-button/terra-alert.css",
-		"pathTs":"assets/docu/examples/terra-button/terra-alert.ts",
-		"path":"assets/docu/build/terra-alert.html"
-	}
+  {
+    "name": "terra-button",
+    "pathExample": "assets/docu/examples/terra-button/terra-button.html",
+    "pathCSS": "assets/docu/examples/terra-button/terra-button.css",
+    "pathTs": "assets/docu/examples/terra-button/terra-button.ts",
+    "path": "assets/docu/build/terra-button.html"
+  },
+  {
+    "name": "terra-alert",
+    "pathExample": "assets/docu/examples/terra-alert/terra-alert.html",
+    "pathCSS": "assets/docu/examples/terra-button/terra-alert.css",
+    "pathTs": "assets/docu/examples/terra-button/terra-alert.ts",
+    "path": "assets/docu/build/terra-alert.html"
+  }
 ]

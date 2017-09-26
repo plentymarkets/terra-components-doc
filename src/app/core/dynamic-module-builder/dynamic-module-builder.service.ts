@@ -4,54 +4,46 @@ import {
     ModuleWithProviders,
     NgModule
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
+import {CommonModule} from '@angular/common';
+import {TerraComponentsModule} from '@plentymarkets/terra-components/app';
 
 @Injectable()
-export class DynamicModuleBuilderService
-{
-    constructor()
-    {
+export class DynamicModuleBuilderService {
+    constructor() {
     }
 
-    public createPluginModule(template:string, selector:string):ModuleWithProviders
-    {
+    public createPluginModule(template: string, selector: string): ModuleWithProviders {
         let type = this.createNewComponent(template, selector);
         let module = this.createComponentModule(type);
 
         return module.forRoot();
     }
 
-    public createNewComponent(template?:string, selector?:string):any
-    {
+    public createNewComponent(template?: string, selector?: string): any {
         @Component({
             selector: 'terra-dynamic-component',
             template: template
         })
-        class CustomDynamicComponent
-        {
+        class CustomDynamicComponent {
         }
 
         return CustomDynamicComponent;
     }
 
-    protected createComponentModule(componentType:any):any
-    {
+    protected createComponentModule(componentType: any): any {
         @NgModule({
-            imports:         [
+            imports: [
                 CommonModule,
                 TerraComponentsModule.forRoot()
             ],
-            declarations:    [componentType],
+            declarations: [componentType],
             entryComponents: [componentType],
-            exports:         [componentType],
+            exports: [componentType],
         })
-        class RuntimeComponentModule
-        {
-            static forRoot()
-            {
+        class RuntimeComponentModule {
+            static forRoot() {
                 return {
-                    ngModule:  RuntimeComponentModule,
+                    ngModule: RuntimeComponentModule,
                     providers: [],
                 };
             }

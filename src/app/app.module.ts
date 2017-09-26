@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra-components.module';
-import { HttpModule } from '@angular/http';
-import { TranslationModule } from 'angular-l10n';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MainviewComponent } from './mainview/mainview.component';
-import { OverviewComponent } from './templates/overview/overview.template';
-import { ExampleComponent } from './templates/example/example.template';
-import { ApiComponent } from './templates/api/api.template';
-import { ComponentService } from "./component-service.component";
-import { RoutingService } from "./routing-service.component";
-import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {TerraComponentsModule} from '@plentymarkets/terra-components/app/terra-components.module';
+import {HttpModule} from '@angular/http';
+import {TranslationModule} from 'angular-l10n';
+import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {SidebarComponent} from './sidebar/sidebar.component';
+import {MainviewComponent} from './mainview/mainview.component';
+import {OverviewComponent} from './templates/overview/overview.template';
+import {ExampleComponent} from './templates/example/example.template';
+import {ApiComponent} from './templates/api/api.template';
+import {ComponentService} from "./component-service.component";
+import {RoutingService} from "./routing-service.component";
+import {DynamicPluginLoaderComponent} from './core/dynamic-module-loader/dynamic-module-loader.component';
+import {DynamicModuleBuilderService} from './core/dynamic-module-builder/dynamic-module-builder.service';
 
 @NgModule({
     entryComponents: [
@@ -24,10 +24,10 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         ExampleComponent,
         DynamicPluginLoaderComponent
     ],
-    exports:         [
+    exports: [
         RouterModule
     ],
-    imports:         [
+    imports: [
         BrowserModule,
         HttpModule,
         FormsModule,
@@ -35,7 +35,7 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         TranslationModule.forRoot(),
         TerraComponentsModule.forRoot(),
     ],
-    declarations:    [
+    declarations: [
         AppComponent,
         SidebarComponent,
         MainviewComponent,
@@ -44,15 +44,14 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         ApiComponent,
         DynamicPluginLoaderComponent
     ],
-    providers:       [
+    providers: [
         RoutingService,
         ComponentService,
         DynamicModuleBuilderService
     ],
-    bootstrap:       [
+    bootstrap: [
         AppComponent
     ]
 })
-export class PluginTerraBasicModule
-{
+export class PluginTerraBasicModule {
 }
