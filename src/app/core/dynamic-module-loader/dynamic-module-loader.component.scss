@@ -5,27 +5,32 @@ div#content
     align-items: center;
     justify-content: center;
     
-    div#banner{
-    
+    div#banner
+    {
+        
         width: auto;
         min-width: 900px;
         background-color: #F2F2F2;
         padding: 5px;
         
-        h1{
+        h1
+        {
             color: #555555;
             float: left;
             margin: 0;
             line-height: 48px;
         }
-        .button{
+        .button
+        {
             float: right;
             background-color: #F2F2F2;
             color: #555555;
-            border-radius: 3px;
-            line-height: 39px;
-            font-size: 22px;
-            border: solid 2px #555555;
+            border-radius: 40px;
+            border: 0;
+            height: 40px;
+            margin-top: 4px;
+            width: 40px;
+            margin-right: 10px;
             &:hover
             {
                 background-color: white;
@@ -40,7 +45,7 @@ div#content
         
         div#tabMenu
         {
-            border-bottom: 2px solid  #F2F2F2;
+            border-bottom: 2px solid #F2F2F2;
             background-color: #FAFAFA;
             button
             {
@@ -53,7 +58,7 @@ div#content
                 text-align: center;
                 &:hover
                 {
-                    background-color:#F2F2F2;
+                    background-color: #F2F2F2;
                     color: #008EBD;
                 }
             }
@@ -82,10 +87,10 @@ div#content
     }
     .activeButton
     {
-        color:#008EBD;
+        color: #008EBD;
     }
     .htmlExample
     {
-        margin-top:20px;
+        margin-top: 20px;
     }
 }
