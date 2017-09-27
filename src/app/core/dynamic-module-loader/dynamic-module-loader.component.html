@@ -1,15 +1,14 @@
 <div id="content">
     <div id="banner">
         <h1>{{_componentName}}</h1>
-        <button (click)="showCodeMenu()">
-            Code
-        </button>
+        <!--<terra-button class='button' inputCaption='show code' inputIsPrimary="true" (click)='showCodeMenu()'></terra-button>-->
+        <button class="button" (click)='showCodeMenu()'>{{_menuButtonTitle}}</button>
     </div>
     <div id="codeContainer" [class.active]="_isActive === true">
         <div id="tabMenu">
-            <button (click)="showCode('Html')">HTML</button>
-            <button (click)="showCode('Css')">CSS</button>
-            <button (click)="showCode('Typescript')">TS</button>
+            <button [class.activeButton]="_temp === _htmlCode " (click)="showCode('Html')">HTML</button>
+            <button [class.activeButton]="_temp === _cssCode "(click)="showCode('Css')">CSS</button>
+            <button [class.activeButton]="_temp === _typescriptCode "(click)="showCode('Typescript')">TS</button>
         </div>
         <div id="codeBlock">
             <pre id="htmlCode" [class.active]="_temp === _htmlCode">{{_htmlCode}}</pre>
@@ -17,5 +16,5 @@
             <pre id="tsCode" [class.active]="_temp === _typescriptCode">{{_typescriptCode}}</pre>
         </div>
     </div>
-    <div #viewChildTarget></div>
+    <div #viewChildTarget class="htmlExample"></div>
 </div>
