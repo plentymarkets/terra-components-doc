@@ -18,10 +18,10 @@ import { TranslationService } from 'angular-l10n';
 import { Http } from '@angular/http';
 
 @Component({
-    selector:  'dynamic-module-loader',
-    template:  require('./dynamic-module-loader.component.html'),
-    styleUrls: ['./dynamic-module-loader.component.scss']
-})
+               selector:  'dynamic-module-loader',
+               template:  require('./dynamic-module-loader.component.html'),
+               styleUrls: ['./dynamic-module-loader.component.scss']
+           })
 export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, OnInit
 {
     @ViewChild('viewChildTarget', {read: ViewContainerRef}) viewChildTarget;
@@ -35,11 +35,13 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     private _temp:string;
     private _isActive:boolean;
+    private _isActiveButton:boolean;
 
     private _htlmPath:string;
     private _cssPath:string;
     private _typescripPath:string;
     private _componentName:string;
+    private _menuButtonTitle:string;
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -49,8 +51,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._temp = '';
         this._htlmPath = '';
         this._cssPath = '';
-        this._typescripPath = '';
+        this._typescripPath = ''
         this._isActive = false;
+        this._isActiveButton = false;
+        this._menuButtonTitle = 'show code';
 
     }
 
@@ -61,20 +65,32 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
 
-        console.log(this._htlmPath);
+        this.http.get(this._htlmPath).subscribe((res:any) => {
+                this._htmlCode = res.text();
+        });
+        this.http.get(this._cssPath).subscribe((res:any) => {
 
-        this.http.get(this._htlmPath).subscribe((res:any) =>
-        {
-            this._htmlCode = res.text();
+                this._cssCode = res.text();
         });
-        this.http.get(this._cssPath).subscribe((res:any) =>
-        {
-            this._cssCode = res.text();
+        this.http.get(this._typescripPath).subscribe((res:any) => {
+
+                this._typescriptCode = res.text();
         });
-        this.http.get(this._typescripPath).subscribe((res:any) =>
+
+        if(this._htmlCode== null)
         {
-            this._typescriptCode = res.text();
-        });
+            this._htmlCode = 'no html example found';
+        }
+        if(this._cssCode== null)
+        {
+            this._cssCode = 'no css example found';
+        }
+        if(this._typescriptCode== null)
+        {
+            this._typescriptCode = 'no typescript example found';
+        }
+
+
 
     }
 
@@ -100,8 +116,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     private loadComponentData(data:Data):void
     {
-        data.subscribe((resolveData) =>
-        {
+        data.subscribe((resolveData) => {
             this._moduleWithProviders = resolveData.module as ModuleWithProviders;
             this.updateComponent();
         });
@@ -110,10 +125,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     public updateComponent():void
     {
         this._jitCompiler.compileModuleAndAllComponentsAsync(this._moduleWithProviders.ngModule)
-            .then((moduleWithFactories:ModuleWithComponentFactories<any>) =>
-            {
-                moduleWithFactories.componentFactories.forEach((factory) =>
-                {
+            .then((moduleWithFactories:ModuleWithComponentFactories<any>) => {
+                moduleWithFactories.componentFactories.forEach((factory) => {
                     if(factory.componentType.name === 'CustomDynamicComponent')
                     {
                         this._componentRef = this.viewChildTarget.createComponent(factory);
@@ -127,9 +140,15 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         if(this._isActive === true)
         {
             this._isActive = false;
-            return;
+            this._menuButtonTitle = 'show code';
         }
-        this._isActive = true;
+        else
+        {
+            this._isActive = true;
+            this._menuButtonTitle = 'hide code';
+            this._temp = this._htmlCode;
+        }
+
     }
 
     public showCode(codeType:string):void

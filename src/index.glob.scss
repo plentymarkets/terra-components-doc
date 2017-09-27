@@ -4,8 +4,15 @@
 .test
 {
 }
-
-.input-table
+.docs-api
+{
+    margin-left: 20px;
+}
+.docs-api-property-type
+{
+    display:none;
+}
+.docs-api-properties-table
 {
     
     tr
@@ -61,6 +68,22 @@
 .docs-api-input-marker
 {
     color: black;
+    display: inline-block;
+    padding-right: 20px;
+}
+.docs-api-output-marker
+{
+    display: inline-block;
+    padding-right: 20px;
+}
+.docs-api-property-name
+{
+    display: inline-block;
     
 }
+.docs-api-property-name
+{
+    font-style:normal !important;
+}
+
 
