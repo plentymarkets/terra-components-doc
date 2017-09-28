@@ -44,7 +44,8 @@ export class RoutingService
 
             this.http.get(data.pathExampleHtml)
                 .finally(
-                    () => {
+                    () =>
+                    {
                         let objData = {
                             path:      data.name,
                             component: MainviewComponent,
@@ -69,10 +70,10 @@ export class RoutingService
                                     path:      'example',
                                     component: DynamicPluginLoaderComponent,
                                     data:      {
-                                        module: module,
-                                        htmlPath: data.pathExampleHtml,
-                                        cssPath: data.pathExampleCss,
-                                        tsPath: data.pathExampleTs,
+                                        module:        module,
+                                        htmlPath:      data.pathExampleHtml,
+                                        cssPath:       data.pathExampleCss,
+                                        tsPath:        data.pathExampleTs,
                                         componentName: data.name
                                     }
                                 },
@@ -90,12 +91,15 @@ export class RoutingService
                         routeArray.push(objData);
                     })
                 .subscribe(
-                    (res:any) => {
+                    (res:any) =>
+                    {
                         this._html = res.text();
-                        module = this._dynamicModuleBuilderService.createPluginModule(this._html, data.name);
+                        module = this._dynamicModuleBuilderService.createPluginModule('<terra-button-example></terra-button-example>',
+                            data.name);
 
                     },
-                    err => {
+                    err =>
+                    {
                         module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
                     }
                 );
@@ -103,7 +107,8 @@ export class RoutingService
 
         }
 
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             this.router.resetConfig(routeArray);
 
         });

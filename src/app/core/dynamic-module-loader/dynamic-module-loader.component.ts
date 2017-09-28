@@ -41,7 +41,6 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _cssPath:string;
     private _typescripPath:string;
     private _componentName:string;
-    private _menuButtonTitle:string;
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -51,10 +50,9 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._temp = '';
         this._htlmPath = '';
         this._cssPath = '';
-        this._typescripPath = ''
+        this._typescripPath = '';
         this._isActive = false;
         this._isActiveButton = false;
-        this._menuButtonTitle = 'show code';
 
     }
 
@@ -140,12 +138,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         if(this._isActive === true)
         {
             this._isActive = false;
-            this._menuButtonTitle = 'show code';
         }
         else
         {
             this._isActive = true;
-            this._menuButtonTitle = 'hide code';
             this._temp = this._htmlCode;
         }
 
