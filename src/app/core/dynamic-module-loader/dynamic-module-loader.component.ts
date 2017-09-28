@@ -65,6 +65,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
         this.http.get(this._htlmPath).subscribe((res:any) => {
                 this._htmlCode = res.text();
+
+
         });
         this.http.get(this._cssPath).subscribe((res:any) => {
 
@@ -74,6 +76,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
                 this._typescriptCode = res.text();
         });
+
 
         if(this._htmlCode== null)
         {
