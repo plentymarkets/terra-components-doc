@@ -43,7 +43,9 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _typescripPath:string;
     private _componentName:string;
 
-    private _htmlEscaped:string;
+    private _tsHighlight:string;
+    private _htmlHighlight:string;
+    private _cssHighlight:string;
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -81,17 +83,17 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
         this.http.get(this._htlmPath).subscribe((res:any) => {
             this._htmlCode = res.text();
-            this._htmlEscaped = this.htmlStringEscape(this._htmlCode);
-            this._htmlEscaped = `<pre><code class="xml highlight">${this._htmlEscaped}</code></pre>`;
+            this._htmlHighlight = this.htmlStringEscape(this._htmlCode);
+            this._htmlHighlight = `<pre><code class="xml highlight">${this._htmlHighlight}</code></pre>`;
         });
         this.http.get(this._cssPath).subscribe((res:any) => {
             this._cssCode = res.text();
-            this._cssCode = `<pre><code class="xml highlight">${this._cssCode}</code></pre>`;
+            this._cssHighlight = `<pre><code class="css highlight">${this._cssCode}</code></pre>`;
         });
         this.http.get(this._typescripPath).subscribe((res:any) => {
 
             this._typescriptCode = res.text();
-            this._typescriptCode = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
+            this._tsHighlight = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
         });
 
 
@@ -161,7 +163,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         else
         {
             this._isActive = true;
-            this._temp = this._htmlEscaped;
+            this._temp = this._htmlHighlight;
         }
 
     }
@@ -171,13 +173,13 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         switch(codeType)
         {
             case 'Html':
-                this._temp = this._htmlEscaped;
+                this._temp = this._htmlHighlight;
                 break;
             case 'Css':
-                this._temp = this._cssCode;
+                this._temp = this._cssHighlight;
                 break;
             case 'Typescript':
-                this._temp = this._typescriptCode;
+                this._temp = this._tsHighlight;
                 break;
             default:
                 break;
