@@ -56,7 +56,10 @@ export class OverviewComponent implements OnInit, AfterViewInit
     {
         this._codeOutput = `
    <pre>
-    <code class="typescript highlight">import {Component} from '@angular/core';
+    <code class="typescript highlight">
+import {
+    Component
+} from '@angular/core';
 
 @Component({
                selector: 'terra-button-example',
@@ -84,6 +87,10 @@ export class TerraButtonComponentExample
         }
     }
 }
+
+        
+    
+
 
             </code>
         </pre>`;

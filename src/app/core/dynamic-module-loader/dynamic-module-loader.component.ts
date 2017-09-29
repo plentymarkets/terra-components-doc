@@ -17,6 +17,7 @@ import { JitCompiler } from '@angular/compiler';
 import { TranslationService } from 'angular-l10n';
 import { Http } from '@angular/http';
 
+
 @Component({
                selector:  'dynamic-module-loader',
                template:  require('./dynamic-module-loader.component.html'),
@@ -42,10 +43,13 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _typescripPath:string;
     private _componentName:string;
 
+    private _htmlEscaped:string;
+
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
                 public translation:TranslationService,
-                public http:Http)
+                public http:Http
+              )
     {
         this._temp = '';
         this._htlmPath = '';
@@ -56,6 +60,18 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     }
 
+    htmlStringEscape(s:string):string
+    {
+        return s.replace(/[&"<>]/g, function(c) {
+            return {
+                '&': "&amp;",
+                '"': "&quot;",
+                '<': "&lt;",
+                '>': "&gt;"
+            }[c];
+        });
+    }
+
     ngOnInit()
     {
         this._htlmPath = this._activatedRoute.routeConfig.data.htmlPath;
@@ -64,33 +80,33 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
 
         this.http.get(this._htlmPath).subscribe((res:any) => {
-                this._htmlCode = res.text();
-
-
+            this._htmlCode = res.text();
+            this._htmlEscaped = this.htmlStringEscape(this._htmlCode);
+            this._htmlEscaped = `<pre><code class="xml highlight">${this._htmlEscaped}</code></pre>`;
         });
         this.http.get(this._cssPath).subscribe((res:any) => {
-
-                this._cssCode = res.text();
+            this._cssCode = res.text();
+            this._cssCode = `<pre><code class="xml highlight">${this._cssCode}</code></pre>`;
         });
         this.http.get(this._typescripPath).subscribe((res:any) => {
 
-                this._typescriptCode = res.text();
+            this._typescriptCode = res.text();
+            this._typescriptCode = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
         });
 
 
-        if(this._htmlCode== null)
+        if(this._htmlCode == null)
         {
             this._htmlCode = 'no html example found';
         }
-        if(this._cssCode== null)
+        if(this._cssCode == null)
         {
             this._cssCode = 'no css example found';
         }
-        if(this._typescriptCode== null)
+        if(this._typescriptCode == null)
         {
             this._typescriptCode = 'no typescript example found';
         }
-
 
 
     }
@@ -145,7 +161,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         else
         {
             this._isActive = true;
-            this._temp = this._htmlCode;
+            this._temp = this._htmlEscaped;
         }
 
     }
@@ -155,7 +171,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         switch(codeType)
         {
             case 'Html':
-                this._temp = this._htmlCode;
+                this._temp = this._htmlEscaped;
                 break;
             case 'Css':
                 this._temp = this._cssCode;

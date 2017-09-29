@@ -6,16 +6,21 @@
     </div>
     <div id="codeContainer" [class.active]="_isActive === true">
         <div id="tabMenu">
-            <button [class.activeButton]="_temp === _htmlCode " (click)="showCode('Html')">HTML</button>
+            <button [class.activeButton]="_temp === _htmlEscaped " (click)="showCode('Html')">HTML</button>
             <button [class.activeButton]="_temp === _cssCode " (click)="showCode('Css')">CSS</button>
             <button [class.activeButton]="_temp === _typescriptCode " (click)="showCode('Typescript')">TS</button>
         </div>
         <div id="codeBlock">
-            <section [innerHTML]="_htmlCode" highlight-js-content=".highlight">
-            </section>
-            <pre id="cssCode" [class.active]="_temp === _cssCode">{{_cssCode}}</pre>
-            <pre id="tsCode" [class.active]="_temp === _typescriptCode">{{_typescriptCode}}</pre>
-         
+            <div [class.active]="_temp === _htmlEscaped">
+                <section  [innerHTML]="_htmlEscaped" highlight-js-content=".highlight"></section>
+            </div>
+            <div [class.active]="_temp === _cssCode">
+                <section  [innerHTML]="_cssCode" highlight-js-content=".highlight"></section>
+            </div>
+    
+            <div [class.active]="_temp === _typescriptCode">
+                <section  [innerHTML]="_typescriptCode" highlight-js-content=".highlight"></section>
+            </div>
         </div>
     </div>
     <div #viewChildTarget class="htmlExample"></div>
