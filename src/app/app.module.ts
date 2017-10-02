@@ -15,6 +15,7 @@ import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
+import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 
 @NgModule({
     entryComponents: [
@@ -33,6 +34,7 @@ import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
         RouterModule.forRoot([]),
         TranslationModule.forRoot(),
         TerraComponentsModule.forRoot(),
+        MarkdownToHtmlModule.forRoot(),
         HighlightJsModule
     ],
     declarations:    [

@@ -2,6 +2,7 @@
   {
     "name":"terra-alert",
     "ExampleSelector":"<terra-alert-example></terra-alert-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/alert/example/terra-alert.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/alert/example/terra-alert.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/alert/example/terra-alert.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/alert/example/terra-alert.component.example.d.ts",
@@ -10,6 +11,7 @@
   {
     "name":"terra-button",
     "ExampleSelector":"<terra-button-example></terra-button-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/button/example/terra-button.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/button/example/terra-button.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/button/example/terra-button.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/button/example/terra-button.component.example.d.ts",
@@ -18,14 +20,16 @@
   {
     "name":"terra-card",
     "ExampleSelector":"<terra-card-example></terra-card-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/card/example/terra-card.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/card/example/terra-card.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/card/example/terra-card.component.example.scss",
-    "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/card/example/terra-card.component.example.d.ts",
+    "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/card/example/terra-card.component.example.d.d.ts",
     "path":"assets/docu/build/terra-card.html"
   },
   {
     "name":"terra-data",
     "ExampleSelector":"<terra-data-example></terra-data-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/data/example/terra-data.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/data/example/terra-data.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/data/example/terra-data.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/data/example/terra-data.component.example.d.ts",
@@ -34,6 +38,7 @@
   {
     "name":"terra-dynamic-module-loader",
     "ExampleSelector":"<terra-dynamic-module-loader-example></terra-dynamic-module-loader-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/dynamic-module-loader/example/terra-dynamic-module-loader.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/dynamic-module-loader/example/terra-dynamic-module-loader.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/dynamic-module-loader/example/terra-dynamic-module-loader.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/dynamic-module-loader/example/terra-dynamic-module-loader.component.example.d.ts",
@@ -42,6 +47,7 @@
   {
     "name":"terra-editor",
     "ExampleSelector":"<terra-editor-example></terra-editor-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/editor/example/terra-editor.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/editor/example/terra-editor.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/editor/example/terra-editor.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/editor/example/terra-editor.component.example.d.ts",
@@ -50,6 +56,7 @@
   {
     "name":"terra-filter",
     "ExampleSelector":"<terra-filter-example></terra-filter-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/filter/example/terra-filter.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/filter/example/terra-filter.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/filter/example/terra-filter.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/filter/example/terra-filter.component.example.d.ts",
@@ -58,6 +65,7 @@
   {
     "name":"terra-forms",
     "ExampleSelector":"<terra-forms-example></terra-forms-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/forms/example/terra-forms.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/forms/example/terra-forms.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/forms/example/terra-forms.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/forms/example/terra-forms.component.example.d.ts",
@@ -66,6 +74,7 @@
   {
     "name":"terra-indicator",
     "ExampleSelector":"<terra-indicator-example></terra-indicator-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/indicator/example/terra-indicator.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/indicator/example/terra-indicator.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/indicator/example/terra-indicator.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/indicator/example/terra-indicator.component.example.d.ts",
@@ -74,6 +83,7 @@
   {
     "name":"terra-info-box",
     "ExampleSelector":"<terra-info-box-example></terra-info-box-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/info-box/example/terra-info-box.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/info-box/example/terra-info-box.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/info-box/example/terra-info-box.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/info-box/example/terra-info-box.component.example.d.ts",
@@ -82,6 +92,7 @@
   {
     "name":"terra-loading-bar",
     "ExampleSelector":"<terra-loading-bar-example></terra-loading-bar-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/loading-bar/example/terra-loading-bar.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/loading-bar/example/terra-loading-bar.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/loading-bar/example/terra-loading-bar.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/loading-bar/example/terra-loading-bar.component.example.d.ts",
@@ -90,6 +101,7 @@
   {
     "name":"terra-loading-spinner",
     "ExampleSelector":"<terra-loading-spinner-example></terra-loading-spinner-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/loading-spinner/example/terra-loading-spinner.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/loading-spinner/example/terra-loading-spinner.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/loading-spinner/example/terra-loading-spinner.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/loading-spinner/example/terra-loading-spinner.component.example.d.ts",
@@ -98,6 +110,7 @@
   {
     "name":"terra-overlay",
     "ExampleSelector":"<terra-overlay-example></terra-overlay-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/overlay/example/terra-overlay.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/overlay/example/terra-overlay.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/overlay/example/terra-overlay.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/overlay/example/terra-overlay.component.example.d.ts",
@@ -106,6 +119,7 @@
   {
     "name":"terra-pager",
     "ExampleSelector":"<terra-pager-example></terra-pager-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/pager/example/terra-pager.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/pager/example/terra-pager.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/pager/example/terra-pager.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/pager/example/terra-pager.component.example.d.ts",
@@ -114,6 +128,7 @@
   {
     "name":"terra-portlet",
     "ExampleSelector":"<terra-portlet-example></terra-portlet-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/portlet/example/terra-portlet.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/portlet/example/terra-portlet.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/portlet/example/terra-portlet.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/portlet/example/terra-portlet.component.example.d.ts",
@@ -122,6 +137,7 @@
   {
     "name":"terra-regex",
     "ExampleSelector":"<terra-regex-example></terra-regex-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/regex/example/terra-regex.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/regex/example/terra-regex.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/regex/example/terra-regex.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/regex/example/terra-regex.component.example.d.ts",
@@ -130,6 +146,7 @@
   {
     "name":"terra-service",
     "ExampleSelector":"<terra-service-example></terra-service-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/service/example/terra-service.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/service/example/terra-service.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/service/example/terra-service.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/service/example/terra-service.component.example.d.ts",
@@ -138,6 +155,7 @@
   {
     "name":"terra-split-view",
     "ExampleSelector":"<terra-split-view-example></terra-split-view-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/split-view/example/terra-split-view.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/split-view/example/terra-split-view.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/split-view/example/terra-split-view.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/split-view/example/terra-split-view.component.example.d.ts",
@@ -146,6 +164,7 @@
   {
     "name":"terra-table",
     "ExampleSelector":"<terra-table-example></terra-table-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/table/example/terra-table.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/table/example/terra-table.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/table/example/terra-table.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/table/example/terra-table.component.example.d.ts",
@@ -154,6 +173,7 @@
   {
     "name":"terra-tag",
     "ExampleSelector":"<terra-tag-example></terra-tag-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/tag/example/terra-tag.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/tag/example/terra-tag.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/tag/example/terra-tag.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/tag/example/terra-tag.component.example.d.ts",
@@ -162,6 +182,7 @@
   {
     "name":"terra-taglist",
     "ExampleSelector":"<terra-taglist-example></terra-taglist-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/taglist/example/terra-taglist.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/taglist/example/terra-taglist.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/taglist/example/terra-taglist.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/taglist/example/terra-taglist.component.example.d.ts",
@@ -170,6 +191,7 @@
   {
     "name":"terra-tile",
     "ExampleSelector":"<terra-tile-example></terra-tile-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/tile/example/terra-tile.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/tile/example/terra-tile.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/tile/example/terra-tile.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/tile/example/terra-tile.component.example.d.ts",
@@ -178,6 +200,7 @@
   {
     "name":"terra-toolbar",
     "ExampleSelector":"<terra-toolbar-example></terra-toolbar-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/toolbar/example/terra-toolbar.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/toolbar/example/terra-toolbar.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/toolbar/example/terra-toolbar.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/toolbar/example/terra-toolbar.component.example.d.ts",
@@ -186,6 +209,7 @@
   {
     "name":"terra-tree",
     "ExampleSelector":"<terra-tree-example></terra-tree-example>",
+    "pathOverview":"node_modules/@plentymarkets/terra-components/app/tree/example/terra-tree.component.overview.md",
     "pathExampleHtml":"node_modules/@plentymarkets/terra-components/app/tree/example/terra-tree.component.example.html",
     "pathExampleCss":"node_modules/@plentymarkets/terra-components/app/tree/example/terra-tree.component.example.scss",
     "pathExampleTs":"node_modules/@plentymarkets/terra-components/app/tree/example/terra-tree.component.example.d.ts",

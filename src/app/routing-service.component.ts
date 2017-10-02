@@ -62,7 +62,8 @@ export class RoutingService
                                     component: OverviewComponent,
                                     data:      {
                                         componentName: data.name,
-                                        exampleSelector: data.ExampleSelector
+                                        OverviewMdPath: data.pathOverview
+
                                     }
                                 },
                                 {

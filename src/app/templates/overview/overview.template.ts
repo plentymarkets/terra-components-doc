@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
     ActivatedRoute} from '@angular/router';
-import { DynamicPluginLoaderComponent } from '../../core/dynamic-module-loader/dynamic-module-loader.component';
+import { Http } from '@angular/http';
+
 
 
 
@@ -17,15 +18,18 @@ import { DynamicPluginLoaderComponent } from '../../core/dynamic-module-loader/d
 export class OverviewComponent implements OnInit
 {
 
-    private _renderExample: string;
+
+
+    private _overviewMarkDownPath: string;
+
 
     constructor(private activatedRoute:ActivatedRoute)
     {
+
     }
     ngOnInit()
     {
-        this._renderExample = this.activatedRoute.routeConfig.data.exampleSelector;
+        this._overviewMarkDownPath =this.activatedRoute.routeConfig.data.OverviewMdPath;
     }
-
 }
 
