@@ -40,6 +40,7 @@ export class RoutingService
         for(let data of compArray)
         {
             let module:ModuleWithProviders;
+            let module2:ModuleWithProviders;
 
             this.http.get(data.pathExampleHtml)
                 .finally(
@@ -61,9 +62,12 @@ export class RoutingService
                                     path:      'overview',
                                     component: OverviewComponent,
                                     data:      {
-                                        componentName: data.name,
+                                        overviewModule: module2,
+                                        htmlPath:       data.pathExampleHtml,
+                                        cssPath:        data.pathExampleCss,
+                                        tsPath:         data.pathExampleTs,
+                                        componentName:  data.name,
                                         OverviewMdPath: data.pathOverview
-
                                     }
                                 },
                                 {
@@ -93,12 +97,13 @@ export class RoutingService
                 .subscribe(
                     (res:any) => {
                         this._html = res.text();
-                        module = this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector,
-                                                                                      data.name);
+                        module = this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
+                        module2 = module;
                     },
                     err => {
                         module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml,
                                                                                       data.name);
+                        module2 = module;
                     }
                 );
 
