@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+import {
+    ActivatedRoute} from '@angular/router';
+import { DynamicPluginLoaderComponent } from '../../core/dynamic-module-loader/dynamic-module-loader.component';
+
 
 
 @Component({
@@ -7,8 +14,18 @@ import { Component } from '@angular/core';
                styles:   [require('./overview.template.scss')]
            })
 
-export class OverviewComponent
+export class OverviewComponent implements OnInit
 {
+
+    private _renderExample: string;
+
+    constructor(private activatedRoute:ActivatedRoute)
+    {
+    }
+    ngOnInit()
+    {
+        this._renderExample = this.activatedRoute.routeConfig.data.exampleSelector;
+    }
 
 }
 

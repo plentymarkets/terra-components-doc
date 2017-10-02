@@ -26,8 +26,7 @@ export class RoutingService
     {
         this.http.get('assets/docu/examples/noExampleTemplate.html').subscribe
         (
-            (res:any) =>
-            {
+            (res:any) => {
                 this._noExampleHtml = res.text();
                 this.getData(compArray);
             }
@@ -44,8 +43,7 @@ export class RoutingService
 
             this.http.get(data.pathExampleHtml)
                 .finally(
-                    () =>
-                    {
+                    () => {
                         let objData = {
                             path:      data.name,
                             component: MainviewComponent,
@@ -63,7 +61,8 @@ export class RoutingService
                                     path:      'overview',
                                     component: OverviewComponent,
                                     data:      {
-                                        componentName: data.name
+                                        componentName: data.name,
+                                        exampleSelector: data.ExampleSelector
                                     }
                                 },
                                 {
@@ -91,26 +90,22 @@ export class RoutingService
                         routeArray.push(objData);
                     })
                 .subscribe(
-                    (res:any) =>
-                    {
+                    (res:any) => {
                         this._html = res.text();
-                        module = this._dynamicModuleBuilderService.createPluginModule('<terra-button-example></terra-button-example>',
-                            data.name);
-
+                        module = this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector,
+                                                                                      data.name);
                     },
-                    err =>
-                    {
-                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
+                    err => {
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml,
+                                                                                      data.name);
                     }
                 );
 
 
         }
 
-        setTimeout(() =>
-        {
+        setTimeout(() => {
             this.router.resetConfig(routeArray);
-
         });
 
     }
