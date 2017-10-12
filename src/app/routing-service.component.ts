@@ -9,6 +9,7 @@ import { ApiComponent } from "./templates/api/api.template";
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
+import { IconviewComponent } from './icons/iconsview.component';
 
 @Injectable()
 export class RoutingService
@@ -88,8 +89,12 @@ export class RoutingService
                                         apiPath:       data.path,
                                         componentName: data.name
                                     }
+                                },
+                                {
+                                    path: 'iconview',
+                                    component: IconviewComponent,
                                 }
-                            ]
+                            ],
                         };
 
                         routeArray.push(objData);
@@ -106,7 +111,6 @@ export class RoutingService
                         module2 = module;
                     }
                 );
-
 
         }
 

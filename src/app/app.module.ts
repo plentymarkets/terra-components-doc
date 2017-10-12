@@ -16,12 +16,14 @@ import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynam
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
+import { IconviewComponent } from './icons/iconsview.component';
 
 @NgModule({
     entryComponents: [
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
+        IconviewComponent,
         DynamicPluginLoaderComponent
     ],
     exports:         [
@@ -43,6 +45,7 @@ import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
+        IconviewComponent,
         DynamicPluginLoaderComponent
     ],
     providers:       [
