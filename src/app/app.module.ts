@@ -14,7 +14,10 @@ import { ComponentService } from './component-service.component';
 import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
-import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
+import {
+    HighlightJsModule,
+    HighlightJsService
+} from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconviewComponent } from './icons/iconsview.component';
 
@@ -52,8 +55,7 @@ import { IconviewComponent } from './icons/iconsview.component';
         RoutingService,
         ComponentService,
         DynamicModuleBuilderService,
-        HighlightJsService
-
+        HighlightJsService,
     ],
     bootstrap:       [
         AppComponent

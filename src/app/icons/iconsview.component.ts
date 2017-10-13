@@ -14,6 +14,7 @@ export class IconviewComponent implements OnInit
 {
 
     private _iconArray:any;
+    private _newIconArray = [];
     private _iconVariableArray:any = [];
     private _pathCounter:number;
 
@@ -32,57 +33,9 @@ export class IconviewComponent implements OnInit
             {
                 this._iconArray = data;
                 this.createNewIconArray();
-                this.createIconHtml();
             }
         );
 
-    }
-
-    public createIconHtml():any
-    {
-        for(let i = 0; i < this._iconVariableArray.length; i++)
-        {
-
-            let lenghtOfIconName:number = this._iconVariableArray[i].length;
-
-            if(!(this._iconVariableArray[i].includes("path")))
-            {
-                this._html = this._html + ` 
-                    <div class="glyph fs1">
-                        <div class="clearfix bshadow0 pbs">
-                            <span class="${this._iconVariableArray[i]}"></span>
-                            <span class="mls">${this._iconVariableArray[i]}</span>
-                          </div>
-                    </div>`;
-            }
-            else
-            {
-                if(this._iconVariableArray[i].substring(lenghtOfIconName - 5) == 'path1')
-                {
-                    let pathString:string = '';
-                    this._pathCounter = 1;
-                    let iconVariableName:string = this._iconVariableArray[i].substring(0, lenghtOfIconName - 6);
-
-                    for(; this._iconVariableArray[i].includes(iconVariableName); i++)
-                    {
-
-                        pathString = pathString + `<span class="path${this._pathCounter}"></span>`;
-                        this._pathCounter++;
-
-                    }
-
-                    this._html = this._html + ` 
-                    <div class="glyph fs1">
-                        <div class="clearfix bshadow0 pbs">
-                            <span class="${iconVariableName}">
-                            ${pathString}
-                            </span>
-                            <span class="mls">${iconVariableName}</span>
-                          </div>
-                    </div>`;
-                }
-            }
-        }
     }
 
     public getIconArray():Observable<any>
@@ -100,5 +53,40 @@ export class IconviewComponent implements OnInit
                 this._iconVariableArray.push(data);
             }
         }
+
+        for(let itr = 0; itr < this._iconVariableArray.length; itr++)
+        {
+
+            let iconVariableName:string;
+            let lenghtOfIconName:number = this._iconVariableArray[itr].length;
+            let objData:any;
+
+            if(this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
+            {
+                this._pathCounter = 1;
+
+                iconVariableName = this._iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
+                objData = {
+                    icon: iconVariableName,
+                    path: []
+                };
+                for(; this._iconVariableArray[itr].includes(iconVariableName); itr++)
+                {
+                    objData.path.push("path" + this._pathCounter);
+                    this._pathCounter++;
+                }
+                itr--;
+            }
+            else
+            {
+                iconVariableName = this._iconVariableArray[itr];
+                objData = {
+                    icon: iconVariableName,
+                    path: []
+                };
+            }
+            this._newIconArray.push(objData);
+        }
+        console.log(this._newIconArray);
     }
 }

@@ -90,14 +90,15 @@ export class RoutingService
                                         componentName: data.name
                                     }
                                 },
-                                {
-                                    path: 'iconview',
-                                    component: IconviewComponent,
-                                }
                             ],
                         };
 
                         routeArray.push(objData);
+                        let test = {
+                            path: 'iconview',
+                            component: IconviewComponent,
+                        };
+                        routeArray.push(test);
                     })
                 .subscribe(
                     (res:any) => {
