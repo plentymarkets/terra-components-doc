@@ -9,17 +9,31 @@ import { ApiComponent } from "./templates/api/api.template";
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
+import { IconviewComponent } from './icons/iconsview.component';
+import { GuideComponent } from './guide/guide.component';
 
 @Injectable()
 export class RoutingService
 {
     private _html:string;
     private _noExampleHtml:string;
+    private _mainViews:any;
+
 
     constructor(private router:Router,
                 private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                 public http:Http)
     {
+        this._mainViews = [
+            {
+                path:      'iconview',
+                component: IconviewComponent,
+            },
+            {
+                path:      'guideview',
+                component: GuideComponent,
+            }
+        ];
     }
 
     createRoutes(compArray:Array<any>):void
@@ -31,7 +45,7 @@ export class RoutingService
                 this._noExampleHtml = res.text();
                 this.getData(compArray);
             }
-        )
+        );
     }
 
     private getData(compArray:Array<any>):void
@@ -41,6 +55,7 @@ export class RoutingService
         for(let data of compArray)
         {
             let module:ModuleWithProviders;
+            let module2:ModuleWithProviders;
 
             this.http.get(data.pathExampleHtml)
                 .finally(
@@ -63,7 +78,12 @@ export class RoutingService
                                     path:      'overview',
                                     component: OverviewComponent,
                                     data:      {
-                                        componentName: data.name
+                                        overviewModule: module2,
+                                        htmlPath:       data.pathExampleHtml,
+                                        cssPath:        data.pathExampleCss,
+                                        tsPath:         data.pathExampleTs,
+                                        componentName:  data.name,
+                                        OverviewMdPath: data.pathOverview
                                     }
                                 },
                                 {
@@ -84,8 +104,8 @@ export class RoutingService
                                         apiPath:       data.path,
                                         componentName: data.name
                                     }
-                                }
-                            ]
+                                },
+                            ],
                         };
 
                         routeArray.push(objData);
@@ -94,23 +114,26 @@ export class RoutingService
                     (res:any) =>
                     {
                         this._html = res.text();
-                        module = this._dynamicModuleBuilderService.createPluginModule('<terra-button-example></terra-button-example>',
-                            data.name);
-
+                        module = this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
+                        module2 = module;
                     },
                     err =>
                     {
-                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml,
+                            data.name);
+                        module2 = module;
                     }
                 );
 
+        }
 
+        for(let views of this._mainViews){
+            routeArray.push(views);
         }
 
         setTimeout(() =>
         {
             this.router.resetConfig(routeArray);
-
         });
 
     }

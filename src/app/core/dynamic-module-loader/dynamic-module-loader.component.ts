@@ -17,6 +17,7 @@ import { JitCompiler } from '@angular/compiler';
 import { TranslationService } from 'angular-l10n';
 import { Http } from '@angular/http';
 
+
 @Component({
                selector:  'dynamic-module-loader',
                template:  require('./dynamic-module-loader.component.html'),
@@ -36,11 +37,17 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _temp:string;
     private _isActive:boolean;
     private _isActiveButton:boolean;
+    private _buttonDisable:boolean;
+
 
     private _htlmPath:string;
     private _cssPath:string;
     private _typescripPath:string;
     private _componentName:string;
+
+    private _tsHighlight:string;
+    private _htmlHighlight:string;
+    private _cssHighlight:string;
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -50,10 +57,41 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._temp = '';
         this._htlmPath = '';
         this._cssPath = '';
+        this._htmlCode ='';
+        this._cssCode ='';
+        this._typescriptCode='';
         this._typescripPath = '';
         this._isActive = false;
         this._isActiveButton = false;
+        this._buttonDisable = false;
+        this._tsHighlight = '';
+        this._htmlHighlight = '';
+        this._cssHighlight = '';
+    }
 
+    private checkTemplate(str:string):void
+    {
+        if(str == '')
+        {
+            this._buttonDisable = true;
+        }
+        else
+        {
+            this._buttonDisable = false;
+        }
+        console.log(this._buttonDisable);
+    }
+
+    private htmlStringEscape(s:string):string
+    {
+        return s.replace(/[&"<>]/g, function(c) {
+            return {
+                '&': "&amp;",
+                '"': "&quot;",
+                '<': "&lt;",
+                '>': "&gt;"
+            }[c];
+        });
     }
 
     ngOnInit()
@@ -63,33 +101,34 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
 
-        this.http.get(this._htlmPath).subscribe((res:any) => {
-                this._htmlCode = res.text();
+        this.http.get(this._htlmPath).finally(
+            () =>
+            {
+                this.checkTemplate(this._htmlCode);
+            }).subscribe((res:any) => {
+            this._htmlCode = res.text();
+            this._htmlHighlight = this.htmlStringEscape(this._htmlCode);
+            this._htmlHighlight = `<pre><code class="xml highlight">${this._htmlHighlight}</code></pre>`;
+            this.checkTemplate(this._htmlCode);
         });
-        this.http.get(this._cssPath).subscribe((res:any) => {
-
-                this._cssCode = res.text();
+        this.http.get(this._cssPath).finally(
+            () =>
+            {
+                this.checkTemplate(this._cssCode);
+            }).subscribe((res:any) => {
+            this._cssCode = res.text();
+            this._cssHighlight = `<pre><code class="css highlight">${this._cssCode}</code></pre>`;
+            this.checkTemplate(this._cssCode);
         });
-        this.http.get(this._typescripPath).subscribe((res:any) => {
-
-                this._typescriptCode = res.text();
+        this.http.get(this._typescripPath).finally(
+            () =>
+            {
+                this.checkTemplate(this._typescriptCode);
+            }).subscribe((res:any) => {
+            this._typescriptCode = res.text();
+            this._tsHighlight = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
+            this.checkTemplate(this._typescriptCode);
         });
-
-        if(this._htmlCode== null)
-        {
-            this._htmlCode = 'no html example found';
-        }
-        if(this._cssCode== null)
-        {
-            this._cssCode = 'no css example found';
-        }
-        if(this._typescriptCode== null)
-        {
-            this._typescriptCode = 'no typescript example found';
-        }
-
-
-
     }
 
     ngAfterViewInit()
@@ -135,16 +174,18 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     public showCodeMenu():void
     {
-        if(this._isActive === true)
+        if(this._buttonDisable === false)
         {
-            this._isActive = false;
+            if(this._isActive === true)
+            {
+                this._isActive = false;
+            }
+            else
+            {
+                this._isActive = true;
+                this._temp = this._htmlHighlight;
+            }
         }
-        else
-        {
-            this._isActive = true;
-            this._temp = this._htmlCode;
-        }
-
     }
 
     public showCode(codeType:string):void
@@ -152,18 +193,16 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         switch(codeType)
         {
             case 'Html':
-                this._temp = this._htmlCode;
+                this._temp = this._htmlHighlight;
                 break;
             case 'Css':
-                this._temp = this._cssCode;
+                this._temp = this._cssHighlight;
                 break;
             case 'Typescript':
-                this._temp = this._typescriptCode;
+                this._temp = this._tsHighlight;
                 break;
             default:
                 break;
         }
-
     }
-
 }

@@ -14,12 +14,21 @@ import { ComponentService } from './component-service.component';
 import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import {
+    HighlightJsModule,
+    HighlightJsService
+} from 'angular2-highlight-js';
+import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
+import { IconviewComponent } from './icons/iconsview.component';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
     entryComponents: [
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
+        IconviewComponent,
+        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     exports:         [
@@ -32,6 +41,8 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         RouterModule.forRoot([]),
         TranslationModule.forRoot(),
         TerraComponentsModule.forRoot(),
+        MarkdownToHtmlModule.forRoot(),
+        HighlightJsModule
     ],
     declarations:    [
         AppComponent,
@@ -39,12 +50,15 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
         MainviewComponent,
         OverviewComponent,
         ApiComponent,
+        IconviewComponent,
+        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     providers:       [
         RoutingService,
         ComponentService,
-        DynamicModuleBuilderService
+        DynamicModuleBuilderService,
+        HighlightJsService,
     ],
     bootstrap:       [
         AppComponent
