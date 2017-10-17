@@ -87,6 +87,5 @@ export class IconviewComponent implements OnInit
             }
             this._newIconArray.push(objData);
         }
-        console.log(this._newIconArray);
     }
 }
