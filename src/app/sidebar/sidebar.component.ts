@@ -2,34 +2,21 @@ import {
     Component,
     OnInit
 } from '@angular/core';
-
-import { ComponentInterface } from '../componentInterface.component';
-import { ComponentService } from '../component-service.component';
+import { RouteResolver } from '../core/resolve/route.resolver';
 
 @Component(
     {
         selector:    'sidebar',
         templateUrl: './sidebar.component.html',
         styleUrls:   ['./sidebar.component.scss'],
-        providers:   [ComponentService]
     })
 export class SidebarComponent implements OnInit
 {
-    compArray:ComponentInterface[];
-
-    constructor(private componentService:ComponentService)
+    constructor(private _routeResolver:RouteResolver)
     {
-    }
-
-    getCompArray():void
-    {
-        this.componentService
-            .getCompArray()
-            .then(compArray => this.compArray = compArray);
     }
 
     ngOnInit():void
     {
-        this.getCompArray();
     }
 }

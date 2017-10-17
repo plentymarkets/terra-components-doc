@@ -1,4 +1,7 @@
-import { NgModule } from '@angular/core';
+import {
+    APP_INITIALIZER,
+    NgModule
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './terra-components-doc.component';
 import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra-components.module';
@@ -10,7 +13,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { OverviewComponent } from './templates/overview/overview.template';
 import { ApiComponent } from './templates/api/api.template';
-import { ComponentService } from './component-service.component';
 import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
@@ -19,8 +21,19 @@ import {
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './icons/iconsview.component';
+import { IconviewComponent } from './icons/iconview.component';
 import { GuideComponent } from './guide/guide.component';
+import { RouteResolver } from './core/resolve/route.resolver';
+
+export function initRoutes(pluginsConfig:RouteResolver):Function
+{
+    return ():Promise<any> => pluginsConfig.load().catch(error =>
+    {
+        if(error.status === 401)
+        {
+        }
+    });
+}
 
 @NgModule({
     entryComponents: [
@@ -56,9 +69,15 @@ import { GuideComponent } from './guide/guide.component';
     ],
     providers:       [
         RoutingService,
-        ComponentService,
         DynamicModuleBuilderService,
         HighlightJsService,
+        RouteResolver,
+        {
+            provide:    APP_INITIALIZER,
+            useFactory: initRoutes,
+            deps:       [RouteResolver],
+            multi:      true
+        },
     ],
     bootstrap:       [
         AppComponent

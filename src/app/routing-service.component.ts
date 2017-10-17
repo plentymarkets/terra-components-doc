@@ -9,7 +9,7 @@ import { ApiComponent } from "./templates/api/api.template";
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
-import { IconviewComponent } from './icons/iconsview.component';
+import { IconviewComponent } from './icons/iconview.component';
 import { GuideComponent } from './guide/guide.component';
 
 @Injectable()
@@ -57,59 +57,57 @@ export class RoutingService
             let module:ModuleWithProviders;
             let module2:ModuleWithProviders;
 
-            this.http.get(data.pathExampleHtml)
-                .finally(
-                    () =>
-                    {
-                        let objData = {
-                            path:      data.name,
-                            component: MainviewComponent,
+            this.http.get(data.pathExampleHtml).finally(() =>
+            {
+                let objData = {
+                    path:      data.name,
+                    component: MainviewComponent,
+                    data:      {
+                        apiPath:       data.path,
+                        componentName: data.name
+                    },
+                    children:  [
+                        {
+                            path:       '',
+                            redirectTo: 'overview',
+                            pathMatch:  'full'
+                        },
+                        {
+                            path:      'overview',
+                            component: OverviewComponent,
+                            data:      {
+                                overviewModule: module2,
+                                htmlPath:       data.pathExampleHtml,
+                                cssPath:        data.pathExampleCss,
+                                tsPath:         data.pathExampleTs,
+                                componentName:  data.name,
+                                OverviewMdPath: data.pathOverview
+                            }
+                        },
+                        {
+                            path:      'example',
+                            component: DynamicPluginLoaderComponent,
+                            data:      {
+                                module:        module,
+                                htmlPath:      data.pathExampleHtml,
+                                cssPath:       data.pathExampleCss,
+                                tsPath:        data.pathExampleTs,
+                                componentName: data.name
+                            }
+                        },
+                        {
+                            path:      'api',
+                            component: ApiComponent,
                             data:      {
                                 apiPath:       data.path,
                                 componentName: data.name
-                            },
-                            children:  [
-                                {
-                                    path:       '',
-                                    redirectTo: 'overview',
-                                    pathMatch:  'full'
-                                },
-                                {
-                                    path:      'overview',
-                                    component: OverviewComponent,
-                                    data:      {
-                                        overviewModule: module2,
-                                        htmlPath:       data.pathExampleHtml,
-                                        cssPath:        data.pathExampleCss,
-                                        tsPath:         data.pathExampleTs,
-                                        componentName:  data.name,
-                                        OverviewMdPath: data.pathOverview
-                                    }
-                                },
-                                {
-                                    path:      'example',
-                                    component: DynamicPluginLoaderComponent,
-                                    data:      {
-                                        module:        module,
-                                        htmlPath:      data.pathExampleHtml,
-                                        cssPath:       data.pathExampleCss,
-                                        tsPath:        data.pathExampleTs,
-                                        componentName: data.name
-                                    }
-                                },
-                                {
-                                    path:      'api',
-                                    component: ApiComponent,
-                                    data:      {
-                                        apiPath:       data.path,
-                                        componentName: data.name
-                                    }
-                                },
-                            ],
-                        };
+                            }
+                        },
+                    ],
+                };
 
-                        routeArray.push(objData);
-                    })
+                routeArray.push(objData);
+            })
                 .subscribe(
                     (res:any) =>
                     {
@@ -119,15 +117,15 @@ export class RoutingService
                     },
                     err =>
                     {
-                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml,
-                            data.name);
+                        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
                         module2 = module;
                     }
                 );
 
         }
 
-        for(let views of this._mainViews){
+        for(let views of this._mainViews)
+        {
             routeArray.push(views);
         }
 

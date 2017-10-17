@@ -12,7 +12,6 @@ import { Observable } from 'rxjs/Observable';
 })
 export class IconviewComponent implements OnInit
 {
-
     private _iconArray:any;
     private _newIconArray = [];
     private _iconVariableArray:any = [];
@@ -28,8 +27,7 @@ export class IconviewComponent implements OnInit
 
     ngOnInit()
     {
-        this.getIconArray().subscribe(
-            (data:any) =>
+        this.getIconArray().subscribe((data:any) =>
             {
                 this._iconArray = data;
                 this.createNewIconArray();
@@ -56,7 +54,6 @@ export class IconviewComponent implements OnInit
 
         for(let itr = 0; itr < this._iconVariableArray.length; itr++)
         {
-
             let iconVariableName:string;
             let lenghtOfIconName:number = this._iconVariableArray[itr].length;
             let objData:any;
