@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { AppComponent } from './terra-components-doc.component';
 import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra-components.module';
 import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';

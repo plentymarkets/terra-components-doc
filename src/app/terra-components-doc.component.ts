@@ -9,8 +9,8 @@ import { ComponentService } from './component-service.component';
 
 @Component({
     selector: 'app-component',
-    template: require('./app.component.html'),
-    styles:   [require('./app.component.scss')],
+    template: require('./terra-components-doc.component.html'),
+    styles:   [require('./terra-components-doc.component.scss')],
 })
 export class AppComponent implements OnInit
 {
