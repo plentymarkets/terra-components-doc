@@ -10,28 +10,42 @@ import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynam
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { Http } from '@angular/http';
 import { IconviewComponent } from './icons/iconsview.component';
+import { GuideComponent } from './guide/guide.component';
 
 @Injectable()
 export class RoutingService
 {
     private _html:string;
     private _noExampleHtml:string;
+    private _mainViews:any;
+
 
     constructor(private router:Router,
                 private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                 public http:Http)
     {
+        this._mainViews = [
+            {
+                path:      'iconview',
+                component: IconviewComponent,
+            },
+            {
+                path:      'guideview',
+                component: GuideComponent,
+            }
+        ];
     }
 
     createRoutes(compArray:Array<any>):void
     {
         this.http.get('assets/docu/examples/noExampleTemplate.html').subscribe
         (
-            (res:any) => {
+            (res:any) =>
+            {
                 this._noExampleHtml = res.text();
                 this.getData(compArray);
             }
-        )
+        );
     }
 
     private getData(compArray:Array<any>):void
@@ -45,7 +59,8 @@ export class RoutingService
 
             this.http.get(data.pathExampleHtml)
                 .finally(
-                    () => {
+                    () =>
+                    {
                         let objData = {
                             path:      data.name,
                             component: MainviewComponent,
@@ -94,28 +109,30 @@ export class RoutingService
                         };
 
                         routeArray.push(objData);
-                        let test = {
-                            path: 'iconview',
-                            component: IconviewComponent,
-                        };
-                        routeArray.push(test);
                     })
                 .subscribe(
-                    (res:any) => {
+                    (res:any) =>
+                    {
                         this._html = res.text();
                         module = this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
                         module2 = module;
                     },
-                    err => {
+                    err =>
+                    {
                         module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml,
-                                                                                      data.name);
+                            data.name);
                         module2 = module;
                     }
                 );
 
         }
 
-        setTimeout(() => {
+        for(let views of this._mainViews){
+            routeArray.push(views);
+        }
+
+        setTimeout(() =>
+        {
             this.router.resetConfig(routeArray);
         });
 

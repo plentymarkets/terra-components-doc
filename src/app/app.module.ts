@@ -20,6 +20,7 @@ import {
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconviewComponent } from './icons/iconsview.component';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
     entryComponents: [
@@ -27,6 +28,7 @@ import { IconviewComponent } from './icons/iconsview.component';
         OverviewComponent,
         ApiComponent,
         IconviewComponent,
+        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     exports:         [
@@ -49,6 +51,7 @@ import { IconviewComponent } from './icons/iconsview.component';
         OverviewComponent,
         ApiComponent,
         IconviewComponent,
+        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     providers:       [
