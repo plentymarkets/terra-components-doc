@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { Router } from "@angular/router";
 import { MainviewComponent } from "./view/mainview/mainview.component";
-import { OverviewComponent } from "./view/overview/overview.template";
+import { OverviewComponent } from "./view/overview/overview.component";
 import { ApiComponent } from "./view/api/api.template";
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';

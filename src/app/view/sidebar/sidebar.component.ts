@@ -1,22 +1,15 @@
-import {
-    Component,
-    OnInit
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouteResolver } from '../../core/resolve/route.resolver';
 
 @Component(
     {
-        selector:    'sidebar',
-        templateUrl: './sidebar.component.html',
-        styleUrls:   ['./sidebar.component.scss'],
+        selector: 'sidebar',
+        template: require('./sidebar.component.html'),
+        styles:   [require('./sidebar.component.scss')]
     })
-export class SidebarComponent implements OnInit
+export class SidebarComponent
 {
     constructor(private _routeResolver:RouteResolver)
-    {
-    }
-
-    ngOnInit():void
     {
     }
 }

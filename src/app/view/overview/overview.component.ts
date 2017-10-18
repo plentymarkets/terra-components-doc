@@ -14,14 +14,13 @@ import {
     Data
 } from '@angular/router';
 import { JitCompiler } from '@angular/compiler';
-import { TranslationService } from 'angular-l10n';
 import { Http } from '@angular/http';
-
+import { isNullOrUndefined } from 'util';
 
 @Component({
-    selector:  'overview-component',
-    template:  require('./overview.template.html'),
-    styleUrls: ['./overview.template.scss']
+    selector: 'overview-component',
+    template: require('./overview.component.html'),
+    styles:   [require('./overview.component.scss')]
 })
 export class OverviewComponent implements AfterViewInit, OnDestroy, OnInit
 {
@@ -31,9 +30,10 @@ export class OverviewComponent implements AfterViewInit, OnDestroy, OnInit
     private _componentRef:ComponentRef<any>;
     private _overviewMarkDownPath:string;
 
+    private _isMarkDownPath:boolean = false;
+
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
-                public translation:TranslationService,
                 public http:Http,
                 private activatedRoute:ActivatedRoute)
     {
@@ -41,8 +41,12 @@ export class OverviewComponent implements AfterViewInit, OnDestroy, OnInit
 
     ngOnInit()
     {
+        if(!isNullOrUndefined(this.activatedRoute.routeConfig.data.OverviewMdPath))
+        {
+            this._overviewMarkDownPath = this.activatedRoute.routeConfig.data.OverviewMdPath;
 
-        this._overviewMarkDownPath = this.activatedRoute.routeConfig.data.OverviewMdPath;
+            this._isMarkDownPath = true;
+        }
     }
 
     ngAfterViewInit()

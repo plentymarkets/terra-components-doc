@@ -5,13 +5,14 @@ import {
 } from '@angular/core';
 import { ApiComponent } from './view/api/api.template';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { OverviewComponent } from './view/overview/overview.template';
+import { OverviewComponent } from './view/overview/overview.component';
 import { MainviewComponent } from './view/mainview/mainview.component';
 import { RouteResolver } from './core/resolve/route.resolver';
 import { Router } from '@angular/router';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import { IconviewComponent } from './view/icons/iconview.component';
 import { GuideComponent } from './view/guide/guide.component';
+import { stathamInterface } from './core/resolve/data/statham.interface';
 
 @Component({
     selector: 'app-component',
@@ -42,7 +43,7 @@ export class AppComponent implements OnInit
     {
         let routeArray = [];
 
-        this._routeResolver.dataJson.forEach((data) =>
+        this._routeResolver.dataJson.forEach((data:stathamInterface) =>
         {
             let module:ModuleWithProviders =
                 this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
@@ -103,8 +104,6 @@ export class AppComponent implements OnInit
             routeArray.push(views);
         }
 
-        //this.router.config.push(objData);
         this.router.resetConfig(routeArray);
-
     }
 }

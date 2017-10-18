@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './view/sidebar/sidebar.component';
 import { MainviewComponent } from './view/mainview/mainview.component';
-import { OverviewComponent } from './view/overview/overview.template';
+import { OverviewComponent } from './view/overview/overview.component';
 import { ApiComponent } from './view/api/api.template';
 import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
