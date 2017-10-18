@@ -13,7 +13,6 @@ import { SidebarComponent } from './view/sidebar/sidebar.component';
 import { MainviewComponent } from './view/mainview/mainview.component';
 import { OverviewComponent } from './view/overview/overview.component';
 import { ApiComponent } from './view/api/api.template';
-import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import {
@@ -68,7 +67,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         DynamicPluginLoaderComponent
     ],
     providers:       [
-        RoutingService,
         DynamicModuleBuilderService,
         HighlightJsService,
         RouteResolver,
