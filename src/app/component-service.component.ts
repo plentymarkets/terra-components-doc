@@ -14,7 +14,8 @@ export class ComponentService
 
     public getCompArray():Promise<ComponentInterface[]>
     {
-        return this.http.get('./assets/docu/data.json')
+        return this.http.get('node_modules/@plentymarkets/terra-components/component-documentation' +
+                             '/build/statham.json')
                    .map((res:any) => res.json())
                    .toPromise();
     }
