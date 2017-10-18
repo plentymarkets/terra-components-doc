@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RouteResolver
@@ -38,19 +37,14 @@ export class RouteResolver
     {
         return new Promise((resolve) =>
         {
-            Observable.combineLatest(this.http.get('./assets/docu/data.json'),
-                this.http.get('./assets/docu/examples/noExampleTemplate.html'),
-                (dataJson:any, noExampleHtml:any) =>
-                {
-                    return {
-                        dataJson:      dataJson,
-                        noExampleHtml: noExampleHtml
-                    }
-                }).subscribe((res:any) =>
+            this.http.get('node_modules/@plentymarkets/terra-components/component-documentation' +
+                          '/build/statham.json').subscribe((res:any) =>
             {
-                console.log(res);
-                this.dataJson = res.dataJson.json();
-                this.noExampleHtml = res.noExampleHtml.text();
+                this.dataJson = res.json();
+
+                console.log(this.dataJson);
+
+                //this.noExampleHtml = res.noExampleHtml.text();
 
 
                 this.http.get(this.dataJson[0].pathExampleHtml).subscribe((res:any) =>
@@ -58,8 +52,6 @@ export class RouteResolver
                     console.log(res);
 
                     resolve(res.dataJson.json());
-
-
                 });
             });
 

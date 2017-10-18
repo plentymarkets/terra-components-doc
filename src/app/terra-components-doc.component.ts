@@ -48,8 +48,8 @@ export class AppComponent implements OnInit
 
         this._routeResolver.dataJson.forEach((data) =>
         {
-            let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._routeResolver.noExampleHtml,
-                data.name);
+            //let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._routeResolver.noExampleHtml,
+            //    data.name);
 
             let objData = {
                 path:      data.name,
