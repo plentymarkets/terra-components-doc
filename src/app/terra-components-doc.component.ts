@@ -26,8 +26,6 @@ export class AppComponent implements OnInit
                        private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                        private router:Router)
     {
-        console.log("AppComponent:constructor");
-
         this._mainViews = [
             {
                 path:      'iconview',
@@ -42,14 +40,12 @@ export class AppComponent implements OnInit
 
     ngOnInit():void
     {
-        console.log("AppComponent:ngOnInit");
-
         let routeArray = [];
 
         this._routeResolver.dataJson.forEach((data) =>
         {
-            //let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._routeResolver.noExampleHtml,
-            //    data.name);
+            let module:ModuleWithProviders =
+                this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
 
             let objData = {
                 path:      data.name,
@@ -99,21 +95,6 @@ export class AppComponent implements OnInit
             };
 
             routeArray.push(objData);
-
-            //}).subscribe((res:any) =>
-            //    {
-            //        this._html = res.text();
-            //        module = this._dynamicModuleBuilderService.createPluginModule(
-            //            '<terra-button-example></terra-button-example>', data.name
-            //        );
-            //
-            //    },
-            //    err =>
-            //    {
-            //        module = this._dynamicModuleBuilderService.createPluginModule(this._noExampleHtml, data.name);
-            //    }
-            //);
-
         });
 
 

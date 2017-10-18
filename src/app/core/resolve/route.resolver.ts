@@ -30,7 +30,6 @@ export class RouteResolver
 
     constructor(public http:Http)
     {
-        console.log("RouteResolver:constructor");
     }
 
     load():Promise<any>
@@ -38,33 +37,12 @@ export class RouteResolver
         return new Promise((resolve) =>
         {
             this.http.get('node_modules/@plentymarkets/terra-components/component-documentation' +
-                          '/build/statham.json').subscribe((res:any) =>
+                          '/build/statham.json').subscribe((resJson:any) =>
             {
-                this.dataJson = res.json();
+                this.dataJson = resJson.json();
 
-                console.log(this.dataJson);
-
-                //this.noExampleHtml = res.noExampleHtml.text();
-
-
-                this.http.get(this.dataJson[0].pathExampleHtml).subscribe((res:any) =>
-                {
-                    console.log(res);
-
-                    resolve(res.dataJson.json());
-                });
+                resolve(this.dataJson);
             });
-
-
-            //this.http.get('./assets/docu/dataJson.json').subscribe((res:any) =>
-            //    {
-            //        console.log("RouteResolver:load");
-            //        this.dataJson = res.json();
-            //        resolve(res.json());
-            //    }
-            //);
         });
     }
-
-
 }
