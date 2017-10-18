@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { stathamInterface } from './data/statham.interface';
 
 @Injectable()
 export class RouteResolver
@@ -14,19 +15,19 @@ export class RouteResolver
         this._noExampleHtml = value;
     }
 
-    public get dataJson():any
+    public get dataJson():Array<stathamInterface>
     {
         return this._dataJson;
     }
 
-    public set dataJson(value:any)
+    public set dataJson(value:Array<stathamInterface>)
     {
         this._dataJson = value;
     }
 
     private _noExampleHtml:string;
 
-    private _dataJson:any;
+    private _dataJson:Array<stathamInterface>;
 
     constructor(public http:Http)
     {
