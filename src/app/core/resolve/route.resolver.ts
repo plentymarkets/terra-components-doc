@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RouteResolver
 {
-    public get data():any
+    public get noExampleHtml():string
     {
-        return this._data;
+        return this._noExampleHtml;
     }
 
-    public set data(value:any)
+    public set noExampleHtml(value:string)
     {
-        this._data = value;
+        this._noExampleHtml = value;
     }
 
-    private _html:string;
+    public get dataJson():any
+    {
+        return this._dataJson;
+    }
+
+    public set dataJson(value:any)
+    {
+        this._dataJson = value;
+    }
+
     private _noExampleHtml:string;
 
-    private _data:any;
+    private _dataJson:any;
 
     constructor(public http:Http)
     {
@@ -28,13 +38,39 @@ export class RouteResolver
     {
         return new Promise((resolve) =>
         {
-            this.http.get('./assets/docu/data.json').subscribe((res:any) =>
+            Observable.combineLatest(this.http.get('./assets/docu/data.json'),
+                this.http.get('./assets/docu/examples/noExampleTemplate.html'),
+                (dataJson:any, noExampleHtml:any) =>
                 {
-                    console.log("RouteResolver:load");
-                    this.data = res.json();
-                    resolve(res.json());
-                }
-            );
+                    return {
+                        dataJson:      dataJson,
+                        noExampleHtml: noExampleHtml
+                    }
+                }).subscribe((res:any) =>
+            {
+                console.log(res);
+                this.dataJson = res.dataJson.json();
+                this.noExampleHtml = res.noExampleHtml.text();
+
+
+                this.http.get(this.dataJson[0].pathExampleHtml).subscribe((res:any) =>
+                {
+                    console.log(res);
+
+                    resolve(res.dataJson.json());
+
+
+                });
+            });
+
+
+            //this.http.get('./assets/docu/dataJson.json').subscribe((res:any) =>
+            //    {
+            //        console.log("RouteResolver:load");
+            //        this.dataJson = res.json();
+            //        resolve(res.json());
+            //    }
+            //);
         });
     }
 

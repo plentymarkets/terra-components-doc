@@ -9,6 +9,9 @@ import { OverviewComponent } from './templates/overview/overview.template';
 import { MainviewComponent } from './mainview/mainview.component';
 import { RouteResolver } from './core/resolve/route.resolver';
 import { Router } from '@angular/router';
+import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import { IconviewComponent } from './icons/iconview.component';
+import { GuideComponent } from './guide/guide.component';
 
 @Component({
     selector: 'app-component',
@@ -17,10 +20,24 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit
 {
+    private _mainViews:any;
+
     public constructor(private _routeResolver:RouteResolver,
+                       private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                        private router:Router)
     {
         console.log("AppComponent:constructor");
+
+        this._mainViews = [
+            {
+                path:      'iconview',
+                component: IconviewComponent,
+            },
+            {
+                path:      'guideview',
+                component: GuideComponent,
+            }
+        ];
     }
 
     ngOnInit():void
@@ -29,10 +46,10 @@ export class AppComponent implements OnInit
 
         let routeArray = [];
 
-        this._routeResolver.data.forEach((data) =>
+        this._routeResolver.dataJson.forEach((data) =>
         {
-            let module:ModuleWithProviders;
-            let module2:ModuleWithProviders;
+            let module:ModuleWithProviders = this._dynamicModuleBuilderService.createPluginModule(this._routeResolver.noExampleHtml,
+                data.name);
 
             let objData = {
                 path:      data.name,
@@ -51,7 +68,7 @@ export class AppComponent implements OnInit
                         path:      'overview',
                         component: OverviewComponent,
                         data:      {
-                            overviewModule: module2,
+                            overviewModule: module,
                             htmlPath:       data.pathExampleHtml,
                             cssPath:        data.pathExampleCss,
                             tsPath:         data.pathExampleTs,
@@ -81,8 +98,6 @@ export class AppComponent implements OnInit
                 ],
             };
 
-            this.router.config.push(objData);
-
             routeArray.push(objData);
 
             //}).subscribe((res:any) =>
@@ -100,5 +115,15 @@ export class AppComponent implements OnInit
             //);
 
         });
+
+
+        for(let views of this._mainViews)
+        {
+            routeArray.push(views);
+        }
+
+        //this.router.config.push(objData);
+        this.router.resetConfig(routeArray);
+
     }
 }

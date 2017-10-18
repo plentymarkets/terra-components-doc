@@ -19,10 +19,10 @@ import { Http } from '@angular/http';
 
 
 @Component({
-               selector:  'dynamic-module-loader',
-               template:  require('./dynamic-module-loader.component.html'),
-               styleUrls: ['./dynamic-module-loader.component.scss']
-           })
+    selector:  'dynamic-module-loader',
+    template:  require('./dynamic-module-loader.component.html'),
+    styleUrls: ['./dynamic-module-loader.component.scss']
+})
 export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, OnInit
 {
     @ViewChild('viewChildTarget', {read: ViewContainerRef}) viewChildTarget;
@@ -57,9 +57,9 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._temp = '';
         this._htlmPath = '';
         this._cssPath = '';
-        this._htmlCode ='';
-        this._cssCode ='';
-        this._typescriptCode='';
+        this._htmlCode = '';
+        this._cssCode = '';
+        this._typescriptCode = '';
         this._typescripPath = '';
         this._isActive = false;
         this._isActiveButton = false;
@@ -84,7 +84,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     private htmlStringEscape(s:string):string
     {
-        return s.replace(/[&"<>]/g, function(c) {
+        return s.replace(/[&"<>]/g, function(c)
+        {
             return {
                 '&': "&amp;",
                 '"': "&quot;",
@@ -101,30 +102,33 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
 
-        this.http.get(this._htlmPath).finally(
-            () =>
-            {
-                this.checkTemplate(this._htmlCode);
-            }).subscribe((res:any) => {
+        this.http.get(this._htlmPath).finally(() =>
+        {
+            this.checkTemplate(this._htmlCode);
+        }).subscribe((res:any) =>
+        {
             this._htmlCode = res.text();
             this._htmlHighlight = this.htmlStringEscape(this._htmlCode);
             this._htmlHighlight = `<pre><code class="xml highlight">${this._htmlHighlight}</code></pre>`;
             this.checkTemplate(this._htmlCode);
         });
+
         this.http.get(this._cssPath).finally(
             () =>
             {
                 this.checkTemplate(this._cssCode);
-            }).subscribe((res:any) => {
+            }).subscribe((res:any) =>
+        {
             this._cssCode = res.text();
             this._cssHighlight = `<pre><code class="css highlight">${this._cssCode}</code></pre>`;
             this.checkTemplate(this._cssCode);
         });
-        this.http.get(this._typescripPath).finally(
-            () =>
-            {
-                this.checkTemplate(this._typescriptCode);
-            }).subscribe((res:any) => {
+
+        this.http.get(this._typescripPath).finally(() =>
+        {
+            this.checkTemplate(this._typescriptCode);
+        }).subscribe((res:any) =>
+        {
             this._typescriptCode = res.text();
             this._tsHighlight = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
             this.checkTemplate(this._typescriptCode);
@@ -153,7 +157,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     private loadComponentData(data:Data):void
     {
-        data.subscribe((resolveData) => {
+        data.subscribe((resolveData) =>
+        {
             this._moduleWithProviders = resolveData.module as ModuleWithProviders;
             this.updateComponent();
         });
@@ -162,8 +167,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     public updateComponent():void
     {
         this._jitCompiler.compileModuleAndAllComponentsAsync(this._moduleWithProviders.ngModule)
-            .then((moduleWithFactories:ModuleWithComponentFactories<any>) => {
-                moduleWithFactories.componentFactories.forEach((factory) => {
+            .then((moduleWithFactories:ModuleWithComponentFactories<any>) =>
+            {
+                moduleWithFactories.componentFactories.forEach((factory) =>
+                {
                     if(factory.componentType.name === 'CustomDynamicComponent')
                     {
                         this._componentRef = this.viewChildTarget.createComponent(factory);
