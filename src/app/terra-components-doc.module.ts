@@ -9,10 +9,10 @@ import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MainviewComponent } from './mainview/mainview.component';
-import { OverviewComponent } from './templates/overview/overview.template';
-import { ApiComponent } from './templates/api/api.template';
+import { SidebarComponent } from './view/sidebar/sidebar.component';
+import { MainviewComponent } from './view/mainview/mainview.component';
+import { OverviewComponent } from './view/overview/overview.template';
+import { ApiComponent } from './view/api/api.template';
 import { RoutingService } from './routing-service.component';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
@@ -21,8 +21,8 @@ import {
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './icons/iconview.component';
-import { GuideComponent } from './guide/guide.component';
+import { IconviewComponent } from './view/icons/iconview.component';
+import { GuideComponent } from './view/guide/guide.component';
 import { RouteResolver } from './core/resolve/route.resolver';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function

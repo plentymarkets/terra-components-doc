@@ -3,15 +3,15 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { ApiComponent } from './templates/api/api.template';
+import { ApiComponent } from './view/api/api.template';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { OverviewComponent } from './templates/overview/overview.template';
-import { MainviewComponent } from './mainview/mainview.component';
+import { OverviewComponent } from './view/overview/overview.template';
+import { MainviewComponent } from './view/mainview/mainview.component';
 import { RouteResolver } from './core/resolve/route.resolver';
 import { Router } from '@angular/router';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
-import { IconviewComponent } from './icons/iconview.component';
-import { GuideComponent } from './guide/guide.component';
+import { IconviewComponent } from './view/icons/iconview.component';
+import { GuideComponent } from './view/guide/guide.component';
 
 @Component({
     selector: 'app-component',

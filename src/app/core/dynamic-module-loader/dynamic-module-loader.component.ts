@@ -79,7 +79,6 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         {
             this._buttonDisable = false;
         }
-        console.log(this._buttonDisable);
     }
 
     private htmlStringEscape(s:string):string
@@ -113,11 +112,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             this.checkTemplate(this._htmlCode);
         });
 
-        this.http.get(this._cssPath).finally(
-            () =>
-            {
-                this.checkTemplate(this._cssCode);
-            }).subscribe((res:any) =>
+        this.http.get(this._cssPath).finally(() =>
+        {
+            this.checkTemplate(this._cssCode);
+        }).subscribe((res:any) =>
         {
             this._cssCode = res.text();
             this._cssHighlight = `<pre><code class="css highlight">${this._cssCode}</code></pre>`;
