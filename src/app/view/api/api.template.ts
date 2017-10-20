@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 @Component({
     selector: 'api-template',
     template: require('./api.template.html'),
+    // scss file for this component is the 'index.glob.scss'
 })
 export class ApiComponent
 {
