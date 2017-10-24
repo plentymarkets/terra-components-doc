@@ -5,10 +5,12 @@
 {
     margin-left: 20px;
 }
+
 .docs-api-property-type
 {
 
 }
+
 .docs-api-properties-table
 {
     
@@ -46,41 +48,46 @@
         background-color: white;
         &:hover
         {
-            background-color:  lightgray;
+            background-color: lightgray;
         }
     }
 }
+
 .docs-api-module-import
 {
-    display:inline-block;
+    display: inline-block;
     color: #008EBD;
-    font-size:22px;
+    font-size: 22px;
     background-color: #FAFAFA;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    padding:0px 5px 0px 5px;
+    padding: 0px 5px 0px 5px;
     
 }
+
 .docs-api-input-marker
 {
     color: black;
     display: inline-block;
     padding-right: 20px;
 }
+
 .docs-api-output-marker
 {
     display: inline-block;
     padding-right: 20px;
 }
+
 .docs-api-property-name
 {
     display: inline-block;
     
 }
+
 .docs-api-property-name
 {
-    font-style:normal !important;
+    font-style: normal !important;
 }
 
 
