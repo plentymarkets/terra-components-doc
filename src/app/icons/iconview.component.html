@@ -1,12 +1,8 @@
 <div class="icon-container">
-    <div *ngFor="let iconName of _newIconArray">
-        <div class="glyph fs1">
-            <div class="clearfix bshadow0 pbs">
+    <div class="icon-list" *ngFor="let iconName of _newIconArray">
             <span [ngClass]="iconName.icon">
                 <span [ngClass]="path" *ngFor="let path of iconName.path"></span>
             </span>
-                <span class="mls">{{iconName.icon}}</span>
-            </div>
-        </div>
+        <span class="icon-name">{{iconName.icon}}</span>
     </div>
 </div>
