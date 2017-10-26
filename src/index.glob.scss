@@ -1,9 +1,18 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
-@import '../node_modules/@plentymarkets/terra-components/index.glob.scss';
+@import 'index.glob.zlk.scss';
 
 body
 {
     overflow-y: hidden;
+    ::-webkit-scrollbar {display:none;}
+}
+// example
+.code_section
+{
+    pre
+    {
+        margin: 0;
+    }
 }
 .docs-api-deprecated-marker
 {
@@ -39,7 +48,7 @@ body
 .method-docs-api-deprecated-marker
 {
     padding: 0 10px 0 5px;
-    font-size: 15px;
+    font-size: 90%;
     color: red;
 }
 .method-loop-border
@@ -52,6 +61,7 @@ body
 {
     padding-left: 5px;
 }
+
 .docs-api-method-table
 {
     .docs-api-method-description-cell
@@ -103,6 +113,7 @@ body
     th
     {
         padding: 0 10px 0 10px;
+        font-size:20px;
     }
     td
     {

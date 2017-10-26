@@ -10,16 +10,18 @@
         </div>
         <div id="codeBlock">
             <div [class.active]="_temp === _htmlHighlight">
-                <section [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
+                <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
             </div>
             <div [class.active]="_temp === _cssHighlight">
-                <section [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
+                <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
             </div>
             
             <div [class.active]="_temp === _tsHighlight">
-                <section [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
+                <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
             </div>
         </div>
     </div>
-    <div #viewChildTarget class="htmlExample"></div>
+    <div class="htmlExample">
+        <div #viewChildTarget></div>
+    </div>
 </div>
