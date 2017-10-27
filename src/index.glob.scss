@@ -6,7 +6,7 @@ body
     overflow-y: hidden;
     ::-webkit-scrollbar {display:none;}
 }
-// example
+
 .code_section
 {
     pre
@@ -79,7 +79,7 @@ body
     margin-top: 50px;
     width: auto;
     min-width: 900px;
-    background-color: #F2F2F2;
+    background-color: #777777;
     height: 48px;
 }
 
@@ -91,7 +91,7 @@ body
     
     .api-inner-content
     {
-        border: 3px solid #FAFAFA;
+        border: 3px solid #fafafa;
         border-top: none;
     }
 }

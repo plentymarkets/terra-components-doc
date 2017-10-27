@@ -1,15 +1,9 @@
 # developer guide #
-* [general information](guideview#general)
 * [create an example for a terra-component](guideview#example)
 * [add description to a method or property](guideview#description)
 * [set component, method or property to deprecated](guideview#deprecated)
 
 
-## <a name="general"></a> general information
-
-* "Terra-Components-Doc" is used to dynamically create a documentation 
-for all existing Terra components.
-* if you add or change some code in a component it automatically updates the api at the documentation.
 
 ## <a name="example"></a> how to create an example
 
@@ -58,10 +52,12 @@ for all existing Terra components.
 
 ## <a name="description"></a> how to add a description
 
-* the description has to be directly over the function or property that you want to add it to
+* the `@description` tag has to be directly over the function or property that you want to add it to.
 
 <space>
 <img src="../src/app/assets/images/step6.png" width="1000px height="200px""> 
 
-## <a name="deprecated"></a> how to deprecate 
+## <a name="deprecated"></a> how to set deprecated
 
+* the `@deprecated` tag has to be placed directly on top of the function or property.
+* you can also add the `@deprecated` tag to whole component to declare it deprecated.
