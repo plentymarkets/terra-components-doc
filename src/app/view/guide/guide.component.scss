@@ -2,11 +2,12 @@
 .content
 {
     display: grid;
+    height: calc(100vh - 53px );
+    overflow-y: scroll;
 }
 
 .markdown
 {
-    font-family: "plenty", Helvetica, Arial, sans-serif !important;
     margin-top: 40px;
     margin-left: 40px;
     margin-right: 40px;
