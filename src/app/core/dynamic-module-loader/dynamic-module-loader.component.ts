@@ -38,7 +38,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _isActive:boolean;
     private _isActiveButton:boolean;
     private _buttonDisable:boolean;
-
+    private _codeIcon:string;
 
     private _htlmPath:string;
     private _cssPath:string;
@@ -67,6 +67,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._tsHighlight = '';
         this._htmlHighlight = '';
         this._cssHighlight = '';
+        this._codeIcon = '';
     }
 
     private checkTemplate(str:string):void
@@ -100,6 +101,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._cssPath = this._activatedRoute.routeConfig.data.cssPath;
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
+        this._codeIcon = '</>';
 
         this.http.get(this._htlmPath).finally(() =>
         {
