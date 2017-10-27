@@ -11,15 +11,8 @@ div#content
         width: auto;
         min-width: 900px;
         background-color: #F2F2F2;
-        padding: 5px;
+        height: 48px;
         
-        h1
-        {
-            color: #555555;
-            float: left;
-            margin: 0;
-            line-height: 48px;
-        }
         .button
         {
             float: right;
@@ -45,7 +38,7 @@ div#content
     div#codeContainer
     {
         display: none;
-        
+        padding:0;
         div#tabMenu
         {
             border-bottom: 2px solid #F2F2F2;
@@ -64,6 +57,10 @@ div#content
                     background-color: #F2F2F2;
                     color: #008EBD;
                 }
+                &:focus
+                {
+                    outline: none;
+                }
             }
             
         }
@@ -72,21 +69,15 @@ div#content
         {
             div, pre, code
             {
+               
                 display: none;
             }
-            //pre
-            //{
-            //    padding: 0.2rem 0.4rem;
-            //    font-size: 90%;
-            //    color: #BD4147;
-            //    background-color: #FAFAFA;
-            //    border-radius: 0.25rem;
-            //}
         }
     }
     .active
     {
         display: block !important;
+        
     }
     .activeButton
     {
@@ -94,6 +85,8 @@ div#content
     }
     .htmlExample
     {
-        margin-top: 20px;
+         padding: 40px;
+         border: 3px solid #fafafa;
+         border-top: none;
     }
 }

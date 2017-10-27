@@ -1,51 +1,148 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
-@import '../node_modules/@plentymarkets/terra-components/index.glob.scss';
+@import 'index.glob.zlk.scss';
 
+body
+{
+    overflow-y: hidden;
+    ::-webkit-scrollbar {display:none;}
+}
+// example
+.code_section
+{
+    pre
+    {
+        margin: 0;
+    }
+}
+.docs-api-deprecated-marker
+{
+    padding-right: 10px;
+    font-size: 15px;
+    color: red;
+}
+.docs-api-deprecated-container
+{
+    background-color: #FAFAFA;
+    border-radius: 0.25rem;
+    margin-bottom: 40px;
+    color: red;
+    span
+    {
+        font-size: 25px;
+    }
+    .icon-info
+    {
+        padding-left: 10px;
+        color: lightgray;
+    }
+    .deprecated-first-tag
+    {
+        padding: 0 10px 0 10px;
+    }
+}
+
+.docs-api-method-header
+{
+    margin-bottom: 20px;
+}
+.method-docs-api-deprecated-marker
+{
+    padding: 0 10px 0 5px;
+    font-size: 90%;
+    color: red;
+}
+.method-loop-border
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 2px solid #f2f2f2;
+}
+.public-tag
+{
+    padding-left: 5px;
+}
+
+.docs-api-method-table
+{
+    .docs-api-method-description-cell
+    {
+        font-style: italic;
+    }
+    p
+    {
+        padding: 0;
+        margin: 0;
+    }
+}
+.api-banner
+{
+    margin-top: 50px;
+    width: auto;
+    min-width: 900px;
+    background-color: #F2F2F2;
+    height: 48px;
+}
+
+.api-content
+{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    
+    .api-inner-content
+    {
+        border: 3px solid #FAFAFA;
+        border-top: none;
+    }
+}
 .docs-api
 {
-    margin-left: 20px;
+    margin: 40px;
+    font-size: 20px !important;
 }
 
 .docs-api-property-type
 {
-
+    padding: 0;
+    font-size: 15px;
 }
 
 .docs-api-properties-table
 {
-    
-    tr
+    margin-bottom: 20px;
+    th
     {
-        
-        &:hover
-        {
-            background-color: lightgray;
-        }
-        background-color: #F2F2F2;
+        padding: 0 10px 0 10px;
+        font-size:20px;
     }
     td
     {
+        line-height: 45px;
+        font-size: 15px;
+        padding: 0 10px 0 10px;
+     
         p
         {
-            margin: 0px;
+            font-size: 15px;
+            margin: 0;
             font-style: italic;
         }
-        line-height: 45px;
-        font-size: 20px;
-        padding: 0px 10px 0px 10px;
     }
-    th
+    tr
     {
-        background-color: #F2F2F2;
+        min-width: 300px;
+        font-weight: normal;
+        padding-left: 10px;
+        background-color: #f2f2f2 !important;
         &:hover
         {
-            background-color: #F2F2F2;
+            background-color: lightgray;
         }
         line-height: 45px;
     }
     tr:nth-child(even)
     {
-        background-color: white;
+        background-color: white !important;
         &:hover
         {
             background-color: lightgray;
@@ -55,15 +152,7 @@
 
 .docs-api-module-import
 {
-    display: inline-block;
-    color: #008EBD;
-    font-size: 22px;
-    background-color: #FAFAFA;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    padding: 0px 5px 0px 5px;
-    
+    font-size: 20px;
 }
 
 .docs-api-input-marker

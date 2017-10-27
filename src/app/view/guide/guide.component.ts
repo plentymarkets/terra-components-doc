@@ -15,6 +15,6 @@ export class GuideComponent implements OnInit
     ngOnInit()
     {
 
-        this._overviewMarkDownPath = './src/app/guide/readme-de.md';
+        this._overviewMarkDownPath = './src/app/view/guide/readme-de.md';
     }
 }

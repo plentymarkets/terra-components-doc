@@ -9,12 +9,10 @@ body
     width: 250px;
     background-color: white;
     border-right: 2px solid #E0E0E0;
-    // overflow-y:scroll;
-    //height: 100%;
 }
-
 .sidebar-nav
 {
+    
     border-bottom: 2px solid #E0E0E0;
     ul
     {
@@ -52,6 +50,8 @@ body
     padding: 0;
     margin: 0;
     text-transform: capitalize;
+    overflow-y: scroll;
+    height: calc(100vh - 53px);
     
     li
     {
@@ -75,7 +75,7 @@ body
         {
             text-decoration: none;
             color: #555555;
-            font-size: 20px;
+            font-size: 15px;
         }
     }
     li.is-active a
