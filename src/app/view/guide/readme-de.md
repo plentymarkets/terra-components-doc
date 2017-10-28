@@ -47,7 +47,7 @@
 	
 <space>
 <img src="../src/app/assets/images/step5.png" width="1000px height="200px""> 
-
+<space>
 <space>
 
 ## <a name="description"></a> how to add a description
@@ -61,3 +61,6 @@
 
 * the `@deprecated` tag has to be placed directly on top of the function or property.
 * you can also add the `@deprecated` tag to whole component to declare it deprecated.
+
+<space>
+<img src="../src/app/assets/images/step7.png" width="1000px height="200px""> 
