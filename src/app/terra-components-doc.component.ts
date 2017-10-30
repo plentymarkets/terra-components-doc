@@ -50,49 +50,16 @@ export class AppComponent implements OnInit
 
             let objData = {
                 path:      data.name,
-                component: MainviewComponent,
+                component: DynamicPluginLoaderComponent,
                 data:      {
                     apiPath:       data.path,
-                    componentName: data.name
-                },
-                children:  [
-                    {
-                        path:       '',
-                        redirectTo: 'overview',
-                        pathMatch:  'full'
-                    },
-                    {
-                        path:      'overview',
-                        component: OverviewComponent,
-                        data:      {
-                            overviewModule: module,
-                            htmlPath:       data.pathExampleHtml,
-                            cssPath:        data.pathExampleCss,
-                            tsPath:         data.pathExampleTs,
-                            componentName:  data.name,
-                            OverviewMdPath: data.pathOverview
-                        }
-                    },
-                    {
-                        path:      'example',
-                        component: DynamicPluginLoaderComponent,
-                        data:      {
-                            module:        module,
-                            htmlPath:      data.pathExampleHtml,
-                            cssPath:       data.pathExampleCss,
-                            tsPath:        data.pathExampleTs,
-                            componentName: data.name
-                        }
-                    },
-                    {
-                        path:      'api',
-                        component: ApiComponent,
-                        data:      {
-                            apiPath:       data.path,
-                            componentName: data.name
-                        }
-                    },
-                ],
+                    componentName: data.name,
+                    module:        module,
+                    htmlPath:      data.pathExampleHtml,
+                    cssPath:       data.pathExampleCss,
+                    tsPath:        data.pathExampleTs,
+                    OverviewMdPath: data.pathOverview
+                }
             };
 
             routeArray.push(objData);

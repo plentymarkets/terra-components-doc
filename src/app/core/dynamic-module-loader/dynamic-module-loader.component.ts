@@ -42,8 +42,12 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     private _htlmPath:string;
     private _cssPath:string;
+    private _apiPath:string;
     private _typescripPath:string;
     private _componentName:string;
+    private _apiHtml:any;
+    private _overviewMarkDownPath:string;
+    private _isMarkDownPath:boolean;
 
     private _tsHighlight:string;
     private _htmlHighlight:string;
@@ -68,6 +72,15 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._htmlHighlight = '';
         this._cssHighlight = '';
         this._codeIcon = '';
+
+        this._componentName = _activatedRoute.routeConfig.data.componentName;
+        this._apiPath = _activatedRoute.routeConfig.data.apiPath;
+
+        http.get(this._apiPath).subscribe((res:any) =>
+        {
+            this._apiHtml = res.text();
+        });
+
     }
 
     private checkTemplate(str:string):void
@@ -133,6 +146,9 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             this._tsHighlight = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
             this.checkTemplate(this._typescriptCode);
         });
+        this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
+
+        this._isMarkDownPath = true;
     }
 
     ngAfterViewInit()

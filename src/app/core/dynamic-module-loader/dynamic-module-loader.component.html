@@ -1,27 +1,21 @@
-<div id="content">
-    <div id="banner">
-        <button class="button" (click)='showCodeMenu()'>{{_codeIcon}}</button>
+<div class="content_container">
+    <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
+</div>
+<div class="content_container">
+    <div #viewChildTarget></div>
+</div>
+<div class="content_container">
+    <div>
+        <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
     </div>
-    <div id="codeContainer" [class.active]="_isActive === true">
-        <div id="tabMenu">
-            <button [class.activeButton]="_temp === _htmlHighlight " (click)="showCode('Html')">HTML</button>
-            <button [class.activeButton]="_temp === _cssHighlight " (click)="showCode('Css')">CSS</button>
-            <button [class.activeButton]="_temp === _tsHighlight " (click)="showCode('Typescript')">TS</button>
-        </div>
-        <div id="codeBlock">
-            <div [class.active]="_temp === _htmlHighlight">
-                <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
-            </div>
-            <div [class.active]="_temp === _cssHighlight">
-                <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
-            </div>
-            
-            <div [class.active]="_temp === _tsHighlight">
-                <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
-            </div>
-        </div>
+    <div>
+        <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
     </div>
-    <div class="htmlExample">
-        <div #viewChildTarget></div>
+    
+    <div>
+        <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
     </div>
+</div>
+<div class="content_container">
+    <div [innerHTML]="_apiHtml"></div>
 </div>
