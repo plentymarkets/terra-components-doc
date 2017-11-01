@@ -3,10 +3,7 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { ApiComponent } from './view/api/api.template';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { OverviewComponent } from './view/overview/overview.component';
-import { MainviewComponent } from './view/mainview/mainview.component';
 import { RouteResolver } from './core/resolve/route.resolver';
 import { Router } from '@angular/router';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
