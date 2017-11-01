@@ -1,5 +1,6 @@
 <div class="main_view">
-    <h2>{{_componentName}}</h2>
+    
+    <h2 class="main_header">{{_componentName}}</h2>
     <hr>
     <div class="markdown_container">
         <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
@@ -48,7 +49,7 @@
             <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
         </div>
     </div>
-    <div class="content_container">
+    <div class="api_container">
         <div [innerHTML]="_apiHtml"></div>
     </div>
 </div>

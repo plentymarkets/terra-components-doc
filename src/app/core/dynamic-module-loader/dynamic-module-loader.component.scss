@@ -3,7 +3,10 @@
     margin-left: 200px;
     margin-right: 100px;
     width: 900px;
-    
+    .main_header
+    {
+        margin-top: 20px;
+    }
     ::-webkit-scrollbar
       {
           background-color: #2B2B2B;
@@ -17,9 +20,10 @@
     
     .example_container
     {
+        padding: 20px;
         margin-bottom: 20px;
-        padding: 40px;
         background-color: #F3F3F3;
+        min-height: 100px;
     }
     .markdown_container
     {
@@ -46,9 +50,15 @@
         .code_section
         {
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             max-height: 400px;
             overflow-y: scroll;
+           
         }
     }
+    .api_container
+    {
+    
+    }
+    
 }
