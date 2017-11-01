@@ -1,15 +1,33 @@
 <div class="sidebar">
     <div>
-        <p class="h4">components<span [class.icon-move_up]="_showListValue === true"
-                                      [class.icon-move_down]="_showListValue === false"
-                                      (click)="showList()"></span></p>
+        <p class="h4">components
+            <span [class.icon-move_up]="_showListValue === true"
+                  [class.icon-move_down]="_showListValue === false"
+                  (click)="showList()"></span>
+        </p>
         <ul class="component_list" [class.show_button]="_showListValue === false">
             
             <li *ngFor="let componentList of _routeResolver.dataJson" routerLink="/{{componentList.name}}"
                 routerLinkActive="is-active">
                 <a>{{componentList.name}}</a>
+                <ul>
+                    <li>
+                        <a href="{{'/' + componentList.name + '#example'}}" id="back">Example</a>
+                    </li>
+                    <li>
+                        <a href="{{'/' + componentList.name + '#htmlcode'}}">Html-Code</a>
+                    </li>
+                    <li>
+                        <a href="{{'/' + componentList.name + '#scsscode'}}">Scss-Code</a>
+                    </li>
+                    <li>
+                        <a href="{{'/' + componentList.name + '#typescriptcode'}}">Typescript-Code</a>
+                    </li>
+                    <li>
+                        <a href="{{'/' + componentList.name + '#api'}}">Api</a>
+                    </li>
+                </ul>
             </li>
-            
         </ul>
         <p class="h4">icons</p>
         <ul class="component_list">

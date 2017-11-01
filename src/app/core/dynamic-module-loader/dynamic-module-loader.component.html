@@ -1,37 +1,14 @@
 <div class="main_view">
     <h2>{{_componentName}}</h2>
     <hr>
-    <div class="description_container">
-        <div class="anchor_links">
-            <ul>
-                <li>
-                    <a href="#">1. Example</a>
-                </li>
-                <li>
-                    <a href="#">2. Html-Code</a>
-                </li>
-                <li>
-                    <a href="#">3. Scss-Code</a>
-                </li>
-                <li>
-                    <a href="#">4. Typescript-Code</a>
-                </li>
-                <li>
-                    <a href="#">5. Api</a>
-                </li>
-            </ul>
-        </div>
-        <div class="markdown_container">
-            <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
-        </div>
-    </div>
-    <h4>Example</h4>
+    <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
+    
+    <h4 id="example">Example</h4>
     <div class="example_container">
         <div #viewChildTarget></div>
     </div>
-    
     <div class="code_container">
-        <div class="code_header">
+        <div id="htmlcode" class="code_header">
             <span class="h4">Html</span>
             <terra-button
                 class="copy_to_clip_button"
@@ -44,7 +21,7 @@
             <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
         </div>
         
-        <div class="code_header">
+        <div id="scsscode" class="code_header">
             <span class="h4">Scss</span>
             <terra-button
                 class="copy_to_clip_button"
@@ -53,7 +30,7 @@
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
-        <div>
+        <div id="typescriptcode">
             <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
         </div>
         <div class="code_header">
@@ -69,7 +46,7 @@
             <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
         </div>
     </div>
-    <div class="content_container">
+    <div class="content_container" id="api">
         <div [innerHTML]="_apiHtml"></div>
     </div>
 </div>
