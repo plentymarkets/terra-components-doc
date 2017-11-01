@@ -1,21 +1,36 @@
-<div class="content_container">
-    <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
-</div>
-<div class="content_container">
-    <div #viewChildTarget></div>
-</div>
-<div class="content_container">
-    <div>
-        <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
+<div class="main_view">
+    <h2>{{_componentName}}</h2>
+    <hr>
+    <div class="markdown_container">
+        <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     </div>
-    <div>
-        <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
+    <h5>example</h5>
+    <div class="example_container">
+        <div #viewChildTarget></div>
     </div>
     
-    <div>
-        <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
+    <h5>code</h5>
+    <div class="code_container">
+        <div class = "code_header">
+            <h6>html</h6>
+        </div>
+        <div>
+            <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
+        </div>
+        <div class = "code_header">
+            <h6>scss</h6>
+        </div>
+        <div>
+            <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
+        </div>
+        <div class = "code_header">
+            <h6>typescript</h6>
+        </div>
+        <div>
+            <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
+        </div>
     </div>
-</div>
-<div class="content_container">
-    <div [innerHTML]="_apiHtml"></div>
+    <div class="content_container">
+        <div [innerHTML]="_apiHtml"></div>
+    </div>
 </div>

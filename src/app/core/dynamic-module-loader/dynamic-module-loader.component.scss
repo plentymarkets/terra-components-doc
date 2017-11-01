@@ -1,4 +1,32 @@
-.content_container
+.main_view
 {
-    max-width: 1000px;
+    
+    margin-left: 200px;
+    margin-right: 20px ;
+    width: 1000px;
+    
+    .example_container
+    {
+        padding: 40px;
+        background-color: #F3F3F3;
+        margin:20px;
+    }
+    .markdown_container
+    {
+    
+    }
+    .code_container
+    {
+        .code_header
+        {
+            background-color: #F3F3F3;
+        }
+        .code_section
+        {
+            font-size: 20px;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+    }
 }

@@ -5,10 +5,10 @@ body
 
 .sidebar
 {
-    float: left;
+    float: right;
     width: 250px;
     background-color: white;
-    border-right: 2px solid #E0E0E0;
+    border-left: 2px solid #E0E0E0;
 }
 .sidebar-nav
 {
@@ -50,8 +50,7 @@ body
     padding: 0;
     margin: 0;
     text-transform: capitalize;
-    overflow-y: scroll;
-    height: calc(100vh - 53px);
+    height: 100%;
     
     li
     {
