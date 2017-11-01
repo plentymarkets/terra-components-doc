@@ -44,7 +44,7 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         DynamicPluginLoaderComponent
     ],
     exports:         [
-        RouterModule
+        RouterModule,
     ],
     imports:         [
         BrowserModule,

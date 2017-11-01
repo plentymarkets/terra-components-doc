@@ -11,20 +11,32 @@
     
     <h5>code</h5>
     <div class="code_container">
-        <div class = "code_header">
+        <div class="code_header">
             <h6>html</h6>
+            <terra-button
+                (click)="copyText(_htmlCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
         </div>
         <div>
             <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
         </div>
-        <div class = "code_header">
+        <div class="code_header">
             <h6>scss</h6>
+            <terra-button
+                (click)="copyText(_cssCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
         </div>
         <div>
             <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
         </div>
-        <div class = "code_header">
+        <div class="code_header">
             <h6>typescript</h6>
+            <terra-button
+                (click)="copyText(_typescriptCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
         </div>
         <div>
             <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
@@ -34,3 +46,5 @@
         <div [innerHTML]="_apiHtml"></div>
     </div>
 </div>
+
+

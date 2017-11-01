@@ -14,9 +14,8 @@ import {
     Data
 } from '@angular/router';
 import { JitCompiler } from '@angular/compiler';
-import { TranslationService } from 'angular-l10n';
 import { Http } from '@angular/http';
-
+import { Clipboard } from 'ts-clipboard';
 
 @Component({
     selector:  'dynamic-module-loader',
@@ -55,7 +54,6 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
-                public translation:TranslationService,
                 public http:Http)
     {
         this._temp = '';
@@ -81,31 +79,6 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             this._apiHtml = res.text();
         });
 
-    }
-
-    private checkTemplate(str:string):void
-    {
-        if(str == '')
-        {
-            this._buttonDisable = true;
-        }
-        else
-        {
-            this._buttonDisable = false;
-        }
-    }
-
-    private htmlStringEscape(s:string):string
-    {
-        return s.replace(/[&"<>]/g, function(c)
-        {
-            return {
-                '&': "&amp;",
-                '"': "&quot;",
-                '<': "&lt;",
-                '>': "&gt;"
-            }[c];
-        });
     }
 
     ngOnInit()
@@ -171,6 +144,31 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         }
     }
 
+    private checkTemplate(str:string):void
+    {
+        if(str == '')
+        {
+            this._buttonDisable = true;
+        }
+        else
+        {
+            this._buttonDisable = false;
+        }
+    }
+
+    private htmlStringEscape(s:string):string
+    {
+        return s.replace(/[&"<>]/g, function(c)
+        {
+            return {
+                '&': "&amp;",
+                '"': "&quot;",
+                '<': "&lt;",
+                '>': "&gt;"
+            }[c];
+        });
+    }
+
     private loadComponentData(data:Data):void
     {
         data.subscribe((resolveData) =>
@@ -228,4 +226,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
                 break;
         }
     }
+
+    public copyText(text):void
+    {
+        Clipboard.copy(text);
+    }
+
 }
