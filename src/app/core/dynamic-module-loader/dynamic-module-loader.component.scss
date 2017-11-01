@@ -5,13 +5,13 @@
     width: 900px;
     
     ::-webkit-scrollbar
-      {
-          background-color: #2B2B2B;
-          width: 10px;
-      }
+    {
+        background-color: #2B2B2B;
+        width: 10px;
+    }
     ::-webkit-scrollbar-thumb
     {
-        background: #c1c1c1;
+        background: #C1C1C1;
         border-radius: 5px;
     }
     
@@ -23,6 +23,15 @@
     }
     .markdown_container
     {
+    }
+    .description_container
+    {
+        margin-bottom: 50px;
+        .anchor_links
+        {
+            float: left;
+            margin-right: 50px;
+        }
     }
     .code_container
     {
