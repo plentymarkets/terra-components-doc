@@ -1,25 +1,47 @@
 .main_view
 {
-    
     margin-left: 200px;
-    margin-right: 20px ;
-    width: 1000px;
+    margin-right: 100px;
+    width: 900px;
+    
+    ::-webkit-scrollbar
+      {
+          background-color: #2B2B2B;
+          width: 10px;
+      }
+    ::-webkit-scrollbar-thumb
+    {
+        background: #c1c1c1;
+        border-radius: 5px;
+    }
     
     .example_container
     {
+        margin-bottom: 20px;
         padding: 40px;
         background-color: #F3F3F3;
-        margin:20px;
     }
     .markdown_container
     {
-    
     }
     .code_container
     {
         .code_header
         {
+            .copy_to_clip_button
+            {
+                float: right;
+                margin-right: 5px;
+                line-height: 45px;
+            }
+            .h4
+            {
+                line-height: 45px;
+                margin-left: 5px;
+                margin-bottom: 0;
+            }
             background-color: #F3F3F3;
+            height: 45px;
         }
         .code_section
         {
