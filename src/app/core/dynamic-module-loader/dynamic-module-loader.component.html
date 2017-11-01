@@ -4,14 +4,14 @@
     <div class="markdown_container">
         <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     </div>
-    <h4>example</h4>
+    <h4>Example</h4>
     <div class="example_container">
         <div #viewChildTarget></div>
     </div>
     
     <div class="code_container">
         <div class="code_header">
-            <span class="h4">html</span>
+            <span class="h4">Html</span>
             <terra-button
                 class ="copy_to_clip_button"
                 inputTooltipText = "copy to clipboard"
@@ -24,7 +24,7 @@
         </div>
 
         <div class="code_header">
-            <span class="h4">scss</span>
+            <span class="h4">Scss</span>
             <terra-button
                 class ="copy_to_clip_button"
                 inputTooltipText = "copy to clipboard"
@@ -36,7 +36,7 @@
             <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
         </div>
         <div class="code_header">
-            <span class="h4">typescript</span>
+            <span class="h4">Typescript</span>
             <terra-button
                 class ="copy_to_clip_button"
                 inputTooltipText = "copy to clipboard"
