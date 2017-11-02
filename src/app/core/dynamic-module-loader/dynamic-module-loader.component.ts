@@ -16,6 +16,7 @@ import {
 import { JitCompiler } from '@angular/compiler';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
+import { isNullOrUndefined } from 'util';
 
 @Component({
     selector:  'dynamic-module-loader',
@@ -119,9 +120,12 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             this._tsHighlight = `<pre><code class="typescript highlight">${this._typescriptCode}</code></pre>`;
             this.checkTemplate(this._typescriptCode);
         });
-        this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
 
-        this._isMarkDownPath = true;
+        this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
+        if(!isNullOrUndefined(this._overviewMarkDownPath))
+        {
+            this._isMarkDownPath = true;
+        }
     }
 
     ngAfterViewInit()
