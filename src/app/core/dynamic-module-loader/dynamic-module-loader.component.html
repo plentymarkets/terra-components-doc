@@ -2,20 +2,18 @@
     
     <h2 class="main_header">{{_componentName}}</h2>
     <hr>
-    <div class="markdown_container">
-        <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
-    </div>
-    <h4>example</h4>
+    <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
+    
+    <h4 id="example">Example</h4>
     <div class="example_container">
         <div #viewChildTarget></div>
     </div>
-    
     <div class="code_container">
-        <div class="code_header">
-            <span class="h4">html</span>
+        <div id="htmlcode" class="code_header">
+            <span class="h4">Html</span>
             <terra-button
-                class ="copy_to_clip_button"
-                inputTooltipText = "copy to clipboard"
+                class="copy_to_clip_button"
+                inputTooltipText="copy to clipboard"
                 (click)="copyText(_htmlCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
@@ -23,24 +21,24 @@
         <div>
             <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
         </div>
-
-        <div class="code_header">
-            <span class="h4">scss</span>
+        
+        <div id="scsscode" class="code_header">
+            <span class="h4">Scss</span>
             <terra-button
-                class ="copy_to_clip_button"
-                inputTooltipText = "copy to clipboard"
+                class="copy_to_clip_button"
+                inputTooltipText="copy to clipboard"
                 (click)="copyText(_cssCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
-        <div>
+        <div id="typescriptcode">
             <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
         </div>
         <div class="code_header">
-            <span class="h4">typescript</span>
+            <span class="h4">Typescript</span>
             <terra-button
-                class ="copy_to_clip_button"
-                inputTooltipText = "copy to clipboard"
+                class="copy_to_clip_button"
+                inputTooltipText="copy to clipboard"
                 (click)="copyText(_typescriptCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>

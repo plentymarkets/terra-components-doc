@@ -10,9 +10,6 @@ import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './view/sidebar/sidebar.component';
-import { MainviewComponent } from './view/mainview/mainview.component';
-import { OverviewComponent } from './view/overview/overview.component';
-import { ApiComponent } from './view/api/api.template';
 import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
 import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
 import {
@@ -36,9 +33,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
 
 @NgModule({
     entryComponents: [
-        MainviewComponent,
-        OverviewComponent,
-        ApiComponent,
         IconviewComponent,
         GuideComponent,
         DynamicPluginLoaderComponent
@@ -59,9 +53,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
     declarations:    [
         AppComponent,
         SidebarComponent,
-        MainviewComponent,
-        OverviewComponent,
-        ApiComponent,
         IconviewComponent,
         GuideComponent,
         DynamicPluginLoaderComponent
