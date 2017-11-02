@@ -1,11 +1,10 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
 @import 'index.glob.zlk.scss';
-//
-//body
-//{
-//
-//}
-//
+
+p
+{
+    margin: 0;
+}
 .code_section
 {
     pre
@@ -13,6 +12,32 @@
         margin: 0;
     }
 }
+.codeTag
+{
+    color:#008EBD;
+}
+.method_container
+{
+    font-size: 13px;
+    background-color: #e3e3e3;
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid #ccc;
+}
+.method_description_table
+{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.docs-api-method-parameter-type
+{
+    width: 300px;
+}
+.api-class-headers
+{
+    margin-bottom: 20px;
+}
+
 //.docs-api-deprecated-marker
 //{
 //    padding-right: 10px;
