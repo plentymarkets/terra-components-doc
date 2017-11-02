@@ -1,12 +1,20 @@
-
-
 .sidebar
 {
-    margin-top: 20px;
+    top: 0;
+    right: 0;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    .h4
+    {
+        color: #4D4E53;
+    }
+    
     float: right;
     width: 250px;
     background-color: white;
 }
+
 .icon-move_up
 {
     &:hover
@@ -14,6 +22,7 @@
         cursor: pointer;
     }
 }
+
 .icon-move_down
 {
     &:hover
@@ -21,9 +30,20 @@
         cursor: pointer;
     }
 }
+
 .show_button
 {
     display: none;
+}
+
+.nav-ul
+{
+    padding-left: 0 !important;
+    display: none;
+    li
+    {
+        list-style: none;
+    }
 }
 
 .component_list
@@ -52,13 +72,25 @@
         }
         a
         {
+            text-transform: capitalize;
             text-decoration: none;
-            color: #555555;
+            color: #777777;
             font-size: 15px;
         }
     }
-    li.is-active a
+    li.is-active
     {
-        color: #008EBD !important;
+        a
+        {
+            color: #008EBD !important;
+        }
+        .nav-ul
+        {
+            a
+            {
+                color: #777777 !important;
+            }
+            display: block;
+        }
     }
 }
