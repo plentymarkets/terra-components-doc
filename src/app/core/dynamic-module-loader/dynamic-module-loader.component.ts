@@ -17,6 +17,7 @@ import { JitCompiler } from '@angular/compiler';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { isNullOrUndefined } from 'util';
+import { TerraAlertComponent } from '@plentymarkets/terra-components';
 
 @Component({
     selector:  'dynamic-module-loader',
@@ -52,6 +53,8 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _tsHighlight:string;
     private _htmlHighlight:string;
     private _cssHighlight:string;
+
+    private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
@@ -89,6 +92,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._codeIcon = '</>';
+        this._alert.closeAlertByIdentifier('info');
 
         this.http.get(this._htlmPath).finally(() =>
         {
@@ -233,7 +237,15 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     public copyText(text):void
     {
+
         Clipboard.copy(text);
+        this._alert.addAlert({
+            msg:              'Text successfully copied to Clipboard!',
+            type:             'info',
+            dismissOnTimeout: 2000,
+            identifier:       'info'
+        });
+
     }
 
 }
