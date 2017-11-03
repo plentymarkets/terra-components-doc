@@ -39,6 +39,7 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
+    "@types/interact.js": "^1.0.22",
     "@types/jasmine": "^2.6.0",
     "@types/jquery": "^3.2.13",
     "@types/node": "^8.0.34",
