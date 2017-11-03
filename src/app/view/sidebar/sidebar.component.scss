@@ -5,14 +5,13 @@
     position: fixed;
     overflow-y: scroll;
     height: 100%;
+    background-color: transparent;
+    float: right;
+    width: 250px;
     .h4
     {
         color: #4D4E53;
     }
-    
-    float: right;
-    width: 250px;
-    background-color: white;
 }
 
 .icon-move_up
@@ -74,7 +73,7 @@
         {
             text-transform: capitalize;
             text-decoration: none;
-            color: #777777;
+            color: #4d4e53;
             font-size: 15px;
         }
     }

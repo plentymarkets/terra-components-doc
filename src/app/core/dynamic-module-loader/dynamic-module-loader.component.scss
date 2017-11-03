@@ -3,10 +3,8 @@
     margin-left: 200px;
     margin-right: 100px;
     width: 65%;
-    .main_header
-    {
-        margin-top: 20px;
-    }
+    font-size: 15px !important;
+    
     ::-webkit-scrollbar
     {
         background-color: #2B2B2B;
@@ -18,6 +16,10 @@
         border-radius: 5px;
     }
     
+    .main_header
+    {
+        margin-top: 20px;
+    }
     .example_container
     {
         padding: 20px;
@@ -27,20 +29,15 @@
     }
     .markdown_container
     {
-    }
-    .description_container
-    {
-        margin-bottom: 50px;
-        .anchor_links
-        {
-            float: left;
-            margin-right: 50px;
-        }
+    
     }
     .code_container
     {
+        font-size: inherit !important;
         .code_header
         {
+            background-color: #F3F3F3;
+            height: 45px;
             .copy_to_clip_button
             {
                 float: right;
@@ -49,25 +46,16 @@
             }
             .h4
             {
-                line-height: 45px;
-                margin-left: 5px;
                 margin-bottom: 0;
+                margin-left: 5px;
+                line-height: 45px;
             }
-            background-color: #F3F3F3;
-            height: 45px;
         }
         .code_section
         {
-            font-size: 20px;
             margin-bottom: 30px;
             max-height: 400px;
             overflow-y: scroll;
-            
         }
     }
-    .api_container
-    {
-    
-    }
-    
 }

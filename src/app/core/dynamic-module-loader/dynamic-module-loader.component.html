@@ -1,6 +1,6 @@
 <div class="main_view">
     
-    <h2 class="main_header">{{_componentName}}</h2>
+    <h1 class="main_header">{{_componentName}}</h1>
     <hr>
     <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     
@@ -31,10 +31,12 @@
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
+        
         <div>
             <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
         </div>
-        <div class="code_header" >
+        
+        <div class="code_header">
             <span class="h4" id="typescriptcode">Typescript</span>
             <terra-button
                 class="copy_to_clip_button"
@@ -43,11 +45,14 @@
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
+        
         <div>
             <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
         </div>
+        
     </div>
-    <h4 id="api">API</h4>
+    
+    <h4 id="api">Api</h4>
     <div class="api_container">
         <div [innerHTML]="_apiHtml"></div>
     </div>
