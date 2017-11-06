@@ -5,6 +5,39 @@ p
 {
     margin: 0;
 }
+
+//panel warning for deprecated
+.panel
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .panel-body
+    {
+        padding: 15px;
+    }
+}
+.panel-property
+{
+    margin-top: 0;
+}
+.panel-warning
+{
+    border: 1px solid #faebcc;
+    border-radius: 5px;
+    
+    .panel-heading
+    {
+        padding: 10px 15px 5px 15px;
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+        .panel-title
+        {
+        
+        }
+    }
+}
+
 .code_section
 {
     pre
@@ -17,10 +50,7 @@ p
 {
     color:#008EBD;
 }
-.deprecated-first-tag
-{
-    color: red;
-}
+
 .method_container
 {
     font-size: inherit;
@@ -29,24 +59,13 @@ p
     border-radius: 0;
     border: 1px solid #ccc;
 }
-.docs-api-properties-table
-{
-    td
-    {
-        //color: #4d4e53;
-    }
-}
-.docs-api-deprecated-marker
-{
-    color: red;
-}
 .docs-api-deprecated-marker-container
 {
     margin-top: 5px;
 }
 .method_description_table
 {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 5px;
 }
 .docs-api-method-parameter-type
@@ -61,6 +80,17 @@ p
 {
     p
     {
-        padding-top:  5px;
+        padding-top:  10px;
+    }
+}
+.method-loop-margin
+{
+    color: rgb(77, 78, 83);
+}
+.docs-api-properties-table
+{
+    td
+    {
+        color: rgb(77, 78, 83);
     }
 }

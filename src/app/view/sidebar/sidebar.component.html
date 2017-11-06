@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div>
-        <p class="h4">Components
+        <p class="h4 sidebar-header">Components
             <span [class.icon-move_up]="_showListValue === true"
                   [class.icon-move_down]="_showListValue === false"
                   (click)="showList()"></span>
@@ -18,7 +18,7 @@
                         <a href="{{'/' + componentList.name + '#htmlcode'}}">Html</a>
                     </li>
                     <li>
-                        <a href="{{'/' + componentList.name + '#scsscode'}}">Scss</a>
+                        <a href="{{'/' + componentList.name + '#scsscode'}}">Sass</a>
                     </li>
                     <li>
                         <a href="{{'/' + componentList.name + '#typescriptcode'}}">Typescript</a>
@@ -29,11 +29,6 @@
                 </ul>
             </li>
         </ul>
-        <p class="h4">Icons</p>
-        <ul class="component_list">
-            <li routerLink="iconview">
-                <a>examples</a>
-            </li>
-        </ul>
     </div>
+    <a routerLink="iconview"><p class="h4">Icons</p></a>
 </div>

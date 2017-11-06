@@ -1,20 +1,19 @@
 .main_view
 {
-    margin-left: 200px;
-    margin-right: 100px;
-    width: 65%;
+    margin-left:10%;
+    width: 70%;
     font-size: 15px !important;
     
-    ::-webkit-scrollbar
-    {
-        background-color: #2B2B2B;
-        width: 10px;
-    }
-    ::-webkit-scrollbar-thumb
-    {
-        background: #C1C1C1;
-        border-radius: 5px;
-    }
+    //::-webkit-scrollbar
+    //{
+    //    background-color: #2B2B2B;
+    //    width: 10px;
+    //}
+    //::-webkit-scrollbar-thumb
+    //{
+    //    background: #C1C1C1;
+    //    border-radius: 5px;
+    //}
     
     .main_header
     {

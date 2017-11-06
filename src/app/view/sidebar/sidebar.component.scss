@@ -1,5 +1,18 @@
 .sidebar
 {
+    a
+    {
+        text-decoration: none;
+        &:hover
+        {
+            cursor: pointer;
+            color: #008EBD;
+        }
+    }
+    .sidebar-header
+    {
+        margin-top: 20px;
+    }
     top: 0;
     right: 0;
     position: fixed;
@@ -7,7 +20,6 @@
     height: 100%;
     background-color: transparent;
     float: right;
-    width: 250px;
     .h4
     {
         color: #4D4E53;
