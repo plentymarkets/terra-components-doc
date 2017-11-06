@@ -4,7 +4,7 @@
     <hr>
     <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     
-    <h4 id="example">Example</h4>
+    <span class ="h4" id="example">Example</span>
     <div class="example_container">
         <div #viewChildTarget></div>
     </div>
@@ -13,7 +13,6 @@
             <span class="h4">Html</span>
             <terra-button
                 class="copy_to_clip_button"
-                inputTooltipText="copy to clipboard"
                 (click)="copyText(_htmlCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
@@ -26,7 +25,6 @@
             <span class="h4">Sass</span>
             <terra-button
                 class="copy_to_clip_button"
-                inputTooltipText="copy to clipboard"
                 (click)="copyText(_cssCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
@@ -40,7 +38,6 @@
             <span class="h4" id="typescriptcode">Typescript</span>
             <terra-button
                 class="copy_to_clip_button"
-                inputTooltipText="copy to clipboard"
                 (click)="copyText(_typescriptCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
@@ -51,7 +48,7 @@
         </div>
     </div>
     
-    <h4 id="api">API</h4>
+    <span class ="h4" id="api">API</span>
     <div class="api_container">
         <div [innerHTML]="_apiHtml"></div>
     </div>

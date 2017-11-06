@@ -1,10 +1,20 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
 @import 'index.glob.zlk.scss';
 
+body{}
 p
 {
     margin: 0;
 }
+h1,h2,h3,h4,h5,h6
+{
+    font-weight: 100;
+}
+.h4
+{
+    font-weight: 100;
+}
+
 
 //panel warning for deprecated
 .panel
@@ -40,10 +50,13 @@ p
 
 .code_section
 {
+    background-color: #2B2B2B;
     pre
     {
-        font-size: inherit !important;
         margin: 0;
+        border-right: 1px solid #2b2b2b;
+        margin-right: -1px;
+        font-size: inherit !important;
     }
 }
 .codeTag
@@ -89,6 +102,10 @@ p
 }
 .docs-api-properties-table
 {
+    th
+    {
+        color: rgb(77, 78, 83);
+    }
     td
     {
         color: rgb(77, 78, 83);
