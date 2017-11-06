@@ -1,12 +1,6 @@
 <div class="sidebar">
-    <div>
-        <p class="h4 sidebar-header">Components
-            <span [class.icon-move_up]="_showListValue === true"
-                  [class.icon-move_down]="_showListValue === false"
-                  (click)="showList()"></span>
-        </p>
-        <ul class="component_list" [class.show_button]="_showListValue === false">
-            
+    <p class="h4">Components</p>
+        <ul class="component_list">
             <li *ngFor="let componentList of _routeResolver.dataJson" routerLink="/{{componentList.name}}"
                 routerLinkActive="is-active">
                 <a>{{componentList.name}}</a>
@@ -29,7 +23,6 @@
                 </ul>
             </li>
         </ul>
-    </div>
 </div>
 
 <!--<a routerLink="iconview"><p class="h4">Icons</p></a>-->

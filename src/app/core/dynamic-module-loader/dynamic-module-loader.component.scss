@@ -33,7 +33,7 @@
     {
         padding: 20px;
         margin-bottom: 20px;
-        background-color: #F3F3F3;
+        
         min-height: 100px;
     }
     .markdown_container
@@ -45,12 +45,10 @@
         font-size: inherit !important;
         .code_header
         {
-            background-color: #F3F3F3;
             height: 45px;
             .copy_to_clip_button
             {
                 float: right;
-                margin-right: 5px;
                 line-height: 45px;
             }
         }
