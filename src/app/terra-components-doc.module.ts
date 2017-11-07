@@ -9,17 +9,16 @@ import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './view/sidebar/sidebar.component';
-import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
+import { SidebarComponent } from './views/sidebar/sidebar.component';
+import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
+import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
 import {
     HighlightJsModule,
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './view/icons/iconview.component';
-import { GuideComponent } from './view/guide/guide.component';
-import { RouteResolver } from './core/resolve/route.resolver';
+import { IconviewComponent } from './views/icons/iconview.component';
+import { RouteResolver } from './views/components/resolve/route.resolver';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -34,7 +33,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
 @NgModule({
     entryComponents: [
         IconviewComponent,
-        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     exports:         [
@@ -54,7 +52,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         AppComponent,
         SidebarComponent,
         IconviewComponent,
-        GuideComponent,
         DynamicPluginLoaderComponent
     ],
     providers:       [

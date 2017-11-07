@@ -3,13 +3,12 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { DynamicPluginLoaderComponent } from './core/dynamic-module-loader/dynamic-module-loader.component';
-import { RouteResolver } from './core/resolve/route.resolver';
+import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
+import { RouteResolver } from './views/components/resolve/route.resolver';
 import { Router } from '@angular/router';
-import { DynamicModuleBuilderService } from './core/dynamic-module-builder/dynamic-module-builder.service';
-import { IconviewComponent } from './view/icons/iconview.component';
-import { GuideComponent } from './view/guide/guide.component';
-import { stathamInterface } from './core/resolve/data/statham.interface';
+import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
+import { IconviewComponent } from './views/icons/iconview.component';
+import { stathamInterface } from './views/components/resolve/data/statham.interface';
 
 @Component({
     selector: 'app-component',
@@ -28,10 +27,6 @@ export class AppComponent implements OnInit
             {
                 path:      'iconview',
                 component: IconviewComponent,
-            },
-            {
-                path:      'guideview',
-                component: GuideComponent,
             }
         ];
     }

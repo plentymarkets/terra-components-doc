@@ -2,7 +2,7 @@ import {
     Component,
     OnInit
 } from '@angular/core';
-import { RouteResolver } from '../../core/resolve/route.resolver';
+import { RouteResolver } from '../components/resolve/route.resolver';
 
 @Component(
     {

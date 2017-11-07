@@ -33,7 +33,6 @@
     {
         padding: 20px;
         margin-bottom: 20px;
-        
         min-height: 100px;
     }
     .markdown_container
@@ -42,6 +41,7 @@
     }
     .code_container
     {
+        overflow-x: hidden;
         font-size: inherit !important;
         .code_header
         {
