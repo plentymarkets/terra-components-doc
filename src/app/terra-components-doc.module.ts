@@ -19,6 +19,7 @@ import {
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconviewComponent } from './views/icons/iconview.component';
 import { RouteResolver } from './views/components/resolve/route.resolver';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -33,7 +34,8 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
 @NgModule({
     entryComponents: [
         IconviewComponent,
-        DynamicPluginLoaderComponent
+        DynamicPluginLoaderComponent,
+        LandingPageComponent
     ],
     exports:         [
         RouterModule,
@@ -52,6 +54,7 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         AppComponent,
         SidebarComponent,
         IconviewComponent,
+        LandingPageComponent,
         DynamicPluginLoaderComponent
     ],
     providers:       [

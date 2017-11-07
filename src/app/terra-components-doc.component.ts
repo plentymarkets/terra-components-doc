@@ -5,16 +5,20 @@ import {
 } from '@angular/core';
 import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
 import { RouteResolver } from './views/components/resolve/route.resolver';
-import { Router } from '@angular/router';
+import {
+    Router,
+    Routes
+} from '@angular/router';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
 import { IconviewComponent } from './views/icons/iconview.component';
 import { stathamInterface } from './views/components/resolve/data/statham.interface';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
 
 @Component({
-    selector: 'app-component',
-    template: require('./terra-components-doc.component.html'),
-    styles:   [require('./terra-components-doc.component.scss')],
-})
+               selector: 'app-component',
+               template: require('./terra-components-doc.component.html'),
+               styles:   [require('./terra-components-doc.component.scss')],
+           })
 export class AppComponent implements OnInit
 {
     private _mainViews:any;
@@ -26,17 +30,23 @@ export class AppComponent implements OnInit
         this._mainViews = [
             {
                 path:      'iconview',
-                component: IconviewComponent,
+                component: IconviewComponent
             }
+            //{
+            //    path: 'landing-page',
+            //    component: LandingPageComponent
+            //}
         ];
     }
 
     ngOnInit():void
     {
-        let routeArray = [];
+        let routeArray:Routes = [{
+            path:      '',
+            component: LandingPageComponent
+        }];
 
-        this._routeResolver.dataJson.forEach((data:stathamInterface) =>
-        {
+        this._routeResolver.dataJson.forEach((data:stathamInterface) => {
             let module:ModuleWithProviders =
                 this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
 
@@ -44,12 +54,12 @@ export class AppComponent implements OnInit
                 path:      data.name,
                 component: DynamicPluginLoaderComponent,
                 data:      {
-                    apiPath:       data.path,
-                    componentName: data.name,
-                    module:        module,
-                    htmlPath:      data.pathExampleHtml,
-                    cssPath:       data.pathExampleCss,
-                    tsPath:        data.pathExampleTs,
+                    apiPath:        data.path,
+                    componentName:  data.name,
+                    module:         module,
+                    htmlPath:       data.pathExampleHtml,
+                    cssPath:        data.pathExampleCss,
+                    tsPath:         data.pathExampleTs,
                     OverviewMdPath: data.pathOverview
                 }
             };
