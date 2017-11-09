@@ -13,6 +13,7 @@ import { DynamicModuleBuilderService } from './views/components/dynamic-module-b
 import { IconviewComponent } from './views/icons/iconview.component';
 import { stathamInterface } from './views/components/resolve/data/statham.interface';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { isNullOrUndefined } from 'util';
 
 @Component({
     selector: 'terra-components-doc',
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit
         if(process.env.ENV !== 'production')
         {
             apiUrl = 'node_modules/@plentymarkets/terra-components/';
-            exampleUrl = 'node_modules/@plentymarkets/terra-components/';
+            exampleUrl = 'node_modules/@plentymarkets/terra-components';
         }
 
         this._routeResolver.dataJson.forEach((data:stathamInterface) =>
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit
                     htmlPath:       exampleUrl + data.pathExampleHtml,
                     cssPath:        exampleUrl + data.pathExampleCss,
                     tsPath:         exampleUrl + data.pathExampleTs,
-                    OverviewMdPath: exampleUrl + data.pathOverview
+                    OverviewMdPath: !isNullOrUndefined(data.pathOverview) ? exampleUrl + data.pathOverview : void 0
                 }
             };
 

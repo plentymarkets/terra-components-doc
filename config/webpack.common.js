@@ -141,7 +141,18 @@ module.exports = function (options) {
                 {from: 'src/app/assets', to: 'assets'},
                 {from: 'node_modules/@plentymarkets/terra-components/app/assets/lang', to: 'assets/lang/terra-components/'},
                 {from: 'node_modules/@plentymarkets/terra-components/component-documentation', to: 'assets/component-documentation'},
-                {from: 'node_modules/@plentymarkets/terra-components/app/', to: 'assets/component-documentation/app'}
+                {
+                    from: 'node_modules/@plentymarkets/terra-components/app/',
+                    to: 'assets/component-documentation/app',
+                    ignore: [
+                        '*.js',
+                        '*.d.ts',
+                        '*.map',
+                        '*.map.gz',
+                        '*.component.html',
+                        '*.component.scss'
+                    ]
+                }
             ]),
 
             new LoaderOptionsPlugin({
