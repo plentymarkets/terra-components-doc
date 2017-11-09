@@ -20,6 +20,7 @@ import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconviewComponent } from './views/icons/iconview.component';
 import { RouteResolver } from './views/components/resolve/route.resolver';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { LocalizationConfig } from './core/localization/terra-localization.config';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -29,6 +30,11 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         {
         }
     });
+}
+
+export function initLocalization(localizationConfig:LocalizationConfig):Function
+{
+    return () => localizationConfig.load();
 }
 
 @NgModule({
@@ -67,6 +73,13 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
             deps:       [RouteResolver],
             multi:      true
         },
+        LocalizationConfig,
+        {
+            provide:    APP_INITIALIZER,
+            useFactory: initLocalization,
+            deps:       [LocalizationConfig],
+            multi:      true
+        }
     ],
     bootstrap:       [
         AppComponent
