@@ -140,7 +140,13 @@ module.exports = function (options) {
             new CopyWebpackPlugin([
                 {from: 'src/app/assets', to: 'assets'},
                 {from: 'node_modules/@plentymarkets/terra-components/app/assets/lang', to: 'assets/lang/terra-components/'},
-                {from: 'node_modules/@plentymarkets/terra-components/component-documentation', to: 'assets/component-documentation'},
+                {
+                    from: 'node_modules/@plentymarkets/terra-components/component-documentation',
+                    to: 'assets/component-documentation',
+                    ignore: [
+                        '*.html.gz'
+                    ]
+                },
                 {
                     from: 'node_modules/@plentymarkets/terra-components/app/',
                     to: 'assets/component-documentation/app',
@@ -150,7 +156,8 @@ module.exports = function (options) {
                         '*.map',
                         '*.map.gz',
                         '*.component.html',
-                        '*.component.scss'
+                        '*.component.scss',
+                        'assets/**/*'
                     ]
                 }
             ]),
