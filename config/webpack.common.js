@@ -10,7 +10,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 
 const METADATA = {
-    baseUrl: '/'
+    baseUrl: './'
 };
 
 module.exports = function (options) {
@@ -138,7 +138,9 @@ module.exports = function (options) {
             }),
 
             new CopyWebpackPlugin([
-                {from: 'src/app/assets', to: 'assets'}
+                {from: 'src/app/assets', to: 'assets'},
+                {from: './node_modules/@plentymarkets/terra-components/component-documentation', to: 'assets/component-documentation'},
+                {from: './node_modules/@plentymarkets/terra-components/app/', to: 'assets/component-documentation/app'}
             ]),
 
             new LoaderOptionsPlugin({

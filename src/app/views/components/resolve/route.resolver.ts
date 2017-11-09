@@ -37,8 +37,14 @@ export class RouteResolver
     {
         return new Promise((resolve) =>
         {
-            this.http.get('node_modules/@plentymarkets/terra-components/component-documentation' +
-                          '/build/statham.json').subscribe((resJson:any) =>
+            let url:string = 'assets/component-documentation/build/statham.json';
+
+            if(process.env.ENV !== 'production')
+            {
+                url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
+            }
+
+            this.http.get(url).subscribe((resJson:any) =>
             {
                 this.dataJson = resJson.json();
 

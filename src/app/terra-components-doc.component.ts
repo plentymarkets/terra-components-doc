@@ -15,10 +15,10 @@ import { stathamInterface } from './views/components/resolve/data/statham.interf
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 
 @Component({
-               selector: 'app-component',
-               template: require('./terra-components-doc.component.html'),
-               styles:   [require('./terra-components-doc.component.scss')],
-           })
+    selector: 'terra-components-doc',
+    template: require('./terra-components-doc.component.html'),
+    styles:   [require('./terra-components-doc.component.scss')],
+})
 export class AppComponent implements OnInit
 {
     private _mainViews:any;
@@ -46,7 +46,17 @@ export class AppComponent implements OnInit
             component: LandingPageComponent
         }];
 
-        this._routeResolver.dataJson.forEach((data:stathamInterface) => {
+        let apiUrl:string = 'assets/';
+        let exampleUrl:string = 'assets/component-documentation';
+
+        if(process.env.ENV !== 'production')
+        {
+            apiUrl = 'node_modules/@plentymarkets/terra-components/';
+            exampleUrl = 'node_modules/@plentymarkets/terra-components/';
+        }
+
+        this._routeResolver.dataJson.forEach((data:stathamInterface) =>
+        {
             let module:ModuleWithProviders =
                 this._dynamicModuleBuilderService.createPluginModule(data.ExampleSelector, data.name);
 
@@ -54,13 +64,13 @@ export class AppComponent implements OnInit
                 path:      data.name,
                 component: DynamicPluginLoaderComponent,
                 data:      {
-                    apiPath:        data.path,
+                    apiPath:        apiUrl + data.path,
                     componentName:  data.name,
                     module:         module,
-                    htmlPath:       data.pathExampleHtml,
-                    cssPath:        data.pathExampleCss,
-                    tsPath:         data.pathExampleTs,
-                    OverviewMdPath: data.pathOverview
+                    htmlPath:       exampleUrl + data.pathExampleHtml,
+                    cssPath:        exampleUrl + data.pathExampleCss,
+                    tsPath:         exampleUrl + data.pathExampleTs,
+                    OverviewMdPath: exampleUrl + data.pathOverview
                 }
             };
 
