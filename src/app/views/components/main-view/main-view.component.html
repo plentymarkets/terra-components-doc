@@ -3,12 +3,14 @@
     <h1 class="main_header">{{_componentName}}</h1>
     <hr>
     <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
-    
-    <span class ="h4" id="example">Example</span>
-    <div class="example_container">
-        <div #viewChildTarget></div>
+    <div *ngIf="_hideExample == false">
+        <span class ="h4" id="example">Example</span>
+        <div class="example_container">
+            <div #viewChildTarget></div>
+        </div>
     </div>
-    <div class="code_container">
+    
+    <div class="code_container" *ngIf="_hideExample == false">
         <div id="htmlcode" class="code_header">
             <span class="h4">Html</span>
             <terra-button
