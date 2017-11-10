@@ -60,6 +60,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
                 private _activatedRoute:ActivatedRoute,
                 public http:Http)
     {
+        this._alert.closeAlertByIdentifier('info')
         this._temp = '';
         this._htlmPath = '';
         this._cssPath = '';
@@ -92,7 +93,6 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._codeIcon = '</>';
-        this._alert.closeAlertByIdentifier('info');
 
         this.http.get(this._htlmPath).finally(() =>
         {
@@ -242,10 +242,11 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
         this._alert.addAlert({
             msg:              'Text successfully copied to Clipboard!',
             type:             'info',
-            dismissOnTimeout: 2000,
+            dismissOnTimeout: 3000,
             identifier:       'info'
         });
 
+        setTimeout(()=>this._alert.closeAlertByIdentifier('info'), 3000);
     }
 
 }
