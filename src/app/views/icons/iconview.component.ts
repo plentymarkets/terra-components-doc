@@ -38,7 +38,7 @@ export class IconviewComponent implements OnInit
 
     public getIconArray():Observable<any>
     {
-        return this.http.get('./node_modules/@plentymarkets/terra-components/JSON/variables.json')
+        return this.http.get('./node_modules/@plentymarkets/terra-components/components-documentation/build/variables.json')
                    .map((res:any) => res.json());
     }
 
