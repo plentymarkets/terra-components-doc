@@ -4,7 +4,7 @@
     <hr>
     <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     <div *ngIf="_hideExample == false">
-        <span class ="h4" id="example">Example</span>
+        <span class="h4" id="example">Example</span>
         <div class="example_container">
             <div #viewChildTarget></div>
         </div>
@@ -50,7 +50,7 @@
         </div>
     </div>
     
-    <span class ="h4" id="api">API</span>
+    <span class="h4" id="api">API</span>
     <div class="api_container">
         <div [innerHTML]="_apiHtml"></div>
     </div>

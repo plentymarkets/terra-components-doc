@@ -155,10 +155,10 @@ body
                 opacity: 1;
             }
         }
-    
+        
         &.disabled
         {
-            color:$grey-6 !important;
+            color: $grey-6 !important;
             &:hover
             {
                 background-color: inherit;

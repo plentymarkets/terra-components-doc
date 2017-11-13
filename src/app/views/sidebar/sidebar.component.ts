@@ -12,22 +12,28 @@ import { RouteResolver } from '../components/resolve/route.resolver';
     })
 export class SidebarComponent implements OnInit
 {
-    private _showListValue: boolean;
+    private _showListValue:boolean;
+
     constructor(private _routeResolver:RouteResolver)
     {
 
     }
+
     ngOnInit()
     {
         this._showListValue = true;
     }
+
     showList()
     {
         if(this._showListValue)
         {
             this._showListValue = false;
         }
-        else this._showListValue = true;
+        else
+        {
+            this._showListValue = true;
+        }
     }
 
 }
