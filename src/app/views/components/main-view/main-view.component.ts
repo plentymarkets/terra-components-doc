@@ -1,4 +1,5 @@
-import {
+import
+{
     AfterViewInit,
     Component,
     ComponentRef,
@@ -40,10 +41,10 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
     private _isActiveButton:boolean;
     private _hideExample:boolean;
 
-    private _htlmPath:string;
+    private _htmlPath:string;
     private _cssPath:string;
     private _apiPath:string;
-    private _typescripPath:string;
+    private _typescriptPath:string;
     private _componentName:string;
     private _apiHtml:any;
     private _overviewMarkDownPath:string;
@@ -60,12 +61,12 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
                 public http:Http)
     {
         this._temp = '';
-        this._htlmPath = '';
+        this._htmlPath = '';
         this._cssPath = '';
         this._htmlCode = '';
         this._cssCode = '';
         this._typescriptCode = '';
-        this._typescripPath = '';
+        this._typescriptPath = '';
         this._isActive = false;
         this._isActiveButton = false;
         this._hideExample = false;
@@ -85,13 +86,13 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
 
     ngOnInit()
     {
-        this._htlmPath = this._activatedRoute.routeConfig.data.htmlPath;
+        this._htmlPath = this._activatedRoute.routeConfig.data.htmlPath;
         this._cssPath = this._activatedRoute.routeConfig.data.cssPath;
-        this._typescripPath = this._activatedRoute.routeConfig.data.tsPath;
+        this._typescriptPath = this._activatedRoute.routeConfig.data.tsPath;
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._alert.closeAlertByIdentifier('info');
 
-        this.http.get(this._htlmPath).finally(() =>
+        this.http.get(this._htmlPath).finally(() =>
         {
             this.checkTemplate(this._htmlCode);
         }).subscribe((res:any) =>
@@ -110,7 +111,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             this._cssHighlight = `<pre><code class="css highlight">${this._cssCode}</code></pre>`;
         });
 
-        this.http.get(this._typescripPath).finally(() =>
+        this.http.get(this._typescriptPath).finally(() =>
         {
         }).subscribe((res:any) =>
         {
@@ -135,6 +136,7 @@ export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, O
             default:
                 break;
         }
+        window.parent.window.location.hash = '#' + this._componentName;
     }
 
     ngOnDestroy()
