@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     Component,
     ModuleWithProviders,
     OnInit
@@ -20,9 +21,10 @@ import { isNullOrUndefined } from 'util';
     template: require('./terra-components-doc.component.html'),
     styles:   [require('./terra-components-doc.component.scss')],
 })
-export class AppComponent implements OnInit
+export class AppComponent implements OnInit , AfterViewInit
 {
     private _mainViews:any;
+    private hashValue: string;
 
     public constructor(private _routeResolver:RouteResolver,
                        private _dynamicModuleBuilderService:DynamicModuleBuilderService,
@@ -39,6 +41,18 @@ export class AppComponent implements OnInit
             //}
         ];
     }
+
+    ngAfterViewInit()
+    {
+        if(window.parent.window.location.hash)
+        {
+            this.hashValue = window.parent.window.location.hash.toLowerCase();
+            this.hashValue = this.hashValue.replace('#','');
+            this.router.navigateByUrl( '/'+this.hashValue);
+        }
+    }
+
+
 
     ngOnInit():void
     {
