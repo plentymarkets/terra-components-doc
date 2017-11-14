@@ -15,14 +15,13 @@ export class IconviewComponent implements OnInit
     private _iconArray:any;
     private _newIconArray = [];
     private _iconVariableArray:any = [];
-    private _pathCounter:number;
+    private _iconDescriptionArray:any = [];
 
     private _html:string;
 
     constructor(public http:Http)
     {
         this._html = '';
-        this._pathCounter = 0;
     }
 
     ngOnInit()
@@ -30,10 +29,14 @@ export class IconviewComponent implements OnInit
         this.getIconArray().subscribe((data:any) =>
             {
                 this._iconArray = data;
+            }
+        );
+        this.getIconDescriptionArray().subscribe((data:any) =>
+            {
+                this._iconDescriptionArray = data;
                 this.createNewIconArray();
             }
         );
-
     }
 
     public getIconArray():Observable<any>
@@ -42,8 +45,16 @@ export class IconviewComponent implements OnInit
                    .map((res:any) => res.json());
     }
 
-    public createNewIconArray():any
+    public getIconDescriptionArray():Observable<any>
     {
+        return this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json')
+                   .map((res:any) => res.json());
+    }
+
+    public createNewIconArray():void
+    {
+        let newIconArray = [];
+
         for(let data in this._iconArray)
         {
             if(data.includes('icon-') && !data.includes('-icon'))
@@ -57,32 +68,40 @@ export class IconviewComponent implements OnInit
             let iconVariableName:string;
             let lenghtOfIconName:number = this._iconVariableArray[itr].length;
             let objData:any;
+            let path:any = [];
 
-            if(this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
+            if (this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
             {
-                this._pathCounter = 1;
-
                 iconVariableName = this._iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
-                objData = {
-                    icon: iconVariableName,
-                    path: []
-                };
-                for(; this._iconVariableArray[itr].includes(iconVariableName); itr++)
+
+                for(let pathCounter = 1; this._iconVariableArray[itr].includes(iconVariableName); itr++, pathCounter++)
                 {
-                    objData.path.push("path" + this._pathCounter);
-                    this._pathCounter++;
+                    path.push("path" + pathCounter);
                 }
                 itr--;
             }
             else
             {
                 iconVariableName = this._iconVariableArray[itr];
-                objData = {
-                    icon: iconVariableName,
-                    path: []
-                };
             }
-            this._newIconArray.push(objData);
+
+            objData = {
+                icon: iconVariableName,
+                path: path,
+                description: this.addIconDescriptionToIconArray(iconVariableName)
+            };
+
+            newIconArray.push(objData);
         }
+
+        this._newIconArray = newIconArray;
+        console.log(this._newIconArray);
+
     }
+
+    public addIconDescriptionToIconArray(iconName: string):string
+    {
+        return this._iconDescriptionArray[iconName];
+    }
+
 }

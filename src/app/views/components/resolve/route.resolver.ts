@@ -50,6 +50,7 @@ export class RouteResolver
 
                 resolve(this.dataJson);
             });
+
         });
     }
 }
