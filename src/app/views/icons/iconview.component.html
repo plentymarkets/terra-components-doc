@@ -7,7 +7,7 @@
             <span class="icon-name">{{value.icon}}</span>
         </div>
         <div>
-            <span class="icon-description">Description:{{value.description}}</span>
+            <span *ngIf="value.description" class="icon-description">Description:{{value.description}}</span>
         </div>
     </div>
 </div>
