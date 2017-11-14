@@ -1,9 +1,14 @@
 <div class="icon-container">
-<div class="icon-list" *ngFor="let iconName of _newIconArray">
-        <span [ngClass]="iconName.icon">
-            <span [ngClass]="path" *ngFor="let path of iconName.path"></span>
-        </span>
-        <span class="icon-name">{{iconName.icon}}</span>
+    <div class="icon-list" *ngFor="let value of _newIconArray">
+        <div>
+            <span [ngClass]="value.icon">
+                <span [ngClass]="path" *ngFor="let path of value.path"></span>
+            </span>
+            <span class="icon-name">{{value.icon}}</span>
+        </div>
+        <div>
+            <span class="icon-description">Description:{{value.description}}</span>
+        </div>
     </div>
 </div>
 

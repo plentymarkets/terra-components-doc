@@ -3,7 +3,7 @@ import {
     OnInit
 } from '@angular/core';
 import { Http } from '@angular/http'
-import { Observable } from 'rxjs/Observable';
+import { RouteResolver } from '../components/resolve/route.resolver';
 
 @Component({
     selector:    'iconview',
@@ -19,36 +19,17 @@ export class IconviewComponent implements OnInit
 
     private _html:string;
 
-    constructor(public http:Http)
+    constructor(public http:Http,
+                public data:RouteResolver)
     {
         this._html = '';
     }
 
     ngOnInit()
     {
-        this.getIconArray().subscribe((data:any) =>
-            {
-                this._iconArray = data;
-            }
-        );
-        this.getIconDescriptionArray().subscribe((data:any) =>
-            {
-                this._iconDescriptionArray = data;
-                this.createNewIconArray();
-            }
-        );
-    }
-
-    public getIconArray():Observable<any>
-    {
-        return this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/variables.json')
-                   .map((res:any) => res.json());
-    }
-
-    public getIconDescriptionArray():Observable<any>
-    {
-        return this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json')
-                   .map((res:any) => res.json());
+        this._iconArray = this.data.iconVariables;
+        this._iconDescriptionArray = this.data.iconDescription;
+        this.createNewIconArray();
     }
 
     public createNewIconArray():void
@@ -70,7 +51,7 @@ export class IconviewComponent implements OnInit
             let objData:any;
             let path:any = [];
 
-            if (this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
+            if(this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
             {
                 iconVariableName = this._iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
 
@@ -86,8 +67,8 @@ export class IconviewComponent implements OnInit
             }
 
             objData = {
-                icon: iconVariableName,
-                path: path,
+                icon:        iconVariableName,
+                path:        path,
                 description: this.addIconDescriptionToIconArray(iconVariableName)
             };
 
@@ -99,7 +80,7 @@ export class IconviewComponent implements OnInit
 
     }
 
-    public addIconDescriptionToIconArray(iconName: string):string
+    public addIconDescriptionToIconArray(iconName:string):string
     {
         return this._iconDescriptionArray[iconName];
     }

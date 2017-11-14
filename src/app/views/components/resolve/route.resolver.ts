@@ -25,9 +25,33 @@ export class RouteResolver
         this._dataJson = value;
     }
 
+    public get iconVariables():Object
+    {
+        return this._dataVariables;
+    }
+
+    public set iconVariables(value:Object)
+    {
+        this._dataVariables = value;
+    }
+
+    public get iconDescription():Object
+    {
+        return this._dataDescription;
+    }
+
+    public set iconDescription(value:Object)
+    {
+        this._dataDescription = value;
+    }
+
     private _noExampleHtml:string;
 
     private _dataJson:Array<stathamInterface>;
+
+    private _dataDescription:Object;
+
+    private _dataVariables:Object;
 
     constructor(public http:Http)
     {
@@ -50,6 +74,20 @@ export class RouteResolver
 
                 resolve(this.dataJson);
             });
+            this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/variables.json')
+                .subscribe((resJson:any) =>
+                {
+                    this.iconVariables = resJson.json();
+
+                    resolve(this.iconVariables);
+                });
+            this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json')
+                .subscribe((resJson:any) =>
+                {
+                    this.iconDescription = resJson.json();
+
+                    resolve(this.iconDescription);
+                });
 
         });
     }
