@@ -2,6 +2,7 @@ import {
     Component,
     OnInit
 } from '@angular/core';
+import { iconService } from '../icons/service/icon.service';
 import { RouteResolver } from '../components/resolve/route.resolver';
 
 @Component(
@@ -14,9 +15,9 @@ export class SidebarComponent implements OnInit
 {
     private _showListValue:boolean;
 
-    constructor(private _routeResolver:RouteResolver)
+    constructor(private _routeResolver:RouteResolver,
+                private _iconService:iconService)
     {
-
     }
 
     ngOnInit()
