@@ -21,6 +21,7 @@ import { IconviewComponent } from './views/icons/iconview.component';
 import { RouteResolver } from './views/components/resolve/route.resolver';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
+import { iconService } from './views/icons/service/icon.service';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -66,6 +67,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     providers:       [
         DynamicModuleBuilderService,
         HighlightJsService,
+        iconService,
         RouteResolver,
         {
             provide:    APP_INITIALIZER,
