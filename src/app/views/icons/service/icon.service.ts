@@ -17,7 +17,6 @@ export class iconService
         if (this._iconArray.length <= 0)
         {
             this._iconArray = this.buildNewIconArray();
-            console.log(this._iconArray);
         }
 
         return this._iconArray;
