@@ -6,12 +6,15 @@ import { RouteResolver } from '../../components/resolve/route.resolver';
 export class iconService
 {
     private _iconArray:any;
-    private _iconVariableArray:any = [];
-    private _iconDescriptionArray:any = [];
+    private _iconVariableArray:any;
+    private _iconDescriptionArray:any;
 
     constructor(public http:Http,
                 public data:RouteResolver)
     {
+        this._iconArray = [];
+        this._iconDescriptionArray = [];
+        this._iconVariableArray = [];
     }
 
     createNewIconArray():void
@@ -64,6 +67,9 @@ export class iconService
             newIconArray.push(objData);
         }
 
+        this._iconArray = [];
+        this._iconDescriptionArray = [];
+        this._iconVariableArray = [];
         return newIconArray;
 
     }

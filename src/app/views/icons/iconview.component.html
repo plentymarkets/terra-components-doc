@@ -1,5 +1,5 @@
 <div class="icon-container">
-    <div class="icon-list" *ngFor="let value of _newIconArray">
+    <div id="{{value.icon}}" class="icon-list" *ngFor="let value of _newIconArray">
         <div>
             <span [ngClass]="value.icon">
                 <span [ngClass]="path" *ngFor="let path of value.path"></span>
