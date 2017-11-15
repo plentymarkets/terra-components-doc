@@ -24,7 +24,7 @@
         </li>
     </ul>
     <p class="h4">Icons</p>
-    <ul *ngFor="let value of _iconService.createNewIconArray()">
+    <ul *ngFor="let value of _iconService.loadIconArray()">
         <li>
             <a href="{{'/iconview' + '#' + value.icon}}">
                 <span [ngClass]="value.icon">

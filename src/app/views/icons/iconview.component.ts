@@ -20,7 +20,7 @@ export class IconviewComponent implements OnInit
 
     ngOnInit()
     {
-        this._newIconArray = this._iconService.createNewIconArray();
+        this._newIconArray = this._iconService.loadIconArray();
     }
 
 }

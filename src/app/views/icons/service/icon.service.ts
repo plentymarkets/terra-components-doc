@@ -5,49 +5,49 @@ import { RouteResolver } from '../../components/resolve/route.resolver';
 @Injectable()
 export class iconService
 {
-    private _iconArray:any;
-    private _iconVariableArray:any;
-    private _iconDescriptionArray:any;
+    private _iconArray:any = [];
 
     constructor(public http:Http,
                 public data:RouteResolver)
     {
-        this._iconArray = [];
-        this._iconDescriptionArray = [];
-        this._iconVariableArray = [];
     }
 
-    createNewIconArray():void
+    public loadIconArray():any
     {
-        this._iconArray = this.data.iconVariables;
-        this._iconDescriptionArray = this.data.iconDescription;
-        return this.buildNewIconArray();
+        if (this._iconArray.length <= 0)
+        {
+            this._iconArray = this.buildNewIconArray();
+            console.log(this._iconArray);
+        }
+
+        return this._iconArray;
     }
 
-    public buildNewIconArray():any
+    private buildNewIconArray():any
     {
+        let iconVariableArray:any = [];
         let newIconArray = [];
 
-        for(let data in this._iconArray)
+        for(let data in this.data.iconVariables)
         {
             if(data.includes('icon-') && !data.includes('-icon'))
             {
-                this._iconVariableArray.push(data);
+                iconVariableArray.push(data);
             }
         }
 
-        for(let itr = 0; itr < this._iconVariableArray.length; itr++)
+        for(let itr = 0; itr < iconVariableArray.length; itr++)
         {
             let iconVariableName:string;
-            let lenghtOfIconName:number = this._iconVariableArray[itr].length;
+            let lenghtOfIconName:number = iconVariableArray[itr].length;
             let objData:any;
             let path:any = [];
 
-            if(this._iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
+            if(iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
             {
-                iconVariableName = this._iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
+                iconVariableName = iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
 
-                for(let pathCounter = 1; this._iconVariableArray[itr].includes(iconVariableName); itr++, pathCounter++)
+                for(let pathCounter = 1; iconVariableArray[itr].includes(iconVariableName); itr++, pathCounter++)
                 {
                     path.push("path" + pathCounter);
                 }
@@ -55,28 +55,18 @@ export class iconService
             }
             else
             {
-                iconVariableName = this._iconVariableArray[itr];
+                iconVariableName = iconVariableArray[itr];
             }
 
             objData = {
                 icon:        iconVariableName,
                 path:        path,
-                description: this.addIconDescriptionToIconArray(iconVariableName)
+                description: this.data.iconDescription[iconVariableName]
             };
 
             newIconArray.push(objData);
         }
 
-        this._iconArray = [];
-        this._iconDescriptionArray = [];
-        this._iconVariableArray = [];
         return newIconArray;
-
     }
-
-    public addIconDescriptionToIconArray(iconName:string):string
-    {
-        return this._iconDescriptionArray[iconName];
-    }
-
 }

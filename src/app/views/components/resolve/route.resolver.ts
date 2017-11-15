@@ -46,11 +46,8 @@ export class RouteResolver
     }
 
     private _noExampleHtml:string;
-
     private _dataJson:Array<stathamInterface>;
-
     private _dataDescription:Object;
-
     private _dataVariables:Object;
 
     constructor(public http:Http)
@@ -78,17 +75,14 @@ export class RouteResolver
                 .subscribe((resJson:any) =>
                 {
                     this.iconVariables = resJson.json();
-
                     resolve(this.iconVariables);
                 });
             this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json')
                 .subscribe((resJson:any) =>
                 {
                     this.iconDescription = resJson.json();
-
                     resolve(this.iconDescription);
                 });
-
         });
     }
 }
