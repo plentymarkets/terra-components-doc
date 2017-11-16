@@ -21,7 +21,9 @@ import { IconviewComponent } from './views/icons/iconview/iconview.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
 import { iconService } from './views/icons/service/icon.service';
 import { RouteResolver } from './resolve/route.resolver';
-import { ComponentTemplate } from './views/components/component-template';
+import { ComponentTemplateComponent } from './views/components/component-template.component';
+import { IconSidebarComponent } from './views/icons/sidebar/icon-sidebar.component';
+import { IconTemplateComponent } from './views/icons/icon-template.component';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -59,9 +61,11 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     declarations:    [
         AppComponent,
         ComponentSidebarComponent,
+        IconSidebarComponent,
         IconviewComponent,
         DynamicPluginLoaderComponent,
-        ComponentTemplate
+        ComponentTemplateComponent,
+        IconTemplateComponent
     ],
     providers:       [
         DynamicModuleBuilderService,

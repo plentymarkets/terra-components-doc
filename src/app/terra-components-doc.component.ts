@@ -10,9 +10,10 @@ import {
     Routes
 } from '@angular/router';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
-import { IconviewComponent } from './views/icons/iconview/iconview.component';
 import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
+import { IconTemplateComponent } from './views/icons/icon-template.component';
+import { ComponentTemplateComponent } from './views/components/component-template.component';
 
 @Component({
     selector: 'terra-components-doc',
@@ -29,21 +30,19 @@ export class AppComponent implements OnInit
     {
         this._mainViews = [
             {
-                path:      'iconview',
-                component: IconviewComponent
+                path:      'icons',
+                component: IconTemplateComponent
+            },
+            {
+                path: 'components',
+                component: ComponentTemplateComponent
             }
-            //{
-            //    path: 'landing-page',
-            //    component: LandingPageComponent
-            //}
         ];
     }
 
     ngOnInit():void
     {
         let routeArray:Routes = [{
-            //path:      '',
-            //component: LandingPageComponent
         }];
 
         let apiUrl:string = 'assets/';

@@ -8,7 +8,7 @@ import {
         template: require('./component-template.component.html'),
         styles:   [require('./component-template.component.scss')]
     })
-export class ComponentTemplate
+export class ComponentTemplateComponent
 {
 
     constructor()
