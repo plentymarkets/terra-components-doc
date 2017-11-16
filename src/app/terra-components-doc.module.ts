@@ -9,19 +9,19 @@ import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './views/sidebar/sidebar.component';
-import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
+import { ComponentSidebarComponent } from './views/components/sidebar/component-sidebar.component';
+import { DynamicPluginLoaderComponent } from './views/components/dynamic-plugin-loader/dynamic-plugin-loader.component';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
 import {
     HighlightJsModule,
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './views/icons/iconview.component';
-import { RouteResolver } from './views/components/resolve/route.resolver';
-import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { IconviewComponent } from './views/icons/iconview/iconview.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
 import { iconService } from './views/icons/service/icon.service';
+import { RouteResolver } from './resolve/route.resolver';
+import { ComponentTemplate } from './views/components/component-template';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -42,7 +42,6 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     entryComponents: [
         IconviewComponent,
         DynamicPluginLoaderComponent,
-        LandingPageComponent
     ],
     exports:         [
         RouterModule,
@@ -59,10 +58,10 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     ],
     declarations:    [
         AppComponent,
-        SidebarComponent,
+        ComponentSidebarComponent,
         IconviewComponent,
-        LandingPageComponent,
-        DynamicPluginLoaderComponent
+        DynamicPluginLoaderComponent,
+        ComponentTemplate
     ],
     providers:       [
         DynamicModuleBuilderService,

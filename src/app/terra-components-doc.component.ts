@@ -3,16 +3,15 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
-import { RouteResolver } from './views/components/resolve/route.resolver';
+import { DynamicPluginLoaderComponent } from './views/components/dynamic-plugin-loader/dynamic-plugin-loader.component';
+import { RouteResolver } from './resolve/route.resolver';
 import {
     Router,
     Routes
 } from '@angular/router';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
-import { IconviewComponent } from './views/icons/iconview.component';
-import { stathamInterface } from './views/components/resolve/data/statham.interface';
-import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { IconviewComponent } from './views/icons/iconview/iconview.component';
+import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
 
 @Component({
@@ -43,8 +42,8 @@ export class AppComponent implements OnInit
     ngOnInit():void
     {
         let routeArray:Routes = [{
-            path:      '',
-            component: LandingPageComponent
+            //path:      '',
+            //component: LandingPageComponent
         }];
 
         let apiUrl:string = 'assets/';

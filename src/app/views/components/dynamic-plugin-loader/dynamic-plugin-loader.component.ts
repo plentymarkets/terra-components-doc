@@ -21,8 +21,8 @@ import { TerraAlertComponent } from '@plentymarkets/terra-components';
 
 @Component({
     selector:  'dynamic-module-loader',
-    template:  require('./main-view.component.html'),
-    styleUrls: ['./main-view.component.scss']
+    template:  require('./dynamic-plugin-loader.component.html'),
+    styleUrls: ['./dynamic-plugin-loader.component.scss']
 })
 export class DynamicPluginLoaderComponent implements AfterViewInit, OnDestroy, OnInit
 {

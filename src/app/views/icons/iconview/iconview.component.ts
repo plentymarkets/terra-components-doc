@@ -2,7 +2,7 @@ import {
     Component,
     OnInit
 } from '@angular/core';
-import { iconService } from './service/icon.service';
+import { iconService } from '../service/icon.service';
 
 
 @Component({
