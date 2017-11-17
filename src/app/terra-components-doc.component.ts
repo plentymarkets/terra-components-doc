@@ -14,6 +14,7 @@ import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
+import { StartpageComponent } from './views/startpage/startpage.component';
 
 @Component({
     selector: 'terra-components-doc',
@@ -30,11 +31,15 @@ export class AppComponent implements OnInit
     {
         this._mainViews = [
             {
+                path:      '',
+                component: StartpageComponent
+            },
+            {
                 path:      'icons',
                 component: IconTemplateComponent
             },
             {
-                path: 'components',
+                path:      'components',
                 component: ComponentTemplateComponent
             }
         ];
@@ -42,8 +47,7 @@ export class AppComponent implements OnInit
 
     ngOnInit():void
     {
-        let routeArray:Routes = [{
-        }];
+        let routeArray:Routes = this._mainViews;
 
         let apiUrl:string = 'assets/';
         let exampleUrl:string = 'assets/component-documentation';
@@ -75,12 +79,6 @@ export class AppComponent implements OnInit
 
             routeArray.push(objData);
         });
-
-
-        for(let views of this._mainViews)
-        {
-            routeArray.push(views);
-        }
 
         this.router.resetConfig(routeArray);
     }

@@ -24,6 +24,7 @@ import { RouteResolver } from './resolve/route.resolver';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
 import { IconSidebarComponent } from './views/icons/sidebar/icon-sidebar.component';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
+import { StartpageComponent } from './views/startpage/startpage.component';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -42,8 +43,13 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
 
 @NgModule({
     entryComponents: [
+        ComponentSidebarComponent,
+        IconSidebarComponent,
         IconviewComponent,
         DynamicPluginLoaderComponent,
+        ComponentTemplateComponent,
+        IconTemplateComponent,
+        StartpageComponent
     ],
     exports:         [
         RouterModule,
@@ -65,7 +71,8 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
         IconviewComponent,
         DynamicPluginLoaderComponent,
         ComponentTemplateComponent,
-        IconTemplateComponent
+        IconTemplateComponent,
+        StartpageComponent
     ],
     providers:       [
         DynamicModuleBuilderService,

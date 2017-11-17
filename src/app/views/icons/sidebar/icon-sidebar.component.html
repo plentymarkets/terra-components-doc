@@ -2,7 +2,7 @@
     <p class="h4">Icons</p>
     <ul class="component_list">
         <li *ngFor="let value of _iconService.loadIconArray()">
-            <a href="{{'/iconview' + '#' + value.icon}}">
+            <a href="{{'/icons' + '#' + value.icon}}">
                 <span [ngClass]="value.icon">
                     <span [ngClass]="path" *ngFor="let path of value.path"></span>
                 </span>
