@@ -5,7 +5,10 @@
 ::-webkit-scrollbar {
     display: none;
 }
-
+ html
+ {
+     scroll-behavior: smooth;
+ }
 p
 {
     margin: 0;
