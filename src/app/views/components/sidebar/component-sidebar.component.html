@@ -1,7 +1,7 @@
 <div class="sidebar">
     <p class="h4">Components</p>
     <ul class="component_list">
-        <li *ngFor="let componentList of _routeResolver.dataJson" routerLink="/{{componentList.name}}"
+        <li *ngFor="let componentList of _routeResolver.dataJson" routerLink="/components/{{componentList.name}}"
             routerLinkActive="is-active">
             <a>{{componentList.name}}</a>
             <!--<ul class ="nav-ul">-->

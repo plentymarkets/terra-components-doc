@@ -10,14 +10,14 @@ import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ComponentSidebarComponent } from './views/components/sidebar/component-sidebar.component';
-import { DynamicPluginLoaderComponent } from './views/components/dynamic-plugin-loader/dynamic-plugin-loader.component';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
+import { ComponentViewComponent } from './views/components/component-view/component-view.component';
 import {
     HighlightJsModule,
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './views/icons/iconview/iconview.component';
+import { IconviewComponent } from './views/icons/iconview/icon-view.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
 import { iconService } from './views/icons/service/icon.service';
 import { RouteResolver } from './resolve/route.resolver';
@@ -46,7 +46,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
         ComponentSidebarComponent,
         IconSidebarComponent,
         IconviewComponent,
-        DynamicPluginLoaderComponent,
+        ComponentViewComponent,
         ComponentTemplateComponent,
         IconTemplateComponent,
         StartpageComponent
@@ -69,7 +69,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
         ComponentSidebarComponent,
         IconSidebarComponent,
         IconviewComponent,
-        DynamicPluginLoaderComponent,
+        ComponentViewComponent,
         ComponentTemplateComponent,
         IconTemplateComponent,
         StartpageComponent

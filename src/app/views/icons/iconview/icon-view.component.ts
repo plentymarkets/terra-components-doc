@@ -7,8 +7,8 @@ import { iconService } from '../service/icon.service';
 
 @Component({
     selector:    'iconview',
-    templateUrl: './iconview.component.html',
-    styleUrls:   ['./iconview.component.scss']
+    templateUrl: './icon-view.component.html',
+    styleUrls:   ['./icon-view.component.scss']
 })
 export class IconviewComponent implements OnInit
 {

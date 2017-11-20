@@ -3,7 +3,7 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { DynamicPluginLoaderComponent } from './views/components/dynamic-plugin-loader/dynamic-plugin-loader.component';
+import { ComponentViewComponent } from './views/components/component-view/component-view.component';
 import { RouteResolver } from './resolve/route.resolver';
 import {
     Router,
@@ -37,10 +37,6 @@ export class AppComponent implements OnInit
             {
                 path:      'icons',
                 component: IconTemplateComponent
-            },
-            {
-                path:      'components',
-                component: ComponentTemplateComponent
             }
         ];
     }
@@ -48,6 +44,11 @@ export class AppComponent implements OnInit
     ngOnInit():void
     {
         let routeArray:Routes = this._mainViews;
+        let componentRoute = {
+            path:      'components',
+            component: ComponentTemplateComponent,
+            children: []
+        };
 
         let apiUrl:string = 'assets/';
         let exampleUrl:string = 'assets/component-documentation';
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit
 
             let objData = {
                 path:      data.name,
-                component: DynamicPluginLoaderComponent,
+                component: ComponentViewComponent,
                 data:      {
                     apiPath:        apiUrl + data.path,
                     componentName:  data.name,
@@ -77,8 +78,10 @@ export class AppComponent implements OnInit
                 }
             };
 
-            routeArray.push(objData);
+            componentRoute.children.push(objData);
         });
+
+        routeArray.push(componentRoute);
 
         this.router.resetConfig(routeArray);
     }
