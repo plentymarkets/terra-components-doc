@@ -25,6 +25,7 @@
     margin: 0;
     li
     {
+        font-size: 14px;
         .icon-name
         {
             font-family: inherit !important;
@@ -35,17 +36,18 @@
         {
             outline: none;
         }
-        &:hover
-        {
-            cursor: pointer;
-            a,span
-            {
-                color: #008EBD;
-                cursor: pointer;
-            }
-        }
+        
         a,span
         {
+            &:hover
+            {
+    
+                a, span
+                {
+                    color: #008EBD;
+                    cursor: pointer;
+                }
+            }
             text-transform: capitalize;
             text-decoration: none;
             color: #4d4e53;

@@ -120,7 +120,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     {
         switch(this._activatedRoute.component['name'])
         {
-            case 'DynamicPluginLoaderComponent':
+            case 'ComponentViewComponent':
                 this.loadComponentData(this._activatedRoute.data);
                 break;
             default:
