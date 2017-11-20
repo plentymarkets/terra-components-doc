@@ -15,44 +15,44 @@
             <span class="h4">Html</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_htmlCode)"
+                (click)="copyText(_rawHtmlCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
         <div>
-            <section class="code_section" [innerHTML]="_htmlHighlight" highlight-js-content=".highlight"></section>
+            <section class="code_section" [innerHTML]="_highlitedHtmlCode" highlight-js-content=".highlight"></section>
         </div>
         
         <div id="scsscode" class="code_header">
             <span class="h4">Scss</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_cssCode)"
+                (click)="copyText(_rawCssCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
         
         <div>
-            <section class="code_section" [innerHTML]="_cssHighlight" highlight-js-content=".highlight"></section>
+            <section class="code_section" [innerHTML]="_highlitedCssCode" highlight-js-content=".highlight"></section>
         </div>
         
         <div class="code_header">
             <span class="h4" id="typescriptcode">Typescript</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_typescriptCode)"
+                (click)="copyText(_rawTsCode)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
         
         <div>
-            <section class="code_section" [innerHTML]="_tsHighlight" highlight-js-content=".highlight"></section>
+            <section class="code_section" [innerHTML]="_highlitedTsCode" highlight-js-content=".highlight"></section>
         </div>
     </div>
     
     <span class="h4" id="api">API</span>
     <div class="api_container">
-        <div [innerHTML]="_apiHtml"></div>
+        <div [innerHTML]="_apiCode"></div>
     </div>
     <terra-alert-panel class="copyAlert"></terra-alert-panel>
 </div>
