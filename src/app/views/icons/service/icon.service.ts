@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { RouteResolver } from '../../../resolve/route.resolver';
+import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class iconService
@@ -14,7 +15,7 @@ export class iconService
 
     public loadIconArray():any
     {
-        if (this._iconArray.length <= 0)
+        if(this._iconArray.length <= 0)
         {
             this._iconArray = this.buildNewIconArray();
         }
@@ -38,34 +39,26 @@ export class iconService
         for(let itr = 0; itr < iconVariableArray.length; itr++)
         {
             let iconVariableName:string;
-            let lenghtOfIconName:number = iconVariableArray[itr].length;
             let objData:any;
-            let path:any = [];
+            let iconName:string;
 
-            if(iconVariableArray[itr].substring(lenghtOfIconName - 5) == 'path1')
-            {
-                iconVariableName = iconVariableArray[itr].substring(0, lenghtOfIconName - 6);
-
-                for(let pathCounter = 1; iconVariableArray[itr].includes(iconVariableName); itr++, pathCounter++)
-                {
-                    path.push("path" + pathCounter);
-                }
-                itr--;
-            }
-            else
+            if(!iconVariableArray[itr].includes('path'))
             {
                 iconVariableName = iconVariableArray[itr];
+                iconName = iconVariableName.replace('icon-','');
+                while(iconName.includes('_'))
+                {
+                    iconName = iconName.replace('_',' ');
+                }
+                objData = {
+                    name:        iconName,
+                    icon:        iconVariableName,
+                    description: this.data.iconDescription[iconVariableName]
+                };
+
+                newIconArray.push(objData);
             }
-
-            objData = {
-                icon:        iconVariableName,
-                path:        path,
-                description: this.data.iconDescription[iconVariableName]
-            };
-
-            newIconArray.push(objData);
         }
-
         return newIconArray;
     }
 }

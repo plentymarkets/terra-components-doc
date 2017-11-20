@@ -1,6 +1,11 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
 @import 'index.glob.zlk.scss';
 
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 p
 {
     margin: 0;

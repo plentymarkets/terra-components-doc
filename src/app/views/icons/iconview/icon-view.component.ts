@@ -8,7 +8,9 @@ import { iconService } from '../service/icon.service';
 @Component({
     selector:    'iconview',
     templateUrl: './icon-view.component.html',
-    styleUrls:   ['./icon-view.component.scss']
+    styles:   [require('./icon-view.component.scss'),
+                  require('./icon-view.component.glob.scss').toString()
+    ]
 })
 export class IconviewComponent implements OnInit
 {
@@ -21,6 +23,7 @@ export class IconviewComponent implements OnInit
     ngOnInit()
     {
         this._newIconArray = this._iconService.loadIconArray();
+
     }
 
 }

@@ -20,7 +20,7 @@ import { isNullOrUndefined } from 'util';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
 
 @Component({
-    selector:  'dynamic-module-loader',
+    selector:  'component-view',
     template:  require('./component-view.component.html'),
     styleUrls: ['./component-view.component.scss']
 })
