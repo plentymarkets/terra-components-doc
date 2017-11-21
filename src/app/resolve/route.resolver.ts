@@ -59,10 +59,15 @@ export class RouteResolver
         return new Promise((resolve) =>
         {
             let url:string = 'assets/component-documentation/build/statham.json';
+            let iconVariablesUrl:string = 'assets/component-documentation/build/variables.json';
+            let iconDescriptionUrl:string = 'assets/component-documentation/build/iconDescription.json';
+
 
             if(process.env.ENV !== 'production')
             {
                 url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
+                iconVariablesUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/variables.json';
+                iconDescriptionUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
             }
 
             this.http.get(url).subscribe((resJson:any) =>
@@ -71,13 +76,13 @@ export class RouteResolver
 
                 resolve(this.dataJson);
             });
-            this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/variables.json')
+            this.http.get(iconVariablesUrl)
                 .subscribe((resJson:any) =>
                 {
                     this.iconVariables = resJson.json();
                     resolve(this.iconVariables);
                 });
-            this.http.get('./node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json')
+            this.http.get(iconDescriptionUrl)
                 .subscribe((resJson:any) =>
                 {
                     this.iconDescription = resJson.json();

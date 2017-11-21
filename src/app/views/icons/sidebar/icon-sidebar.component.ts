@@ -16,4 +16,8 @@ export class IconSidebarComponent
     {
     }
 
+    scrollToId(iconId):void
+    {
+        window.document.getElementById(iconId).scrollIntoView();
+    }
 }
