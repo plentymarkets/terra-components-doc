@@ -12,9 +12,7 @@ import {
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
 import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
-import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
-import { StartpageComponent } from './views/startpage/startpage.component';
 
 @Component({
     selector: 'terra-components-doc',
@@ -24,30 +22,45 @@ import { StartpageComponent } from './views/startpage/startpage.component';
 export class AppComponent implements OnInit
 {
     private _mainViews:any;
+    private _viewMode:string = '';
 
     public constructor(private _routeResolver:RouteResolver,
                        private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                        private router:Router)
     {
-        this._mainViews = [
-            {
-                path:      '',
-                component: StartpageComponent
-            },
-            {
-                path:      'icons',
-                component: IconTemplateComponent
-            }
-        ];
+        //this._mainViews = [
+        //    {
+        //        path:      '',
+        //        component: StartpageComponent
+        //    },
+        //    {
+        //        path:      'icons',
+        //        component: IconTemplateComponent
+        //    }
+        //];
+    }
+
+    private getUrlVars()
+    {
+        let vars = {};
+
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(substring:string, ...args:any[]):string
+        {
+            vars[args[0]] = args[1];
+            return;
+        });
+
+        return vars;
     }
 
     ngOnInit():void
     {
-        let routeArray:Routes = this._mainViews;
+        let routeArray:Routes = [];
+
         let componentRoute = {
             path:      'components',
             component: ComponentTemplateComponent,
-            children: []
+            children:  []
         };
 
         let apiUrl:string = 'assets/';
@@ -78,11 +91,11 @@ export class AppComponent implements OnInit
                 }
             };
 
-            componentRoute.children.push(objData);
+            routeArray.push(objData);
         });
 
-        routeArray.push(componentRoute);
-
         this.router.resetConfig(routeArray);
+
+        this._viewMode = this.getUrlVars()['view'];
     }
 }

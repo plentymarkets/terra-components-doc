@@ -4,7 +4,7 @@
         <span class="group-name">{{group[0]}}</span>
         <li *ngFor="let component of group[1]"
             routerLinkActive="is-active"
-            routerLink="/components/{{component.component}}">
+            routerLink="{{component.component}}">
             <a>{{component.component}}</a>
         </li>
     </ul>

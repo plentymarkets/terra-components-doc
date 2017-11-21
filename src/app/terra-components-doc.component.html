@@ -1,5 +1,10 @@
-<div>
-    <a routerLink="components">Components</a>
-    <a routerLink="icons">Icons</a>
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+
+<div *ngIf="_viewMode == 'component'">
+    <component-template></component-template>
 </div>
+
+<div *ngIf="_viewMode == 'icon'">
+    <icon-template></icon-template>
+</div>
+
