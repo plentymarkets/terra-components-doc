@@ -6,6 +6,13 @@
             routerLinkActive="is-active"
             routerLink="{{component.component}}">
             <a>{{component.component}}</a>
+            <ul class="nav-ul">
+                <li (click)="scrollToId('example')">Example</li>
+                <li (click)="scrollToId('htmlcode')">Html</li>
+                <li (click)="scrollToId('scsscode')">Scss</li>
+                <li (click)="scrollToId('typescriptcode')">Ts</li>
+                <li (click)="scrollToId('api')">Api</li>
+            </ul>
         </li>
     </ul>
 </div>
