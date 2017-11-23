@@ -1,7 +1,7 @@
 <div class="icon-container">
     <div id="{{value.icon}}" class="icon-list" *ngFor="let value of _newIconArray">
         <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
-            <span class="icon" [ngClass]="value.icon"></span>
+            <span style="{{_color}}" class="icon" [ngClass]="value.icon"></span>
             <table>
                 <tr>
                     <td>
