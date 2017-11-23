@@ -3,17 +3,16 @@ import {
     ModuleWithProviders,
     OnInit
 } from '@angular/core';
-import { DynamicPluginLoaderComponent } from './views/components/main-view/main-view.component';
-import { RouteResolver } from './views/components/resolve/route.resolver';
+import { ComponentViewComponent } from './views/components/component-view/component-view.component';
+import { RouteResolver } from './resolve/route.resolver';
 import {
     Router,
     Routes
 } from '@angular/router';
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
-import { IconviewComponent } from './views/icons/iconview.component';
-import { stathamInterface } from './views/components/resolve/data/statham.interface';
-import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
+import { ComponentTemplateComponent } from './views/components/component-template.component';
 
 @Component({
     selector: 'terra-components-doc',
@@ -23,29 +22,46 @@ import { isNullOrUndefined } from 'util';
 export class AppComponent implements OnInit
 {
     private _mainViews:any;
+    private _viewMode:string = '';
 
     public constructor(private _routeResolver:RouteResolver,
                        private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                        private router:Router)
     {
-        this._mainViews = [
-            {
-                path:      'iconview',
-                component: IconviewComponent
-            }
-            //{
-            //    path: 'landing-page',
-            //    component: LandingPageComponent
-            //}
-        ];
+        //this._mainViews = [
+        //    {
+        //        path:      '',
+        //        component: StartpageComponent
+        //    },
+        //    {
+        //        path:      'icons',
+        //        component: IconTemplateComponent
+        //    }
+        //];
+    }
+
+    private getUrlVars()
+    {
+        let vars = {};
+
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(substring:string, ...args:any[]):string
+        {
+            vars[args[0]] = args[1];
+            return;
+        });
+
+        return vars;
     }
 
     ngOnInit():void
     {
-        let routeArray:Routes = [{
-            path:      '',
-            component: LandingPageComponent
-        }];
+        let routeArray:Routes = [];
+
+        let componentRoute = {
+            path:      'components',
+            component: ComponentTemplateComponent,
+            children:  []
+        };
 
         let apiUrl:string = 'assets/';
         let exampleUrl:string = 'assets/component-documentation';
@@ -63,7 +79,7 @@ export class AppComponent implements OnInit
 
             let objData = {
                 path:      data.name,
-                component: DynamicPluginLoaderComponent,
+                component: ComponentViewComponent,
                 data:      {
                     apiPath:        apiUrl + data.path,
                     componentName:  data.name,
@@ -78,12 +94,8 @@ export class AppComponent implements OnInit
             routeArray.push(objData);
         });
 
-
-        for(let views of this._mainViews)
-        {
-            routeArray.push(views);
-        }
-
         this.router.resetConfig(routeArray);
+
+        this._viewMode = this.getUrlVars()['view'];
     }
 }

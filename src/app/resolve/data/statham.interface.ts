@@ -5,6 +5,7 @@ export interface stathamInterface
     pathExampleHtml:string;
     pathExampleCss:string;
     pathExampleTs:string;
+    componentGroup:string;
     path:string;
     pathOverview:string;
 }

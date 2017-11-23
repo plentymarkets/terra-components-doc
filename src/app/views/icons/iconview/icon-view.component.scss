@@ -1,0 +1,42 @@
+.icon-container
+{
+    font-family: 'Roboto', sans-serif !important;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 50%;
+    display: grid;
+    padding: 20px 0 0 20px;
+    .icon-portlet
+    {
+        width: 40%;
+        
+    }
+    .icon-name
+    {
+        font-size: 24px !important;
+        font-family: 'Roboto', sans-serif !important;
+        color: rgb(77, 78, 83);
+    }
+    .icon-list
+    {
+        margin-bottom: 20px;
+    }
+    .icon-description
+    {
+        color: rgb(77, 78, 83);
+        font-size: 24px !important;
+        font-family: 'Roboto', sans-serif !important;
+    }
+    .icon
+    {
+        vertical-align: middle;
+        display: inline-block;
+        font-size: 35px;
+        padding-right: 10px;
+    }
+    table
+    {
+        vertical-align: middle;
+        display: inline-block;
+    }
+}

@@ -1,19 +1,28 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
 @import 'index.glob.zlk.scss';
 
+
+::-webkit-scrollbar {
+    display: none;
+}
+ html
+ {
+     scroll-behavior: smooth;
+ }
 p
 {
     margin: 0;
 }
-h1,h2,h3,h4,h5,h6
-{
-    font-weight: 100;
-}
-.h4
+
+h1, h2, h3, h4, h5, h6
 {
     font-weight: 100;
 }
 
+.h4
+{
+    font-weight: 100;
+}
 
 //panel warning for deprecated
 .panel
@@ -25,21 +34,23 @@ h1,h2,h3,h4,h5,h6
         padding: 15px;
     }
 }
+
 .panel-property
 {
     margin-top: 0;
 }
+
 .panel-warning
 {
-    border: 1px solid #faebcc;
+    border: 1px solid #FAEBCC;
     border-radius: 5px;
     
     .panel-heading
     {
         padding: 10px 15px 5px 15px;
-        color: #8a6d3b;
-        background-color: #fcf8e3;
-        border-color: #faebcc;
+        color: #8A6D3B;
+        background-color: #FCF8E3;
+        border-color: #FAEBCC;
         .panel-title
         {
         
@@ -50,7 +61,7 @@ h1,h2,h3,h4,h5,h6
 .code_section
 {
     background-color: #2B2B2B;
-   
+    
     pre
     {
         code
@@ -58,28 +69,31 @@ h1,h2,h3,h4,h5,h6
             overflow-x: hidden;
         }
         margin: 0;
-        border-right: 1px solid #2b2b2b;
+        border-right: 1px solid #2B2B2B;
         margin-right: -1px;
         font-size: inherit !important;
     }
 }
+
 .codeTag
 {
-    color:#008EBD;
+    color: #008EBD;
 }
 
 .method_container
 {
     font-size: inherit;
-    background-color: #e3e3e3;
+    background-color: #E3E3E3;
     padding: 10px;
     border-radius: 0;
-    border: 1px solid #ccc;
+    border: 1px solid #CCCCCC;
 }
+
 .docs-api-deprecated-marker-container
 {
     margin-top: 5px;
 }
+
 .method_description_table
 {
     margin-top: 10px;
@@ -90,17 +104,20 @@ h1,h2,h3,h4,h5,h6
 {
     margin-bottom: 20px;
 }
+
 .docs-api-method-description-cell
 {
     p
     {
-        padding-top:  10px;
+        padding-top: 10px;
     }
 }
+
 .method-loop-margin
 {
     color: rgb(77, 78, 83);
 }
+
 .docs-api-properties-table
 {
     th
@@ -112,10 +129,12 @@ h1,h2,h3,h4,h5,h6
         color: rgb(77, 78, 83);
     }
 }
+
 .docs-api-method-parameter-type
 {
     width: 30%;
 }
+
 .docs-api-method-parameter-name
 {
     width: 30%;

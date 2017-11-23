@@ -1,4 +1,10 @@
-<div class ="main_component">
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+
+<div *ngIf="_viewMode == 'components'">
+    <component-template></component-template>
 </div>
-<sidebar class="sidebar_component"></sidebar>
+
+<div *ngIf="_viewMode == 'icons'">
+    <icon-template></icon-template>
+</div>
+
