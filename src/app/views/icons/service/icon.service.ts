@@ -37,7 +37,6 @@ export class iconService
             objData = {
                 iconVariable: entry.name,
                 name:         iconName,
-                color:        entry.color,
                 description:  entry.description
             };
             newIconArray.push(objData);
