@@ -31,9 +31,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _moduleWithProviders:ModuleWithProviders;
     private _componentRef:ComponentRef<any>;
 
-    private _highlitedHtmlCode:string;
-    private _highlitedCssCode:string;
-    private _highlitedTsCode:string;
+    private _highlightedHtmlCode:string;
+    private _highlightedCssCode:string;
+    private _highlightedTsCode:string;
     private _apiCode:any;
 
     private _htmlPath:string;
@@ -59,9 +59,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._htmlPath = '';
         this._cssPath = '';
         this._tsPath = '';
-        this._highlitedHtmlCode = '';
-        this._highlitedCssCode = '';
-        this._highlitedTsCode = '';
+        this._highlightedHtmlCode = '';
+        this._highlightedCssCode = '';
+        this._highlightedTsCode = '';
         this._hideExample = false;
         this._rawHtmlCode = '';
         this._rawCssCode = '';
@@ -89,9 +89,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         }).subscribe((res:any) =>
         {
             this._rawHtmlCode = res.text();
-            this._highlitedHtmlCode = this.htmlStringEscape(this._rawHtmlCode);
-            this._highlitedHtmlCode = `<pre><code class="xml highlight">${this._highlitedHtmlCode}</code></pre>`;
-            this.checkTemplate(this._highlitedHtmlCode);
+            this._highlightedHtmlCode = this.htmlStringEscape(this._rawHtmlCode);
+            this._highlightedHtmlCode = `<pre><code class="xml highlight">${this._highlightedHtmlCode}</code></pre>`;
+            this.checkTemplate(this._rawHtmlCode);
         });
 
         this.http.get(this._cssPath).finally(() =>
@@ -99,7 +99,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         }).subscribe((res:any) =>
         {
             this._rawCssCode = res.text();
-            this._highlitedCssCode = `<pre><code class="css highlight">${this._rawCssCode}</code></pre>`;
+            this._highlightedCssCode = `<pre><code class="css highlight">${this._rawCssCode}</code></pre>`;
         });
 
         this.http.get(this._tsPath).finally(() =>
@@ -107,7 +107,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         }).subscribe((res:any) =>
         {
             this._rawTsCode = res.text();
-            this._highlitedTsCode = `<pre><code class="typescript highlight">${this._rawTsCode}</code></pre>`;
+            this._highlightedTsCode = `<pre><code class="typescript highlight">${this._rawTsCode}</code></pre>`;
         });
 
         if(!isNullOrUndefined(this._overviewMarkDownPath))
@@ -197,6 +197,18 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         });
 
         setTimeout(() => this._alert.closeAlertByIdentifier('info'), 3000);
+    }
+    private isNullUndefinedEmpty(inputVar):boolean {
+        switch (inputVar) {
+            case undefined:
+                return true;
+            case null:
+                return true;
+            default :
+                break;
+    }
+        if(inputVar.length === 0)return true;
+        else return false;
     }
 
 }
