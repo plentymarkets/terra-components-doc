@@ -25,30 +25,19 @@ export class RouteResolver
         this._dataJson = value;
     }
 
-    public get iconVariables():Object
+    public get iconJson():any
     {
-        return this._dataVariables;
+        return this._dataIcon;
     }
 
-    public set iconVariables(value:Object)
+    public set iconJson(value:any)
     {
-        this._dataVariables = value;
-    }
-
-    public get iconDescription():Object
-    {
-        return this._dataDescription;
-    }
-
-    public set iconDescription(value:Object)
-    {
-        this._dataDescription = value;
+        this._dataIcon = value;
     }
 
     private _noExampleHtml:string;
     private _dataJson:Array<stathamInterface>;
-    private _dataDescription:Object;
-    private _dataVariables:Object;
+    private _dataIcon:any;
 
     constructor(public http:Http)
     {
@@ -59,15 +48,13 @@ export class RouteResolver
         return new Promise((resolve) =>
         {
             let url:string = 'assets/component-documentation/build/statham.json';
-            let iconVariablesUrl:string = 'assets/component-documentation/build/variables.json';
-            let iconDescriptionUrl:string = 'assets/component-documentation/build/iconDescription.json';
+            let iconJSONUrl:string = 'assets/component-documentation/build/iconDescription.json';
 
 
             if(process.env.ENV !== 'production')
             {
                 url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
-                iconVariablesUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/variables.json';
-                iconDescriptionUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
+                iconJSONUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
             }
 
             this.http.get(url).subscribe((resJson:any) =>
@@ -76,17 +63,11 @@ export class RouteResolver
 
                 resolve(this.dataJson);
             });
-            this.http.get(iconVariablesUrl)
+            this.http.get(iconJSONUrl)
                 .subscribe((resJson:any) =>
                 {
-                    this.iconVariables = resJson.json();
-                    resolve(this.iconVariables);
-                });
-            this.http.get(iconDescriptionUrl)
-                .subscribe((resJson:any) =>
-                {
-                    this.iconDescription = resJson.json();
-                    resolve(this.iconDescription);
+                    this.iconJson = resJson.json();
+                    resolve(this.iconJson);
                 });
         });
     }

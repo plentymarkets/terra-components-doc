@@ -19,12 +19,12 @@ import {
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconviewComponent } from './views/icons/iconview/icon-view.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
-import { iconService } from './views/icons/service/icon.service';
 import { RouteResolver } from './resolve/route.resolver';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
 import { IconSidebarComponent } from './views/icons/sidebar/icon-sidebar.component';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
+import { iconService } from './views/icons/service/icon.service';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {

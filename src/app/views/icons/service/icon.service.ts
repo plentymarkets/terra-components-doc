@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { RouteResolver } from '../../../resolve/route.resolver';
-import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class iconService
@@ -25,39 +24,23 @@ export class iconService
 
     private buildNewIconArray():any
     {
-        let iconVariableArray:any = [];
-        let newIconArray = [];
+        let newIconArray:any = [];
+        let objData:any;
 
-        for(let data in this.data.iconVariables)
+        for(let entry of this.data.iconJson)
         {
-            if(data.includes('icon-') && !data.includes('-icon'))
+            let iconName = entry.name.replace('icon-', '');
+            while(iconName.includes('_'))
             {
-                iconVariableArray.push(data);
+                iconName = iconName.replace('_', ' ');
             }
-        }
-
-        for(let itr = 0; itr < iconVariableArray.length; itr++)
-        {
-            let iconVariableName:string;
-            let objData:any;
-            let iconName:string;
-
-            if(!iconVariableArray[itr].includes('path'))
-            {
-                iconVariableName = iconVariableArray[itr];
-                iconName = iconVariableName.replace('icon-','');
-                while(iconName.includes('_'))
-                {
-                    iconName = iconName.replace('_',' ');
-                }
-                objData = {
-                    name:        iconName,
-                    icon:        iconVariableName,
-                    description: this.data.iconDescription[iconVariableName]
-                };
-
-                newIconArray.push(objData);
-            }
+            objData = {
+                iconVariable: entry.name,
+                name:         iconName,
+                color:        entry.color,
+                description:  entry.description
+            };
+            newIconArray.push(objData);
         }
         return newIconArray;
     }

@@ -12,7 +12,7 @@ import { iconService } from '../service/icon.service';
 export class IconSidebarComponent
 {
 
-    constructor(private _iconService:iconService)
+    constructor(private _data:iconService)
     {
     }
 
