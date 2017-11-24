@@ -198,17 +198,5 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
         setTimeout(() => this._alert.closeAlertByIdentifier('info'), 3000);
     }
-    private isNullUndefinedEmpty(inputVar):boolean {
-        switch (inputVar) {
-            case undefined:
-                return true;
-            case null:
-                return true;
-            default :
-                break;
-    }
-        if(inputVar.length === 0)return true;
-        else return false;
-    }
 
 }
