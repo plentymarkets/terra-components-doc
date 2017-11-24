@@ -1,14 +1,11 @@
 <div class="icon-container">
-    <div id="{{value.icon}}" class="icon-list" *ngFor="let value of _newIconArray">
+    <div id="{{value.iconVariable}}" class="icon-list" *ngFor="let value of _newIconArray">
         <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
-            
-             <span class="icon" [ngClass]="value.icon">
-             
-             </span>
+            <span class="icon" id="{{value.iconVariable}}_color" [ngClass]="value.iconVariable"></span>
             <table>
                 <tr>
                     <td>
-                        <span class="icon-name">{{value.icon}}</span>
+                        <span class="icon-name">{{value.iconVariable}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -17,6 +14,10 @@
                     </td>
                 </tr>
             </table>
+            <!--<div>-->
+            <!--<terra-button inputIcon="{{value.iconVariable}}"></terra-button>-->
+            <!--<span>&lt;terra-button inputIcon=&quot;{{value.icon}}&quot;&gt;&lt;/terra-button&gt;</span>-->
+            <!--</div>-->
         </terra-portlet>
     </div>
 </div>

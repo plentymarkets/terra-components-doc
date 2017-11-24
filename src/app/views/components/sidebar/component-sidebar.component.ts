@@ -8,7 +8,7 @@ import { RouteResolver } from '../../../resolve/route.resolver';
     {
         selector: 'component-sidebar',
         template: require('./component-sidebar.component.html'),
-        styles: [require('./component-sidebar.component.scss')]
+        styles:   [require('./component-sidebar.component.scss')]
     })
 export class ComponentSidebarComponent implements OnInit
 {
@@ -20,10 +20,12 @@ export class ComponentSidebarComponent implements OnInit
     {
 
     }
+
     scrollToId(iconId):void
     {
         window.document.getElementById(iconId).scrollIntoView();
     }
+
     ngOnInit()
     {
 
@@ -37,8 +39,9 @@ export class ComponentSidebarComponent implements OnInit
             componentGroup.push(obGroup);
         }
 
-        this.groupArray = componentGroup.reduce(function (a, b) {
-            if (a.indexOf(b.groupName) == -1)
+        this.groupArray = componentGroup.reduce(function(a, b)
+        {
+            if(a.indexOf(b.groupName) == -1)
             {
                 a.push(b.groupName);
             }
@@ -68,7 +71,6 @@ export class ComponentSidebarComponent implements OnInit
 
         console.log(this.groupArray);
     }
-
 
 
 }

@@ -16,7 +16,6 @@
     }
 }
 
-
 .component_list
 {
     
@@ -36,11 +35,11 @@
         {
             outline: none;
         }
-        a,span
+        a, span
         {
             &:hover
             {
-    
+                
                 a, span
                 {
                     color: #008EBD;
@@ -49,7 +48,7 @@
             }
             text-transform: capitalize;
             text-decoration: none;
-            color: #4d4e53;
+            color: #4D4E53;
             font-size: 14px;
         }
     }
@@ -58,7 +57,7 @@
     {
         a
         {
-            color: #008EBD!important;
+            color: #008EBD !important;
             // border-left: 2px solid #008ebe;
         }
         .nav-ul

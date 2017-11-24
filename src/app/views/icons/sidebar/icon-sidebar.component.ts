@@ -1,6 +1,4 @@
-import {
-    Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { iconService } from '../service/icon.service';
 
 @Component(
@@ -12,7 +10,7 @@ import { iconService } from '../service/icon.service';
 export class IconSidebarComponent
 {
 
-    constructor(private _iconService:iconService)
+    constructor(private _data:iconService)
     {
     }
 
