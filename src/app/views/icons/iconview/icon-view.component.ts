@@ -1,11 +1,8 @@
 import {
-    AfterViewInit,
     Component,
     OnInit
 } from '@angular/core';
 import { iconService } from '../service/icon.service';
-import { isNullOrUndefined } from 'util';
-
 
 @Component({
     selector:    'iconview',
@@ -14,7 +11,7 @@ import { isNullOrUndefined } from 'util';
                   require('./icon-view.component.glob.scss').toString()
     ]
 })
-export class IconviewComponent implements OnInit, AfterViewInit
+export class IconviewComponent implements OnInit
 {
 
     private _newIconArray:any;
@@ -26,10 +23,6 @@ export class IconviewComponent implements OnInit, AfterViewInit
     ngOnInit()
     {
         this._newIconArray = this._data.loadIconArray();
-    }
-
-    ngAfterViewInit()
-    {
         this.addColor();
     }
 
