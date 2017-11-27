@@ -15,10 +15,8 @@ export class ComponentSidebarComponent implements OnInit
     private groupArray = [];
     private jsonMetaData = this._routeResolver.dataJson;
 
-
     constructor(private _routeResolver:RouteResolver)
     {
-
     }
 
     scrollToId(iconId):void
@@ -28,8 +26,8 @@ export class ComponentSidebarComponent implements OnInit
 
     ngOnInit()
     {
-
         let componentGroup = [];
+
         for(let components of this.jsonMetaData)
         {
             let obGroup =
@@ -68,9 +66,5 @@ export class ComponentSidebarComponent implements OnInit
             }
         }
         this.groupArray = componentGroup;
-
-        console.log(this.groupArray);
     }
-
-
 }

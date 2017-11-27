@@ -12,7 +12,6 @@ import {
 import { DynamicModuleBuilderService } from './views/components/dynamic-module-builder/dynamic-module-builder.service';
 import { stathamInterface } from './resolve/data/statham.interface';
 import { isNullOrUndefined } from 'util';
-import { ComponentTemplateComponent } from './views/components/component-template.component';
 
 @Component({
     selector: 'terra-components-doc',
@@ -21,23 +20,12 @@ import { ComponentTemplateComponent } from './views/components/component-templat
 })
 export class AppComponent implements OnInit
 {
-    private _mainViews:any;
     private _viewMode:string = '';
 
     public constructor(private _routeResolver:RouteResolver,
                        private _dynamicModuleBuilderService:DynamicModuleBuilderService,
                        private router:Router)
     {
-        //this._mainViews = [
-        //    {
-        //        path:      '',
-        //        component: StartpageComponent
-        //    },
-        //    {
-        //        path:      'icons',
-        //        component: IconTemplateComponent
-        //    }
-        //];
     }
 
     private getUrlVars()
@@ -56,12 +44,6 @@ export class AppComponent implements OnInit
     ngOnInit():void
     {
         let routeArray:Routes = [];
-
-        let componentRoute = {
-            path:      'components',
-            component: ComponentTemplateComponent,
-            children:  []
-        };
 
         let apiUrl:string = 'assets/';
         let exampleUrl:string = 'assets/component-documentation';
