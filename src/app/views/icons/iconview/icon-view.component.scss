@@ -11,21 +11,28 @@
         width: 40%;
         
     }
-    .icon-name
-    {
-        font-size: 24px !important;
-        font-family: 'Roboto', sans-serif !important;
-        color: rgb(77, 78, 83);
-    }
     .icon-list
     {
         margin-bottom: 20px;
     }
+    .icon-description-container
+    {
+        padding-top:5px;
+    }
     .icon-description
     {
         color: rgb(77, 78, 83);
-        font-size: 24px !important;
+        font-size: 18px !important;
         font-family: 'Roboto', sans-serif !important;
+        font-style: italic;
+    }
+    .icon-name
+    {
+        vertical-align: middle;
+        display: inline-block;
+        font-size: 22px !important;
+        font-family: 'Roboto', sans-serif !important;
+        color: rgb(77, 78, 83);
     }
     .icon
     {
@@ -34,14 +41,9 @@
         font-size: 35px;
         padding-right: 10px;
     }
-    table
+    .icon-class-label
     {
-        vertical-align: middle;
-        display: inline-block;
-    }
-    .class-label
-    {
-        font-weight: bold;
+    
     }
     
 }

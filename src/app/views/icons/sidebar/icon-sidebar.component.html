@@ -3,7 +3,7 @@
     <ul class="component_list">
         <li *ngFor="let value of _data.loadIconArray()">
             <a (click)="scrollToId(value.iconVariable)">
-                <span [ngClass]="value.iconVariable">
+                <span class="icon" [ngClass]="value.iconVariable">
                 </span>
                 <span class="icon-name">{{value.name}}</span>
             </a>

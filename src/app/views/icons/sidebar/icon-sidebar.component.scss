@@ -7,8 +7,8 @@
     position: fixed;
     overflow-y: scroll;
     height: 100%;
-    background-color: transparent;
     width: inherit;
+    background-color: transparent;
     .h4
     {
         margin-top: 20px;
@@ -24,49 +24,43 @@
     margin: 0;
     li
     {
-        font-size: 14px;
-        .icon-name
-        {
-            font-family: inherit !important;
-        }
+        height:30px;
+        font-size: 15px;
         font-weight: normal;
         padding: 5px 20px 5px 20px;
+        white-space: nowrap;
+        .icon-name
+        {
+            display: inline-block;
+            vertical-align: middle;
+            font-family: inherit !important;
+            max-width: 180px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .icon
+        {
+            vertical-align: middle;
+            display: inline-block;
+        }
         &:focus
         {
             outline: none;
         }
-        a, span
+        &:hover
         {
-            &:hover
+            cursor: pointer;
+            .icon
             {
-                
-                a, span
-                {
-                    color: #008EBD;
-                    cursor: pointer;
-                }
+                margin-left: -10px;
+                font-size: 25px;
             }
+        }
+        a
+        {
             text-transform: capitalize;
             text-decoration: none;
-            color: #4D4E53;
-            font-size: 14px;
         }
     }
     
-    li.is-active
-    {
-        a
-        {
-            color: #008EBD !important;
-            // border-left: 2px solid #008ebe;
-        }
-        .nav-ul
-        {
-            a
-            {
-                color: #777777 !important;
-            }
-            display: block;
-        }
-    }
 }
