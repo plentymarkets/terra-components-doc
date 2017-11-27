@@ -4,50 +4,50 @@
     <hr>
     <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
     <div *ngIf="_hideExample == false">
-            <span class="h4" id="example">Example</span>
-            <div class="example_container">
-                <div #viewChildTarget></div>
-            </div>
-    </div>
-        <div class="code_container" *ngIf="_hideExample == false">
-            <div id="htmlcode" class="code_header">
-                <span class="h4">Html</span>
-                <terra-button
-                    class="copy_to_clip_button"
-                    (click)="copyText(_rawHtmlCode)"
-                    inputIcon="icon-copy_clipboard">
-                </terra-button>
-            </div>
-            <div>
-                <section class="code_section" [innerHTML]="_highlightedHtmlCode" highlight-js-content=".highlight"></section>
-            </div>
-            
-            <div id="scsscode" class="code_header">
-                <span class="h4">Scss</span>
-                <terra-button
-                    class="copy_to_clip_button"
-                    (click)="copyText(_rawCssCode)"
-                    inputIcon="icon-copy_clipboard">
-                </terra-button>
-            </div>
-            
-            <div>
-                <section class="code_section" [innerHTML]="_highlightedCssCode" highlight-js-content=".highlight"></section>
-            </div>
-            
-            <div class="code_header">
-                <span class="h4" id="typescriptcode">Typescript</span>
-                <terra-button
-                    class="copy_to_clip_button"
-                    (click)="copyText(_rawTsCode)"
-                    inputIcon="icon-copy_clipboard">
-                </terra-button>
-            </div>
-            
-            <div>
-                <section class="code_section" [innerHTML]="_highlightedTsCode" highlight-js-content=".highlight"></section>
-            </div>
+        <span class="h4" id="example">Example</span>
+        <div class="example_container">
+            <div #viewChildTarget></div>
         </div>
+    </div>
+    <div class="code_container" *ngIf="_hideExample == false">
+        <div id="htmlcode" class="code_header">
+            <span class="h4">Html</span>
+            <terra-button
+                class="copy_to_clip_button"
+                (click)="copyText(_rawHtmlCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
+        </div>
+        <div>
+            <section class="code_section" [innerHTML]="_highlightedHtmlCode" highlight-js-content=".highlight"></section>
+        </div>
+        
+        <div id="scsscode" class="code_header">
+            <span class="h4">Scss</span>
+            <terra-button
+                class="copy_to_clip_button"
+                (click)="copyText(_rawCssCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
+        </div>
+        
+        <div>
+            <section class="code_section" [innerHTML]="_highlightedCssCode" highlight-js-content=".highlight"></section>
+        </div>
+        
+        <div class="code_header">
+            <span class="h4" id="typescriptcode">Typescript</span>
+            <terra-button
+                class="copy_to_clip_button"
+                (click)="copyText(_rawTsCode)"
+                inputIcon="icon-copy_clipboard">
+            </terra-button>
+        </div>
+        
+        <div>
+            <section class="code_section" [innerHTML]="_highlightedTsCode" highlight-js-content=".highlight"></section>
+        </div>
+    </div>
     
     <span class="h4" id="api">API</span>
     <div class="api_container">

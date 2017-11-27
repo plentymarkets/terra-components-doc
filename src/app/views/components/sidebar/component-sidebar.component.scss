@@ -54,20 +54,20 @@
         list-style: none;
     }
 }
+
 .add-border-left
 {
-    border-left: 2px solid #008ebe;
+    border-left: 2px solid #008EBE;
 }
-
 
 .component_list
 {
     .group-name
     {
-        font-size:15px;
+        font-size: 15px;
         text-transform: capitalize;
-        padding-left:20px;
-        color: #4d4e53;
+        padding-left: 20px;
+        color: #4D4E53;
         font-weight: 500;
     }
     list-style: none;
@@ -93,10 +93,10 @@
         }
         a
         {
-            padding-left:20px;
+            padding-left: 20px;
             text-transform: capitalize;
             text-decoration: none;
-            color: #4d4e53;
+            color: #4D4E53;
             font-size: 14px;
         }
     }
@@ -105,7 +105,7 @@
     {
         a
         {
-            color: #008EBD!important;
+            color: #008EBD !important;
             // border-left: 2px solid #008ebe;
         }
         .nav-ul
