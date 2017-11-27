@@ -1,6 +1,4 @@
-import {
-    Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component(
     {
@@ -15,5 +13,4 @@ export class ComponentTemplateComponent
     {
     }
 
-    
 }
