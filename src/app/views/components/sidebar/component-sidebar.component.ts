@@ -3,6 +3,7 @@ import {
     OnInit
 } from '@angular/core';
 import { RouteResolver } from '../../../resolve/route.resolver';
+import { isNullOrUndefined } from 'util';
 
 @Component(
     {
@@ -22,9 +23,20 @@ export class ComponentSidebarComponent implements OnInit
     scrollToId(iconId):void
     {
         let iconContainer = window.document.getElementById(iconId);
-        let navBar = window.parent.window.document.getElementById('navbar');
         iconContainer.scrollIntoView();
-        window.scrollBy(0,- navBar.offsetHeight);
+
+        let documentWidth = window.document.body.offsetWidth;
+        let scrollValue = 50;
+
+        if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
+        {
+            if(documentWidth < 1200 && documentWidth > 768)
+            {
+                scrollValue = 86;
+            }
+        }
+
+        window.scrollBy(0, -scrollValue);
     }
 
     ngOnInit()

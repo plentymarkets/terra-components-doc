@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { iconService } from '../service/icon.service';
+import { isNullOrUndefined } from 'util';
 
 @Component(
     {
@@ -17,8 +18,19 @@ export class IconSidebarComponent
     scrollToId(iconId):void
     {
         let iconContainer = window.document.getElementById(iconId);
-        let navBar = window.parent.window.document.getElementById('navbar');
         iconContainer.scrollIntoView();
-        window.scrollBy(0,- navBar.offsetHeight);
+
+        let documentWidth = window.document.body.offsetWidth;
+        let scrollValue = 50;
+
+        if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
+        {
+            if(documentWidth < 1200 && documentWidth > 768)
+            {
+                scrollValue = 86;
+            }
+        }
+
+        window.scrollBy(0, -scrollValue);
     }
 }
