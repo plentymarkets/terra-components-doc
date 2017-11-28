@@ -21,7 +21,10 @@ export class ComponentSidebarComponent implements OnInit
 
     scrollToId(iconId):void
     {
-        window.document.getElementById(iconId).scrollIntoView();
+        let iconContainer = window.document.getElementById(iconId);
+        let navBar = window.parent.window.document.getElementById('navbar');
+        iconContainer.scrollIntoView();
+        window.scrollBy(0,- navBar.offsetHeight);
     }
 
     ngOnInit()
