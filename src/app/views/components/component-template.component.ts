@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComponentsConfig } from './config/components.config';
 
 @Component(
     {
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
     })
 export class ComponentTemplateComponent
 {
-    constructor()
+    constructor(private _componentsConfig:ComponentsConfig)
     {
     }
 }

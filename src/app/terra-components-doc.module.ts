@@ -25,6 +25,7 @@ import { IconSidebarComponent } from './views/icons/sidebar/icon-sidebar.compone
 import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { iconService } from './views/icons/service/icon.service';
+import { ComponentsConfig } from './views/components/config/components.config';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -77,6 +78,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     providers:       [
         DynamicModuleBuilderService,
         HighlightJsService,
+        ComponentsConfig,
         iconService,
         RouteResolver,
         {

@@ -18,6 +18,7 @@ import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { isNullOrUndefined } from 'util';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
+import { ComponentsConfig } from '../config/components.config';
 
 @Component({
     selector:  'component-view',
@@ -54,6 +55,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
+                private _componentsConfig:ComponentsConfig,
                 public http:Http)
     {
         this._htmlPath = '';
@@ -118,6 +120,8 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     ngAfterViewInit()
     {
+        this._componentsConfig.isAnyComponentOpen = true;
+
         switch(this._activatedRoute.component['name'])
         {
             case 'ComponentViewComponent':
