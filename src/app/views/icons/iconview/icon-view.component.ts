@@ -26,6 +26,7 @@ export class IconviewComponent implements OnInit
 
     ngOnInit()
     {
+        this._suggestionboxValue = "";
         this._iconList.push({
             caption: "",
             value:   ""

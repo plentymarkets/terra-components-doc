@@ -2,7 +2,6 @@
     <div class="suggestion-box-container">
         <terra-portlet inputPortletHeader="Icon-Search">
             <terra-suggestion-box
-                #sbox
                 [inputListBoxValues]="_iconList"
                 [(ngModel)]="_suggestionboxValue"
                 (outputValueChanged)="scrollToId(_suggestionboxValue)">
