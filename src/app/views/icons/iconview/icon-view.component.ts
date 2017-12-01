@@ -17,27 +17,26 @@ export class IconviewComponent implements OnInit
 {
 
     private _newIconArray:any;
-    private _iconList:Array<TerraSuggestionBoxValueInterface>;
-    private _suggestionboxValue:string;
-
-    //@ViewChild('sbox') sbox:TerraSuggestionBoxComponent;
+    private _iconList:Array<TerraSuggestionBoxValueInterface> = [];
+    private _suggestionboxValue:any;
 
     constructor(private _data:iconService)
     {
-        this._iconList = [];
-        this._suggestionboxValue = '';
     }
 
     ngOnInit()
     {
-        this.buildSuggestionBoxArray();
+        this._iconList.push({
+            caption: "",
+            value:   ""
+        });
         this._newIconArray = this._data.loadIconArray();
-        //this.sbox.resetComponentValue();
+        this.buildSuggestionBoxArray();
     }
 
     buildSuggestionBoxArray():void
     {
-        for(let value of this._data.loadIconArray())
+        for(let value of this._newIconArray)
         {
             this._iconList.push(
                 {
@@ -49,21 +48,24 @@ export class IconviewComponent implements OnInit
 
     scrollToId(iconId):void
     {
-        let iconContainer = window.document.getElementById(iconId);
-        iconContainer.scrollIntoView();
-
-        let documentWidth = window.document.body.offsetWidth;
-        let scrollValue = 50;
-
-        if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
+        if(iconId != "")
         {
-            if(documentWidth < 1200 && documentWidth > 768)
-            {
-                scrollValue = 86;
-            }
-        }
+            let iconContainer = window.document.getElementById(iconId);
+            iconContainer.scrollIntoView();
 
-        window.scrollBy(0, -scrollValue);
+            let documentWidth = window.document.body.offsetWidth;
+            let scrollValue = 50;
+
+            if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
+            {
+                if(documentWidth < 1200 && documentWidth > 768)
+                {
+                    scrollValue = 86;
+                }
+            }
+
+            window.scrollBy(0, -scrollValue);
+        }
     }
 
 }
