@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+} from '@angular/core';
 import { iconService } from '../service/icon.service';
 import { isNullOrUndefined } from 'util';
 
@@ -10,7 +12,6 @@ import { isNullOrUndefined } from 'util';
     })
 export class IconSidebarComponent
 {
-
     constructor(private _data:iconService)
     {
     }
@@ -33,4 +34,5 @@ export class IconSidebarComponent
 
         window.scrollBy(0, -scrollValue);
     }
+
 }

@@ -1,4 +1,13 @@
 <div class="icon-container">
+    <div class="suggestion-box-container">
+        <terra-portlet inputPortletHeader="Icon-Search">
+            <terra-suggestion-box
+                [inputListBoxValues]="_iconList"
+                [(ngModel)]="_suggestionboxValue"
+                (outputValueChanged)="scrollToId(_suggestionboxValue)">
+            </terra-suggestion-box>
+        </terra-portlet>
+    </div>
     <div id="{{value.iconVariable}}" class="icon-list" *ngFor="let value of _newIconArray">
         <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
             <div>
