@@ -6,6 +6,7 @@ import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
 import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
 import { isNullOrUndefined } from 'util';
+import { scrollToViewHelper } from '../../../helper/scrollToView.helper';
 
 @Component({
     selector:    'iconview',
@@ -26,6 +27,7 @@ export class IconViewComponent implements OnInit
     private _suggestionboxValue:any;
 
     constructor(private _data:iconService,
+                private _scroll:scrollToViewHelper,
                 public http:Http)
     {
         if(process.env.ENV !== 'production')
@@ -68,28 +70,6 @@ export class IconViewComponent implements OnInit
                     caption: value.iconVariable,
                     value:   value.iconVariable
                 });
-        }
-    }
-
-    scrollToId(iconId):void
-    {
-        if(iconId != "")
-        {
-            let iconContainer = window.document.getElementById(iconId);
-            iconContainer.scrollIntoView();
-
-            let documentWidth = window.document.body.offsetWidth;
-            let scrollValue = 50;
-
-            if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
-            {
-                if(documentWidth < 1200 && documentWidth > 768)
-                {
-                    scrollValue = 86;
-                }
-            }
-
-            window.scrollBy(0, -scrollValue);
         }
     }
 

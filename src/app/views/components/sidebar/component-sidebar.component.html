@@ -8,11 +8,11 @@
                 routerLink="{{component.component}}">
                 <a>{{component.component}}</a>
                 <ul class="nav-ul">
-                    <li (click)="scrollToId('example')">Example</li>
-                    <li (click)="scrollToId('htmlcode')">Html</li>
-                    <li (click)="scrollToId('scsscode')">Scss</li>
-                    <li (click)="scrollToId('typescriptcode')">Ts</li>
-                    <li (click)="scrollToId('api')">Api</li>
+                    <li (click)="_scroll.scrollToId('example')">Example</li>
+                    <li (click)="_scroll.scrollToId('htmlcode')">Html</li>
+                    <li (click)="_scroll.scrollToId('scsscode')">Scss</li>
+                    <li (click)="_scroll.scrollToId('typescriptcode')">Ts</li>
+                    <li (click)="_scroll.scrollToId('api')">Api</li>
                 </ul>
             </li>
         </ul>
