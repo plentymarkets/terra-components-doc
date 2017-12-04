@@ -17,7 +17,7 @@ import {
     HighlightJsService
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { IconviewComponent } from './views/icons/iconview/icon-view.component';
+import { IconViewComponent } from './views/icons/iconview/icon-view.component';
 import { LocalizationConfig } from './core/localization/terra-localization.config';
 import { RouteResolver } from './resolve/route.resolver';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
@@ -46,7 +46,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
     entryComponents: [
         ComponentSidebarComponent,
         IconSidebarComponent,
-        IconviewComponent,
+        IconViewComponent,
         ComponentViewComponent,
         ComponentTemplateComponent,
         IconTemplateComponent,
@@ -69,7 +69,7 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
         AppComponent,
         ComponentSidebarComponent,
         IconSidebarComponent,
-        IconviewComponent,
+        IconViewComponent,
         ComponentViewComponent,
         ComponentTemplateComponent,
         IconTemplateComponent,
