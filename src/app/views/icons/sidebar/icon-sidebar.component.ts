@@ -33,4 +33,5 @@ export class IconSidebarComponent
 
         window.scrollBy(0, -scrollValue);
     }
+
 }
