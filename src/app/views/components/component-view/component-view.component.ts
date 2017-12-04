@@ -16,6 +16,7 @@ import {
 import { JitCompiler } from '@angular/compiler';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
+import { isNullOrUndefined } from 'util';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
 import { ComponentsConfig } from '../config/components.config';
 
@@ -34,7 +35,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _highlightedHtmlCode:string;
     private _highlightedCssCode:string;
     private _highlightedTsCode:string;
-    private _apiCode:string;
+    private _apiCode:any;
 
     private _htmlPath:string;
     private _cssPath:string;
@@ -42,12 +43,13 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _apiPath:string;
     private _componentName:string;
     private _overviewMarkDownPath:string;
+    private _isMarkDownPath:boolean;
 
-    private _checkExample:boolean;
+    private _rawHtmlCode:string;
+    private _rawCssCode:string;
+    private _rawTsCode:string;
 
-    private _tsCopyCode:any;
-    private _cssCopyCode:any;
-    private _htmlCopyCode:any;
+    private _hideExample:boolean;
 
     private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
 
@@ -59,11 +61,13 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._htmlPath = '';
         this._cssPath = '';
         this._tsPath = '';
-        this._apiCode = '';
         this._highlightedHtmlCode = '';
         this._highlightedCssCode = '';
         this._highlightedTsCode = '';
-        this._checkExample = false;
+        this._hideExample = false;
+        this._rawHtmlCode = '';
+        this._rawCssCode = '';
+        this._rawTsCode = '';
     }
 
     ngOnInit()
@@ -77,34 +81,47 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
 
-        this.http.get(this._htmlPath).subscribe((res:any) =>
-        {
-            this._htmlCopyCode = res.text();
-            this._highlightedHtmlCode = this._getHighlightedText(this._htmlCopyCode, 'xml');
-            this._checkExample = !!(this._htmlCopyCode);
-        });
-        this.http.get(this._cssPath).subscribe((res:any) =>
-        {
-            this._cssCopyCode = res.text();
-            this._highlightedCssCode = this._getHighlightedText(this._cssCopyCode, 'css');
-            this._checkExample = !!(this._cssCopyCode);
-        });
-        this.http.get(this._tsPath).subscribe((res:any) =>
-        {
-            this._tsCopyCode = res.text();
-            this._highlightedTsCode = this._getHighlightedText(this._tsCopyCode, 'typescript');
-            this._checkExample = !!(this._tsCopyCode);
-        });
         this.http.get(this._apiPath).subscribe((res:any) =>
         {
             this._apiCode = res.text();
         });
 
+        this.http.get(this._htmlPath).finally(() =>
+        {
+        }).subscribe((res:any) =>
+        {
+            this._rawHtmlCode = res.text();
+            this._highlightedHtmlCode = this.htmlStringEscape(this._rawHtmlCode);
+            this._highlightedHtmlCode = `<pre><code class="xml highlight">${this._highlightedHtmlCode}</code></pre>`;
+            this.checkTemplate(this._rawHtmlCode);
+        });
+
+        this.http.get(this._cssPath).finally(() =>
+        {
+        }).subscribe((res:any) =>
+        {
+            this._rawCssCode = res.text();
+            this._highlightedCssCode = `<pre><code class="css highlight">${this._rawCssCode}</code></pre>`;
+        });
+
+        this.http.get(this._tsPath).finally(() =>
+        {
+        }).subscribe((res:any) =>
+        {
+            this._rawTsCode = res.text();
+            this._highlightedTsCode = `<pre><code class="typescript highlight">${this._rawTsCode}</code></pre>`;
+        });
+
+        if(!isNullOrUndefined(this._overviewMarkDownPath))
+        {
+            this._isMarkDownPath = true;
+        }
     }
 
     ngAfterViewInit()
     {
         this._componentsConfig.isAnyComponentOpen = true;
+
         switch(this._activatedRoute.component['name'])
         {
             case 'ComponentViewComponent':
@@ -123,14 +140,19 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         }
     }
 
-    private _getHighlightedText(text:string, textType:string):string
+    private checkTemplate(str:string):void
     {
-        let rawText = this._htmlStringEscape(text);
-        let highlightedText = `<pre><code class="${textType} highlight">${rawText}</code></pre>`;
-        return highlightedText;
+        if(str.length == 0)
+        {
+            this._hideExample = true;
+        }
+        else
+        {
+            this._hideExample = false;
+        }
     }
 
-    private _htmlStringEscape(s:string):string
+    private htmlStringEscape(s:string):string
     {
         return s.replace(/[&"<>]/g, function(c)
         {
