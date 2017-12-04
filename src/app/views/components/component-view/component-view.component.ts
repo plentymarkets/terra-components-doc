@@ -83,17 +83,21 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
             this._highlightedHtmlCode = this._getHighlightedText(this._htmlCopyCode, 'xml');
             this._checkExample = !!(this._htmlCopyCode);
         });
-        this.http.get(this._htmlPath).subscribe((res:any) =>
+        this.http.get(this._cssPath).subscribe((res:any) =>
         {
             this._cssCopyCode = res.text();
             this._highlightedCssCode = this._getHighlightedText(this._cssCopyCode, 'css');
             this._checkExample = !!(this._cssCopyCode);
         });
-        this.http.get(this._htmlPath).subscribe((res:any) =>
+        this.http.get(this._tsPath).subscribe((res:any) =>
         {
             this._tsCopyCode = res.text();
             this._highlightedTsCode = this._getHighlightedText(this._tsCopyCode, 'typescript');
             this._checkExample = !!(this._tsCopyCode);
+        });
+        this.http.get(this._apiPath).subscribe((res:any) =>
+        {
+            this._apiCode = res.text();
         });
 
     }
