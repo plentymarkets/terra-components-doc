@@ -4,7 +4,7 @@
             <terra-suggestion-box
                 [inputListBoxValues]="_iconList"
                 [(ngModel)]="_suggestionboxValue"
-                (outputValueChanged)="_scroll.scrollToId(_suggestionboxValue)">
+                (outputValueChanged)="_scrollToViewHelper.scrollToId(_suggestionboxValue)">
             </terra-suggestion-box>
         </terra-portlet>
     </div>

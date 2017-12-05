@@ -2,7 +2,7 @@
     <div class="sidebar">
         <p class="h4">Icons</p>
         <ul class="icon_list">
-            <li *ngFor="let value of _data.loadIconArray()" (click)="_scroll.scrollToId(value.iconVariable)">
+            <li *ngFor="let value of _data.loadIconArray()" (click)="_scrollToViewHelper.scrollToId(value.iconVariable)">
                 <a>
                     <span class="icon" [ngClass]="value.iconVariable">
                     </span>

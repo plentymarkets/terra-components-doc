@@ -27,7 +27,7 @@ export class IconViewComponent implements OnInit
     private _suggestionboxValue:any;
 
     constructor(private _data:iconService,
-                private _scroll:ScrollToViewHelper,
+                private _scrollToViewHelper:ScrollToViewHelper,
                 private _highlightTextHelper:HighlightTextHelper,
                 public http:Http)
     {

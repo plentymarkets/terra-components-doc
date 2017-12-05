@@ -14,7 +14,7 @@ import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 export class IconSidebarComponent
 {
     constructor(private _data:iconService,
-                private _scroll:ScrollToViewHelper)
+                private _scrollToViewHelper:ScrollToViewHelper)
     {
     }
 

@@ -3,6 +3,7 @@ import {
     OnInit
 } from '@angular/core';
 import { RouteResolver } from '../../../resolve/route.resolver';
+import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 
 @Component(
     {
@@ -15,7 +16,8 @@ export class ComponentSidebarComponent implements OnInit
     private groupArray = [];
     private jsonMetaData = this._routeResolver.dataJson;
 
-    constructor(private _routeResolver:RouteResolver)
+    constructor(private _routeResolver:RouteResolver,
+                private _scrollToViewHelper:ScrollToViewHelper)
     {
     }
 
