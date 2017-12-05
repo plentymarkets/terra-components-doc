@@ -19,6 +19,7 @@ import { Clipboard } from 'ts-clipboard';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
 import { ComponentsConfig } from '../config/components.config';
 import { HighlightTextHelper } from '../../../helper/highlightText.helper';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector:  'component-view',
@@ -32,21 +33,23 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _moduleWithProviders:ModuleWithProviders;
     private _componentRef:ComponentRef<any>;
 
-    private _highlightedHtmlCode:string;
-    private _highlightedCssCode:string;
-    private _highlightedTsCode:string;
-    private _apiCode:any;
-
-    private _htmlToCopy:string;
-    private _cssToCopy:string;
-    private _tsToCopy:string;
-
     private _htmlPath:string;
     private _cssPath:string;
     private _tsPath:string;
     private _apiPath:string;
     private _overviewMarkDownPath:string;
     private _componentName:string;
+
+    private _htmlToCopy:string;
+    private _cssToCopy:string;
+    private _tsToCopy:string;
+
+    private _highlightedHtmlCode:string;
+    private _highlightedCssCode:string;
+    private _highlightedTsCode:string;
+    private _apiCode:string;
+
+    private _checkExample:boolean = true;
 
     private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
 
@@ -78,24 +81,33 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
 
-        this.http.get(this._apiPath).subscribe((res:any) =>
+        Observable.combineLatest(
+            this.http.get(this._apiPath),
+            this.http.get(this._htmlPath),
+            this.http.get(this._cssPath),
+            this.http.get(this._tsPath),
+            (api:any, html:any, css:any, ts:any) =>
+            {
+                return {
+                    api:  api.text(),
+                    html: html.text(),
+                    css:  css.text(),
+                    ts:   ts.text()
+                };
+            }
+        ).subscribe((data:any) =>
         {
-            this._apiCode = res.text();
-        });
-        this.http.get(this._htmlPath).subscribe((res:any) =>
-        {
-            this._htmlToCopy = res.text();
+
+            this._checkExample = !!(data.html);
+            this._apiCode = data.api;
+            this._htmlToCopy = data.html;
+            this._cssToCopy = data.css;
+            this._tsToCopy = data.ts;
+
             this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
-        });
-        this.http.get(this._cssPath).subscribe((res:any) =>
-        {
-            this._cssToCopy = res.text();
             this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
-        });
-        this.http.get(this._tsPath).subscribe((res:any) =>
-        {
-            this._tsToCopy = res.text();
             this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
+
         });
     }
 
