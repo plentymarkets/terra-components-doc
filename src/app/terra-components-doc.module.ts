@@ -26,6 +26,8 @@ import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { iconService } from './views/icons/service/icon.service';
 import { ComponentsConfig } from './views/components/config/components.config';
+import { ScrollToViewHelper } from './helper/scrollToView.helper';
+import { HighlightTextHelper } from './helper/highlightText.helper';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -80,6 +82,8 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
         HighlightJsService,
         ComponentsConfig,
         iconService,
+        ScrollToViewHelper,
+        HighlightTextHelper,
         RouteResolver,
         {
             provide:    APP_INITIALIZER,
