@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
 import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { HighlightTextHelper } from '../../../helper/highlightText.helper';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector:    'iconview',
@@ -36,24 +37,31 @@ export class IconViewComponent implements OnInit
             this._iconButtonCodeExamplePath = 'src/app/assets/iconExample/iconButtonCodeExample.html';
             this._iconListCodeExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
         }
-
         this._suggestionboxValue = "";
         this._iconList.push({
             caption: "",
             value:   ""
         });
-
     }
 
     ngOnInit()
     {
-        this.http.get(this._iconButtonCodeExamplePath).subscribe((res:any) =>
+        Observable.combineLatest(
+            this.http.get(this._iconButtonCodeExamplePath),
+            this.http.get(this._iconListCodeExamplePath),
+            (button:any, list:any) =>
+            {
+                return {
+                    button: button.text(),
+                    list:   list.text()
+                };
+            }
+        ).subscribe((data:any) =>
         {
-            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
-        });
-        this.http.get(this._iconListCodeExamplePath).subscribe((res:any) =>
-        {
-            this._iconListCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
+
+            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(data.button, 'xml');
+            this._iconListCodeExample = this._highlightTextHelper.highlightText(data.list, 'css');
+
         });
         this._newIconArray = this._data.loadIconArray();
         this.buildSuggestionBoxArray();
