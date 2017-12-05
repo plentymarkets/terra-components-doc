@@ -37,6 +37,12 @@ export class IconViewComponent implements OnInit
             this._iconListCodeExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
         }
 
+        this._suggestionboxValue = "";
+        this._iconList.push({
+            caption: "",
+            value:   ""
+        });
+
     }
 
     ngOnInit()
@@ -48,11 +54,6 @@ export class IconViewComponent implements OnInit
         this.http.get(this._iconListCodeExamplePath).subscribe((res:any) =>
         {
             this._iconListCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
-        });
-        this._suggestionboxValue = "";
-        this._iconList.push({
-            caption: "",
-            value:   ""
         });
         this._newIconArray = this._data.loadIconArray();
         this.buildSuggestionBoxArray();
