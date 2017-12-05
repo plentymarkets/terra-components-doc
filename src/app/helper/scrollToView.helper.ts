@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { isNullOrUndefined } from 'util';
 
 @Injectable()
-export class scrollToViewHelper
+export class ScrollToViewHelper
 {
 
     constructor()

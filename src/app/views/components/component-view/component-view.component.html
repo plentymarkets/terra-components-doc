@@ -2,19 +2,19 @@
     
     <h1 class="main_header">{{_componentName}}</h1>
     <hr>
-    <markdown-to-html *ngIf="_isMarkDownPath" [src]="_overviewMarkDownPath"></markdown-to-html>
-    <div *ngIf="_hideExample == false">
+    <markdown-to-html [src]="_overviewMarkDownPath"></markdown-to-html>
+    <div>
         <span class="h4" id="example">Example</span>
         <div class="example_container">
             <div #viewChildTarget></div>
         </div>
     </div>
-    <div class="code_container" *ngIf="_hideExample == false">
+    <div class="code_container">
         <div id="htmlcode" class="code_header">
             <span class="h4">Html</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_rawHtmlCode)"
+                (click)="copyText(_htmlToCopy)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
@@ -26,7 +26,7 @@
             <span class="h4">Scss</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_rawCssCode)"
+                (click)="copyText(_cssToCopy)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>
@@ -39,7 +39,7 @@
             <span class="h4" id="typescriptcode">Typescript</span>
             <terra-button
                 class="copy_to_clip_button"
-                (click)="copyText(_rawTsCode)"
+                (click)="copyText(_tsToCopy)"
                 inputIcon="icon-copy_clipboard">
             </terra-button>
         </div>

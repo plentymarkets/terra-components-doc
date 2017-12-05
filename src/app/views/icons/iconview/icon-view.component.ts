@@ -6,7 +6,7 @@ import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
 import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
 import { isNullOrUndefined } from 'util';
-import { scrollToViewHelper } from '../../../helper/scrollToView.helper';
+import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 
 @Component({
     selector:    'iconview',
@@ -27,7 +27,7 @@ export class IconViewComponent implements OnInit
     private _suggestionboxValue:any;
 
     constructor(private _data:iconService,
-                private _scroll:scrollToViewHelper,
+                private _scroll:ScrollToViewHelper,
                 public http:Http)
     {
         if(process.env.ENV !== 'production')

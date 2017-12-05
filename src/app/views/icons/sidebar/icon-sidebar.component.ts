@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { iconService } from '../service/icon.service';
 import { isNullOrUndefined } from 'util';
-import { scrollToViewHelper } from '../../../helper/scrollToView.helper';
+import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 
 @Component(
     {
@@ -14,7 +14,7 @@ import { scrollToViewHelper } from '../../../helper/scrollToView.helper';
 export class IconSidebarComponent
 {
     constructor(private _data:iconService,
-                private _scroll:scrollToViewHelper)
+                private _scroll:ScrollToViewHelper)
     {
     }
 
