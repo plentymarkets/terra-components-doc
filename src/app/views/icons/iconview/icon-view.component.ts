@@ -47,7 +47,7 @@ export class IconViewComponent implements OnInit
         });
         this.http.get(this._iconListCodeExamplePath).subscribe((res:any) =>
         {
-            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
+            this._iconListCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
         });
         this._suggestionboxValue = "";
         this._iconList.push({
@@ -68,19 +68,6 @@ export class IconViewComponent implements OnInit
                     value:   value.iconVariable
                 });
         }
-    }
-
-    private htmlStringEscape(s:string):string
-    {
-        return s.replace(/[&"<>]/g, function(c)
-        {
-            return {
-                '&': "&amp;",
-                '"': "&quot;",
-                '<': "&lt;",
-                '>': "&gt;"
-            }[c];
-        });
     }
 
 }
