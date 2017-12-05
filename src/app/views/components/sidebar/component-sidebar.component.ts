@@ -45,6 +45,7 @@ export class ComponentSidebarComponent implements OnInit
 
         componentGroup = [];
         let iterator = 0;
+        
         for(let group of this.groupArray)
         {
             componentGroup.push([group]);
