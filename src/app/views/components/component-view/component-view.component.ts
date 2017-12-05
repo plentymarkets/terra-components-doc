@@ -16,9 +16,10 @@ import {
 import { JitCompiler } from '@angular/compiler';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
-import { isNullOrUndefined } from 'util';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
 import { ComponentsConfig } from '../config/components.config';
+import { HighlightTextHelper } from '../../../helper/highlightText.helper';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector:  'component-view',
@@ -32,30 +33,30 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _moduleWithProviders:ModuleWithProviders;
     private _componentRef:ComponentRef<any>;
 
-    private _highlightedHtmlCode:string;
-    private _highlightedCssCode:string;
-    private _highlightedTsCode:string;
-    private _apiCode:any;
-
     private _htmlPath:string;
     private _cssPath:string;
     private _tsPath:string;
     private _apiPath:string;
-    private _componentName:string;
     private _overviewMarkDownPath:string;
-    private _isMarkDownPath:boolean;
+    private _componentName:string;
 
-    private _rawHtmlCode:string;
-    private _rawCssCode:string;
-    private _rawTsCode:string;
+    private _htmlToCopy:string;
+    private _cssToCopy:string;
+    private _tsToCopy:string;
 
-    private _hideExample:boolean;
+    private _highlightedHtmlCode:string;
+    private _highlightedCssCode:string;
+    private _highlightedTsCode:string;
+    private _apiCode:string;
+
+    private _checkExample:boolean = true;
 
     private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
 
     constructor(private _jitCompiler:JitCompiler,
                 private _activatedRoute:ActivatedRoute,
                 private _componentsConfig:ComponentsConfig,
+                private _highlightTextHelper:HighlightTextHelper,
                 public http:Http)
     {
         this._htmlPath = '';
@@ -64,10 +65,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._highlightedHtmlCode = '';
         this._highlightedCssCode = '';
         this._highlightedTsCode = '';
-        this._hideExample = false;
-        this._rawHtmlCode = '';
-        this._rawCssCode = '';
-        this._rawTsCode = '';
+        this._htmlToCopy = '';
+        this._cssToCopy = '';
+        this._tsToCopy = '';
     }
 
     ngOnInit()
@@ -81,41 +81,34 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
 
-        this.http.get(this._apiPath).subscribe((res:any) =>
+        Observable.combineLatest(
+            this.http.get(this._apiPath),
+            this.http.get(this._htmlPath),
+            this.http.get(this._cssPath),
+            this.http.get(this._tsPath),
+            (api:any, html:any, css:any, ts:any) =>
+            {
+                return {
+                    api:  api.text(),
+                    html: html.text(),
+                    css:  css.text(),
+                    ts:   ts.text()
+                };
+            }
+        ).subscribe((data:any) =>
         {
-            this._apiCode = res.text();
-        });
 
-        this.http.get(this._htmlPath).finally(() =>
-        {
-        }).subscribe((res:any) =>
-        {
-            this._rawHtmlCode = res.text();
-            this._highlightedHtmlCode = this.htmlStringEscape(this._rawHtmlCode);
-            this._highlightedHtmlCode = `<pre><code class="xml highlight">${this._highlightedHtmlCode}</code></pre>`;
-            this.checkTemplate(this._rawHtmlCode);
-        });
+            this._checkExample = !!(data.html);
+            this._apiCode = data.api;
+            this._htmlToCopy = data.html;
+            this._cssToCopy = data.css;
+            this._tsToCopy = data.ts;
 
-        this.http.get(this._cssPath).finally(() =>
-        {
-        }).subscribe((res:any) =>
-        {
-            this._rawCssCode = res.text();
-            this._highlightedCssCode = `<pre><code class="css highlight">${this._rawCssCode}</code></pre>`;
-        });
+            this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
+            this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
+            this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
 
-        this.http.get(this._tsPath).finally(() =>
-        {
-        }).subscribe((res:any) =>
-        {
-            this._rawTsCode = res.text();
-            this._highlightedTsCode = `<pre><code class="typescript highlight">${this._rawTsCode}</code></pre>`;
         });
-
-        if(!isNullOrUndefined(this._overviewMarkDownPath))
-        {
-            this._isMarkDownPath = true;
-        }
     }
 
     ngAfterViewInit()
@@ -138,31 +131,6 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         {
             this._componentRef.destroy();
         }
-    }
-
-    private checkTemplate(str:string):void
-    {
-        if(str.length == 0)
-        {
-            this._hideExample = true;
-        }
-        else
-        {
-            this._hideExample = false;
-        }
-    }
-
-    private htmlStringEscape(s:string):string
-    {
-        return s.replace(/[&"<>]/g, function(c)
-        {
-            return {
-                '&': "&amp;",
-                '"': "&quot;",
-                '<': "&lt;",
-                '>': "&gt;"
-            }[c];
-        });
     }
 
     private loadComponentData(data:Data):void

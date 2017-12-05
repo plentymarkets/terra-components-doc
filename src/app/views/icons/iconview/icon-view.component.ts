@@ -5,7 +5,8 @@ import {
 import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
 import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
-import { isNullOrUndefined } from 'util';
+import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
+import { HighlightTextHelper } from '../../../helper/highlightText.helper';
 
 @Component({
     selector:    'iconview',
@@ -26,6 +27,8 @@ export class IconViewComponent implements OnInit
     private _suggestionboxValue:any;
 
     constructor(private _data:iconService,
+                private _scrollToViewHelper:ScrollToViewHelper,
+                private _highlightTextHelper:HighlightTextHelper,
                 public http:Http)
     {
         if(process.env.ENV !== 'production')
@@ -34,26 +37,23 @@ export class IconViewComponent implements OnInit
             this._iconListCodeExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
         }
 
+        this._suggestionboxValue = "";
+        this._iconList.push({
+            caption: "",
+            value:   ""
+        });
+
     }
 
     ngOnInit()
     {
         this.http.get(this._iconButtonCodeExamplePath).subscribe((res:any) =>
         {
-            this._iconButtonCodeExample = res.text();
-            this._iconButtonCodeExample = this.htmlStringEscape(this._iconButtonCodeExample);
-            this._iconButtonCodeExample = `<pre><code class="xml highlight">${this._iconButtonCodeExample}</code></pre>`;
+            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
         });
         this.http.get(this._iconListCodeExamplePath).subscribe((res:any) =>
         {
-            this._iconListCodeExample = res.text();
-            this._iconListCodeExample = this.htmlStringEscape(this._iconListCodeExample);
-            this._iconListCodeExample = `<pre><code class="xml highlight">${this._iconListCodeExample}</code></pre>`;
-        });
-        this._suggestionboxValue = "";
-        this._iconList.push({
-            caption: "",
-            value:   ""
+            this._iconListCodeExample = this._highlightTextHelper.highlightText(res.text(), 'xml');
         });
         this._newIconArray = this._data.loadIconArray();
         this.buildSuggestionBoxArray();
@@ -69,41 +69,6 @@ export class IconViewComponent implements OnInit
                     value:   value.iconVariable
                 });
         }
-    }
-
-    scrollToId(iconId):void
-    {
-        if(iconId != "")
-        {
-            let iconContainer = window.document.getElementById(iconId);
-            iconContainer.scrollIntoView();
-
-            let documentWidth = window.document.body.offsetWidth;
-            let scrollValue = 50;
-
-            if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
-            {
-                if(documentWidth < 1200 && documentWidth > 768)
-                {
-                    scrollValue = 86;
-                }
-            }
-
-            window.scrollBy(0, -scrollValue);
-        }
-    }
-
-    private htmlStringEscape(s:string):string
-    {
-        return s.replace(/[&"<>]/g, function(c)
-        {
-            return {
-                '&': "&amp;",
-                '"': "&quot;",
-                '<': "&lt;",
-                '>': "&gt;"
-            }[c];
-        });
     }
 
 }
