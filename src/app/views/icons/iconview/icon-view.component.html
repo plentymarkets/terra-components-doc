@@ -1,19 +1,16 @@
 <div class="icon-container">
-    <div class="suggestion-box-container">
-        <terra-portlet inputPortletHeader="Icon-Search">
+    <div class="search-bar">
+        <div class="suggestion-box-container">
             <terra-suggestion-box
                 [inputListBoxValues]="_iconList"
                 [(ngModel)]="_suggestionboxValue"
                 (outputValueChanged)="_scrollToViewHelper.scrollToId(_suggestionboxValue)">
             </terra-suggestion-box>
-        </terra-portlet>
+        </div>
     </div>
-    <div class="icon-example">
-        <terra-portlet inputPortletHeader="How to use Icon - Variables">
-            <div>
-                Here you can see how to use Icon - Variables
-            </div>
-            <terra-portlet inputPortletHeader="Button - Example">
+    <div class='icon-example'>
+        <terra-portlet inputPortletHeader='How to use Icon - Variables'>
+            <terra-portlet inputPortletHeader='Button - Example'>
                 <p>
                     Here we use an input of the terra button to display the icon as "text" on the button
                 </p>
@@ -44,11 +41,17 @@
                 <p>
                     Here we use a class on an element to display the icon
                 </p>
-                <div class="example-container">
-                    <ul class="icon-list">
-                        <li class="icon-add">icon-add</li>
-                        <li class="icon-delete">icon-delete</li>
-                        <li class="icon-save">icon-save</li>
+                <div class='example-container'>
+                    <ul class='icon-list'>
+                        <li class='icon-add'>
+                            <span class="icon-list-example-name"> icon-add</span>
+                        </li>
+                        <li class='icon-delete'>
+                            <span class="icon-list-example-name">icon-delete</span>
+                        </li>
+                        <li class='icon-save'>
+                            <span class="icon-list-example-name">icon-save</span>
+                        </li>
                     </ul>
                     <div>
                         <section class="code_section" [innerHTML]="_iconListCodeExample" highlight-js-content=".highlight"></section>
