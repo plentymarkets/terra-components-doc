@@ -2,6 +2,7 @@
     <div class="search-bar">
         <div class="suggestion-box-container">
             <terra-suggestion-box
+                inputName="search icons"
                 [inputListBoxValues]="_iconList"
                 [(ngModel)]="_suggestionboxValue"
                 (outputValueChanged)="_scrollToViewHelper.scrollToId(_suggestionboxValue)">

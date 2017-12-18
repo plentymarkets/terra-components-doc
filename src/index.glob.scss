@@ -2,8 +2,9 @@
 @import 'index.glob.zlk.scss';
 
 
-::-webkit-scrollbar {
-    display: none;
+body
+{
+    overflow: hidden;
 }
 p
 {
