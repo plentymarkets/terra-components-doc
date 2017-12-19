@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6
     font-weight: 100;
 }
 
-//panel warning for deprecated
 .panel
 {
     margin-top: 20px;
@@ -53,6 +52,17 @@ h1, h2, h3, h4, h5, h6
         
         }
     }
+}
+.center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-margin
+{
+    margin-top: 20px;
+    width: 100%;
 }
 
 .code_section

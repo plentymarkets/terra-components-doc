@@ -1,19 +1,35 @@
-.outer
+startpage
 {
-    display: table;
-    position: absolute;
-    height: 100%;
+    color: #4D4E53;
+}
+
+.getting-started-container
+{
     width: 100%;
+    .buttons-container
+    {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .button-links
+        {
+            margin: 0 10px 0 10px;
+            display: inline-block;
+            width: 250px;
+        }
+    }
+    .heading-text
+    {
+        text-align: center;
+    }
 }
-
-.middle
+.content-container
 {
-    display: table-cell;
-    vertical-align: middle;
+    margin: 0 20% 0 20%;
 }
-
-.inner
+.card-images-style
 {
-    margin-left: 30%;
-    margin-right: calc(30% + 260px);
+    max-width:20rem;
+    height:200px;
 }
