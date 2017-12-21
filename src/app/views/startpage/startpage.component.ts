@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+import { RouteResolver } from '../../resolve/route.resolver';
 
 @Component(
     {
@@ -6,9 +10,19 @@ import { Component } from '@angular/core';
         template: require('./startpage.component.html'),
         styles:   [require('./startpage.component.scss')]
     })
-export class StartpageComponent
+export class StartpageComponent implements OnInit
 {
-    constructor()
+    private _changelogData: object;
+
+    constructor(private _routeResolver:RouteResolver)
     {
     }
+
+    ngOnInit()
+    {
+        this._changelogData = this._routeResolver.dataChangelog;
+
+        console.log();
+    }
+
 }

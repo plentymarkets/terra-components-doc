@@ -2,28 +2,6 @@ startpage
 {
     color: #4D4E53;
 }
-
-.getting-started-container
-{
-    width: 100%;
-    .buttons-container
-    {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .button-links
-        {
-            margin: 0 10px 0 10px;
-            display: inline-block;
-            width: 250px;
-        }
-    }
-    .heading-text
-    {
-        text-align: center;
-    }
-}
 .content-container
 {
     margin: 0 20% 0 20%;

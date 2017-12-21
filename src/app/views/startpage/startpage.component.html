@@ -1,7 +1,9 @@
-<div class="getting-started-container">
-    <h1 class="heading-text">Terra-Components</h1>
-    <hr>
+<div class="container-margin">
+    <div class="center">
+        <h1 class="heading-text">Terra-Components</h1>
+    </div>
 </div>
+<hr>
 <div class="content-container">
     <div class="container-fluid">
         <div class="row">
@@ -47,8 +49,26 @@
         </div>
     </div>
     <div class="container-margin">
-        <div class="center">
-            <h2>Component documentation at sidebar </h2>
+        <div class="card text-center" style="width: 100%">
+            <div class="card-header">
+                <h4>Changelog</h4>
+            </div>
+            <div class="card-block">
+                <h6>Updated</h6>
+                <a  *ngFor="let item of _changelogData['new-release-changelog']"
+                    routerLink="{{item['component-name']}}" class="btn btn-link">
+                    {{item['component-name']}}
+                </a>
+                <h6>New</h6>
+                <a  *ngFor="let item of _changelogData['changelog']"
+                    routerLink="{{item['component-name']}}" class="btn btn-link">
+                    {{item['component-name']}}
+                </a>
+            </div>
+            <div class="card-footer text-muted">
+                <span>Released: {{this._changelogData['information']['change-date']}}</span>
+                <span style="float: right;">Version: {{this._changelogData['information']['terra-components-version']}}</span>
+            </div>
         </div>
     </div>
-    
+</div>
