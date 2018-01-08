@@ -54,12 +54,12 @@
                 <h4>Changelog</h4>
             </div>
             <div class="card-block">
-                <h6>Updated</h6>
+                <h6>Updated:</h6>
                 <a  *ngFor="let item of _changelogData['new-release-changelog']"
                     routerLink="{{item['component-name']}}" class="btn btn-link">
                     {{item['component-name']}}
                 </a>
-                <h6>New</h6>
+                <h6>New:</h6>
                 <a  *ngFor="let item of _changelogData['changelog']"
                     routerLink="{{item['component-name']}}" class="btn btn-link">
                     {{item['component-name']}}
