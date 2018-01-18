@@ -59,7 +59,7 @@ export class IconViewComponent implements OnInit
         ).subscribe((data:any) =>
         {
             this._iconButtonCodeExample = this._highlightTextHelper.highlightText(data.button, 'xml');
-            this._iconListCodeExample = this._highlightTextHelper.highlightText(data.list, 'css');
+            this._iconListCodeExample = this._highlightTextHelper.highlightText(data.list, 'xml');
         });
         this._newIconArray = this._data.loadIconArray();
         this.buildSuggestionBoxArray();
