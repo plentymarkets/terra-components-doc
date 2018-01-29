@@ -1,5 +1,9 @@
 .main_view
 {
+    .scroll-fix
+    {
+        height: 50px;
+    }
     margin-left: 10%;
     margin-right: 10%;
     font-size: 15px !important;
@@ -48,7 +52,6 @@
         }
         .code_section
         {
-            margin-bottom: 30px;
             max-height: 400px;
             overflow-y: scroll;
             overflow-x: hidden;

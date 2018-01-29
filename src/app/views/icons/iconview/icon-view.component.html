@@ -9,6 +9,7 @@
             <!--</terra-suggestion-box>-->
         <!--</div>-->
     <!--</div>-->
+    <div class="scroll-fix"></div>
     <div class='icon-example'>
         <terra-portlet inputPortletHeader='How to use Icon - Variables'>
             <terra-portlet inputPortletHeader='Button - Example'>
@@ -61,7 +62,8 @@
             </terra-portlet>
         </terra-portlet>
     </div>
-    <div id="{{value.iconVariable}}" class="icon-list" *ngFor="let value of _newIconArray">
+    <div class="icon-list" *ngFor="let value of _newIconArray">
+        <div class="scroll-fix" id="{{value.iconVariable}}"></div>
         <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
             <div>
                 <span class="icon" [ngClass]="value.iconVariable"></span>

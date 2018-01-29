@@ -3,11 +3,14 @@
     font-family: 'Roboto', sans-serif !important;
     margin-left: 10%;
     margin-right: 10%;
-    padding: 50px 0 0 0;
+    padding: 0;
+    .scroll-fix
+    {
+        height: 50px;
+    }
     .icon-list
     {
-        padding: 50px 0 0 0;
-        margin-bottom: 20px;
+        padding: 0;
         li
         {
             font-size: 20px;
