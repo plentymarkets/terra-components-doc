@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './terra-components-doc.component';
-import { TerraComponentsModule } from '@plentymarkets/terra-components/app/terra-components.module';
 import { HttpModule } from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
@@ -28,11 +27,11 @@ import { iconService } from './views/icons/service/icon.service';
 import { ComponentsConfig } from './views/components/config/components.config';
 import { ScrollToViewHelper } from './helper/scrollToView.helper';
 import { HighlightTextHelper } from './helper/highlightText.helper';
+import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
-    return ():Promise<any> => pluginsConfig.load().catch(error =>
-    {
+    return ():Promise<any> => pluginsConfig.load().catch(error => {
         if(error.status === 401)
         {
         }
@@ -45,64 +44,64 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
 }
 
 @NgModule({
-    entryComponents: [
-        ComponentSidebarComponent,
-        IconSidebarComponent,
-        IconViewComponent,
-        ComponentViewComponent,
-        ComponentTemplateComponent,
-        IconTemplateComponent,
-        StartpageComponent
-    ],
-    exports:         [
-        RouterModule,
-    ],
-    imports:         [
-        BrowserModule,
-        HttpModule,
-        FormsModule,
-        RouterModule.forRoot([]),
-        TranslationModule.forRoot(),
-        TerraComponentsModule.forRoot(),
-        MarkdownToHtmlModule.forRoot(),
-        HighlightJsModule
-    ],
-    declarations:    [
-        AppComponent,
-        ComponentSidebarComponent,
-        IconSidebarComponent,
-        IconViewComponent,
-        ComponentViewComponent,
-        ComponentTemplateComponent,
-        IconTemplateComponent,
-        StartpageComponent
-    ],
-    providers:       [
-        DynamicModuleBuilderService,
-        HighlightJsService,
-        ComponentsConfig,
-        iconService,
-        ScrollToViewHelper,
-        HighlightTextHelper,
-        RouteResolver,
-        {
-            provide:    APP_INITIALIZER,
-            useFactory: initRoutes,
-            deps:       [RouteResolver],
-            multi:      true
-        },
-        LocalizationConfig,
-        {
-            provide:    APP_INITIALIZER,
-            useFactory: initLocalization,
-            deps:       [LocalizationConfig],
-            multi:      true
-        }
-    ],
-    bootstrap:       [
-        AppComponent
-    ]
-})
+              entryComponents: [
+                  ComponentSidebarComponent,
+                  IconSidebarComponent,
+                  IconViewComponent,
+                  ComponentViewComponent,
+                  ComponentTemplateComponent,
+                  IconTemplateComponent,
+                  StartpageComponent
+              ],
+              exports:         [
+                  RouterModule,
+              ],
+              imports:         [
+                  BrowserModule,
+                  HttpModule,
+                  FormsModule,
+                  RouterModule.forRoot([]),
+                  TranslationModule.forRoot(),
+                  TerraComponentsModule.forRoot(),
+                  MarkdownToHtmlModule.forRoot(),
+                  HighlightJsModule
+              ],
+              declarations:    [
+                  AppComponent,
+                  ComponentSidebarComponent,
+                  IconSidebarComponent,
+                  IconViewComponent,
+                  ComponentViewComponent,
+                  ComponentTemplateComponent,
+                  IconTemplateComponent,
+                  StartpageComponent
+              ],
+              providers:       [
+                  DynamicModuleBuilderService,
+                  HighlightJsService,
+                  ComponentsConfig,
+                  iconService,
+                  ScrollToViewHelper,
+                  HighlightTextHelper,
+                  RouteResolver,
+                  {
+                      provide:    APP_INITIALIZER,
+                      useFactory: initRoutes,
+                      deps:       [RouteResolver],
+                      multi:      true
+                  },
+                  LocalizationConfig,
+                  {
+                      provide:    APP_INITIALIZER,
+                      useFactory: initLocalization,
+                      deps:       [LocalizationConfig],
+                      multi:      true
+                  }
+              ],
+              bootstrap:       [
+                  AppComponent
+              ]
+          })
 export class PluginTerraBasicModule
 {
 }
