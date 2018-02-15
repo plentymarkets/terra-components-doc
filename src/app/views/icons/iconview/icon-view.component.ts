@@ -5,7 +5,10 @@ import {
 } from '@angular/core';
 import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
-import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
+import {
+    TerraButtonInterface,
+    TerraSuggestionBoxValueInterface
+} from '@plentymarkets/terra-components';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { HighlightTextHelper } from '../../../helper/highlightText.helper';
 import { Observable } from 'rxjs/Observable';
