@@ -16,15 +16,5 @@ export class IconSidebarComponent
                 private _scrollToViewHelper:ScrollToViewHelper)
     {
     }
-    private displayIconTutorial()
-    {
-        let iconTutorial = document.getElementById('icon-tutorial');
-        if(iconTutorial.style.display === "block")
-        {
-            iconTutorial.style.display = "none";
-        }
-        else iconTutorial.style.display = "block";
-
-    }
 
 }

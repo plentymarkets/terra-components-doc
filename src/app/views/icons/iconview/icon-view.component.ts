@@ -46,7 +46,7 @@ export class IconViewComponent implements OnInit
         }
     }
 
-    checkInput()
+    private checkInput():void
     {
         let searchValue = this._searchValue.toLowerCase();
         this._searchResultCounter = 0;
@@ -91,6 +91,24 @@ export class IconViewComponent implements OnInit
         {
             this._searchResultText = " matching results";
         }
+    }
+    private displayIconTutorial():void
+    {
+        let iconTutorial = document.getElementById('icon-tutorial');
+        let iconTutorialToggleButton = document.getElementById('toggle-icon-tutorial');
+
+        if(iconTutorial.style.display === "block")
+        {
+            iconTutorial.style.display = "none";
+            iconTutorialToggleButton.innerHTML = 'Show icon tutorial';
+        }
+        else
+        {
+            iconTutorial.style.display = "block";
+            iconTutorialToggleButton.innerHTML = 'Hide icon tutorial';
+        }
+
+
     }
 
     ngOnInit()
