@@ -1,9 +1,16 @@
 <div class="icon-container">
     <div class="scroll-fix"></div>
-    <button type="button"
-            class="btn btn-primary btn-lg btn-block icon-tutorial-button"
-            id="toggle-icon-tutorial"
-            (click)="displayIconTutorial()">Show icon tutorial</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button"
+                        class="btn btn-primary btn-lg btn-block icon-tutorial-button"
+                        id="toggle-icon-tutorial"
+                        (click)="displayIconTutorial()">Show icon tutorial
+                </button>
+            </div>
+        </div>
+    </div>
     <!--<button type="button" class="btn btn-secondary btn-lg btn-block icon-tutorial-button" (click)="displayIconTutorial()">Open icon tutorial</button>-->
     <div class='icon-example' id="icon-tutorial">
         <terra-portlet inputPortletHeader='How to use Icon - Variables'>
