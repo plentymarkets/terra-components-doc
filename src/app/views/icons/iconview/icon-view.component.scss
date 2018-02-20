@@ -3,17 +3,24 @@
     font-family: 'Roboto', sans-serif !important;
     margin-left: 10%;
     margin-right: 10%;
-    width: 50%;
-    display: grid;
-    padding: 20px 0 0 20px;
-    .icon-portlet
+    padding: 0;
+    .scroll-fix
     {
-        width: 40%;
-        
+        height: 50px;
     }
     .icon-list
     {
-        margin-bottom: 20px;
+        padding: 0;
+        li
+        {
+            font-size: 20px;
+            list-style: none;
+        }
+        .icon-list-example-name
+        {
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 20px;
+        }
     }
     .icon-description-container
     {
@@ -41,7 +48,43 @@
         font-size: 35px;
         padding-right: 10px;
     }
+}
+
+.icon-example
+{
+    display: none;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px;
+}
+.icon-search-container
+{
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif !important;
     
+    .icon-search-result-container
+    {
+        margin-top: 10px;
+        .icon-search-result-counter
+        {
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .icon-search-result-text
+        {
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 20px;
+        }
+       
+    }
+}
+.icon-tutorial-button
+{
+    font-family: 'Roboto', sans-serif !important;
+    &:focus
+    {
+        outline:none;
+    }
 }
 
 .example-container
@@ -51,13 +94,7 @@
     {
         margin-bottom: 20px;
     }
-    .suggestion-box-container
-    {
-        margin-bottom: 50px;
-    }
 }
 
-.code_section
-{
-    width: 350px;
-}
+
+

@@ -5,14 +5,13 @@ import { stathamInterface } from './data/statham.interface';
 @Injectable()
 export class RouteResolver
 {
-    public get noExampleHtml():string
+    public set dataChangelog(value:any)
     {
-        return this._noExampleHtml;
+        this._dataChangelog = value;
     }
-
-    public set noExampleHtml(value:string)
+    public get dataChangelog():any
     {
-        this._noExampleHtml = value;
+        return this._dataChangelog;
     }
 
     public get dataJson():Array<stathamInterface>
@@ -35,9 +34,9 @@ export class RouteResolver
         this._dataIcon = value;
     }
 
-    private _noExampleHtml:string;
     private _dataJson:Array<stathamInterface>;
     private _dataIcon:any;
+    private _dataChangelog:any;
 
     constructor(public http:Http)
     {
@@ -45,29 +44,32 @@ export class RouteResolver
 
     load():Promise<any>
     {
-        return new Promise((resolve) =>
-        {
+        return new Promise((resolve) => {
             let url:string = 'assets/component-documentation/build/statham.json';
-            let iconJSONUrl:string = 'assets/component-documentation/build/iconDescription.json';
-
+            let iconJsonUrl:string = 'assets/component-documentation/build/iconDescription.json';
+            let changelogJsonUrl:string = 'assets/component-documentation/documentation-changelog.json';
 
             if(process.env.ENV !== 'production')
             {
                 url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
-                iconJSONUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
+                iconJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
+                changelogJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/documentation-changelog.json';
             }
 
-            this.http.get(url).subscribe((resJson:any) =>
-            {
+            this.http.get(url).subscribe((resJson:any) => {
                 this.dataJson = resJson.json();
 
                 resolve(this.dataJson);
             });
-            this.http.get(iconJSONUrl)
-                .subscribe((resJson:any) =>
-                {
+            this.http.get(iconJsonUrl)
+                .subscribe((resJson:any) => {
                     this.iconJson = resJson.json();
                     resolve(this.iconJson);
+                });
+            this.http.get(changelogJsonUrl)
+                .subscribe((resJson:any) => {
+                    this.dataChangelog = resJson.json();
+                    resolve(this.dataChangelog);
                 });
         });
     }

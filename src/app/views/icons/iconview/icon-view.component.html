@@ -1,38 +1,35 @@
 <div class="icon-container">
-    <div class="suggestion-box-container">
-        <terra-portlet inputPortletHeader="Icon-Search">
-            <terra-suggestion-box
-                [inputListBoxValues]="_iconList"
-                [(ngModel)]="_suggestionboxValue"
-                (outputValueChanged)="_scrollToViewHelper.scrollToId(_suggestionboxValue)">
-            </terra-suggestion-box>
-        </terra-portlet>
-    </div>
-    <div class="icon-example">
-        <terra-portlet inputPortletHeader="How to use Icon - Variables">
-            <div>
-                Here you can see how to use Icon - Variables
+    <div class="scroll-fix"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button"
+                        class="btn btn-primary btn-lg btn-block icon-tutorial-button"
+                        id="toggle-icon-tutorial"
+                        (click)="displayIconTutorial()">Show icon tutorial
+                </button>
             </div>
-            <terra-portlet inputPortletHeader="Button - Example">
+        </div>
+    </div>
+    <!--<button type="button" class="btn btn-secondary btn-lg btn-block icon-tutorial-button" (click)="displayIconTutorial()">Open icon tutorial</button>-->
+    <div class='icon-example' id="icon-tutorial">
+        <terra-portlet inputPortletHeader='How to use Icon - Variables'>
+            <terra-portlet inputPortletHeader='Button - Example'>
                 <p>
-                    Here we use an input of the terra button to display the icon as "text" on the button
+                    Here we use an input from the terra button to display the icon as "text" on the button
                 </p>
                 <div class="example-container">
                     <div class="buttons-example">
                         <terra-button inputIcon="icon-add"
-                                      inputIsTertiary="true"
-                                      inputIsLarge="true">
+                                      inputIsTertiary="true">
                         </terra-button>
                         <terra-button inputIcon="icon-delete"
-                                      inputIsSecondary="true"
-                                      inputIsLarge="true">
+                                      inputIsSecondary="true">
                         </terra-button>
-                        <terra-button inputIcon="icon-save"
-                                      inputIsLarge="true">
+                        <terra-button inputIcon="icon-save">
                         </terra-button>
                         <terra-button inputIcon="icon-reload"
-                                      inputIsPrimary="true"
-                                      inputIsLarge="true">
+                                      inputIsPrimary="true">
                         </terra-button>
                     </div>
                     <div>
@@ -44,11 +41,17 @@
                 <p>
                     Here we use a class on an element to display the icon
                 </p>
-                <div class="example-container">
-                    <ul class="icon-list">
-                        <li class="icon-add">icon-add</li>
-                        <li class="icon-delete">icon-delete</li>
-                        <li class="icon-save">icon-save</li>
+                <div class='example-container'>
+                    <ul class='icon-list'>
+                        <li class='icon-add'>
+                            <span class="icon-list-example-name"> icon-add</span>
+                        </li>
+                        <li class='icon-delete'>
+                            <span class="icon-list-example-name">icon-delete</span>
+                        </li>
+                        <li class='icon-save'>
+                            <span class="icon-list-example-name">icon-save</span>
+                        </li>
                     </ul>
                     <div>
                         <section class="code_section" [innerHTML]="_iconListCodeExample" highlight-js-content=".highlight"></section>
@@ -57,7 +60,21 @@
             </terra-portlet>
         </terra-portlet>
     </div>
-    <div id="{{value.iconVariable}}" class="icon-list" *ngFor="let value of _newIconArray">
+    <div class="icon-search-container">
+        <terra-portlet inputPortletHeader="Search icons">
+            <terra-text-input [(ngModel)]="_searchValue"
+                              (ngModelChange)="checkInput()"
+                              inputName="search">
+            </terra-text-input>
+            <div class="icon-search-result-container">
+                <span class="icon-search-result-counter">{{_searchResultCounter}}</span>
+                <span class="icon-search-result-text">{{_searchResultText}}</span>
+            </div>
+        </terra-portlet>
+    </div>
+    <div class="icon-list" *ngFor="let value of _newIconArray" id="{{value.iconVariable +'_container'}}">
+        <div class="scroll-fix" id="{{value.iconVariable}}">
+        </div>
         <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
             <div>
                 <span class="icon" [ngClass]="value.iconVariable"></span>
@@ -69,6 +86,7 @@
             </div>
         </terra-portlet>
     </div>
+  
 </div>
 
 

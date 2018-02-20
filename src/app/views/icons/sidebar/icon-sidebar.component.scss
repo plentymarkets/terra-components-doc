@@ -18,7 +18,7 @@
     background-color: transparent;
     .h4
     {
-        margin-top: 20px;
+        margin-top: 50px;
         color: #4D4E53;
     }
 }
@@ -68,5 +68,15 @@
             text-decoration: none;
         }
     }
-    
+}
+.sidebar_wrapper
+{
+    margin-bottom: 20px;
+}
+.tutorial-button
+{
+    &:hover
+    {
+        cursor: pointer;
+    }
 }

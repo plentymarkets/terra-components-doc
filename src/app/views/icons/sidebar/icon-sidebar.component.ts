@@ -2,7 +2,6 @@ import {
     Component,
 } from '@angular/core';
 import { iconService } from '../service/icon.service';
-import { isNullOrUndefined } from 'util';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 
 @Component(

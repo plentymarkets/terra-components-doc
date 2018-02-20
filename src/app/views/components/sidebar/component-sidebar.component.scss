@@ -30,40 +30,13 @@
     }
 }
 
-.icon-move_up
-{
-    &:hover
-    {
-        cursor: pointer;
-    }
-}
-
-.icon-move_down
-{
-    &:hover
-    {
-        cursor: pointer;
-    }
-}
-
-.show_button
-{
-    display: none;
-}
-
 .nav-ul
 {
-    //padding-left: 0 !important;
     display: none;
     li
     {
         list-style: none;
     }
-}
-
-.add-border-left
-{
-    border-left: 2px solid #008EBE;
 }
 
 .component_list
@@ -78,7 +51,7 @@
     }
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 10px 0;
     
     li
     {
@@ -104,6 +77,7 @@
             text-decoration: none;
             color: #4D4E53;
             font-size: 14px;
+            white-space: nowrap;
         }
     }
     

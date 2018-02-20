@@ -1,9 +1,7 @@
 <div class="component-view">
     <router-outlet></router-outlet>
+    <startpage *ngIf="!_componentsConfig.isAnyComponentOpen"></startpage>
 </div>
 
-<div *ngIf="!_componentsConfig.isAnyComponentOpen">
-    <startpage></startpage>
-</div>
 
 <component-sidebar class="sidebar"></component-sidebar>
