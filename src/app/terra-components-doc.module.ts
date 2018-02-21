@@ -28,6 +28,7 @@ import { ComponentsConfig } from './views/components/config/components.config';
 import { ScrollToViewHelper } from './helper/scrollToView.helper';
 import { HighlightTextHelper } from './helper/highlightText.helper';
 import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
+import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -51,7 +52,8 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
                   ComponentViewComponent,
                   ComponentTemplateComponent,
                   IconTemplateComponent,
-                  StartpageComponent
+                  StartpageComponent,
+                  IconTutorialComponent
               ],
               exports:         [
                   RouterModule,
@@ -74,7 +76,8 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
                   ComponentViewComponent,
                   ComponentTemplateComponent,
                   IconTemplateComponent,
-                  StartpageComponent
+                  StartpageComponent,
+                  IconTutorialComponent
               ],
               providers:       [
                   DynamicModuleBuilderService,

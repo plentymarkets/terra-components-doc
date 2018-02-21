@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <terra-portlet inputPortletHeader='How to use icons in Terra'>
+                <terra-portlet inputPortletHeader='Button example'>
+                    <h6>
+                        To use an icon in combination with the
+                        <code>terra-button</code>
+                        use the input
+                        <code>inputIcon</code>
+                        .
+                    </h6>
+                    <div class="angular_example">
+                        <terra-button inputIcon="icon-add"
+                                      inputIsTertiary="true">
+                        </terra-button>
+                        <terra-button inputIcon="icon-delete"
+                                      inputIsSecondary="true">
+                        </terra-button>
+                        <terra-button inputIcon="icon-save">
+                        </terra-button>
+                        <terra-button inputIcon="icon-reload"
+                                      inputIsPrimary="true">
+                        </terra-button>
+                    </div>
+                    <div class="code_example">
+                        <section class="code_section" [innerHTML]="_iconButtonCodeExample"
+                                 highlight-js-content=".highlight">
+                        </section>
+                    </div>
+                </terra-portlet>
+                <terra-portlet inputPortletHeader="Class example">
+                    <h6>
+                        To display an icon on to an html element add the icon as css class.
+                    </h6>
+                    <div class="angular_example">
+                        <ul class='icon-list'>
+                            <li class='icon-add'>
+                                <span class="icon-list-example-name"> icon-add</span>
+                            </li>
+                            <li class='icon-delete'>
+                                <span class="icon-list-example-name">icon-delete</span>
+                            </li>
+                            <li class='icon-save'>
+                                <span class="icon-list-example-name">icon-save</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="code_example">
+                        <section class="code_section" [innerHTML]="_iconListCodeExample"
+                                 highlight-js-content=".highlight">
+                        </section>
+                    </div>
+                </terra-portlet>
+            </terra-portlet>
+        </div>
+    </div>
+</div>
+
+
+
+
