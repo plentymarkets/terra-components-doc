@@ -49,6 +49,8 @@ export class IconViewComponent implements OnInit
     private checkInput():void
     {
         let searchValue = this._searchValue.toLowerCase();
+        searchValue = searchValue.replace(/\s/g, '');
+        console.log(searchValue);
         this._searchResultCounter = 0;
 
         if(!isNullOrUndefined(searchValue) && searchValue !== "")
