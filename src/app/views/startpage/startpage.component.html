@@ -61,13 +61,8 @@
                 <h4>Changelog</h4>
             </div>
             <div class="card-block">
-                <h6>Updated examples:</h6>
+                <h6>New components:</h6>
                 <a  *ngFor="let item of _changelogData['new-release-changelog']"
-                    routerLink="{{item['component-name']}}" class="btn btn-link">
-                    {{item['component-name']}}
-                </a>
-                <h6>New examples:</h6>
-                <a  *ngFor="let item of _changelogData['changelog']"
                     routerLink="{{item['component-name']}}" class="btn btn-link">
                     {{item['component-name']}}
                 </a>

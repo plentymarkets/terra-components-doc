@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { RouteResolver } from '../../../resolve/route.resolver';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
+import { SidebarComponentDataProvider } from '../data/sidebar-component-data-provider';
 
 @Component(
     {
@@ -17,7 +18,8 @@ export class ComponentSidebarComponent implements OnInit
     private jsonMetaData = this._routeResolver.dataJson;
 
     constructor(private _routeResolver:RouteResolver,
-                private _scrollToViewHelper:ScrollToViewHelper)
+                private _scrollToViewHelper:ScrollToViewHelper,
+                public sidebarDataProvider: SidebarComponentDataProvider)
     {
     }
 
