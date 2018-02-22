@@ -101,16 +101,14 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
             }
         ).subscribe((data:any) => {
 
-            this.setSidebarData(!!(data.html),!!(data.css));
+            this.setSidebarData(!!(data.html), !!(data.css));
             this._apiCode = data.api;
             this._htmlToCopy = data.html;
             this._cssToCopy = data.css;
             this._tsToCopy = data.ts;
-
             this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
             this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
             this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
-
         });
     }
 
@@ -156,6 +154,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
                 });
             });
     }
+
     private setSidebarData(htmlState, cssState):void
     {
         this.htmlFilledState = htmlState;
