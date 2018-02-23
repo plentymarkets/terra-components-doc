@@ -23,5 +23,10 @@ iconview
         color: rgb(77, 78, 83) ;
         text-transform: capitalize;
     }
+    .icon-search-container .portlet .portlet_body
+    {
+        border-radius: 0 !important;
+        box-shadow: 3px 3px 6px lightgray;
+    }
 }
 
