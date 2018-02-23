@@ -1,10 +1,14 @@
 <router-outlet></router-outlet>
 
-<div *ngIf="_viewMode == 'components'">
+<div *ngIf="_viewMode === 'components'">
     <component-template></component-template>
 </div>
 
-<div *ngIf="_viewMode == 'icons'">
+<div *ngIf="_viewMode === 'icons'">
     <icon-template></icon-template>
+</div>
+
+<div class="icons_tutorial" *ngIf="_viewMode === 'icons-tutorial'">
+    <icon-tutorial></icon-tutorial>
 </div>
 

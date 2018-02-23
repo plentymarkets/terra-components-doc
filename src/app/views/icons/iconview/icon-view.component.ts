@@ -1,17 +1,11 @@
 import {
     Component,
-    OnChanges,
     OnInit
 } from '@angular/core';
 import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
-import {
-    TerraButtonInterface,
-    TerraSuggestionBoxValueInterface
-} from '@plentymarkets/terra-components';
+import { TerraSuggestionBoxValueInterface } from '@plentymarkets/terra-components';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
-import { HighlightTextHelper } from '../../../helper/highlightText.helper';
-import { Observable } from 'rxjs/Observable';
 import { isNullOrUndefined } from 'util';
 
 @Component({
@@ -25,46 +19,38 @@ export class IconViewComponent implements OnInit
 {
 
     private _newIconArray:any;
-    private _iconButtonCodeExample:string = '';
-    private _iconButtonCodeExamplePath:string = 'assets/iconExample/iconButtonCodeExample.html';
-    private _iconListCodeExample:string;
-    private _iconListCodeExamplePath:string = 'assets/iconExample/iconListCodeExample.html';
     private _iconList:Array<TerraSuggestionBoxValueInterface> = [];
     private _searchValue:string;
-    private _searchResultCounter: number;
-    private _searchResultText: string;
+    private _searchResultCounter:number;
+    private _searchResultText:string;
 
     constructor(private _data:iconService,
-                private _scrollToViewHelper:ScrollToViewHelper,
-                private _highlightTextHelper:HighlightTextHelper,
+                public _scrollToViewHelper:ScrollToViewHelper,
                 public http:Http)
     {
-        if(process.env.ENV !== 'production')
-        {
-            this._iconButtonCodeExamplePath = 'src/app/assets/iconExample/iconButtonCodeExample.html';
-            this._iconListCodeExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
-        }
     }
 
-    private checkInput():void
+    public checkInput():void
     {
         let searchValue = this._searchValue.toLowerCase();
+        searchValue = searchValue.replace(/\s/g, '');
+        console.log(searchValue);
         this._searchResultCounter = 0;
 
         if(!isNullOrUndefined(searchValue) && searchValue !== "")
         {
             this._iconList.forEach(icon => {
-                if(!isNullOrUndefined(icon.value) && icon.value !== "" )
+                if(!isNullOrUndefined(icon.value) && icon.value !== "")
                 {
                     if(icon.value.includes(searchValue))
                     {
-                        let iconContainer = document.getElementById(icon.value+'_container');
+                        let iconContainer = document.getElementById(icon.value + '_container');
                         iconContainer.style.display = "block";
                         this._searchResultCounter++;
                     }
                     else
                     {
-                        let iconContainer = document.getElementById(icon.value+'_container');
+                        let iconContainer = document.getElementById(icon.value + '_container');
                         iconContainer.style.display = "none";
                     }
                 }
@@ -75,8 +61,8 @@ export class IconViewComponent implements OnInit
         {
             if(searchValue === "")
             {
-                this._iconList.forEach( icon =>{
-                    let iconContainer = document.getElementById(icon.value+'_container');
+                this._iconList.forEach(icon => {
+                    let iconContainer = document.getElementById(icon.value + '_container');
                     iconContainer.style.display = "block";
                     this._searchResultCounter++;
                 });
@@ -92,40 +78,9 @@ export class IconViewComponent implements OnInit
             this._searchResultText = " matching results";
         }
     }
-    private displayIconTutorial():void
-    {
-        let iconTutorial = document.getElementById('icon-tutorial');
-        let iconTutorialToggleButton = document.getElementById('toggle-icon-tutorial');
-
-        if(iconTutorial.style.display === "block")
-        {
-            iconTutorial.style.display = "none";
-            iconTutorialToggleButton.innerHTML = 'Show icon tutorial';
-        }
-        else
-        {
-            iconTutorial.style.display = "block";
-            iconTutorialToggleButton.innerHTML = 'Hide icon tutorial';
-        }
-
-
-    }
 
     ngOnInit()
     {
-        Observable.combineLatest(
-            this.http.get(this._iconButtonCodeExamplePath),
-            this.http.get(this._iconListCodeExamplePath),
-            (button:any, list:any) => {
-                return {
-                    button: button.text(),
-                    list:   list.text()
-                };
-            }
-        ).subscribe((data:any) => {
-            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(data.button, 'xml');
-            this._iconListCodeExample = this._highlightTextHelper.highlightText(data.list, 'xml');
-        });
         this._newIconArray = this._data.loadIconArray();
         this.buildSuggestionBoxArray();
         this._searchResultCounter = this._iconList.length;

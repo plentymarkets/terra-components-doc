@@ -5,14 +5,14 @@
     <div *ngIf="_overviewMarkDownPath">
         <markdown-to-html [src]="_overviewMarkDownPath"></markdown-to-html>
     </div>
-    <div *ngIf="_checkExample === true">
+    <div *ngIf="htmlFilledState">
         <div class="scroll-fix" id="example"></div>
         <span class="h4">Example</span>
         <div class="example_container">
             <div #viewChildTarget></div>
         </div>
     </div>
-    <div class="code_container" *ngIf="_checkExample === true">
+    <div class="code_container" *ngIf="htmlFilledState">
         <div class="scroll-fix" id="htmlcode" ></div>
         <div class="code_header">
             <span class="h4">Html</span>
@@ -25,18 +25,20 @@
         <div>
             <section class="code_section" [innerHTML]="_highlightedHtmlCode" highlight-js-content=".highlight"></section>
         </div>
-        <div class="scroll-fix" id="scsscode" ></div>
-        <div class="code_header">
-            <span class="h4">Scss</span>
-            <terra-button
-                class="copy_to_clip_button"
-                (click)="copyText(_cssToCopy)"
-                inputIcon="icon-copy_clipboard">
-            </terra-button>
-        </div>
-        
-        <div>
-            <section class="code_section" [innerHTML]="_highlightedCssCode" highlight-js-content=".highlight"></section>
+        <div *ngIf="cssFilledState">
+            <div class="scroll-fix" id="scsscode" ></div>
+            <div class="code_header">
+                <span class="h4">Scss</span>
+                <terra-button
+                    class="copy_to_clip_button"
+                    (click)="copyText(_cssToCopy)"
+                    inputIcon="icon-copy_clipboard">
+                </terra-button>
+            </div>
+    
+            <div>
+                <section class="code_section" [innerHTML]="_highlightedCssCode" highlight-js-content=".highlight"></section>
+            </div>
         </div>
         <div class="scroll-fix" id="typescriptcode"></div>
         <div class="code_header">
