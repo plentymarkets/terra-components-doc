@@ -12,7 +12,9 @@ import { RouteResolver } from '../../resolve/route.resolver';
     })
 export class StartpageComponent implements OnInit
 {
-    private _changelogData: object;
+    private _changelogData:object;
+    public npmImagePath:string;
+    public gitImagePath:string;
 
     constructor(private _routeResolver:RouteResolver)
     {
@@ -21,8 +23,13 @@ export class StartpageComponent implements OnInit
     ngOnInit()
     {
         this._changelogData = this._routeResolver.dataChangelog;
-
-        console.log();
+        this.npmImagePath = 'assets/images/npm/npm-logo-simplifed-with-white-space.png';
+        this.gitImagePath = 'assets/images/github/GitHub-Mark.png';
+        if(process.env.ENV !== 'production')
+        {
+            this.npmImagePath = '/src/app/assets/images/npm/npm-logo-simplifed-with-white-space.png';
+            this.gitImagePath = '/src/app/assets/images/github/GitHub-Mark.png';
+        }
     }
 
 }
