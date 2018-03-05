@@ -47,7 +47,7 @@ export class RouteResolver
         return new Promise((resolve) => {
             let url:string = 'assets/component-documentation/build/statham.json';
             let iconJsonUrl:string = 'assets/component-documentation/build/iconDescription.json';
-            let changelogJsonUrl:string = 'assets/component-documentation//build/documentation-changelog.json';
+            let changelogJsonUrl:string = 'assets/component-documentation/build/documentation-changelog.json';
 
             if(process.env.ENV !== 'production')
             {
