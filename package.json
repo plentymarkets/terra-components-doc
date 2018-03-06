@@ -22,7 +22,7 @@
 		"@angular/platform-browser": "~4.1.0",
 		"@angular/platform-browser-dynamic": "~4.1.0",
 		"@angular/router": "~4.1.0",
-		"@plentymarkets/terra-components": "2.1.44-zlk",
+		"@plentymarkets/terra-components": "2.1.55-zlk",
 		"angular-l10n": "3.5.1",
 		"angular2-clipboard": "^2.0.14",
 		"angular2-highlight-js": "^6.0.1-alpha",
