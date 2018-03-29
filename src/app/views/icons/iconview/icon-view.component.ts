@@ -32,7 +32,7 @@ export class IconViewComponent implements OnInit
 
     public checkInput():void
     {
-        let searchValue = this._searchValue.toLowerCase();
+        let searchValue:string = this._searchValue.toLowerCase();
         searchValue = searchValue.replace(/\s/g, '');
         console.log(searchValue);
         this._searchResultCounter = 0;
@@ -42,7 +42,7 @@ export class IconViewComponent implements OnInit
             this._iconList.forEach(icon => {
                 if(!isNullOrUndefined(icon.value) && icon.value !== "")
                 {
-                    if(icon.value.includes(searchValue))
+                    if((<any>icon).value.includes(searchValue))
                     {
                         let iconContainer = document.getElementById(icon.value + '_container');
                         iconContainer.style.display = "block";

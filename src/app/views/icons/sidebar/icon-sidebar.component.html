@@ -3,11 +3,8 @@
         <p class="h4">Icons</p>
         <ul class="icon_list">
             <li *ngFor="let value of _data.loadIconArray()" (click)="_scrollToViewHelper.scrollToId(value.iconVariable)">
-                <a>
-                    <span class="icon" [ngClass]="value.iconVariable">
-                    </span>
-                    <span class="icon-name">{{value.name}}</span>
-                </a>
+                <span class="icon" [ngClass]="value.iconVariable"></span>
+                <span class="icon-name">{{value.name}}</span>
             </li>
         </ul>
     </div>
