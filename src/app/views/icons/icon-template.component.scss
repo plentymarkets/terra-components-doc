@@ -2,4 +2,16 @@
 {
     height:100vh;
     overflow-y: scroll;
+    @media (max-width: 576px)
+    {
+        height: auto !important;
+        overflow: auto;
+    }
+}
+.icon-sidebar
+{
+    @media (max-width: 576px)
+    {
+        display: none;
+    }
 }

@@ -1,7 +1,12 @@
-<div class="component-view">
-    <router-outlet></router-outlet>
-    <startpage *ngIf="!_componentsConfig.isAnyComponentOpen"></startpage>
+
+<div class="container-fluid">
+    <div class="row">
+        <div [ngClass]="{'col-md-8': changeCol, 'col-md-9': !changeCol}" class="component-view">
+            <router-outlet></router-outlet>
+            <startpage *ngIf="!_componentsConfig.isAnyComponentOpen"></startpage>
+        </div>
+        <div [ngClass]="{'col-md-4': changeCol, 'col-md-3': !changeCol}">
+            <component-sidebar class="sidebar"></component-sidebar>
+        </div>
+    </div>
 </div>
-
-
-<component-sidebar class="sidebar"></component-sidebar>
