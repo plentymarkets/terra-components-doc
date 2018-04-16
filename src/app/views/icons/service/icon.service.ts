@@ -3,11 +3,12 @@ import {
 } from '@angular/core';
 import { Http } from '@angular/http';
 import { RouteResolver } from '../../../resolve/route.resolver';
+import { IconInterface } from '../icon-item-component/icon-interface';
 
 @Injectable()
 export class iconService
 {
-    private _iconArray:any = [];
+    private _iconArray:Array<IconInterface> = [];
 
     constructor(public http:Http,
                 public data:RouteResolver)
@@ -37,7 +38,7 @@ export class iconService
                 iconName = iconName.replace('_', ' ');
             }
             objData = {
-                iconVariable: entry.name,
+                variableName: entry.name,
                 name:         iconName,
                 description:  entry.description
             };

@@ -1,29 +1,41 @@
-<div class="icon-container">
-    <div class="icon-search-container">
-        <terra-portlet inputPortletHeader="Search icons">
-            <terra-text-input [(ngModel)]="_searchValue"
-                              (ngModelChange)="checkInput()"
-                              inputName="search">
-            </terra-text-input>
-            <div class="icon-search-result-container">
-                <span class="icon-search-result-counter">{{_searchResultCounter}}</span>
-                <span class="icon-search-result-text">{{_searchResultText}}</span>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="icon-container">
+                <div class="icon-search-container">
+                    <terra-portlet inputPortletHeader="Search icons">
+                        <terra-text-input [(ngModel)]="inputSearchValue"
+                                          (ngModelChange)="validateSearch()"
+                                          inputName="search">
+                        </terra-text-input>
+                        <div class="icon-search-result-container">
+                            <span class="icon-search-result-counter"></span>
+                            <span class="icon-search-result-text"></span>
+                        </div>
+                    </terra-portlet>
+                </div>
             </div>
-        </terra-portlet>
-    </div>
-    <div class="icon-list" *ngFor="let value of _newIconArray" id="{{value.iconVariable +'_container'}}">
-        <div class="scroll-fix" id="{{value.iconVariable}}">
         </div>
-        <terra-portlet inputPortletHeader="{{value.name}}" class="icon-portlet">
-            <div>
-                <span class="icon" [ngClass]="value.iconVariable"></span>
-                <span class="icon-name icon-class-label">css-class:</span>
-                <span class="icon-name">{{value.iconVariable}}</span>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div *ngIf="!enableSearch">
+                <div *ngFor="let iconItem of iconArray">
+                    <icon-item-component [iconInterface]="iconItem">
+                    </icon-item-component>
+                </div>
             </div>
-            <div class="icon-description-container" *ngIf="value.description">
-                <span class="icon-description">{{value.description}}</span>
+            <div *ngIf="enableSearch">
+                <div *ngFor="let iconItem of iconArray">
+                    <icon-item-component
+                        *ngIf="searchArray(iconItem.variableName,inputSearchValue)"
+                        [iconInterface]="iconItem">
+                    </icon-item-component>
+                </div>
             </div>
-        </terra-portlet>
+        </div>
     </div>
 </div>
 

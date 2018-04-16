@@ -30,6 +30,7 @@ import { HighlightTextHelper } from './helper/highlightText.helper';
 import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 import { SidebarComponentDataProvider } from './views/components/data/sidebar-component-data-provider';
+import { IconItemComponent } from './views/icons/icon-item-component/icon-item.component';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -78,7 +79,8 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
                   ComponentTemplateComponent,
                   IconTemplateComponent,
                   StartpageComponent,
-                  IconTutorialComponent
+                  IconTutorialComponent,
+                  IconItemComponent
               ],
               providers:       [
                   DynamicModuleBuilderService,

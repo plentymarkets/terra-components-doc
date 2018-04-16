@@ -1,18 +1,16 @@
-.icon-container
+.icon-portlet
 {
     font-family: 'Roboto', sans-serif !important;
+    margin-left: 10%;
+    margin-right: 10%;
     padding: 0;
-    .icon-portlet
+    &:hover
     {
-        transition: height 1s;
-        &:hover
-        {
-            cursor: pointer;
-        }
-        .icon-buttons
-        {
-            padding: 5px 0;
-        }
+        cursor: pointer;
+    }
+    .icon-buttons
+    {
+        padding: 5px 0;
     }
     .icon-list
     {
@@ -27,6 +25,10 @@
             font-family: 'Roboto', sans-serif !important;
             font-size: 20px;
         }
+    }
+    .icon-display-container
+    {
+        position: relative;
     }
     .icon-description-container
     {
@@ -46,6 +48,29 @@
         font-size: 22px !important;
         font-family: 'Roboto', sans-serif !important;
         color: rgb(77, 78, 83);
+        @media (max-width: 576px)
+        {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            height: 24px;
+            text-overflow: ellipsis;
+        }
+        @media (max-width: 1000px)
+        {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            height: 24px;
+            text-overflow: ellipsis;
+        }
+    }
+    .icon-class-label
+    {
+        @media (max-width: 576px)
+        {
+          display: none;
+        }
     }
     .icon
     {
@@ -55,35 +80,32 @@
         padding-right: 10px;
     }
 }
-
-
-.icon-search-container
+h4
 {
-    margin-top: 50px;
     font-family: 'Roboto', sans-serif !important;
-    
-    .icon-search-result-container
-    {
-        margin-top: 10px;
-        .icon-search-result-counter
-        {
-            font-family: 'Roboto', sans-serif !important;
-            font-size: 20px;
-            font-weight: bold;
-            color: black;
-        }
-        .icon-search-result-text
-        {
-            font-family: 'Roboto', sans-serif !important;
-            font-size: 20px;
-        }
-       
-    }
+}
+.code-example
+{
+    margin-bottom: 20px;
 }
 
+.code-example
+{
+    font-size: 20px;
+}
+.toggle-icon
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 35px;
+    color: #7A7A7A;
+}
+hr
+{
+    margin-top: 0;
+}
 .scroll-fix
 {
     height: 50px;
 }
-
-
