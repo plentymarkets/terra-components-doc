@@ -5,8 +5,9 @@ startpage
 
 .card-images-style
 {
-    max-width:18rem;
-    height:200px;
+    width: 15vw;
+    height:15vh;
+    margin-top: 20px;
 }
 .link-button
 {
@@ -16,4 +17,20 @@ startpage
 .container-spacer
 {
     margin-top: 20px;
+}
+.card-block
+{
+    text-align: center;
+}
+.text-container
+{
+    text-align: center;
+}
+.monitor-image
+{
+    height: 25vh;
+}
+.get-started-text
+{
+    margin: 17px 0;
 }
