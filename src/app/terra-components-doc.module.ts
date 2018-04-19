@@ -17,7 +17,7 @@ import {
 } from 'angular2-highlight-js';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 import { IconViewComponent } from './views/icons/iconview/icon-view.component';
-import { LocalizationConfig } from './core/localization/terra-localization.config';
+import { l10nConfig } from './core/localization/terra-localization.config';
 import { RouteResolver } from './resolve/route.resolver';
 import { ComponentTemplateComponent } from './views/components/component-template.component';
 import { IconSidebarComponent } from './views/icons/sidebar/icon-sidebar.component';
@@ -31,6 +31,7 @@ import { TerraComponentsModule } from '@plentymarkets/terra-components/app';
 import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 import { SidebarComponentDataProvider } from './views/components/data/sidebar-component-data-provider';
 import { IconItemComponent } from './views/icons/icon-item-component/icon-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -39,11 +40,6 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
         {
         }
     });
-}
-
-export function initLocalization(localizationConfig:LocalizationConfig):Function
-{
-    return () => localizationConfig.load();
 }
 
 @NgModule({
@@ -63,9 +59,10 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
               imports:         [
                   BrowserModule,
                   HttpModule,
+                  HttpClientModule,
                   FormsModule,
                   RouterModule.forRoot([]),
-                  TranslationModule.forRoot(),
+                  TranslationModule.forRoot(l10nConfig),
                   TerraComponentsModule.forRoot(),
                   MarkdownToHtmlModule.forRoot(),
                   HighlightJsModule
@@ -95,13 +92,6 @@ export function initLocalization(localizationConfig:LocalizationConfig):Function
                       provide:    APP_INITIALIZER,
                       useFactory: initRoutes,
                       deps:       [RouteResolver],
-                      multi:      true
-                  },
-                  LocalizationConfig,
-                  {
-                      provide:    APP_INITIALIZER,
-                      useFactory: initLocalization,
-                      deps:       [LocalizationConfig],
                       multi:      true
                   }
               ],
