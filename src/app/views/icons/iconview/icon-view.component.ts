@@ -6,6 +6,7 @@ import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { IconInterface } from '../icon-item-component/icon-interface';
+import { isNullOrUndefined } from 'util';
 
 @Component({
     selector:    'iconview',
@@ -14,7 +15,7 @@ import { IconInterface } from '../icon-item-component/icon-interface';
                   require('./icon-view.component.glob.scss').toString()
     ]
 })
-export class IconViewComponent implements OnInit
+export class IconViewComponent
 {
     public iconArray:Array<IconInterface> = [];
     public inputSearchValue:string;
@@ -27,12 +28,7 @@ export class IconViewComponent implements OnInit
     {
         this.inputSearchValue = '';
         this.enableSearch = false;
-    }
-
-
-    public ngOnInit():void
-    {
-        this.buildIconArray();
+        this.iconArray = this._data.loadIconArray();
     }
 
     public searchArray(iconName:string, searchString:string):boolean
@@ -43,11 +39,9 @@ export class IconViewComponent implements OnInit
 
     public validateSearch():void
     {
-        this.enableSearch = this.inputSearchValue.length > this.MINLENGTH;
-    }
-
-    private buildIconArray():void
-    {
-        this.iconArray = this._data.loadIconArray();
+        if(!isNullOrUndefined(this.inputSearchValue))
+        {
+            this.enableSearch = this.inputSearchValue.length > this.MINLENGTH;
+        }
     }
 }

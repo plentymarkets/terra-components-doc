@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { stathamInterface } from './data/statham.interface';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RouteResolver
@@ -44,33 +45,34 @@ export class RouteResolver
 
     load():Promise<any>
     {
-        return new Promise((resolve) => {
-            let url:string = 'assets/component-documentation/build/statham.json';
-            let iconJsonUrl:string = 'assets/component-documentation/build/iconDescription.json';
-            let changelogJsonUrl:string = 'assets/component-documentation/build/documentation-changelog.json';
+        let url:string = 'assets/component-documentation/build/statham.json';
+        let iconJsonUrl:string = 'assets/component-documentation/build/iconDescription.json';
+        let changelogJsonUrl:string = 'assets/component-documentation/build/documentation-changelog.json';
 
-            if(process.env.ENV !== 'production')
+        if(process.env.ENV !== 'production')
+        {
+            url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
+            iconJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
+            changelogJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/documentation-changelog.json';
+        }
+
+        let observer:Observable<any> = Observable.combineLatest(this.http.get(url), this.http.get(iconJsonUrl), this.http.get(changelogJsonUrl),
+            (dataJson:any, iconJson:any, dataChangelog:any) =>
             {
-                url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
-                iconJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
-                changelogJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/documentation-changelog.json';
-            }
-
-            this.http.get(url).subscribe((resJson:any) => {
-                this.dataJson = resJson.json();
-
-                resolve(this.dataJson);
+                return {
+                    dataJson: dataJson,
+                    iconJson: iconJson,
+                    dataChangelog: dataChangelog
+                }
             });
-            this.http.get(iconJsonUrl)
-                .subscribe((resJson:any) => {
-                    this.iconJson = resJson.json();
-                    resolve(this.iconJson);
-                });
-            this.http.get(changelogJsonUrl)
-                .subscribe((resJson:any) => {
-                    this.dataChangelog = resJson.json();
-                    resolve(this.dataChangelog);
-                });
+
+        observer.subscribe((res: { dataJson:any, iconJson:any, dataChangelog:any}) =>
+        {
+            this.dataJson = res.dataJson.json();
+            this.iconJson = res.iconJson.json();
+            this.dataChangelog = res.dataChangelog.json();
         });
+
+        return observer.toPromise();
     }
 }

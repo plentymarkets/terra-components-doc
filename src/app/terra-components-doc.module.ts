@@ -1,11 +1,17 @@
 import {
     APP_INITIALIZER,
+    Compiler,
+    COMPILER_OPTIONS,
+    CompilerFactory,
     NgModule
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './terra-components-doc.component';
 import { HttpModule } from '@angular/http';
-import { TranslationModule } from 'angular-l10n';
+import {
+    L10nLoader,
+    TranslationModule
+} from 'angular-l10n';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ComponentSidebarComponent } from './views/components/sidebar/component-sidebar.component';
@@ -32,6 +38,12 @@ import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.compo
 import { SidebarComponentDataProvider } from './views/components/data/sidebar-component-data-provider';
 import { IconItemComponent } from './views/icons/icon-item-component/icon-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { JitCompilerFactory } from '@angular/platform-browser-dynamic';
+
+function createCompiler(compilerFactory:CompilerFactory):Compiler
+{
+    return compilerFactory.createCompiler();
+}
 
 export function initRoutes(pluginsConfig:RouteResolver):Function
 {
@@ -93,6 +105,21 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
                       useFactory: initRoutes,
                       deps:       [RouteResolver],
                       multi:      true
+                  },
+                  {
+                      provide:  COMPILER_OPTIONS,
+                      useValue: {},
+                      multi:    true
+                  },
+                  {
+                      provide:  CompilerFactory,
+                      useClass: JitCompilerFactory,
+                      deps:     [COMPILER_OPTIONS]
+                  },
+                  {
+                      provide:    Compiler,
+                      useFactory: createCompiler,
+                      deps:       [CompilerFactory]
                   }
               ],
               bootstrap:       [
@@ -101,4 +128,8 @@ export function initRoutes(pluginsConfig:RouteResolver):Function
           })
 export class PluginTerraBasicModule
 {
+    constructor(public l10nLoader:L10nLoader)
+    {
+        this.l10nLoader.load();
+    }
 }

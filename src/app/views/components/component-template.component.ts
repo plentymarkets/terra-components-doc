@@ -13,7 +13,7 @@ import { ComponentsConfig } from './config/components.config';
 export class ComponentTemplateComponent
 {
     public changeCol:boolean;
-    constructor(private _componentsConfig:ComponentsConfig)
+    constructor(public _componentsConfig:ComponentsConfig)
     {
     }
 

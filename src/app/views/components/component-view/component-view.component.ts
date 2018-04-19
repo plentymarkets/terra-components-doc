@@ -1,5 +1,6 @@
 import {
     AfterViewInit,
+    Compiler,
     Component,
     ComponentRef,
     ModuleWithComponentFactories,
@@ -55,7 +56,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
 
-    constructor(private _jitCompiler:JitCompiler,
+    constructor(private _jitCompiler:Compiler,
                 private _activatedRoute:ActivatedRoute,
                 private _componentsConfig:ComponentsConfig,
                 private _highlightTextHelper:HighlightTextHelper,

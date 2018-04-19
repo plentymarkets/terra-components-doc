@@ -15,7 +15,7 @@ export class IconTemplateComponent
 
     constructor()
     {
-
+        this.changeCol = false;
     }
 
     @HostListener('window:resize', ['$event'])
