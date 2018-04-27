@@ -22,8 +22,6 @@
     
     .h4
     {
-        margin-bottom: 0;
-        margin-left: 5px;
         line-height: 45px;
     }
     .main_header
@@ -31,6 +29,10 @@
         color: rgb(77, 78, 83);
         font-weight: 100;
         margin-top: 20px;
+    }
+    .example-header
+    {
+        margin-bottom: 20px;
     }
     .example_container
     {
