@@ -1,30 +1,8 @@
 iconview
 {
-    .icon-example .portlet .portlet_head .header-caption
+    .portlet-body
     {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px !important;
-        color: rgb(77, 78, 83);
-        text-transform: capitalize;
-    }
-    .icon-portlet .portlet .portlet_head .header-caption
-    {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px !important;
-        color: rgb(77, 78, 83);
-        text-transform: capitalize;
-    }
-    .icon-search-container .portlet .portlet_head .header-caption
-    {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px !important;
-        color: rgb(77, 78, 83);
-        text-transform: capitalize;
-    }
-    .icon-search-container .portlet .portlet_body
-    {
-        border-radius: 2px !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04);
+        background-color: #F5F5F5 !important;
     }
 }
 
@@ -32,8 +10,8 @@ pre
 {
     font-size: 100% !important;
 }
+
 code
 {
     border-radius: 3px !important;
 }
-
