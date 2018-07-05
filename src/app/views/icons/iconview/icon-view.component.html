@@ -20,7 +20,9 @@
     </div>
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-10 icon-container">
+            <hr>
+            <h1>Icons:</h1>
             <div *ngIf="!enableSearch">
                 <div *ngFor="let iconItem of iconArray">
                     <icon-item-component [iconInterface]="iconItem">
