@@ -1,5 +1,6 @@
 import {
     AfterViewInit,
+    Compiler,
     Component,
     ComponentRef,
     ModuleWithComponentFactories,
@@ -13,7 +14,6 @@ import {
     ActivatedRoute,
     Data
 } from '@angular/router';
-import { JitCompiler } from '@angular/compiler';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
@@ -23,10 +23,10 @@ import { Observable } from 'rxjs/Observable';
 import { SidebarComponentDataProvider } from '../data/sidebar-component-data-provider';
 
 @Component({
-               selector:  'component-view',
-               template:  require('./component-view.component.html'),
-               styleUrls: ['./component-view.component.scss']
-           })
+    selector:  'component-view',
+    template:  require('./component-view.component.html'),
+    styleUrls: ['./component-view.component.scss']
+})
 export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 {
     @ViewChild('viewChildTarget', {read: ViewContainerRef}) viewChildTarget;
@@ -50,12 +50,14 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     private _highlightedTsCode:string;
     private _apiCode:string;
 
+    private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
+    private bgColorValidationList:Array<string> = [];
+
     public htmlFilledState:boolean;
     public cssFilledState:boolean;
+    public bgColorGray:boolean;
 
-    private _alert:TerraAlertComponent = TerraAlertComponent.getInstance();
-
-    constructor(private _jitCompiler:JitCompiler,
+    constructor(private _jitCompiler:Compiler,
                 private _activatedRoute:ActivatedRoute,
                 private _componentsConfig:ComponentsConfig,
                 private _highlightTextHelper:HighlightTextHelper,
@@ -73,6 +75,8 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._tsToCopy = '';
         this.cssFilledState = true;
         this.htmlFilledState = true;
+        this.bgColorGray = false;
+        this.bgColorValidationList.push('terra-portlet', 'terra-info-box', 'terra-filter','terra-base-toolbar','terra-card');
     }
 
     ngOnInit()
@@ -91,7 +95,8 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
             this.http.get(this._htmlPath),
             this.http.get(this._cssPath),
             this.http.get(this._tsPath),
-            (api:any, html:any, css:any, ts:any) => {
+            (api:any, html:any, css:any, ts:any) =>
+            {
                 return {
                     api:  api.text(),
                     html: html.text(),
@@ -99,7 +104,8 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
                     ts:   ts.text()
                 };
             }
-        ).subscribe((data:any) => {
+        ).subscribe((data:any) =>
+        {
 
             this.setSidebarData(!!(data.html), !!(data.css));
             this._apiCode = data.api;
@@ -109,7 +115,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
             this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
             this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
             this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
+            this.validateBackgroundColor(this._htmlToCopy);
         });
+
     }
 
     ngAfterViewInit()
@@ -136,7 +144,8 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     private loadComponentData(data:Data):void
     {
-        data.subscribe((resolveData) => {
+        data.subscribe((resolveData) =>
+        {
             this._moduleWithProviders = resolveData.module as ModuleWithProviders;
             this.updateComponent();
         });
@@ -145,8 +154,10 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     public updateComponent():void
     {
         this._jitCompiler.compileModuleAndAllComponentsAsync(this._moduleWithProviders.ngModule)
-            .then((moduleWithFactories:ModuleWithComponentFactories<any>) => {
-                moduleWithFactories.componentFactories.forEach((factory) => {
+            .then((moduleWithFactories:ModuleWithComponentFactories<any>) =>
+            {
+                moduleWithFactories.componentFactories.forEach((factory) =>
+                {
                     if(factory.componentType.name === 'CustomDynamicComponent')
                     {
                         this._componentRef = this.viewChildTarget.createComponent(factory);
@@ -163,16 +174,27 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._dataProvider.cssFilledState = cssState;
     }
 
+    private validateBackgroundColor(text:string):void
+    {
+        for(let item of this.bgColorValidationList)
+        {
+            if(text.includes(item))
+            {
+                this.bgColorGray = true;
+            }
+        }
+    }
+
     public copyText(text):void
     {
 
         Clipboard.copy(text);
         this._alert.addAlert({
-                                 msg:              'Text successfully copied to Clipboard!',
-                                 type:             'info',
-                                 dismissOnTimeout: 3000,
-                                 identifier:       'info'
-                             });
+            msg:              'Text successfully copied to Clipboard!',
+            type:             'info',
+            dismissOnTimeout: 3000,
+            identifier:       'info'
+        });
 
         setTimeout(() => this._alert.closeAlertByIdentifier('info'), 3000);
     }

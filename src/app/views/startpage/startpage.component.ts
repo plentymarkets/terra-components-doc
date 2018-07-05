@@ -15,7 +15,7 @@ export class StartpageComponent implements OnInit
     private _changelogData:object;
     public npmImagePath:string;
     public gitImagePath:string;
-
+    public projectPath:string;
     constructor(private _routeResolver:RouteResolver)
     {
     }
@@ -23,12 +23,14 @@ export class StartpageComponent implements OnInit
     ngOnInit()
     {
         this._changelogData = this._routeResolver.dataChangelog;
-        this.npmImagePath = 'assets/images/npm/npm-logo-simplifed-with-white-space.png';
-        this.gitImagePath = 'assets/images/github/GitHub-Mark.png';
+        this.npmImagePath = 'assets/images/Npm-logo.svg';
+        this.gitImagePath = 'assets/images/GitHub-logo.svg';
+        this.projectPath = 'assets/images/';
         if(process.env.ENV !== 'production')
         {
-            this.npmImagePath = '/src/app/assets/images/npm/npm-logo-simplifed-with-white-space.png';
-            this.gitImagePath = '/src/app/assets/images/github/GitHub-Mark.png';
+            this.npmImagePath = '/src/app/assets/images/Npm-logo.svg';
+            this.gitImagePath = '/src/app/assets/images/GitHub-logo.svg';
+            this.projectPath = '/src/app/assets/images/';
         }
     }
 

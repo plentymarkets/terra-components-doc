@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+    HostListener
+} from '@angular/core';
 import { ComponentsConfig } from './config/components.config';
 
 @Component(
@@ -9,7 +12,15 @@ import { ComponentsConfig } from './config/components.config';
     })
 export class ComponentTemplateComponent
 {
-    constructor(private _componentsConfig:ComponentsConfig)
+    public changeCol:boolean;
+    constructor(public _componentsConfig:ComponentsConfig)
     {
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize()
+    {
+        let screenWidth = window.innerWidth;
+        this.changeCol = (screenWidth <= 1300);
     }
 }

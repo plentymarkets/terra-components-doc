@@ -1,0 +1,32 @@
+<div class="scroll-fix" id="{{iconInterface.variableName}}"></div>
+<terra-portlet inputPortletHeader="{{iconInterface.name}}"
+               class="icon-portlet">
+    <div class="icon-display-container" (click)="showButtonsToggle()">
+        <span class="icon" [ngClass]="iconInterface.variableName"></span>
+        <span class="icon-name icon-class-label">css-class:</span>
+        <span class="icon-name">{{iconInterface.variableName}}</span>
+        <span class="icon-caret toggle-icon"></span>
+    </div>
+    <div class="icon-description-container" *ngIf="iconInterface.description">
+        <span class="icon-description">{{iconInterface.description}}</span>
+    </div>
+    <div *ngIf="showButtons" class="icon-buttons">
+        <hr>
+        <h4>Example:</h4>
+        <div class="code-example">
+            <terra-button inputIcon="{{iconInterface.variableName}}"
+                          [inputIsLarge]="true">
+            </terra-button>
+            <terra-button inputIcon="{{iconInterface.variableName}}">
+            </terra-button>
+            <terra-button inputIcon="{{iconInterface.variableName}}"
+                          [inputIsSmall]="true">
+            </terra-button>
+        </div>
+        <div>
+            <div>
+                <section class="code-example" [innerHTML]="buttonExampleCode" highlight-js-content=".highlight"></section>
+            </div>
+        </div>
+    </div>
+</terra-portlet>

@@ -3,11 +3,12 @@ import {
 } from '@angular/core';
 import { Http } from '@angular/http';
 import { RouteResolver } from '../../../resolve/route.resolver';
+import { IconInterface } from '../icon-item-component/icon-interface';
 
 @Injectable()
 export class iconService
 {
-    private _iconArray:any = [];
+    private _iconArray:Array<IconInterface> = [];
 
     constructor(public http:Http,
                 public data:RouteResolver)
@@ -16,20 +17,15 @@ export class iconService
 
     public loadIconArray():any
     {
-        if(this._iconArray.length <= 0)
-        {
-            this._iconArray = this.buildNewIconArray();
-        }
-
-        return this._iconArray;
+        return this._iconArray = this.buildNewIconArray();
     }
 
     private buildNewIconArray():any
     {
-        let newIconArray:any = [];
+        let newIconArray:Array<IconInterface> = [];
         let objData:any;
-
-        for(let entry of this.data.iconJson)
+        let iconArray:Array<IconInterface> = this.data.iconJson;
+        for(let entry of iconArray)
         {
             let iconName = entry.name.replace('icon-', '');
             while(iconName.includes('_'))
@@ -37,7 +33,7 @@ export class iconService
                 iconName = iconName.replace('_', ' ');
             }
             objData = {
-                iconVariable: entry.name,
+                variableName: entry.name,
                 name:         iconName,
                 description:  entry.description
             };

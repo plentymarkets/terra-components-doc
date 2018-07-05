@@ -1,10 +1,14 @@
 @import '../node_modules/@plentymarkets/terra-components/app/assets/styles/icons.glob.scss';
-@import 'index.glob.zlk.scss';
-
+@import '../node_modules/@plentymarkets/terra-components/index.glob.scss';
 
 body
 {
+    background-color: white !important;
     overflow: hidden;
+    @media (max-width: 767.98px)
+    {
+        overflow: auto;
+    }
 }
 p
 {

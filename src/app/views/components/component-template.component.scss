@@ -1,11 +1,10 @@
-.sidebar
-{
-    width: 260px;
-}
-
 .component-view
 {
     height: 100vh;
     overflow-y: scroll;
-    margin-right: 270px;
+    @media (max-width: 767.98px)
+    {
+        height: auto;
+        overflow: auto;
+    }
 }

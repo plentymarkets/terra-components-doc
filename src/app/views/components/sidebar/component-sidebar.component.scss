@@ -1,22 +1,13 @@
-.sidebar_wrapper
-{
-    height: 100%;
-    width: inherit;
-    overflow: hidden !important;
-}
-
 .sidebar
 {
-    top: 0;
-    right: 0;
-    position: fixed;
-    overflow-y: scroll;
-    height: 100%;
+    height: 100vh;
+    overflow-x: hidden;
     background-color: transparent;
-    width: inherit;
+    overflow-y: scroll;
     .h4
     {
         margin-top: 20px;
+        padding-left: 10px;
         color: #4D4E53;
     }
     a
@@ -27,6 +18,11 @@
             cursor: pointer;
             color: #008EBD;
         }
+    }
+    @media (max-width: 767.98px)
+    {
+        height: auto;
+        overflow: auto;
     }
 }
 
@@ -41,22 +37,27 @@
 
 .component_list
 {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
     .group-name
     {
         font-size: 15px;
         text-transform: capitalize;
-        padding-left: 20px;
         color: #4D4E53;
         font-weight: 500;
     }
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px 0;
-    
+    .group-header
+    {
+        span
+        {
+            margin-left:10px;
+        }
+    }
     li
     {
         font-weight: normal;
-        padding: 5px 20px 5px 20px;
+        padding: 5px 0;
         &:focus
         {
             outline: none;
@@ -72,7 +73,7 @@
         }
         a
         {
-            padding-left: 20px;
+            padding-left: 10px;
             text-transform: capitalize;
             text-decoration: none;
             color: #4D4E53;
@@ -86,7 +87,6 @@
         a
         {
             color: #008EBD !important;
-            // border-left: 2px solid #008ebe;
         }
         .nav-ul
         {

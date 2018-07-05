@@ -1,10 +1,17 @@
-.sidebar
-{
-    width: 260px;
-}
 .icon-view
 {
     height:100vh;
     overflow-y: scroll;
-    margin-right: 270px;
+    @media (max-width: 767.98px)
+    {
+        overflow: auto;
+    }
+}
+.icon-sidebar
+{
+    
+    @media (max-width: 767.98px)
+    {
+        display: none;
+    }
 }
