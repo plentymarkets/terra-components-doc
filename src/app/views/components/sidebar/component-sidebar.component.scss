@@ -1,9 +1,10 @@
 .sidebar
 {
     height: 100vh;
-    overflow-x: hidden;
     background-color: transparent;
     overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
     .h4
     {
         margin-top: 20px;

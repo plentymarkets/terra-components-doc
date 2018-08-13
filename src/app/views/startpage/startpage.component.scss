@@ -5,7 +5,6 @@ startpage
 
 .card-images-style
 {
-    width: 15vw;
     height:15vh;
     margin-top: 20px;
 }
@@ -33,4 +32,12 @@ startpage
 .get-started-text
 {
     margin: 17px 0;
+}
+.text-header
+{
+    font-size: var(--font-size-8);
+}
+.card-container
+{
+    padding:10px;
 }
