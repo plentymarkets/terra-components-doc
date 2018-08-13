@@ -6,6 +6,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const helpers = require('./helpers');
 
@@ -13,7 +14,8 @@ const METADATA = {
     baseUrl: './'
 };
 
-module.exports = function (options) {
+module.exports = function (options)
+{
     isProd = options.env === 'production';
     return {
         entry: {
@@ -83,7 +85,7 @@ module.exports = function (options) {
                 },
                 {
                     test: /\.(jpg|png|gif|svg)$/,
-                    loader: 'file-loader'
+                    loader: 'base64-inline-loader'
                 },
                 {
                     test: /\.(woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -107,10 +109,11 @@ module.exports = function (options) {
         plugins: [
 
             // Workaround for angular/angular#11580
+            // This breaks lazy loading in AoT
             new webpack.ContextReplacementPlugin(
-                /angular(\\|\/)core(\\|\/)@angular/,
-                helpers.root('./src'), // location of your src
-                {} // a map of your routes
+                /(.+)?angular(\\|\/)core(.+)?/,
+                helpers.root('./src'),
+                {}
             ),
 
             new webpack.optimize.CommonsChunkPlugin({
@@ -194,7 +197,8 @@ module.exports = function (options) {
             clearImmediate: false,
             setImmediate: false,
             clearTimeout: true,
-            setTimeout: true
+            setTimeout: true,
+            fs: 'empty'
         }
     }
 };

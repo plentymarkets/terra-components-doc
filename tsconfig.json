@@ -12,9 +12,8 @@
 		"noStrictGenericChecks": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"lib": [
-			"es2015",
-			"dom",
-			"es2017"
+			"es2017",
+			"dom"
 		],
 		"typeRoots": [
 			"./node_modules/@types"
