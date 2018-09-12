@@ -39,22 +39,27 @@ h1, h2, h3, h4, h5, h6
 {
     margin-top: 0;
 }
-
 .panel-warning
 {
-    border: 1px solid #FAEBCC;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     
     .panel-heading
     {
         padding: 10px 15px 5px 15px;
-        color: #8A6D3B;
-        background-color: #FCF8E3;
-        border-color: #FAEBCC;
+        color: var(--color-structure-10);
+        background-color: var(--color-group-action);
+        border-bottom: 1px solid var(--color-structure-10);
+        font-size: var(--font-size-2);
         .panel-title
         {
-        
+            font-size: var(--font-size-6);
+            color: var(--color-structure-10);
         }
+    }
+    .panel-body
+    {
+        background-color: var(--color-group-action);
+        color: var(--color-structure-10);
     }
 }
 .center
