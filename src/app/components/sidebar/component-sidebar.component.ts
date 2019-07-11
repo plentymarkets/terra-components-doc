@@ -1,25 +1,23 @@
 import {
     Component,
-    OnInit
+    OnInit,
+    Type
 } from '@angular/core';
-import { RouteResolver } from '../../../resolve/route.resolver';
-import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
-import { SidebarComponentDataProvider } from '../data/sidebar-component-data-provider';
+import { examples } from '@plentymarkets/terra-components/components/example-collection';
 
-@Component(
-    {
-        selector: 'component-sidebar',
-        template: require('./component-sidebar.component.html'),
-        styles:   [require('./component-sidebar.component.scss')]
-    })
+@Component({
+    selector:    'component-sidebar',
+    templateUrl: './component-sidebar.component.html',
+    styleUrls:   ['./component-sidebar.component.scss']
+})
 export class ComponentSidebarComponent implements OnInit
 {
-    private groupArray = [];
-    private jsonMetaData = this._routeResolver.dataJson;
+    private groupArray:Array<any> = [];
+    private jsonMetaData:Array<any> = [];
 
-    constructor(private _routeResolver:RouteResolver,
-                private _scrollToViewHelper:ScrollToViewHelper,
-                public sidebarDataProvider: SidebarComponentDataProvider)
+    protected examples:Array<Type<any>> = examples;
+
+    constructor()
     {
     }
 
@@ -47,7 +45,7 @@ export class ComponentSidebarComponent implements OnInit
 
         componentGroup = [];
         let iterator = 0;
-        
+
         for(let group of this.groupArray)
         {
             componentGroup.push([group]);

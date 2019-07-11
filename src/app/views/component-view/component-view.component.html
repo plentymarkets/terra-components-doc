@@ -3,7 +3,7 @@
     <h1 class="main_header">{{_componentName}}</h1>
     <hr>
     <div *ngIf="_overviewMarkDownPath">
-        <markdown-to-html [src]="_overviewMarkDownPath"></markdown-to-html>
+        <markdown [src]="_overviewMarkDownPath"></markdown>
     </div>
     <div *ngIf="htmlFilledState">
         <div class="scroll-fix" id="example"></div>

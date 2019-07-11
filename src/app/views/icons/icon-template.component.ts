@@ -3,12 +3,11 @@ import {
     HostListener
 } from '@angular/core';
 
-@Component(
-    {
-        selector: 'icon-template',
-        template: require('./icon-template.component.html'),
-        styles:   [require('./icon-template.component.scss')]
-    })
+@Component({
+    selector:    'icon-template',
+    templateUrl: './icon-template.component.html',
+    styleUrls:   ['./icon-template.component.scss']
+})
 export class IconTemplateComponent
 {
     public changeCol:boolean;

@@ -8,8 +8,8 @@ import { Clipboard } from 'ts-clipboard';
 
 @Component({
     selector: 'icon-item-component',
-    styles:   [require('./icon-item.component.scss')],
-    template: require('./icon-item.component.html'),
+    templateUrl: './icon-item.component.html',
+    styleUrls:   ['./icon-item.component.scss']
 })
 export class IconItemComponent
 {

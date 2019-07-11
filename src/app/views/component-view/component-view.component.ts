@@ -17,15 +17,14 @@ import {
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
-import { ComponentsConfig } from '../config/components.config';
-import { HighlightTextHelper } from '../../../helper/highlightText.helper';
-import { Observable } from 'rxjs/Observable';
-import { SidebarComponentDataProvider } from '../data/sidebar-component-data-provider';
+import { HighlightTextHelper } from '../../helper/highlightText.helper';
+import { combineLatest } from 'rxjs';
+import { SidebarComponentDataProvider } from '../../components/data/sidebar-component-data-provider';
 
 @Component({
-    selector:  'component-view',
-    template:  require('./component-view.component.html'),
-    styleUrls: ['./component-view.component.scss']
+    selector:    'component-view',
+    templateUrl: './component-view.component.html',
+    styleUrls:   ['./component-view.component.scss']
 })
 export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 {
@@ -59,7 +58,6 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     constructor(private _jitCompiler:Compiler,
                 private _activatedRoute:ActivatedRoute,
-                private _componentsConfig:ComponentsConfig,
                 private _highlightTextHelper:HighlightTextHelper,
                 public http:Http,
                 private _dataProvider:SidebarComponentDataProvider)
@@ -76,7 +74,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this.cssFilledState = true;
         this.htmlFilledState = true;
         this.bgColorGray = false;
-        this.bgColorValidationList.push('terra-portlet', 'terra-info-box', 'terra-filter','terra-base-toolbar','terra-card');
+        this.bgColorValidationList.push('terra-portlet', 'terra-info-box', 'terra-filter', 'terra-base-toolbar', 'terra-card');
     }
 
     ngOnInit()
@@ -90,7 +88,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
         this._componentName = this._activatedRoute.routeConfig.data.componentName;
         this._overviewMarkDownPath = this._activatedRoute.routeConfig.data.OverviewMdPath;
 
-        Observable.combineLatest(
+        combineLatest(
             this.http.get(this._apiPath),
             this.http.get(this._htmlPath),
             this.http.get(this._cssPath),
@@ -122,8 +120,6 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     ngAfterViewInit()
     {
-        this._componentsConfig.isAnyComponentOpen = true;
-
         switch(this._activatedRoute.component['name'])
         {
             case 'ComponentViewComponent':

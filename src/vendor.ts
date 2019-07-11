@@ -5,8 +5,3 @@ import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
-
-// RxJS
-import 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';

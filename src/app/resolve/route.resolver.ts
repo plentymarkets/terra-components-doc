@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { stathamInterface } from './data/statham.interface';
-import { Observable } from 'rxjs/Observable';
+import {
+    combineLatest,
+    Observable
+} from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RouteResolver
@@ -49,14 +53,14 @@ export class RouteResolver
         let iconJsonUrl:string = 'assets/component-documentation/build/iconDescription.json';
         let changelogJsonUrl:string = 'assets/component-documentation/build/documentation-changelog.json';
 
-        if(process.env.ENV !== 'production')
+        if(environment.production)
         {
             url = 'node_modules/@plentymarkets/terra-components/component-documentation/build/statham.json';
             iconJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/iconDescription.json';
             changelogJsonUrl = 'node_modules/@plentymarkets/terra-components/component-documentation/build/documentation-changelog.json';
         }
 
-        let observer:Observable<any> = Observable.combineLatest(this.http.get(url), this.http.get(iconJsonUrl), this.http.get(changelogJsonUrl),
+        let observer:Observable<any> = combineLatest(this.http.get(url), this.http.get(iconJsonUrl), this.http.get(changelogJsonUrl),
             (dataJson:any, iconJson:any, dataChangelog:any) =>
             {
                 return {

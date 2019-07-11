@@ -1,7 +1,4 @@
-import {
-    Component,
-    OnInit
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { iconService } from '../service/icon.service';
 import { Http } from '@angular/http';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
@@ -11,9 +8,7 @@ import { isNullOrUndefined } from 'util';
 @Component({
     selector:    'iconview',
     templateUrl: './icon-view.component.html',
-    styles:      [require('./icon-view.component.scss'),
-                  require('./icon-view.component.glob.scss').toString()
-    ]
+    styleUrls:   ['./icon-view.component.scss', './icon-view.component.glob.scss']
 })
 export class IconViewComponent
 {
@@ -33,7 +28,10 @@ export class IconViewComponent
 
     public searchArray(iconName:string, searchString:string):boolean
     {
-        if(this.inputSearchValue.length == 0)return true;
+        if(this.inputSearchValue.length == 0)
+        {
+            return true;
+        }
         return iconName.includes(searchString);
     }
 
