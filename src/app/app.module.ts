@@ -22,19 +22,20 @@ import {
     TerraComponentsModule
 } from '@plentymarkets/terra-components';
 import { l10nConfig } from './core/localization/l10n.config';
+import { TranslationProvider } from './core/localization/translation-provider';
 
 const routes:Routes = [
     {
-        path: '',
-        pathMatch: 'full',
+        path:       '',
+        pathMatch:  'full',
         redirectTo: 'components'
     },
     {
-        path: 'components',
+        path:      'components',
         component: ComponentTemplateComponent,
-        children: [
+        children:  [
             {
-                path: ':componentName',
+                path:      ':componentName',
                 component: ComponentViewV2Component
             }
         ]
@@ -54,7 +55,7 @@ const routes:Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(routes),
         HttpClientModule,
-        LocalizationModule.forRoot(l10nConfig),
+        LocalizationModule.forRoot(l10nConfig, {translationProvider: TranslationProvider}),
         TerraComponentsModule,
         TerraComponentsExamplesModule,
         MarkdownModule.forRoot({loader: HttpClient}),
