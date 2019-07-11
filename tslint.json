@@ -24,7 +24,7 @@
 		"component-selector": [
 			true,
 			"element",
-			["tdc"],
+			["tcd"],
 			"kebab-case"
 		]
 	}
