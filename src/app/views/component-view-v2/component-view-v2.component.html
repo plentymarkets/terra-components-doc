@@ -9,7 +9,7 @@
             <ng-container *ngSwitchCase="true">
                 <tabset>
                     <tab heading="TS">{{component.metadata | json}}</tab>
-                    <tab heading="HTML"><pre><code>{{component.metadata.template}}</code></pre></tab>
+                    <tab heading="HTML"><pre><code [highlight]="component.metadata.template"></code></pre></tab>
                     <tab heading="SCSS">{{component.metadata.styles}}</tab>
                 </tabset>
             </ng-container>

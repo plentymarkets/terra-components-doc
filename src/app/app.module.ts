@@ -24,6 +24,10 @@ import {
 import { l10nConfig } from './core/localization/l10n.config';
 import { TranslationProvider } from './core/localization/translation-provider';
 import { StartpageComponent } from './views/startpage/startpage.component';
+import { HighlightModule } from 'ngx-highlightjs';
+import xml from 'highlight.js/lib/languages/xml';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
 
 const routes:Routes = [
     {
@@ -48,6 +52,19 @@ const routes:Routes = [
     }
 ];
 
+/**
+ * Import every language you wish to highlight here
+ * NOTE: The name of each language must match the file name its imported from
+ */
+export function hljslanguages():Array<any>
+{
+    return [
+        {name: 'typescript', func: typescript},
+        {name: 'scss', func: scss},
+        {name: 'html', func: xml}
+    ];
+}
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -66,7 +83,8 @@ const routes:Routes = [
         TerraComponentsModule,
         TerraComponentsExamplesModule,
         MarkdownModule.forRoot({loader: HttpClient}),
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        HighlightModule.forRoot({languages: hljslanguages, config: {languages:['typescript', 'scss', 'html']}})
     ],
     bootstrap:    [AppComponent]
 })
