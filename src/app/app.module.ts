@@ -55,7 +55,7 @@ const routes:Routes = [
         ComponentViewComponent,
         ComponentTemplateComponent,
         ComponentSidebarComponent,
-        ComponentViewV2Component,
+        ComponentViewV2Component
     ],
     imports:      [
         BrowserModule,
