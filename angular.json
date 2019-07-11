@@ -71,7 +71,7 @@
 					"builder": "@angular-builders/dev-server:generic",
 					"options": {
 						"browserTarget": "terra-components-doc:build",
-						"port": 3002
+						"port": 3003
 					},
 					"configurations": {
 						"production": {
