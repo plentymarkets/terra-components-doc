@@ -7,13 +7,16 @@ import {
 } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class RouteResolver
 {
     public set dataChangelog(value:any)
     {
         this._dataChangelog = value;
     }
+
     public get dataChangelog():any
     {
         return this._dataChangelog;
@@ -68,9 +71,10 @@ export class RouteResolver
                     iconJson: iconJson,
                     dataChangelog: dataChangelog
                 }
-            });
+            }
+        );
 
-        observer.subscribe((res: { dataJson:any, iconJson:any, dataChangelog:any}) =>
+        observer.subscribe((res:{ dataJson:any, iconJson:any, dataChangelog:any }) =>
         {
             this.dataJson = res.dataJson.json();
             this.iconJson = res.iconJson.json();
