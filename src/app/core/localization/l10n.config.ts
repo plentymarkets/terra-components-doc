@@ -3,7 +3,6 @@ import {
     ProviderType,
     StorageStrategy
 } from 'angular-l10n';
-import { environment } from '../../../environments/environment';
 
 export const l10nConfig:L10nConfig = getL10nConfig();
 
@@ -28,18 +27,8 @@ function getL10nConfig():L10nConfig
         localStorage.setItem('plentymarkets_lang_', lang);
     }
 
-    let terraComponentsLocalePrefix:string = null;
-
-
-    // Definitions for i18n
-    if(environment.production)
-    {
-        terraComponentsLocalePrefix = 'assets/lang/terra-components/locale-';
-    }
-    else
-    {
-        terraComponentsLocalePrefix = 'node_modules/@plentymarkets/terra-components/app/assets/lang/locale-';
-    }
+    let prefix:string = 'assets/lang/locale-';
+    let terraComponentsLocalePrefix:string = 'assets/lang/terra-components/locale-';
 
     return {
         locale:      {
@@ -60,8 +49,12 @@ function getL10nConfig():L10nConfig
             providers:            [
                 {
                     type:   ProviderType.Static,
-                    prefix: terraComponentsLocalePrefix
+                    prefix: prefix
                 },
+                {
+                    type:   ProviderType.Static,
+                    prefix: terraComponentsLocalePrefix
+                }
             ],
             caching:              true,
             composedKeySeparator: '.',
