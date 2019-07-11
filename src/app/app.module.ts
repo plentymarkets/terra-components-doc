@@ -23,6 +23,7 @@ import {
 } from '@plentymarkets/terra-components';
 import { l10nConfig } from './core/localization/l10n.config';
 import { TranslationProvider } from './core/localization/translation-provider';
+import { StartpageComponent } from './views/startpage/startpage.component';
 
 const routes:Routes = [
     {
@@ -35,6 +36,11 @@ const routes:Routes = [
         component: ComponentTemplateComponent,
         children:  [
             {
+                path: '',
+                pathMatch: 'full',
+                component: StartpageComponent
+            },
+            {
                 path:      ':componentName',
                 component: ComponentViewV2Component
             }
@@ -45,6 +51,7 @@ const routes:Routes = [
 @NgModule({
     declarations: [
         AppComponent,
+        StartpageComponent,
         ComponentViewComponent,
         ComponentTemplateComponent,
         ComponentSidebarComponent,
