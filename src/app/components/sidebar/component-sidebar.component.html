@@ -7,7 +7,7 @@
                 <span class="group-name">{{group.name}}</span>
             </div>
             <li *ngFor="let component of group.components"
-                [routerLink]="[component.name]">
+                [routerLink]="[component['__annotations__'][0].selector]">
                 <a>{{component.name}}</a>
 <!--                <ul class="nav-ul">-->
 <!--                    <li *ngIf="sidebarDataProvider.htmlFilledState" (click)="_scrollToViewHelper.scrollToId('example')">Example</li>-->
