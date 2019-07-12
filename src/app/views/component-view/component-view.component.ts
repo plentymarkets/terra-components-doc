@@ -19,7 +19,6 @@ import { Clipboard } from 'ts-clipboard';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
 import { HighlightTextHelper } from '../../helper/highlightText.helper';
 import { combineLatest } from 'rxjs';
-import { SidebarComponentDataProvider } from '../../components/data/sidebar-component-data-provider';
 
 @Component({
     selector:    'component-view',
@@ -59,8 +58,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     constructor(private _jitCompiler:Compiler,
                 private _activatedRoute:ActivatedRoute,
                 private _highlightTextHelper:HighlightTextHelper,
-                public http:Http,
-                private _dataProvider:SidebarComponentDataProvider)
+                public http:Http)
     {
         this._htmlPath = '';
         this._cssPath = '';
@@ -166,8 +164,6 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
     {
         this.htmlFilledState = htmlState;
         this.cssFilledState = cssState;
-        this._dataProvider.htmlFilledState = htmlState;
-        this._dataProvider.cssFilledState = cssState;
     }
 
     private validateBackgroundColor(text:string):void

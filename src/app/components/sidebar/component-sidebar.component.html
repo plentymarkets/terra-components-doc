@@ -9,13 +9,6 @@
             <li *ngFor="let component of group.components"
                 [routerLink]="[component['__annotations__'][0].selector]">
                 <a>{{component.name}}</a>
-<!--                <ul class="nav-ul">-->
-<!--                    <li *ngIf="sidebarDataProvider.htmlFilledState" (click)="_scrollToViewHelper.scrollToId('example')">Example</li>-->
-<!--                    <li *ngIf="sidebarDataProvider.htmlFilledState"(click)="_scrollToViewHelper.scrollToId('htmlcode')">Html</li>-->
-<!--                    <li *ngIf="sidebarDataProvider.cssFilledState" (click)="_scrollToViewHelper.scrollToId('scsscode')">Scss</li>-->
-<!--                    <li *ngIf="sidebarDataProvider.htmlFilledState"(click)="_scrollToViewHelper.scrollToId('typescriptcode')">Ts</li>-->
-<!--                    <li (click)="_scrollToViewHelper.scrollToId('api')">Api</li>-->
-<!--                </ul>-->
             </li>
         </ul>
     </div>
