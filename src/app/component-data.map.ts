@@ -77,5 +77,45 @@ export const componentMap:TerraKeyValueInterface<{path:string, group:string}> = 
     TerraTaglistComponent: {
         path: 'layouts/taglist/example/terra-taglist.component.example',
         group: 'Layout'
+    },
+    TerraNoResultsNoticeComponent: {
+        path: 'no-result/example/terra-no-result-notice.component.example',
+        group: 'No result'
+    },
+    TerraNoteComponent: {
+        path: 'note/example/terra-note.component.example',
+        group: 'Note',
+    },
+    TerraPagerComponent: {
+        path: 'pager/example/terra-pager.component.example',
+        group: 'Tables'
+    },
+    TerraMultiSplitViewComponent: {
+        path: 'split-view/multi/example/terra-multi-split-view.component.example',
+        group: 'Split-View'
+    },
+    TerraStopwatchComponent: {
+        path: 'stopwatch/example/terra-stopwatch.component.example',
+        group: 'Stopwatch'
+    },
+    TerraDataTableComponent: {
+        path: 'tables/data-table/example/terra-data-table.component.example', // TODO: Maybe load all the files in the example folder!?
+        group: 'Tables'
+    },
+    TerraDataTableContextMenuComponent: {
+        path: 'tables/data-table/context-menu/example/terra-data-table-context-menu.component.example',
+        group: 'Tables'
+    },
+    TerraGroupFunctionComponent: {
+        path: 'tables/group-function/example/terra-group-function.component.example',
+        group: 'Tables'
+    },
+    TerraSimpleTableComponent: {
+        path: 'tables/simple/terra-simple-table.component.example',
+        group: 'Tables'
+    },
+    TerraBaseToolbarComponent: {
+        path: 'toolbar/base-toolbar/example/terra-base-toolbar.component.example',
+        group: 'Toolbar'
     }
 };
