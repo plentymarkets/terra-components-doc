@@ -7,9 +7,9 @@
             </ng-container>
             <ng-container *ngSwitchCase="true">
                 <tabset *ngIf="files$ | async as files; else loadingFiles">
-                    <tab heading="TS"><pre><code [highlight]="files.ts"></code></pre></tab>
-                    <tab heading="HTML"><pre><code [highlight]="files.html"></code></pre></tab>
-                    <tab heading="SCSS"><pre><code [highlight]="files.scss"></code></pre></tab>
+                    <tab heading="TS" *ngIf="files.ts"><pre><code [highlight]="files.ts"></code></pre></tab>
+                    <tab heading="HTML" *ngIf="files.html"><pre><code [highlight]="files.html"></code></pre></tab>
+                    <tab heading="SCSS" *ngIf="files.scss"><pre><code [highlight]="files.scss"></code></pre></tab>
                 </tabset>
             </ng-container>
         </ng-container>
