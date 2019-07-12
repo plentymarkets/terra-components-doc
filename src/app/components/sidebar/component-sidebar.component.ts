@@ -15,7 +15,7 @@ export class ComponentSidebarComponent implements OnInit
     private groupArray:Array<any> = [];
     private jsonMetaData:Array<any> = [];
 
-    protected components:Array<Type<any>> = exportedComponents;
+    protected components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
 
     constructor()
     {
