@@ -59,8 +59,7 @@ export class ComponentViewV2Component implements OnInit
             this.source = false;
             return examples.find((e:Type<any>) =>
             {
-                const decorator:Component = e[this.annotations][0];
-                return e.name.toLowerCase().startsWith(componentName.toLowerCase()) || decorator.selector.startsWith(componentName);
+                return e.name.toLowerCase().startsWith(componentName.toLowerCase());
             });
         }));
         this.files$ = componentName$.pipe(
