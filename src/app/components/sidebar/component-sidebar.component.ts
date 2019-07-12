@@ -4,65 +4,55 @@ import {
     Type
 } from '@angular/core';
 import { exportedComponents } from '@plentymarkets/terra-components/components/component-collection';
+import { componentMap } from '../../component-data.map';
 
 @Component({
-    selector:    'component-sidebar',
+    selector:    'tcd-component-sidebar',
     templateUrl: './component-sidebar.component.html',
     styleUrls:   ['./component-sidebar.component.scss']
 })
 export class ComponentSidebarComponent implements OnInit
 {
-    private groupArray:Array<any> = [];
-    private jsonMetaData:Array<any> = [];
-
+    protected groups:Array<{ name:string, components:Array<Type<any>> }> = [];
     protected components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
 
-    constructor()
+    public ngOnInit():void
     {
-    }
-
-    ngOnInit()
-    {
-        let componentGroup = [];
-
-        for(let components of this.jsonMetaData)
+        this.groups = Object.values(componentMap).reduce((acc:Array<string>, cur:{ path:string, group:string }) =>
         {
-            let obGroup =
-                {
-                    groupName: components.componentGroup
-                };
-            componentGroup.push(obGroup);
-        }
-
-        this.groupArray = componentGroup.reduce(function(a, b)
-        {
-            if(a.indexOf(b.groupName) == -1)
+            if(!acc.includes(cur.group))
             {
-                a.push(b.groupName);
+                return acc.concat(cur.group);
             }
-            return a;
-        }, []);
-
-        componentGroup = [];
-        let iterator = 0;
-
-        for(let group of this.groupArray)
+            return acc;
+        }, []).concat('Others').map((groupName:string) =>
         {
-            componentGroup.push([group]);
-            componentGroup[iterator].push([]);
-            iterator++;
-        }
+            return {
+                name: groupName,
+                components: []
+            };
+        });
 
-        for(let i in componentGroup)
+        exportedComponents.forEach((component:Type<any>) =>
         {
-            for(let component of this.jsonMetaData)
+            const componentName:string = component.name;
+            const componentData:{path:string, group:string} = componentMap[componentName];
+            if(componentData)
             {
-                if(component.componentGroup === componentGroup[i][0])
+                if(componentData.group)
                 {
-                    componentGroup[i][1].push({component: component.name});
+                    const compGroup:{name:string, components:Array<Type<any>>} = this.groups.find(
+                        (group:{name:string, components:Array<Type<any>>}) => group.name === componentData.group
+                    );
+                    if(compGroup)
+                    {
+                        compGroup.components.push(component);
+                        return;
+                    }
                 }
             }
-        }
-        this.groupArray = componentGroup;
+            const othersGroup:{name:string, components:Array<Type<any>>} = this.groups[this.groups.length - 1];
+            othersGroup.components.push(component);
+        });
     }
 }
