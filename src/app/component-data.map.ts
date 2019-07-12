@@ -45,5 +45,37 @@ export const componentMap:TerraKeyValueInterface<{path:string, group:string}> = 
     TerraInfoComponent: {
         path: 'info/example/terra-info.component.example',
         group: 'Info'
+    },
+    TerraCardComponent: {
+        path: 'layouts/card/example/terra-card.component.example',
+        group: 'Layout'
+    },
+    TerraTwoColumnsContainerComponent: {
+        path: 'layouts/column-container/two-columns/example/terra-two-column-container.component.example',
+        group: 'Layout'
+    },
+    TerraThreeColumnsContainerComponent: {
+        path: 'layouts/column-container/three-columns/example/terra-three-column-container.component.example',
+        group: 'Layout'
+    },
+    TerraInfoBoxComponent: {
+        path: 'layouts/info-box/example/terra-info-box.component.example',
+        group: 'Layout'
+    },
+    TerraOverlayComponent: {
+        path: 'layouts/overlay/example/terra-overlay.component.example',
+        group: 'Layout'
+    },
+    TerraPortletComponent: {
+        path: 'layouts/portlet/example/terra-portlet.component.example',
+        group: 'Layout'
+    },
+    TerraTagComponent: {
+        path: 'layouts/tag/example/terra-tag.component.example',
+        group: 'Layout'
+    },
+    TerraTaglistComponent: {
+        path: 'layouts/taglist/example/terra-taglist.component.example',
+        group: 'Layout'
     }
 };
