@@ -28,7 +28,8 @@ import { componentMap } from '../../component-data.map';
 })
 export class ComponentViewV2Component implements OnInit
 {
-    protected component$:Observable<{ class:Type<any>, metadata:Component, files?:{ts:string, html:string, scss:string} }>;
+    protected example$:Observable<Type<any>>;
+    protected files$:Observable<{ts:string, html:string, scss:string}>;
     protected readonly sourceToggle:Array<TerraButtonInterface> = [{
         icon:          'icon-placeholder_show_list',
         clickFunction: ():void => this.toggleSources()
@@ -45,35 +46,25 @@ export class ComponentViewV2Component implements OnInit
 
     public ngOnInit():void
     {
-        this.component$ = this.route.params.pipe(
-            switchMap((params:Params) =>
+        const componentName$:Observable<string> = this.route.params.pipe(map((params:Params) => params['componentName']));
+        this.example$ = componentName$.pipe(map((componentName:string) =>
+        {
+            this.source = false;
+            return examples.find((e:Type<any>) =>
             {
-                const componentName:string = params['componentName'];
+                return e.name.toLowerCase().startsWith(componentName.toLowerCase());
+            });
+        }));
+        this.files$ = componentName$.pipe(
+            switchMap((componentName:string) =>
+            {
                 const compData:any = componentMap[componentName];
-                this.source = false;
-                const example:Type<any> = examples.find((e:Type<any>) =>
+                if(compData)
                 {
-                    return e.name.toLowerCase().startsWith(componentName.toLowerCase());
-                });
-
-                if(example)
-                {
-                    const decorator:Component = example[this.annotations][0];
-                    if(compData)
-                    {
-                        return this.getExampleFiles(compData.path).pipe(map((files:{ts:string, html:string, scss:string}) =>
-                        {
-                            return {
-                                class: example,
-                                metadata: decorator,
-                                files: files,
-                                path: compData.path
-                            };
-                        }));
-                    }
+                    return this.getExampleFiles(compData.path);
                 }
                 return of(undefined);
-            }),
+            })
         );
     }
 
