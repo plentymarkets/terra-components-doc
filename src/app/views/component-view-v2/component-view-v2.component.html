@@ -6,7 +6,7 @@
                 <ng-container *ngComponentOutlet="example"></ng-container>
             </ng-container>
             <ng-container *ngSwitchCase="true">
-                <tabset *ngIf="files$ | async as files">
+                <tabset *ngIf="files$ | async as files; else loadingFiles">
                     <tab heading="TS"><pre><code [highlight]="files.ts"></code></pre></tab>
                     <tab heading="HTML"><pre><code [highlight]="files.html"></code></pre></tab>
                     <tab heading="SCSS"><pre><code [highlight]="files.scss"></code></pre></tab>
@@ -18,6 +18,10 @@
 
 <ng-template #noExample>
     <div> No example ...</div>
+</ng-template>
+
+<ng-template #loadingFiles>
+    <div> Loading ... </div>
 </ng-template>
 
 <br>
