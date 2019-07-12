@@ -36,8 +36,8 @@ export class ComponentViewV2Component implements OnInit
 
     private source:boolean = false;
     private readonly annotations:string = '__annotations__';
-    private readonly currentGithubSourcePath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/4.X.X/src/lib/components/';
-    private readonly versionedGithubSourcePath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/v4.0.0-beta.7/src/lib/components/';
+    private readonly currentSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/4.X.X/src/lib/components/';
+    private readonly versionedSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/v4.0.0-beta.7/src/lib/components/';
 
     constructor(private route:ActivatedRoute, private httpClient:HttpClient)
     {
@@ -85,9 +85,9 @@ export class ComponentViewV2Component implements OnInit
     private getExampleFiles(exampleFilePath:string):Observable<{ ts:string, html:string, scss:string }>
     {
         return combineLatest(
-            this.httpClient.get(`${this.currentGithubSourcePath}/${exampleFilePath}.ts`, {responseType: 'text'}),
-            this.httpClient.get(`${this.currentGithubSourcePath}/${exampleFilePath}.html`, {responseType: 'text'}),
-            this.httpClient.get(`${this.currentGithubSourcePath}/${exampleFilePath}.scss`, {responseType: 'text'})
+            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.ts`, {responseType: 'text'}),
+            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.html`, {responseType: 'text'}),
+            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.scss`, {responseType: 'text'})
         ).pipe(
             map((res:Array<string>) =>
             {
