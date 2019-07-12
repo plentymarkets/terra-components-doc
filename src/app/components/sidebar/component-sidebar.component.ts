@@ -3,7 +3,7 @@ import {
     OnInit,
     Type
 } from '@angular/core';
-import { examples } from '@plentymarkets/terra-components/components/example-collection';
+import { exportedComponents } from '@plentymarkets/terra-components/components/component-collection';
 
 @Component({
     selector:    'component-sidebar',
@@ -15,7 +15,7 @@ export class ComponentSidebarComponent implements OnInit
     private groupArray:Array<any> = [];
     private jsonMetaData:Array<any> = [];
 
-    protected examples:Array<Type<any>> = examples;
+    protected components:Array<Type<any>> = exportedComponents;
 
     constructor()
     {

@@ -1,21 +1,24 @@
-
 <h1> Example </h1>
 <ng-container *ngIf="component$ | async as component">
-    <terra-portlet [inputPortletHeader]="'Example'" [inputButtonList]="sourceToggle">
+    <terra-portlet *ngIf="component; else noExample" [inputPortletHeader]="'Example'" [inputButtonList]="sourceToggle">
         <ng-container [ngSwitch]="source">
             <ng-container *ngSwitchCase="false">
                 <ng-container *ngComponentOutlet="component.class"></ng-container>
             </ng-container>
             <ng-container *ngSwitchCase="true">
                 <tabset>
-                    <tab heading="TS">{{component.metadata | json}}</tab>
-                    <tab heading="HTML"><pre><code [highlight]="component.metadata.template"></code></pre></tab>
-                    <tab heading="SCSS">{{component.metadata.styles}}</tab>
+                    <tab heading="TS"><pre><code [highlight]="component.files?.ts"></code></pre></tab>
+                    <tab heading="HTML"><pre><code [highlight]="component.files?.html"></code></pre></tab>
+                    <tab heading="SCSS"><pre><code [highlight]="component.files?.scss"></code></pre></tab>
                 </tabset>
             </ng-container>
         </ng-container>
     </terra-portlet>
 </ng-container>
+
+<ng-template #noExample>
+    <div> No example ...</div>
+</ng-template>
 
 <br>
 <h1> API </h1>
