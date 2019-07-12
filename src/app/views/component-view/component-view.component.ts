@@ -17,6 +17,7 @@ import {
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { TerraAlertComponent } from '@plentymarkets/terra-components';
+import { HighlightTextHelper } from '../../helper/highlightText.helper';
 import { combineLatest } from 'rxjs';
 
 @Component({
@@ -56,6 +57,7 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
 
     constructor(private _jitCompiler:Compiler,
                 private _activatedRoute:ActivatedRoute,
+                private _highlightTextHelper:HighlightTextHelper,
                 public http:Http)
     {
         this._htmlPath = '';
@@ -106,9 +108,9 @@ export class ComponentViewComponent implements AfterViewInit, OnDestroy, OnInit
             this._htmlToCopy = data.html;
             this._cssToCopy = data.css;
             this._tsToCopy = data.ts;
-            // this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
-            // this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
-            // this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
+            this._highlightedHtmlCode = this._highlightTextHelper.highlightText(this._htmlToCopy, 'xml');
+            this._highlightedCssCode = this._highlightTextHelper.highlightText(this._cssToCopy, 'css');
+            this._highlightedTsCode = this._highlightTextHelper.highlightText(this._tsToCopy, 'typescript');
             this.validateBackgroundColor(this._htmlToCopy);
         });
 
