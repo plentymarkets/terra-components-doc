@@ -117,7 +117,7 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         group: 'Tables'
     },
     TerraSimpleTableComponent: {
-        path: 'tables/simple/terra-simple-table.component.example',
+        path: 'tables/simple/example/terra-simple-table.component.example',
         group: 'Tables'
     },
     TerraBaseToolbarComponent: {
