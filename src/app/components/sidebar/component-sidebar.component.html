@@ -7,7 +7,7 @@
                 <span class="group-name">{{group.name}}</span>
             </div>
             <li *ngFor="let component of group.components"
-                [routerLink]="[component['__annotations__'][0].selector]">
+                [routerLink]="[component.name]">
                 <a>{{component.name}}</a>
             </li>
         </ul>
