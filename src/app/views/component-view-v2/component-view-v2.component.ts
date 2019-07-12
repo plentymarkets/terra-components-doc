@@ -8,6 +8,7 @@ import {
     Params
 } from '@angular/router';
 import {
+    catchError,
     map,
     switchMap
 } from 'rxjs/operators';
@@ -18,7 +19,10 @@ import {
 } from 'rxjs';
 import { TerraButtonInterface } from '@plentymarkets/terra-components';
 import { examples } from '@plentymarkets/terra-components/components/example-collection';
-import { HttpClient } from '@angular/common/http';
+import {
+    HttpClient,
+    HttpErrorResponse
+} from '@angular/common/http';
 import { componentMap } from '../../component-data.map';
 
 @Component({
@@ -76,9 +80,9 @@ export class ComponentViewV2Component implements OnInit
     private getExampleFiles(exampleFilePath:string):Observable<{ ts:string, html:string, scss:string }>
     {
         return combineLatest(
-            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.ts`, {responseType: 'text'}),
-            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.html`, {responseType: 'text'}),
-            this.httpClient.get(`${this.currentSrcPath}/${exampleFilePath}.scss`, {responseType: 'text'})
+            this.getSingleFile(`${this.currentSrcPath}/${exampleFilePath}.ts`),
+            this.getSingleFile(`${this.currentSrcPath}/${exampleFilePath}.html`),
+            this.getSingleFile(`${this.currentSrcPath}/${exampleFilePath}.scss`)
         ).pipe(
             map((res:Array<string>) =>
             {
@@ -87,6 +91,19 @@ export class ComponentViewV2Component implements OnInit
                     html: res[1],
                     scss: res[2]
                 };
+            })
+        );
+    }
+
+    private getSingleFile(path:string):Observable<string>
+    {
+        return this.httpClient.get(path, {responseType: 'text'}).pipe(
+            catchError((error:HttpErrorResponse) =>
+            {
+                if(error.status === 404)
+                {
+                    return of(undefined);
+                }
             })
         );
     }
