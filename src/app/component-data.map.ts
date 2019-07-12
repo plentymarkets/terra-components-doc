@@ -1,6 +1,12 @@
 import { TerraKeyValueInterface } from '@plentymarkets/terra-components';
 
-export const componentMap:TerraKeyValueInterface<{path:string, group:string}> = {
+export interface ComponentDataInterface
+{
+    path:string;
+    group:string;
+}
+
+export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraAlertPanelComponent: {
         path: 'alert/example/terra-alert.component.example',
         group: 'Alert'

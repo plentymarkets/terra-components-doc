@@ -4,7 +4,16 @@ import {
     Type
 } from '@angular/core';
 import { exportedComponents } from '@plentymarkets/terra-components/components/component-collection';
-import { componentMap } from '../../component-data.map';
+import {
+    ComponentDataInterface,
+    componentMap
+} from '../../component-data.map';
+
+interface GroupInterface
+{
+    name:string;
+    components:Array<Type<any>>;
+}
 
 @Component({
     selector:    'tcd-component-sidebar',
@@ -13,12 +22,12 @@ import { componentMap } from '../../component-data.map';
 })
 export class ComponentSidebarComponent implements OnInit
 {
-    protected groups:Array<{ name:string, components:Array<Type<any>> }> = [];
+    protected groups:Array<GroupInterface> = [];
     protected components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
 
     public ngOnInit():void
     {
-        this.groups = Object.values(componentMap).reduce((acc:Array<string>, cur:{ path:string, group:string }) =>
+        this.groups = Object.values(componentMap).reduce((acc:Array<string>, cur:ComponentDataInterface) =>
         {
             if(!acc.includes(cur.group))
             {
@@ -36,13 +45,13 @@ export class ComponentSidebarComponent implements OnInit
         exportedComponents.forEach((component:Type<any>) =>
         {
             const componentName:string = component.name;
-            const componentData:{path:string, group:string} = componentMap[componentName];
+            const componentData:ComponentDataInterface = componentMap[componentName];
             if(componentData)
             {
                 if(componentData.group)
                 {
-                    const compGroup:{name:string, components:Array<Type<any>>} = this.groups.find(
-                        (group:{name:string, components:Array<Type<any>>}) => group.name === componentData.group
+                    const compGroup:GroupInterface = this.groups.find(
+                        (group:GroupInterface) => group.name === componentData.group
                     );
                     if(compGroup)
                     {
@@ -51,7 +60,7 @@ export class ComponentSidebarComponent implements OnInit
                     }
                 }
             }
-            const othersGroup:{name:string, components:Array<Type<any>>} = this.groups[this.groups.length - 1];
+            const othersGroup:GroupInterface = this.groups[this.groups.length - 1];
             othersGroup.components.push(component);
         });
     }

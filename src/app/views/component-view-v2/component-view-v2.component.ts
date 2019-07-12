@@ -23,7 +23,10 @@ import {
     HttpClient,
     HttpErrorResponse
 } from '@angular/common/http';
-import { componentMap } from '../../component-data.map';
+import {
+    ComponentDataInterface,
+    componentMap
+} from '../../component-data.map';
 
 @Component({
     selector:    'tcd-component-view-v2',
@@ -62,7 +65,7 @@ export class ComponentViewV2Component implements OnInit
         this.files$ = componentName$.pipe(
             switchMap((componentName:string) =>
             {
-                const compData:any = componentMap[componentName];
+                const compData:ComponentDataInterface = componentMap[componentName];
                 if(compData)
                 {
                     return this.getExampleFiles(compData.path);
