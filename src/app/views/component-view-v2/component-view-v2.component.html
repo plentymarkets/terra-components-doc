@@ -1,18 +1,14 @@
 <h1> Example </h1>
 <ng-container *ngIf="example$ | async as example; else noExample">
     <terra-portlet [inputPortletHeader]="'Example'" [inputButtonList]="sourceToggle">
-        <ng-container [ngSwitch]="source">
-            <ng-container *ngSwitchCase="false">
-                <ng-container *ngComponentOutlet="example"></ng-container>
-            </ng-container>
-            <ng-container *ngSwitchCase="true">
-                <tabset *ngIf="files$ | async as files; else loadingFiles">
-                    <tab heading="TS" *ngIf="files.ts"><pre><code [highlight]="files.ts"></code></pre></tab>
-                    <tab heading="HTML" *ngIf="files.html"><pre><code [highlight]="files.html"></code></pre></tab>
-                    <tab heading="SCSS" *ngIf="files.scss"><pre><code [highlight]="files.scss"></code></pre></tab>
-                </tabset>
-            </ng-container>
-        </ng-container>
+        <div [hidden]="source">
+            <ng-container *ngComponentOutlet="example"></ng-container>
+        </div>
+        <tabset *ngIf="files$ | async as files; else noFiles" [hidden]="!source">
+            <tab heading="TS" *ngIf="files.ts"><pre><code [highlight]="files.ts"></code></pre></tab>
+            <tab heading="HTML" *ngIf="files.html"><pre><code [highlight]="files.html"></code></pre></tab>
+            <tab heading="SCSS" *ngIf="files.scss"><pre><code [highlight]="files.scss"></code></pre></tab>
+        </tabset>
     </terra-portlet>
 </ng-container>
 
@@ -20,8 +16,8 @@
     <div> No example ...</div>
 </ng-template>
 
-<ng-template #loadingFiles>
-    <div> Loading ... </div>
+<ng-template #noFiles>
+    <div> No example files ... </div>
 </ng-template>
 
 <br>
