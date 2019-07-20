@@ -21,8 +21,8 @@ import {
     TerraComponentsExamplesModule,
     TerraComponentsModule
 } from '@plentymarkets/terra-components';
-import { l10nConfig } from './core/localization/l10n.config';
-import { TranslationProvider } from './core/localization/translation-provider';
+import { l10nConfig } from './localization/l10n.config';
+import { TranslationProvider } from './localization/translation-provider';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { HighlightModule } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
