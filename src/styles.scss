@@ -35,3 +35,156 @@
 }
 
 // global component styles
+body
+{
+    overflow: hidden;
+    @media (max-width: 767.98px)
+    {
+        overflow: auto;
+    }
+}
+p
+{
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-weight: 100;
+}
+
+.h4
+{
+    font-weight: 100;
+}
+
+.panel
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .panel-body
+    {
+        padding: 15px;
+    }
+}
+
+.panel-property
+{
+    margin-top: 0;
+}
+.panel-warning
+{
+    border-radius: var(--border-radius);
+    
+    .panel-heading
+    {
+        padding: 10px 15px 5px 15px;
+        color: var(--color-structure-10);
+        background-color: var(--color-group-action);
+        border-bottom: 1px solid var(--color-structure-10);
+        font-size: var(--font-size-2);
+        .panel-title
+        {
+            font-size: var(--font-size-6);
+            color: var(--color-structure-10);
+        }
+    }
+    .panel-body
+    {
+        background-color: var(--color-group-action);
+        color: var(--color-structure-10);
+    }
+}
+.center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-margin
+{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.code_section
+{
+    background-color: #2B2B2B;
+    font-family: 'Roboto', sans-serif !important;
+    pre
+    {
+        code
+        {
+            overflow-x: hidden;
+        }
+        margin: 0;
+        border-right: 1px solid #2B2B2B;
+        margin-right: -1px;
+        font-size: inherit !important;
+    }
+}
+
+.codeTag
+{
+    color: #008EBD;
+}
+
+.method_container
+{
+    font-size: inherit;
+    background-color: #E3E3E3;
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid #CCCCCC;
+}
+
+.docs-api-deprecated-marker-container
+{
+    margin-top: 5px;
+}
+
+.method_description_table
+{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.api-class-headers
+{
+    margin-bottom: 20px;
+}
+
+.docs-api-method-description-cell
+{
+    p
+    {
+        padding-top: 10px;
+    }
+}
+
+.method-loop-margin
+{
+    color: rgb(77, 78, 83);
+}
+
+.docs-api-properties-table
+{
+    th
+    {
+        color: rgb(77, 78, 83);
+    }
+    td
+    {
+        color: rgb(77, 78, 83);
+    }
+}
+
+.docs-api-method-parameter-type
+{
+    width: 30%;
+}
+
+.docs-api-method-parameter-name
+{
+    width: 30%;
+}

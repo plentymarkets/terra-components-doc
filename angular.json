@@ -33,6 +33,11 @@
 								"glob": "*.json",
 								"input": "./node_modules/@plentymarkets/terra-components/assets/lang/",
 								"output": "./assets/lang/terra-components/"
+							},
+							{
+								"glob": "**/*",
+								"input": "./docs/build/",
+								"output": "assets/docs"
 							}
 						],
 						"styles": [

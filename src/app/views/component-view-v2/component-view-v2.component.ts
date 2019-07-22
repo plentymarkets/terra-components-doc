@@ -27,6 +27,7 @@ import {
     ComponentDataInterface,
     componentMap
 } from '../../component-data.map';
+import { components } from '@plentymarkets/terra-components/components/component-collection';
 
 @Component({
     selector:    'tcd-component-view-v2',
@@ -46,6 +47,7 @@ export class ComponentViewV2Component implements OnInit
     private readonly annotations:string = '__annotations__';
     private readonly currentSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/4.X.X/src/lib/components';
     private readonly versionedSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/v4.0.0-beta.7/src/lib/components';
+    private api$:Observable<string>;
 
     constructor(private route:ActivatedRoute, private httpClient:HttpClient)
     {
@@ -71,6 +73,15 @@ export class ComponentViewV2Component implements OnInit
                     return this.getExampleFiles(compData.path);
                 }
                 return of(undefined);
+            })
+        );
+
+        this.api$ = componentName$.pipe(
+            switchMap((name:string) =>
+            {
+                const comp:Type<any> = components.find((component:Type<any>) => component.name === name);
+                const selector:string = (comp[this.annotations][0] as Component).selector;
+                return this.httpClient.get('assets/docs/' + selector + '/' + selector + '.component.d.html', {responseType: 'text'});
             })
         );
     }
