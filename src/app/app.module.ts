@@ -28,29 +28,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
 import typescript from 'highlight.js/lib/languages/typescript';
-
-const routes:Routes = [
-    {
-        path:       '',
-        pathMatch:  'full',
-        redirectTo: 'components'
-    },
-    {
-        path:      'components',
-        component: ComponentTemplateComponent,
-        children:  [
-            {
-                path: '',
-                pathMatch: 'full',
-                component: StartpageComponent
-            },
-            {
-                path:      ':componentName',
-                component: ComponentViewV2Component
-            }
-        ]
-    }
-];
+import { routes } from './app.routing';
 
 /**
  * Import every language you wish to highlight here
