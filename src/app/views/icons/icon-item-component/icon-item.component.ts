@@ -15,10 +15,9 @@ export class IconItemComponent
 {
     @Input() public iconInterface: IconInterface;
     public showButtons:boolean;
-    public buttonExampleCode:string;
-    private exampleCode:string;
+    protected exampleCode:string;
 
-    constructor(private highlightTextHelper:HighlightTextHelper)
+    constructor()
     {
         this.showButtons = false;
     }
@@ -27,7 +26,6 @@ export class IconItemComponent
     {
         this.showButtons = !this.showButtons;
         this.exampleCode = `<terra-button inputIcon='${this.iconInterface.variableName}'></terra-button>`;
-        this.buttonExampleCode = this.highlightTextHelper.highlightText(this.exampleCode, 'xml');
     }
     public copyText():void
     {

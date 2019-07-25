@@ -1,45 +1,28 @@
-import {
-    Injectable
-} from '@angular/core';
-import { Http } from '@angular/http';
-import { RouteResolver } from '../../../resolve/route.resolver';
+import { Injectable } from '@angular/core';
 import { IconInterface } from '../icon-item-component/icon-interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
-export class iconService
+export class IconService
 {
-    private _iconArray:Array<IconInterface> = [];
-
-    constructor(public http:Http,
-                public data:RouteResolver)
+    constructor(private http:HttpClient)
     {
     }
 
-    public loadIconArray():any
+    public loadIconArray():Observable<Array<IconInterface>>
     {
-        return this._iconArray = this.buildNewIconArray();
-    }
-
-    private buildNewIconArray():any
-    {
-        let newIconArray:Array<IconInterface> = [];
-        let objData:any;
-        let iconArray:Array<IconInterface> = this.data.iconJson;
-        for(let entry of iconArray)
+        return this.http.get('assets/iconDescription.json').pipe(map((icons:Array<IconInterface>) =>
         {
-            let iconName = entry.name.replace('icon-', '');
-            while(iconName.includes('_'))
+            return icons.map((icon:IconInterface) =>
             {
-                iconName = iconName.replace('_', ' ');
-            }
-            objData = {
-                variableName: entry.name,
-                name:         iconName,
-                description:  entry.description
-            };
-            newIconArray.push(objData);
-        }
-        return newIconArray;
+                return {
+                    variableName: icon.name,
+                    name:         icon.name.replace('icon-', '').replace(/_/g, ' '),
+                    description:  icon.description
+                };
+            });
+        }));
     }
-
 }

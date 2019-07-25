@@ -10,6 +10,7 @@ import { TranslationProvider } from './localization/translation-provider';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { routes } from './app.routing';
 import { ComponentsModule } from './views/components.module';
+import { IconsModule } from './views/icons/icons.module';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { ComponentsModule } from './views/components.module';
         HttpClientModule,
         LocalizationModule.forRoot(l10nConfig, {translationProvider: TranslationProvider}),
         ComponentsModule,
+        IconsModule
     ],
     bootstrap:    [AppComponent]
 })
