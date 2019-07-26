@@ -34,8 +34,7 @@ export function hljslanguages():Array<any>
 
 @NgModule({
     declarations: [
-        AppComponent,
-        StartpageComponent,
+        AppComponent
     ],
     imports:      [
         BrowserModule,
@@ -47,7 +46,6 @@ export function hljslanguages():Array<any>
             languages: hljslanguages,
             config:    {languages: ['typescript', 'scss', 'html']}
         }),
-        ComponentsModule,
         IconTutorialModule
     ],
     bootstrap:    [AppComponent]
