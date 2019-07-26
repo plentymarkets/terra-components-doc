@@ -4,20 +4,15 @@ import { isNullOrUndefined } from 'util';
 @Injectable()
 export class ScrollToViewHelper
 {
-
-    constructor()
+    public scrollToId(iconId:string):void
     {
-    }
-
-    scrollToId(iconId):void
-    {
-        if(iconId != "")
+        if(iconId)
         {
-            let iconContainer = window.document.getElementById(iconId);
+            const iconContainer:HTMLElement = window.document.getElementById(iconId);
             iconContainer.scrollIntoView();
 
-            let documentWidth = window.document.body.offsetWidth;
-            let scrollValue = 50;
+            const documentWidth:number = window.document.body.offsetWidth;
+            let scrollValue:number = 50;
 
             if(!isNullOrUndefined(documentWidth) && !isNaN(documentWidth))
             {
