@@ -3,6 +3,7 @@ import { ComponentTemplateComponent } from './components/component-template.comp
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { ComponentViewV2Component } from './views/component-view-v2/component-view-v2.component';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
+import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 
 export const routes:Routes = [
     {
@@ -28,5 +29,9 @@ export const routes:Routes = [
     {
         path: 'icons',
         component:IconTemplateComponent
+    },
+    {
+        path: 'icon-tutorial',
+        component: IconTutorialComponent
     }
 ];

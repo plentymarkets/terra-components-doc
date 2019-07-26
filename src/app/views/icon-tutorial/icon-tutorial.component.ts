@@ -1,14 +1,13 @@
-import { Http } from '@angular/http';
-import { combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
     Component,
     OnInit
 } from '@angular/core';
-import { HighlightTextHelper } from '../../helper/highlightText.helper';
 import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-    selector:    'icon-tutorial',
+    selector:    'tcd-icon-tutorial',
     templateUrl: './icon-tutorial.component.html',
     styleUrls:   [
         './icon-tutorial.component.scss',
@@ -18,36 +17,24 @@ import { environment } from '../../../environments/environment';
 export class IconTutorialComponent implements OnInit
 {
 
-    private _iconButtonCodeExample:string = '';
-    private _iconButtonCodeExamplePath:string = 'assets/iconExample/iconButtonCodeExample.html';
-    private _iconListCodeExample:string = '';
-    private _iconListCodeExamplePath:string = 'assets/iconExample/iconListCodeExample.html';
+    protected buttonExample$:Observable<string>;
+    protected listExample$:Observable<string>;
+    private readonly buttonExamplePath:string = 'assets/iconExample/iconButtonCodeExample.html';
+    private readonly listExamplePath:string = 'assets/iconExample/iconListCodeExample.html';
 
 
-    constructor(private _highlightTextHelper:HighlightTextHelper,
-                public http:Http)
+    constructor(private http:HttpClient)
     {
         if(environment.production)
         {
-            this._iconButtonCodeExamplePath = 'src/app/assets/iconExample/iconButtonCodeExample.html';
-            this._iconListCodeExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
+            this.buttonExamplePath = 'src/app/assets/iconExample/iconButtonCodeExample.html';
+            this.listExamplePath = 'src/app/assets/iconExample/iconListCodeExample.html';
         }
     }
 
-    ngOnInit()
+    public ngOnInit():void
     {
-        combineLatest(
-            this.http.get(this._iconButtonCodeExamplePath),
-            this.http.get(this._iconListCodeExamplePath),
-            (button:any, list:any) => {
-                return {
-                    button: button.text(),
-                    list:   list.text()
-                };
-            }
-        ).subscribe((data:any) => {
-            this._iconButtonCodeExample = this._highlightTextHelper.highlightText(data.button, 'xml');
-            this._iconListCodeExample = this._highlightTextHelper.highlightText(data.list, 'xml');
-        });
+        this.buttonExample$ = this.http.get(this.buttonExamplePath, {responseType: 'text'});
+        this.listExample$ = this.http.get(this.listExamplePath, {responseType: 'text'});
     }
 }

@@ -24,10 +24,8 @@
                                       inputIsPrimary="true">
                         </terra-button>
                     </div>
-                    <div class="code_example">
-                        <section class="code_section" [innerHTML]="_iconButtonCodeExample"
-                                 highlight-js-content=".highlight">
-                        </section>
+                    <div class="code_example" *ngIf="buttonExample$ | async as example">
+                        <pre><code [highlight]="example"></code></pre>
                     </div>
                 </terra-portlet>
                 <terra-portlet inputPortletHeader="Class example">
@@ -47,10 +45,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="code_example">
-                        <section class="code_section" [innerHTML]="_iconListCodeExample"
-                                 highlight-js-content=".highlight">
-                        </section>
+                    <div class="code_example" *ngIf="listExample$ | async as example">
+                        <pre><code [highlight]="example"></code></pre>
                     </div>
                 </terra-portlet>
             </terra-portlet>

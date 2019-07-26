@@ -16,6 +16,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
 import typescript from 'highlight.js/lib/languages/typescript';
+import { IconTutorialModule } from './views/icon-tutorial/icon-tutorial.module';
 
 /**
  * Import every language you wish to highlight here
@@ -42,15 +43,15 @@ export function hljslanguages():Array<any>
         RouterModule.forRoot(routes),
         HttpClientModule,
         LocalizationModule.forRoot(l10nConfig, {translationProvider: TranslationProvider}),
-        ComponentsModule,
-        IconsModule,
         HighlightModule.forRoot({
             languages: hljslanguages,
             config:    {languages: ['typescript', 'scss', 'html']}
         }),
+        ComponentsModule,
+        IconsModule,
+        IconTutorialModule
     ],
     bootstrap:    [AppComponent]
 })
 export class AppModule
-{
-}
+{}
