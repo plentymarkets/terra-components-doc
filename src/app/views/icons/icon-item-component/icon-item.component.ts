@@ -3,7 +3,6 @@ import {
     Input
 } from '@angular/core';
 import { IconInterface } from './icon-interface';
-import { HighlightTextHelper } from '../../../helper/highlightText.helper';
 import { Clipboard } from 'ts-clipboard';
 
 @Component({
