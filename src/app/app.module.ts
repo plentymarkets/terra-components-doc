@@ -48,7 +48,6 @@ export function hljslanguages():Array<any>
             config:    {languages: ['typescript', 'scss', 'html']}
         }),
         ComponentsModule,
-        IconsModule,
         IconTutorialModule
     ],
     bootstrap:    [AppComponent]

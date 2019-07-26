@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { ComponentsComponent } from './views/components/components.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { ComponentViewComponent } from './views/components/component-view/component-view.component';
-import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 
 export const routes:Routes = [
@@ -28,7 +27,7 @@ export const routes:Routes = [
     },
     {
         path: 'icons',
-        component:IconTemplateComponent
+        loadChildren: './views/icons/icons.module#IconsModule'
     },
     {
         path: 'icon-tutorial',

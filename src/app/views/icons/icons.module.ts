@@ -9,22 +9,23 @@ import { FormsModule } from '@angular/forms';
 import { IconItemComponent } from './icon-item-component/icon-item.component';
 import { ScrollToViewHelper } from '../../helper/scrollToView.helper';
 import { HighlightModule } from 'ngx-highlightjs';
+import { IconsRoutingModule } from './icons.routing';
 
 @NgModule({
     imports:      [
         CommonModule,
+        IconsRoutingModule,
         FormsModule,
         TerraComponentsModule,
         HighlightModule
     ],
-    exports:      [IconTemplateComponent],
     declarations: [
         IconTemplateComponent,
         IconViewComponent,
         IconSidebarComponent,
         IconItemComponent
     ],
-    providers:[IconService, ScrollToViewHelper]
+    providers:    [IconService, ScrollToViewHelper]
 })
 export class IconsModule
 {}
