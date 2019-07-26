@@ -34,7 +34,7 @@ export class ComponentSidebarComponent implements OnInit
                 return acc.concat(cur.group);
             }
             return acc;
-        }, []).concat('Others').map((groupName:string) =>
+        }, []).sort().concat('Others').map((groupName:string) =>
         {
             return {
                 name: groupName,
