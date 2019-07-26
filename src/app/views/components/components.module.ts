@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HighlightModule } from 'ngx-highlightjs';
 
-import { ComponentTemplateComponent } from '../components/component-template.component';
-import { ComponentSidebarComponent } from '../components/sidebar/component-sidebar.component';
+import { ComponentTemplateComponent } from './component-template.component';
+import { ComponentSidebarComponent } from './sidebar/component-sidebar.component';
 import { ComponentViewV2Component } from './component-view-v2/component-view-v2.component';
 
 

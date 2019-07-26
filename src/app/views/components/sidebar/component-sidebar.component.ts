@@ -7,7 +7,7 @@ import { exportedComponents } from '@plentymarkets/terra-components/components/c
 import {
     ComponentDataInterface,
     componentMap
-} from '../../component-data.map';
+} from '../component-data.map';
 
 interface GroupInterface
 {

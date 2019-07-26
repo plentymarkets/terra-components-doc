@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ComponentTemplateComponent } from './components/component-template.component';
+import { ComponentTemplateComponent } from './views/components/component-template.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
-import { ComponentViewV2Component } from './views/component-view-v2/component-view-v2.component';
+import { ComponentViewV2Component } from './views/components/component-view-v2/component-view-v2.component';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
 import { IconTutorialComponent } from './views/icon-tutorial/icon-tutorial.component';
 

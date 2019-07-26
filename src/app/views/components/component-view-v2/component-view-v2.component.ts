@@ -26,7 +26,7 @@ import {
 import {
     ComponentDataInterface,
     componentMap
-} from '../../component-data.map';
+} from '../component-data.map';
 
 @Component({
     selector:    'tcd-component-view-v2',
