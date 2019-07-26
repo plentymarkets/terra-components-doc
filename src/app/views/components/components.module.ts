@@ -12,7 +12,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 
 import { ComponentTemplateComponent } from './component-template.component';
 import { ComponentSidebarComponent } from './sidebar/component-sidebar.component';
-import { ComponentViewV2Component } from './component-view-v2/component-view-v2.component';
+import { ComponentViewComponent } from './component-view/component-view.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { ComponentViewV2Component } from './component-view-v2/component-view-v2.
     declarations: [
         ComponentTemplateComponent,
         ComponentSidebarComponent,
-        ComponentViewV2Component
+        ComponentViewComponent
     ]
 })
 export class ComponentsModule

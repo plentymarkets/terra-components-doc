@@ -4,24 +4,24 @@ import {
     TestBed
 } from '@angular/core/testing';
 
-import { ComponentViewV2Component } from './component-view-v2.component';
+import { ComponentViewComponent } from './component-view.component';
 
 describe('ComponentViewV2Component', () =>
 {
-    let component:ComponentViewV2Component;
-    let fixture:ComponentFixture<ComponentViewV2Component>;
+    let component:ComponentViewComponent;
+    let fixture:ComponentFixture<ComponentViewComponent>;
 
     beforeEach(async(() =>
     {
         TestBed.configureTestingModule({
-            declarations: [ComponentViewV2Component]
+            declarations: [ComponentViewComponent]
         })
                .compileComponents();
     }));
 
     beforeEach(() =>
     {
-        fixture = TestBed.createComponent(ComponentViewV2Component);
+        fixture = TestBed.createComponent(ComponentViewComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

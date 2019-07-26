@@ -29,11 +29,11 @@ import {
 } from '../component-data.map';
 
 @Component({
-    selector:    'tcd-component-view-v2',
-    templateUrl: './component-view-v2.component.html',
-    styleUrls:   ['./component-view-v2.component.scss']
+    selector:    'tcd-component-view',
+    templateUrl: './component-view.component.html',
+    styleUrls:   ['./component-view.component.scss']
 })
-export class ComponentViewV2Component implements OnInit
+export class ComponentViewComponent implements OnInit
 {
     protected example$:Observable<Type<any>>;
     protected files$:Observable<{ts:string, html:string, scss:string}>;
