@@ -8,28 +8,12 @@ import {
     TerraComponentsModule
 } from '@plentymarkets/terra-components';
 import { TabsModule } from 'ngx-bootstrap';
-import { HighlightModule } from 'ngx-highlightjs';
 
-import xml from 'highlight.js/lib/languages/xml';
-import scss from 'highlight.js/lib/languages/scss';
-import typescript from 'highlight.js/lib/languages/typescript';
 import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-/**
- * Import every language you wish to highlight here
- * NOTE: The name of each language must match the file name its imported from
- */
-export function hljslanguages():Array<any>
-{
-    return [
-        {name: 'typescript', func: typescript},
-        {name: 'scss', func: scss},
-        {name: 'html', func: xml}
-    ];
-}
+import { HighlightModule } from 'ngx-highlightjs';
 
 
 @NgModule({
@@ -39,10 +23,7 @@ export function hljslanguages():Array<any>
         TerraComponentsModule,
         TerraComponentsExamplesModule,
         TabsModule.forRoot(),
-        HighlightModule.forRoot({
-            languages: hljslanguages,
-            config:    {languages: ['typescript', 'scss', 'html']}
-        }),
+        HighlightModule,
         MarkdownModule.forRoot({loader: HttpClient})
     ],
     exports:      [ComponentTemplateComponent],

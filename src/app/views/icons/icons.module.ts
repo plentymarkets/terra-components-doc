@@ -9,17 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { IconItemComponent } from './icon-item-component/icon-item.component';
 import { ScrollToViewHelper } from '../../helper/scrollToView.helper';
 import { HighlightModule } from 'ngx-highlightjs';
-import { hljslanguages } from '../components.module';
 
 @NgModule({
     imports:      [
         CommonModule,
         FormsModule,
         TerraComponentsModule,
-        HighlightModule.forRoot({
-            languages: hljslanguages,
-            config:    {languages: ['typescript', 'scss', 'html']}
-        }),
+        HighlightModule
     ],
     exports:      [IconTemplateComponent],
     declarations: [

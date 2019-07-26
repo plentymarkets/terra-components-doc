@@ -11,6 +11,25 @@ import { StartpageComponent } from './views/startpage/startpage.component';
 import { routes } from './app.routing';
 import { ComponentsModule } from './views/components.module';
 import { IconsModule } from './views/icons/icons.module';
+import { HighlightModule } from 'ngx-highlightjs';
+
+import xml from 'highlight.js/lib/languages/xml';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+
+/**
+ * Import every language you wish to highlight here
+ * NOTE: The name of each language must match the file name its imported from
+ */
+export function hljslanguages():Array<any>
+{
+    return [
+        {name: 'typescript', func: typescript},
+        {name: 'scss', func: scss},
+        {name: 'html', func: xml}
+    ];
+}
+
 
 @NgModule({
     declarations: [
@@ -24,7 +43,11 @@ import { IconsModule } from './views/icons/icons.module';
         HttpClientModule,
         LocalizationModule.forRoot(l10nConfig, {translationProvider: TranslationProvider}),
         ComponentsModule,
-        IconsModule
+        IconsModule,
+        HighlightModule.forRoot({
+            languages: hljslanguages,
+            config:    {languages: ['typescript', 'scss', 'html']}
+        }),
     ],
     bootstrap:    [AppComponent]
 })
