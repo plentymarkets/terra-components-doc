@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HighlightModule } from 'ngx-highlightjs';
 
-import { ComponentTemplateComponent } from './component-template.component';
+import { ComponentsComponent } from './components.component';
 import { ComponentSidebarComponent } from './sidebar/component-sidebar.component';
 import { ComponentViewComponent } from './component-view/component-view.component';
 
@@ -25,9 +25,9 @@ import { ComponentViewComponent } from './component-view/component-view.componen
         HighlightModule,
         MarkdownModule.forRoot({loader: HttpClient})
     ],
-    exports:      [ComponentTemplateComponent],
+    exports:      [ComponentsComponent],
     declarations: [
-        ComponentTemplateComponent,
+        ComponentsComponent,
         ComponentSidebarComponent,
         ComponentViewComponent
     ]

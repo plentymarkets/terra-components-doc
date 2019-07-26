@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ComponentTemplateComponent } from './views/components/component-template.component';
+import { ComponentsComponent } from './views/components/components.component';
 import { StartpageComponent } from './views/startpage/startpage.component';
 import { ComponentViewComponent } from './views/components/component-view/component-view.component';
 import { IconTemplateComponent } from './views/icons/icon-template.component';
@@ -13,7 +13,7 @@ export const routes:Routes = [
     },
     {
         path:      'components',
-        component: ComponentTemplateComponent,
+        component: ComponentsComponent,
         children:  [
             {
                 path: '',
