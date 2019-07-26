@@ -40,7 +40,7 @@ export function hljslanguages():Array<any>
     imports:      [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(routes, {useHash: true}),
         HttpClientModule,
         LocalizationModule.forRoot(l10nConfig, {translationProvider: TranslationProvider}),
         HighlightModule.forRoot({
