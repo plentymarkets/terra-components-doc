@@ -1,11 +1,4 @@
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-xl-9 component-view">
-            <router-outlet></router-outlet>
-        </div>
-        <div class="col-md-4 col-xl-3">
-            <tcd-component-sidebar class="sidebar"></tcd-component-sidebar>
-        </div>
-    </div>
-</div>
+<terra-2-col [leftColumnWidth]="9">
+    <router-outlet left></router-outlet>
+    <tcd-component-sidebar right class="sidebar"></tcd-component-sidebar>
+</terra-2-col>
