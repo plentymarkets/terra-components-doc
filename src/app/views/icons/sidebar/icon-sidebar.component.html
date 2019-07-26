@@ -1,11 +1,9 @@
-<div class="sidebar_wrapper">
-    <div class="sidebar">
-        <p class="h4">Icons</p>
-        <ul class="icon_list">
-            <li *ngFor="let value of iconArray" (click)="scrollToViewHelper.scrollToId(value.variableName)">
-                <span class="icon" [ngClass]="value.variableName"></span>
-                <span class="icon-name">{{value.name}}</span>
-            </li>
-        </ul>
-    </div>
+<div class="sidebar">
+    <p class="h4">Icons</p>
+    <ul class="icon_list">
+        <li *ngFor="let value of iconArray" (click)="scrollToViewHelper.scrollToId(value.variableName)">
+            <span class="icon" [ngClass]="value.variableName"></span>
+            <span class="icon-name">{{value.name}}</span>
+        </li>
+    </ul>
 </div>

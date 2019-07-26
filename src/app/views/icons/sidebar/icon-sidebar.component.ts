@@ -4,7 +4,7 @@ import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { IconInterface } from '../icon-item-component/icon-interface';
 
 @Component({
-    selector:    'icon-sidebar',
+    selector:    'tcd-icon-sidebar',
     templateUrl: './icon-sidebar.component.html',
     styleUrls:   ['./icon-sidebar.component.scss']
 })
