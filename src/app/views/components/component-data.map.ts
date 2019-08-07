@@ -211,7 +211,6 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'alert/example/terra-alert.component.example',
         group: 'Alert'
     },
-    ...buttons,
     TerraNestedDataPickerComponent: {
         path: 'data-picker/nested-data-picker/example/terra-nested-data-picker.component.example',
         group: 'Data-Picker'
@@ -220,7 +219,6 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: '',
         group: 'Data-Picker'
     },
-    ...editors,
     TerraFileBrowserComponent: {
         path: 'file-browser/example/terra-file-browser.component.example',
         group: 'File-Browser'
@@ -233,12 +231,10 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'filter/example/terra-filter.component.example',
         group: 'Filter'
     },
-    ...forms,
     TerraInfoComponent: {
         path: 'info/example/terra-info.component.example',
         group: 'Info'
     },
-    ...layout,
     TerraNoResultNoticeComponent: {
         path: 'no-result/example/terra-no-result-notice.component.example',
         group: 'No result'
@@ -247,6 +243,10 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'stopwatch/example/terra-stopwatch.component.example',
         group: 'Stopwatch'
     },
+    ...buttons,
+    ...editors,
+    ...forms,
+    ...layout,
     ...tables,
     ...trees
 };
