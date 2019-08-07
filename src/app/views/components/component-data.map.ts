@@ -2,7 +2,8 @@ import { TerraKeyValueInterface } from '@plentymarkets/terra-components';
 
 export enum ComponentGroup
 {
-    Forms = 'Forms'
+    Forms = 'Forms',
+    Trees = 'Trees'
 }
 
 export interface ComponentDataInterface
@@ -10,6 +11,17 @@ export interface ComponentDataInterface
     path:string;
     group:string;
 }
+
+const trees:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraCheckboxTreeComponent: {
+        path: 'tree/checkbox-tree/example/terra-checkbox-tree.component.example',
+        group: ComponentGroup.Trees
+    },
+    TerraNodeTreeComponent: {
+        path: 'tree/node-tree/example/terra-node-tree.component.example',
+        group: ComponentGroup.Trees
+    }
+};
 
 const forms:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraCheckboxComponent: {
@@ -64,7 +76,7 @@ const forms:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'forms/input/time-picker/example/terra-time-picker.component.example',
         group: ComponentGroup.Forms
     },
-    TerraMultiCheckboxComponent: {
+    TerraMultiCheckBoxComponent: {
         path: 'forms/multi-check-box/example/terra-multi-check-box.component.example',
         group: ComponentGroup.Forms
     },
@@ -123,6 +135,10 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'editors/syntax-editor/example/terra-syntax-editor.component.example',
         group: 'Editors'
     },
+    TerraFileBrowserComponent: {
+        path: 'file-browser/example/terra-file-browser.component.example',
+        group: 'File-Browser'
+    },
     FilterComponent: {
         path: 'filter/example/filter.component.example',
         group: 'Filter'
@@ -131,7 +147,7 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'filter/example/terra-filter.component.example',
         group: 'Filter'
     },
-    // TODO: add forms here
+    ...forms,
     TerraInfoComponent: {
         path: 'info/example/terra-info.component.example',
         group: 'Info'
@@ -208,5 +224,5 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'toolbar/base-toolbar/example/terra-base-toolbar.component.example',
         group: 'Toolbar'
     },
-    ...forms
+    ...trees
 };
