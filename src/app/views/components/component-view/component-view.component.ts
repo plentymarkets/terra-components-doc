@@ -35,6 +35,7 @@ import {
 })
 export class ComponentViewComponent implements OnInit
 {
+    protected componentName$:Observable<string>;
     protected example$:Observable<Type<any>>;
     protected files$:Observable<{ts:string, html:string, scss:string}>;
     protected readonly sourceToggle:Array<TerraButtonInterface> = [{
@@ -53,8 +54,8 @@ export class ComponentViewComponent implements OnInit
 
     public ngOnInit():void
     {
-        const componentName$:Observable<string> = this.route.params.pipe(map((params:Params) => params['componentName']));
-        this.example$ = componentName$.pipe(map((componentName:string) =>
+        this.componentName$ = this.route.params.pipe(map((params:Params) => params['componentName']));
+        this.example$ = this.componentName$.pipe(map((componentName:string) =>
         {
             this.source = false;
             return examples.find((e:Type<any>) =>
@@ -62,7 +63,7 @@ export class ComponentViewComponent implements OnInit
                 return e.name.toLowerCase().startsWith(componentName.toLowerCase());
             });
         }));
-        this.files$ = componentName$.pipe(
+        this.files$ = this.componentName$.pipe(
             switchMap((componentName:string) =>
             {
                 const compData:ComponentDataInterface = componentMap[componentName];
