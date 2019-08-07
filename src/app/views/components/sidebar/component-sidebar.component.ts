@@ -27,20 +27,25 @@ export class ComponentSidebarComponent implements OnInit
 
     public ngOnInit():void
     {
-        this.groups = Object.values(componentMap).reduce((acc:Array<string>, cur:ComponentDataInterface) =>
-        {
-            if(!acc.includes(cur.group))
+        this.groups = Object
+            .values(componentMap)
+            .reduce((acc:Array<string>, cur:ComponentDataInterface) =>
             {
-                return acc.concat(cur.group);
-            }
-            return acc;
-        }, []).sort().concat('Others').map((groupName:string) =>
-        {
-            return {
-                name: groupName,
-                components: []
-            };
-        });
+                if(!acc.includes(cur.group))
+                {
+                    return acc.concat(cur.group);
+                }
+                return acc;
+            }, [])
+            .sort()
+            // .concat('Others')
+            .map((groupName:string) =>
+            {
+                return {
+                    name:       groupName,
+                    components: []
+                };
+            });
 
         exportedComponents.forEach((component:Type<any>) =>
         {
@@ -60,8 +65,8 @@ export class ComponentSidebarComponent implements OnInit
                     }
                 }
             }
-            const othersGroup:GroupInterface = this.groups[this.groups.length - 1];
-            othersGroup.components.push(component);
+            // const othersGroup:GroupInterface = this.groups[this.groups.length - 1];
+            // othersGroup.components.push(component);
         });
     }
 }
