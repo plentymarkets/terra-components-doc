@@ -1,6 +1,8 @@
 <h1> {{ componentName$ | async }} </h1>
 <ng-container *ngIf="example$ | async as example; else noExample">
-    <terra-portlet [inputPortletHeader]="'Example'" [inputButtonList]="sourceToggle">
+    <terra-portlet
+        [inputPortletHeader]="'Example'"
+        [inputButtonList]="sourceToggle">
         <div [hidden]="source">
             <ng-container *ngComponentOutlet="example"></ng-container>
         </div>
