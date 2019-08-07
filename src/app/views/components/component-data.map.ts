@@ -12,6 +12,94 @@ export interface ComponentDataInterface
     group:string;
 }
 
+const buttons:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraButtonComponent: {
+        path: 'buttons/button/example/terra-button.component.example',
+        group: 'Button'
+    },
+    TerraButtonWithOptionsComponent: {
+        path: 'buttons/button-with-options/example/terra-button-with-options.component.example',
+        group: 'Button'
+    },
+    TerraToggleComponent: {
+        path: 'buttons/toggle/example/terra-toggle.component.example',
+        group: 'Button'
+    }
+};
+
+const editors:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraCodeEditorComponent: {
+        path: 'editors/code-editor/example/terra-code-editor.component.example',
+        group: 'Editors'
+    },
+    TerraNoteEditorComponent: {
+        path: 'editors/note-editor/example/terra-node-editor.component.example',
+        group: 'Editors'
+    },
+    TerraSyntaxEditorComponent: {
+        path: 'editors/syntax-editor/example/terra-syntax-editor.component.example',
+        group: 'Editors'
+    }
+};
+
+const layout:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraCardComponent: {
+        path: 'layouts/card/example/terra-card.component.example',
+        group: 'Layout'
+    },
+    TerraTwoColumnsContainerComponent: {
+        path: 'layouts/column-container/two-columns/example/terra-two-column-container.component.example',
+        group: 'Layout'
+    },
+    TerraThreeColumnsContainerComponent: {
+        path: 'layouts/column-container/three-columns/example/terra-three-column-container.component.example',
+        group: 'Layout'
+    },
+    TerraInfoBoxComponent: {
+        path: 'layouts/info-box/example/terra-info-box.component.example',
+        group: 'Layout'
+    },
+    TerraOverlayComponent: {
+        path: 'layouts/overlay/example/terra-overlay.component.example',
+        group: 'Layout'
+    },
+    TerraPortletComponent: {
+        path: 'layouts/portlet/example/terra-portlet.component.example',
+        group: 'Layout'
+    },
+    TerraTagComponent: {
+        path: 'layouts/tag/example/terra-tag.component.example',
+        group: 'Layout'
+    },
+    TerraTaglistComponent: {
+        path: 'layouts/taglist/example/terra-taglist.component.example',
+        group: 'Layout'
+    }
+};
+
+const tables:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraDataTableComponent: {
+        path: 'tables/data-table/example/terra-data-table.component.example', // TODO: Maybe load all the files in the example folder!?
+        group: 'Tables'
+    },
+    TerraDataTableContextMenuComponent: {
+        path: 'tables/data-table/context-menu/example/terra-data-table-context-menu.component.example',
+        group: 'Tables'
+    },
+    TerraGroupFunctionComponent: {
+        path: 'tables/group-function/example/terra-group-function.component.example',
+        group: 'Tables'
+    },
+    TerraSimpleTableComponent: {
+        path: 'tables/simple/example/terra-simple-table.component.example',
+        group: 'Tables'
+    },
+    TerraPagerComponent: {
+        path: 'pager/example/terra-pager.component.example',
+        group: 'Tables'
+    }
+};
+
 const trees:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraCheckboxTreeComponent: {
         path: 'tree/checkbox-tree/example/terra-checkbox-tree.component.example',
@@ -107,34 +195,12 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'alert/example/terra-alert.component.example',
         group: 'Alert'
     },
-    TerraButtonComponent: {
-        path: 'buttons/button/example/terra-button.component.example',
-        group: 'Button'
-    },
-    TerraButtonWithOptionsComponent: {
-        path: 'buttons/button-with-options/example/terra-button-with-options.component.example',
-        group: 'Button'
-    },
-    TerraToggleComponent: {
-        path: 'buttons/toggle/example/terra-toggle.component.example',
-        group: 'Button'
-    },
+    ...buttons,
     TerraNestedDataPickerComponent: {
         path: 'data-picker/nested-data-picker/example/terra-nested-data-picker.component.example',
         group: 'Data-Picker'
     },
-    TerraCodeEditorComponent: {
-        path: 'editors/code-editor/example/terra-code-editor.component.example',
-        group: 'Editors'
-    },
-    TerraNoteEditorComponent: {
-        path: 'editors/note-editor/example/terra-node-editor.component.example',
-        group: 'Editors'
-    },
-    TerraSyntaxEditorComponent: {
-        path: 'editors/syntax-editor/example/terra-syntax-editor.component.example',
-        group: 'Editors'
-    },
+    ...editors,
     TerraFileBrowserComponent: {
         path: 'file-browser/example/terra-file-browser.component.example',
         group: 'File-Browser'
@@ -152,38 +218,7 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'info/example/terra-info.component.example',
         group: 'Info'
     },
-    TerraCardComponent: {
-        path: 'layouts/card/example/terra-card.component.example',
-        group: 'Layout'
-    },
-    TerraTwoColumnsContainerComponent: {
-        path: 'layouts/column-container/two-columns/example/terra-two-column-container.component.example',
-        group: 'Layout'
-    },
-    TerraThreeColumnsContainerComponent: {
-        path: 'layouts/column-container/three-columns/example/terra-three-column-container.component.example',
-        group: 'Layout'
-    },
-    TerraInfoBoxComponent: {
-        path: 'layouts/info-box/example/terra-info-box.component.example',
-        group: 'Layout'
-    },
-    TerraOverlayComponent: {
-        path: 'layouts/overlay/example/terra-overlay.component.example',
-        group: 'Layout'
-    },
-    TerraPortletComponent: {
-        path: 'layouts/portlet/example/terra-portlet.component.example',
-        group: 'Layout'
-    },
-    TerraTagComponent: {
-        path: 'layouts/tag/example/terra-tag.component.example',
-        group: 'Layout'
-    },
-    TerraTaglistComponent: {
-        path: 'layouts/taglist/example/terra-taglist.component.example',
-        group: 'Layout'
-    },
+    ...layout,
     TerraNoResultNoticeComponent: {
         path: 'no-result/example/terra-no-result-notice.component.example',
         group: 'No result'
@@ -191,10 +226,6 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraNoteComponent: {
         path: 'note/example/terra-note.component.example',
         group: 'Note',
-    },
-    TerraPagerComponent: {
-        path: 'pager/example/terra-pager.component.example',
-        group: 'Tables'
     },
     TerraMultiSplitViewComponent: {
         path: 'split-view/multi/example/terra-multi-split-view.component.example',
@@ -204,22 +235,7 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'stopwatch/example/terra-stopwatch.component.example',
         group: 'Stopwatch'
     },
-    TerraDataTableComponent: {
-        path: 'tables/data-table/example/terra-data-table.component.example', // TODO: Maybe load all the files in the example folder!?
-        group: 'Tables'
-    },
-    TerraDataTableContextMenuComponent: {
-        path: 'tables/data-table/context-menu/example/terra-data-table-context-menu.component.example',
-        group: 'Tables'
-    },
-    TerraGroupFunctionComponent: {
-        path: 'tables/group-function/example/terra-group-function.component.example',
-        group: 'Tables'
-    },
-    TerraSimpleTableComponent: {
-        path: 'tables/simple/example/terra-simple-table.component.example',
-        group: 'Tables'
-    },
+    ...tables,
     TerraBaseToolbarComponent: {
         path: 'toolbar/base-toolbar/example/terra-base-toolbar.component.example',
         group: 'Toolbar'
