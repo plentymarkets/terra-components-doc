@@ -37,7 +37,7 @@ const editors:TerraKeyValueInterface<ComponentDataInterface> = {
         group: ComponentGroup.Editors
     },
     TerraNoteEditorComponent: {
-        path: 'editors/note-editor/example/terra-node-editor.component.example',
+        path: 'editors/note-editor/example/terra-note-editor.component.example',
         group: ComponentGroup.Editors
     },
     TerraSyntaxEditorComponent: {
