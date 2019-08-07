@@ -7,10 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { l10nConfig } from './localization/l10n.config';
 import { TranslationProvider } from './localization/translation-provider';
-import { StartpageComponent } from './views/startpage/startpage.component';
 import { routes } from './app.routing';
-import { ComponentsModule } from './views/components/components.module';
-import { IconsModule } from './views/icons/icons.module';
 import { HighlightModule } from 'ngx-highlightjs';
 
 import xml from 'highlight.js/lib/languages/xml';
