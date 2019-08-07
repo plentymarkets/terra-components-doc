@@ -123,5 +123,29 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraBaseToolbarComponent: {
         path: 'toolbar/base-toolbar/example/terra-base-toolbar.component.example',
         group: 'Toolbar'
+    },
+    CheckboxGroupComponent: {
+        path: 'forms/checkbox-group/example/checkbox-group.component.example',
+        group: 'Forms'
+    },
+    RadioGroupComponent: {
+        path: 'forms/input/radio/example/radio-group.component.example',
+        group: 'Forms'
+    },
+    TerraCheckboxComponent: {
+        path: 'forms/checkbox/example/terra-checkbox.component.example',
+        group: 'Forms'
+    },
+    TerraColorPickerComponent: {
+        path: 'forms/input/color-picker/example/terra-color-picker.component.example',
+        group: 'Forms'
+    },
+    TerraDatePickerComponent: {
+        path: 'forms/input/date-picker/example/terra-date-picker.component.example',
+        group: 'Forms'
+    },
+    TerraDoubleInputComponent: {
+        path: 'forms/input/double-input/example/terra-double-input.component.example',
+        group: 'Forms'
     }
 };
