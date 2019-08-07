@@ -12,7 +12,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { ComponentsComponent } from './components.component';
 import { ComponentSidebarComponent } from './sidebar/component-sidebar.component';
 import { ComponentViewComponent } from './component-view/component-view.component';
-import { StartpageComponent } from '../startpage/startpage.component';
+import { StartpageComponent } from './startpage/startpage.component';
 import {
     RouterModule,
     Routes
