@@ -66,7 +66,7 @@ export class ComponentViewComponent implements OnInit
             switchMap((componentName:string) =>
             {
                 const compData:ComponentDataInterface = componentMap[componentName];
-                if(compData)
+                if(compData && compData.path)
                 {
                     return this.getExampleFiles(compData.path);
                 }

@@ -200,6 +200,10 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'data-picker/nested-data-picker/example/terra-nested-data-picker.component.example',
         group: 'Data-Picker'
     },
+    TerraCategoryPickerComponent: {
+        path: '',
+        group: 'Data-Picker'
+    },
     ...editors,
     TerraFileBrowserComponent: {
         path: 'file-browser/example/terra-file-browser.component.example',
