@@ -1,10 +1,94 @@
 import { TerraKeyValueInterface } from '@plentymarkets/terra-components';
 
+export enum ComponentGroup
+{
+    Forms = 'Forms'
+}
+
 export interface ComponentDataInterface
 {
     path:string;
     group:string;
 }
+
+const forms:TerraKeyValueInterface<ComponentDataInterface> = {
+    TerraCheckboxComponent: {
+        path: 'forms/checkbox/example/terra-checkbox.component.example',
+        group: ComponentGroup.Forms
+    },
+    CheckboxGroupComponent: {
+        path: 'forms/checkbox-group/example/checkbox-group.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraFormComponent: {
+        path: 'forms/form/example/terra-form.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraColorPickerComponent: {
+        path: 'forms/input/color-picker/example/terra-color-picker.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraDatePickerComponent: {
+        path: 'forms/input/date-picker/example/terra-date-picker.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraDoubleInputComponent: {
+        path: 'forms/input/double-input/example/terra-double-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraInputComponent: {
+        path: 'forms/input/example/terra-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraFileInputComponent: {
+        path: 'forms/input/file-input/example/terra-file-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraNumberInputComponent: {
+        path: 'forms/input/number-input/example/terra-number-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    RadioGroupComponent: {
+        path: 'forms/input/radio/example/radio-group.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraTextAreaInputComponent: {
+        path: 'forms/input/text-area-input/example/terra-text-area-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraTextInputComponent: {
+        path: 'forms/input/text-input/example/terra-text-input.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraTimePickerComponent: {
+        path: 'forms/input/time-picker/example/terra-time-picker.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraMultiCheckboxComponent: {
+        path: 'forms/multi-check-box/example/terra-multi-check-box.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraRadioButtonComponent: {
+        path: 'forms/radio-button/example/terra-radio-button.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraSelectBoxComponent: {
+        path: 'forms/select-box/example/terra-select-box.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraSliderComponent: {
+        path: 'forms/slider/example/terra-slider.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraSuggestionBoxComponent: {
+        path: 'forms/suggestion-box/example/terra-suggestion-box.component.example',
+        group: ComponentGroup.Forms
+    },
+    TerraTagSelectComponent: {
+        path: 'forms/tag-select/example/terra-tag-select.component.example',
+        group: ComponentGroup.Forms
+    }
+};
 
 export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
     TerraAlertPanelComponent: {
@@ -84,7 +168,7 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'layouts/taglist/example/terra-taglist.component.example',
         group: 'Layout'
     },
-    TerraNoResultsNoticeComponent: {
+    TerraNoResultNoticeComponent: {
         path: 'no-result/example/terra-no-result-notice.component.example',
         group: 'No result'
     },
@@ -124,28 +208,5 @@ export const componentMap:TerraKeyValueInterface<ComponentDataInterface> = {
         path: 'toolbar/base-toolbar/example/terra-base-toolbar.component.example',
         group: 'Toolbar'
     },
-    CheckboxGroupComponent: {
-        path: 'forms/checkbox-group/example/checkbox-group.component.example',
-        group: 'Forms'
-    },
-    RadioGroupComponent: {
-        path: 'forms/input/radio/example/radio-group.component.example',
-        group: 'Forms'
-    },
-    TerraCheckboxComponent: {
-        path: 'forms/checkbox/example/terra-checkbox.component.example',
-        group: 'Forms'
-    },
-    TerraColorPickerComponent: {
-        path: 'forms/input/color-picker/example/terra-color-picker.component.example',
-        group: 'Forms'
-    },
-    TerraDatePickerComponent: {
-        path: 'forms/input/date-picker/example/terra-date-picker.component.example',
-        group: 'Forms'
-    },
-    TerraDoubleInputComponent: {
-        path: 'forms/input/double-input/example/terra-double-input.component.example',
-        group: 'Forms'
-    }
+    ...forms
 };
