@@ -5,11 +5,23 @@
     overflow-y: scroll;
     overflow-x: hidden;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
-    .h4
+    .sidebar-head
     {
+        --input-background-color: transparent;
+        
         margin-top: 20px;
         padding-left: 10px;
         color: #4D4E53;
+        span
+        {
+            font-size: var(--font-size-7);
+            
+            &[class^="icon-"]:hover
+            {
+                color: var(--color-group-active);
+                cursor: pointer;
+            }
+        }
     }
     a
     {

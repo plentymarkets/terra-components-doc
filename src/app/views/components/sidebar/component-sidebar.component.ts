@@ -22,30 +22,31 @@ interface GroupInterface
 })
 export class ComponentSidebarComponent implements OnInit
 {
-    protected groups:Array<GroupInterface> = [];
-    protected components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
+    public groups:Array<GroupInterface> = [];
+    public components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
+    public searching:boolean = false;
 
     public ngOnInit():void
     {
-        this.groups = Object
-            .values(componentMap)
-            .reduce((acc:Array<string>, cur:ComponentDataInterface) =>
+        this.groups = this.determineGroups();
+    }
+
+    private determineGroups(str:string = ''):Array<GroupInterface>
+    {
+        let groups:Array<GroupInterface> = Object.values(componentMap).reduce((acc:Array<string>, cur:ComponentDataInterface) =>
+        {
+            if(!acc.includes(cur.group))
             {
-                if(!acc.includes(cur.group))
-                {
-                    return acc.concat(cur.group);
-                }
-                return acc;
-            }, [])
-            .sort()
-            // .concat('Others')
-            .map((groupName:string) =>
-            {
-                return {
-                    name:       groupName,
-                    components: []
-                };
-            });
+                return acc.concat(cur.group);
+            }
+            return acc;
+        }, []).sort().concat('Others').map((groupName:string) =>
+        {
+            return {
+                name:       groupName,
+                components: []
+            };
+        });
 
         exportedComponents.forEach((component:Type<any>) =>
         {
@@ -55,10 +56,10 @@ export class ComponentSidebarComponent implements OnInit
             {
                 if(componentData.group)
                 {
-                    const compGroup:GroupInterface = this.groups.find(
+                    const compGroup:GroupInterface = groups.find(
                         (group:GroupInterface) => group.name === componentData.group
                     );
-                    if(compGroup)
+                    if(compGroup && component.name.includes(str))
                     {
                         compGroup.components.push(component);
                         return;
@@ -68,5 +69,24 @@ export class ComponentSidebarComponent implements OnInit
             // const othersGroup:GroupInterface = this.groups[this.groups.length - 1];
             // othersGroup.components.push(component);
         });
+
+        // return only groups that contain components
+        return groups.filter((group:GroupInterface) => group.components.length > 0);
+    }
+
+    public search(searchText:string):void
+    {
+        this.groups = this.determineGroups(searchText);
+    }
+
+    public cancelSearch():void
+    {
+        this.searching = false;
+        this.groups = this.determineGroups();
+    }
+
+    public activateSearch():void
+    {
+        this.searching = true;
     }
 }

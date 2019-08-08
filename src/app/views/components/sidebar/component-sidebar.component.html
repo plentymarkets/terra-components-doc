@@ -1,6 +1,21 @@
 <div class="sidebar_wrapper">
     <div class="sidebar">
-        <p class="h4">Components</p>
+        <div class="sidebar-head d-flex justify-content-between">
+            <ng-container *ngIf="!searching">
+                <span><b>Components</b></span>
+                <span class="icon-search align-self-center" (click)="activateSearch()"></span>
+            </ng-container>
+            
+            <ng-container *ngIf="searching">
+                <terra-text-input
+                    class="flex-grow-1"
+                    [inputName]="'Search'"
+                    (outputOnInput)="search($event)"
+                    (keydown.escape)="cancelSearch()">
+                </terra-text-input>
+                <span class="icon-cancel align-self-center" (click)="cancelSearch()"></span>
+            </ng-container>
+        </div>
         <ul class="component_list" *ngFor="let group of groups">
             <div class="group-header">
                 <hr>
