@@ -36,8 +36,9 @@ export class ComponentSidebarComponent implements OnInit
         this.groups = this.determineGroups();
     }
 
-    private determineGroups(str:string = ''):Array<GroupInterface>
+    private determineGroups(searchString:string = ''):Array<GroupInterface>
     {
+        const cleanSearchString:string = searchString.replace('-', '');
         let groups:Array<GroupInterface> = Object.values(componentMap).reduce((acc:Array<string>, cur:ComponentDataInterface) =>
         {
             if(!acc.includes(cur.group))
@@ -64,7 +65,7 @@ export class ComponentSidebarComponent implements OnInit
                     const compGroup:GroupInterface = groups.find(
                         (group:GroupInterface) => group.name === componentData.group
                     );
-                    if(compGroup && component.name.includes(str))
+                    if(compGroup && component.name.toLowerCase().includes(cleanSearchString.toLowerCase()))
                     {
                         compGroup.components.push(component);
                         return;
