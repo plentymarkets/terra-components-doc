@@ -1,13 +1,15 @@
 import {
     Component,
     OnInit,
-    Type
+    Type,
+    ViewChild
 } from '@angular/core';
 import { exportedComponents } from '@plentymarkets/terra-components/components/component-collection';
 import {
     ComponentDataInterface,
     componentMap
 } from '../component-data.map';
+import { TerraTextInputComponent } from '@plentymarkets/terra-components';
 
 interface GroupInterface
 {
@@ -25,6 +27,9 @@ export class ComponentSidebarComponent implements OnInit
     public groups:Array<GroupInterface> = [];
     public components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
     public searching:boolean = false;
+
+    @ViewChild(TerraTextInputComponent)
+    private textInput:TerraTextInputComponent;
 
     public ngOnInit():void
     {
@@ -88,5 +93,6 @@ export class ComponentSidebarComponent implements OnInit
     public activateSearch():void
     {
         this.searching = true;
+        setTimeout(() => this.textInput.focusNativeInput()); // delay focus since the input will just be rendered when `searching` is set to true
     }
 }
