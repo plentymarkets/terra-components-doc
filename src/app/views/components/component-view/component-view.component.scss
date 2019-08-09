@@ -1,5 +1,21 @@
-:host::ng-deep.tab-content {
+:host::ng-deep.tab-content
+{
     background-color: white;
     border-radius: 4px;
     padding: var(--space-md);
+}
+
+:host::ng-deep.portlet-head
+{
+    .header-caption, .btn > span
+    {
+        font-size: var(--font-size-6) !important;
+    }
+    
+    .btn
+    {
+        height: var(--height-md) !important;
+        line-height: var(--height-md) !important;
+        font-size: var(--font-size-5) !important;
+    }
 }
