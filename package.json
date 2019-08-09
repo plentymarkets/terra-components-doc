@@ -8,7 +8,8 @@
 		"build": "ng build --prod",
 		"test": "ng test",
 		"lint": "ng lint",
-		"reinstall": "rm -rf node_modules/ && npm i"
+		"reinstall": "rm -rf node_modules/ && npm i",
+		"release": "npm run build && gulp copy"
 	},
 	"private": true,
 	"dependencies": {
@@ -42,6 +43,7 @@
 		"@types/jasmine": "~3.3.13",
 		"@types/node": "^12.0.12",
 		"codelyzer": "~5.1.0",
+		"gulp": "^4.0.2",
 		"jasmine-core": "3.4.0",
 		"jasmine-spec-reporter": "4.2.1",
 		"karma": "^4.1.0",
