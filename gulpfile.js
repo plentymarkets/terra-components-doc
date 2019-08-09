@@ -1,8 +1,15 @@
-const { src, dest } = require('gulp');
+const { src, dest, series } = require('gulp');
+const del = require('del');
+
+const destPath = '/workspace/localsystem/plugins/inbox/plugins/PlentyPluginShowcase/ui';
 
 function copy() {
     return src('dist/**')
-        .pipe(dest('/workspace/localsystem/plugins/inbox/plugins/PlentyPluginShowcase/ui'));
+        .pipe(dest(destPath));
 }
 
-exports.copy = copy;
+function clean() {
+    return del(destPath, {force:true});
+}
+
+exports.default = series(clean, copy);
