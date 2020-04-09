@@ -8,7 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "reinstall": "rm -rf node_modules/ && npm i",
+    "reinstall": "npm ci",
     "release": "npm run build && gulp"
   },
   "private": true,
