@@ -28,7 +28,7 @@ export class ComponentSidebarComponent implements OnInit
     public components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
     public searching:boolean = false;
 
-    @ViewChild(TerraTextInputComponent)
+    @ViewChild(TerraTextInputComponent, { static: false })
     private textInput:TerraTextInputComponent;
 
     public ngOnInit():void
