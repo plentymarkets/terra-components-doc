@@ -3,7 +3,6 @@ import { IconService } from '../service/icon.service';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { IconInterface } from '../icon-item-component/icon-interface';
 import { isNullOrUndefined } from 'util';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector:    'iconview',
@@ -18,8 +17,7 @@ export class IconViewComponent
     public enableSearch:boolean;
 
     constructor(private srv:IconService,
-                public _scrollToViewHelper:ScrollToViewHelper,
-                public httpClient:HttpClient)
+                public _scrollToViewHelper:ScrollToViewHelper)
     {
         this.inputSearchValue = '';
         this.enableSearch = false;
