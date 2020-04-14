@@ -17,8 +17,11 @@ import {
     Observable,
     of
 } from 'rxjs';
-import { TerraButtonInterface } from '@plentymarkets/terra-components';
-import { examples } from '@plentymarkets/terra-components/components/example-collection';
+import {
+    TerraButtonInterface,
+    TerraComponentsExamplesModule,
+    TerraComponentsModule
+} from '@plentymarkets/terra-components';
 import {
     HttpClient,
     HttpErrorResponse
@@ -27,6 +30,8 @@ import {
     ComponentDataInterface,
     componentMap
 } from '../component-data.map';
+
+const examples:Array<Type<any>> = TerraComponentsExamplesModule.prototype.constructor['decorators'][0].args[0].exports;
 
 @Component({
     selector:    'tcd-component-view',

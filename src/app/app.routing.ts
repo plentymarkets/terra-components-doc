@@ -9,11 +9,11 @@ export const routes:Routes = [
     },
     {
         path:      'components',
-        loadChildren: './views/components/components.module#ComponentsModule',
+        loadChildren: () => import('./views/components/components.module').then(m => m.ComponentsModule),
     },
     {
         path: 'icons',
-        loadChildren: './views/icons/icons.module#IconsModule'
+        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
     },
     {
         path: 'icon-tutorial',

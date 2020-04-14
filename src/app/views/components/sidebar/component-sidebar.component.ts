@@ -4,18 +4,22 @@ import {
     Type,
     ViewChild
 } from '@angular/core';
-import { exportedComponents } from '@plentymarkets/terra-components/components/component-collection';
 import {
     ComponentDataInterface,
     componentMap
 } from '../component-data.map';
-import { TerraTextInputComponent } from '@plentymarkets/terra-components';
+import {
+    TerraComponentsModule,
+    TerraTextInputComponent
+} from '@plentymarkets/terra-components';
 
 interface GroupInterface
 {
     name:string;
     components:Array<Type<any>>;
 }
+
+const exportedComponents:Array<Type<any>> = TerraComponentsModule.prototype.constructor['decorators'][0].args[0].exports;
 
 @Component({
     selector:    'tcd-component-sidebar',
@@ -28,7 +32,7 @@ export class ComponentSidebarComponent implements OnInit
     public components:Array<Type<any>> = exportedComponents.sort((a:Type<any>, b:Type<any>) => a.name.localeCompare(b.name));
     public searching:boolean = false;
 
-    @ViewChild(TerraTextInputComponent)
+    @ViewChild(TerraTextInputComponent, { static: false })
     private textInput:TerraTextInputComponent;
 
     public ngOnInit():void
