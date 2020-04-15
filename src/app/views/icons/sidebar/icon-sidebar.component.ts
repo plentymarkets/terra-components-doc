@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconService } from '../service/icon.service';
+import { IconApiService } from '../service/icon-api.service';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { IconInterface } from '../icon-item-component/icon-interface';
 
@@ -12,7 +12,7 @@ export class IconSidebarComponent
 {
     public iconArray:Array<IconInterface> = [];
 
-    constructor(private srv:IconService,
+    constructor(private srv:IconApiService,
                 public scrollToViewHelper:ScrollToViewHelper)
     {
         this.srv.loadIconArray().subscribe((icons:Array<IconInterface>) => this.iconArray = icons);

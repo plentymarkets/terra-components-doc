@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IconTemplateComponent } from './icon-template.component';
 import { IconViewComponent } from './iconview/icon-view.component';
 import { IconSidebarComponent } from './sidebar/icon-sidebar.component';
-import { IconService } from './service/icon.service';
+import { IconApiService } from './service/icon-api.service';
 import { TerraComponentsModule } from '@plentymarkets/terra-components';
 import { FormsModule } from '@angular/forms';
 import { IconItemComponent } from './icon-item-component/icon-item.component';
@@ -25,7 +25,7 @@ import { IconsRoutingModule } from './icons.routing';
         IconSidebarComponent,
         IconItemComponent
     ],
-    providers:    [IconService, ScrollToViewHelper]
+    providers:    [IconApiService, ScrollToViewHelper]
 })
 export class IconsModule
 {}
