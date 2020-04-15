@@ -26,11 +26,7 @@ export class IconViewComponent
 
     public searchArray(iconName:string, searchString:string):boolean
     {
-        if(this.inputSearchValue.length === 0)
-        {
-            return true;
-        }
-        return iconName.includes(searchString);
+        return this.inputSearchValue.length === 0 ? true : iconName.includes(searchString);
     }
 
     public validateSearch():void
