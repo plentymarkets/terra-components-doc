@@ -40,10 +40,10 @@ const examples:Array<Type<any>> = TerraComponentsExamplesModule.prototype.constr
 })
 export class ComponentViewComponent implements OnInit
 {
-    protected componentName$:Observable<string>;
-    protected example$:Observable<Type<any>>;
-    protected files$:Observable<{ts:string, html:string, scss:string}>;
-    protected readonly sourceToggle:Array<TerraButtonInterface> = [{
+    public componentName$:Observable<string>;
+    public example$:Observable<Type<any>>;
+    public files$:Observable<{ts:string, html:string, scss:string}>;
+    public readonly sourceToggle:Array<TerraButtonInterface> = [{
         icon:          'icon-placeholder_show_list',
         clickFunction: ():void => this.toggleSources()
     }];

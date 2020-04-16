@@ -17,8 +17,8 @@ import { HttpClient } from '@angular/common/http';
 export class IconTutorialComponent implements OnInit
 {
 
-    protected buttonExample$:Observable<string>;
-    protected listExample$:Observable<string>;
+    public buttonExample$:Observable<string>;
+    public listExample$:Observable<string>;
     private readonly buttonExamplePath:string = 'assets/iconExample/iconButtonCodeExample.html';
     private readonly listExamplePath:string = 'assets/iconExample/iconListCodeExample.html';
 
