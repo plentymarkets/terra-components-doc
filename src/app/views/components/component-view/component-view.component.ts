@@ -49,7 +49,7 @@ export class ComponentViewComponent implements OnInit
 
     private source:boolean = false;
     private readonly annotations:string = '__annotations__';
-    private readonly currentSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/4.X.X/src/lib/components';
+    private readonly currentSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/5.X.X/src/lib/components';
     private readonly versionedSrcPath:string = 'https://raw.githubusercontent.com/plentymarkets/terra-components/v4.0.0-beta.7/src/lib/components';
 
     constructor(private route:ActivatedRoute, private httpClient:HttpClient)
