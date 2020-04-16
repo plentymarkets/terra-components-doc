@@ -19,8 +19,7 @@ import {
 } from 'rxjs';
 import {
     TerraButtonInterface,
-    TerraComponentsExamplesModule,
-    TerraComponentsModule
+    TerraComponentsExamplesModule
 } from '@plentymarkets/terra-components';
 import {
     HttpClient,
