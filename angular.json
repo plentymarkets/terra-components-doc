@@ -15,11 +15,8 @@
 			},
 			"architect": {
 				"build": {
-					"builder": "@angular-builders/custom-webpack:browser",
+					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"customWebpackConfig": {
-							"path": "./webpack.config.js"
-						},
 						"outputPath": "dist",
 						"deleteOutputPath": true,
 						"index": "src/index.html",
@@ -56,7 +53,10 @@
 									"with": "src/environments/environment.prod.ts"
 								}
 							],
-							"optimization": true,
+							"optimization": {
+								"scripts": false,
+								"styles": true
+							},
 							"outputHashing": "all",
 							"sourceMap": false,
 							"extractCss": true,
@@ -67,8 +67,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "5mb",
-									"maximumError": "10mb"
+									"maximumWarning": "10mb",
+									"maximumError": "15mb"
 								}
 							]
 						}
