@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable()
-export class IconService
+export class IconApiService
 {
     constructor(private http:HttpClient)
     {

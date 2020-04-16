@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconService } from '../service/icon.service';
+import { IconApiService } from '../service/icon-api.service';
 import { ScrollToViewHelper } from '../../../helper/scrollToView.helper';
 import { IconInterface } from '../icon-item-component/icon-interface';
 import { isNullOrUndefined } from 'util';
@@ -16,7 +16,7 @@ export class IconViewComponent
     private MINLENGTH:number = 3;
     public enableSearch:boolean;
 
-    constructor(private srv:IconService,
+    constructor(private srv:IconApiService,
                 public _scrollToViewHelper:ScrollToViewHelper)
     {
         this.inputSearchValue = '';
@@ -26,11 +26,7 @@ export class IconViewComponent
 
     public searchArray(iconName:string, searchString:string):boolean
     {
-        if(this.inputSearchValue.length === 0)
-        {
-            return true;
-        }
-        return iconName.includes(searchString);
+        return this.inputSearchValue.length === 0 ? true : iconName.includes(searchString);
     }
 
     public validateSearch():void
